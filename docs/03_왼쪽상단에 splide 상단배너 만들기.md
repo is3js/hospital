@@ -242,26 +242,31 @@ window.document.addEventListener('DOMContentLoaded', () => {
 13. 원래 card의 위치로 돌리기 위해(왼쪽에 생긴 마진), **`li.splide__slide`의 마진을 `m-0`을 줘서 삭제해준다**
 
 ```html
+
 <div class="splide" id="leftBanner">
     <div class="splide__slider">
         <div class="splide__track">
             <ul class="splide__list ">
                 <li class="splide__slide m-0">
 ```
+
 ![img.png](../ui/105.png)
 
 14. **모바일 화면에서 이미지<->글부분의 간격을 주면 글자가 안보이므로 `ps-2`를 lg에서부터보이게 한다.**
-![img.png](../ui/106.png)
+    ![img.png](../ui/106.png)
+
 ```html
 
 <div class="card-body d-flex flex-column justify-content-center text-truncate
     p-0 ps-0 ps-lg-2">
     <!--p-0 ps-2">-->
 ```
+
 ![img.png](../ui/107.png)
 
 15. 이제 모바일 화면에서의 content 높이(lh) `60px` in 70px -> `45px` in 50px 변화시키는데, splide height도 그에 맞춰 변경해준다.
-   - breakpoints 옵션을 사용한다.
+
+- breakpoints 옵션을 사용한다.
 
 ```js
  splide = new Splide('#leftBanner', {
@@ -274,22 +279,27 @@ window.document.addEventListener('DOMContentLoaded', () => {
     },
 }).mount();
 ```
+
 ![img.png](../ui/108.png)
 
 16. lh를 줄여도 너무 위에 붙어있으므로 **splide 가장 부모div에서 바깥쪽(70px)로 `mt-1`을 추가한다.**
+
 ```html
+
 <div class="bottom-left-banner my-auto">
     <!-- splide 적용 -->
     <div class="splide mt-1" id="leftBanner">
 ```
-![img.png](../ui/109.png)
 
+![img.png](../ui/109.png)
 
 - **이제 slide를 몇개 더 늘인다**
 
 17. 이제 pagination을 조절해준다.
-   - button태그들로 구성되어있어서, w/h로 크기를 조절하고, `.is-active`는 불들어온 버튼이며, 배경색+투명도로 조절할 수 있다.
-   - **크기를 8->4로 변경해주고, is-active의경우, main color로 배경색을 칠해준다.**
+
+- button태그들로 구성되어있어서, w/h로 크기를 조절하고, `.is-active`는 불들어온 버튼이며, 배경색+투명도로 조절할 수 있다.
+- **크기를 8->4로 변경해주고, is-active의경우, main color로 배경색을 칠해준다.**
+
 ```css
 /*left banner pagination 크기 + 색 */
 #leftBanner button.splide__pagination__page {
@@ -309,39 +319,45 @@ window.document.addEventListener('DOMContentLoaded', () => {
 ```
 
 18. 버튼을 세로로 나열하기 전에, 우측버튼들 (ul li)에 걸린 lh를 확실하게 지정해준다.
-   - 바로 직 자식관계로 화살표를 기입한다.
+
+- 바로 직 자식관계로 화살표를 기입한다.
+
 ```css
 /* header-bottom - 우측 버튼들 */
 /*.header .header-bottom ul li {*/
 .header .header-bottom > ul > li {
-   line-height: var(--header-bottom-font-lh);
-   margin-left: var(--header-bottom-ms);
+    line-height: var(--header-bottom-font-lh);
+    margin-left: var(--header-bottom-ms);
 }
 
 @media screen and (max-width: 991px) {
-   .header .header-bottom > ul > li {
-      line-height: var(--header-bottom-mobile-font-lh) !important;
-      margin-left: var(--header-bottom-mobile-ms);
-   }
+    .header .header-bottom > ul > li {
+        line-height: var(--header-bottom-mobile-font-lh) !important;
+        margin-left: var(--header-bottom-mobile-ms);
+    }
 }
 
 .header .header-bottom > ul > li a {
-   font-size: var(--header-bottom-font-size)
+    font-size: var(--header-bottom-font-size)
 }
 ```
+
 19. 세로로 나열되어야하는데, 가로로 배열되는 것을 확인해보니, **padding이 있어서 옆으로 붙는 모양세가 나왔다.**
-![img.png](../ui/110.png)
-   - **기본적으로 명시된 상하패딩을 제거해줘야, 좁은공간에서 세로 pagination이 가능해진다.**
+    ![img.png](../ui/110.png)
+
+- **기본적으로 명시된 상하패딩을 제거해줘야, 좁은공간에서 세로 pagination이 가능해진다.**
+
 ```css
 /* 세로나열을 위해, button<li의 부모인 ul의 기본 상하 패딩을 제거해야, 좁은 공간에서 자동flex-column의 버튼들이 가로로 안 눕는다.*/
 #leftBanner ul.splide__pagination {
-   padding: 0;
+    padding: 0;
 }
 ```
+
 ![img.png](../ui/111.png)
 
-
 20. 추가로 li간의 lh행간을 0으로 완전히 좁혀서, 세어나가지 못하게 한다
+
 ```css
 /* 세로나열을 위해, li들간의 간격을 0으로 */
 #leftBanner .splide__pagination li {
@@ -351,37 +367,42 @@ window.document.addEventListener('DOMContentLoaded', () => {
 ```
 
 21. 이제 pagination의 위치를 조절한다.
-   - 세로나열인데, 전체부모인 33.3%의 끝에 배치되므로 **left를 기준으로 본문보다 왼쪽으로 옮기되, `width:fit-content`로 페이지네이션 종특 시작~끝까지 차지하는 버릇을 없앤다**
+
+- 세로나열인데, 전체부모인 33.3%의 끝에 배치되므로 **left를 기준으로 본문보다 왼쪽으로 옮기되, `width:fit-content`로 페이지네이션 종특 시작~끝까지 차지하는 버릇을 없앤다**
+
 ```css
 /* pagination 위치 조절 */
 #leftBanner ul.splide__pagination {
     /* 기존 left:auto; right:0.5em */
     /*right: 35%;*/
-    left:-3%;
+    left: -3%;
     width: fit-content;
 }
 ```
+
 ![img.png](../ui/112.png)
 
-
 22. mobile에선 점의 크기가 크고, left: -4%는 너무 가까워서 조금 더 벌려준다.
-![img.png](../ui/113.png)
+    ![img.png](../ui/113.png)
+
 ```css
 /* 모바일에서 점크기 작게 + 왼쪽으로 조금 더 벌리기 */
-@media screen and (max-width: 991px){
+@media screen and (max-width: 991px) {
     #leftBanner button.splide__pagination__page {
         width: 3px;
         height: 3px;
     }
+
     #leftBanner ul.splide__pagination {
-        left:-7%;
+        left: -7%;
     }
 }
 ```
+
 ![img.png](../ui/114.png)
 
-
 23. **이제 왼쪽으로 pagination을 밀었으니, `lg`에서만 보이는 글자를, span태그로 추가하자**
+
 ```html
 <h5 class="card-title left-banner-title text-truncate my-1 ">
     조재성 원장님<span class="d-none d-lg-inline-block ms-2">추나 / 근골격계 / 교통사고</span>
@@ -390,10 +411,39 @@ window.document.addEventListener('DOMContentLoaded', () => {
     09:00 ~ 21:00
 </h6>
 ```
+
 - hover시 색도 변경해주자
+
 ```css
 .header .header-middle.on .header-bottom .bottom-left-banner .left-banner-title > span {
     color: var(--color-submain);
 }
 ```
+
 ![img.png](../ui/115.png)
+
+24. live 수정
+
+- mobile 글자크기 줄이기
+
+```css
+/* - 모바일에서 left-banner 글자크기+자간+간격 줄이기 */
+@media screen and (max-width: 991px) {
+    .header .header-bottom .bottom-left-banner .left-banner-title,
+    .header .header-bottom .bottom-left-banner .left-banner-subtitle {
+        font-size: .5rem;
+```
+
+- 모바일 글자 준것에 대해 글자부분 ps-2 추가하기
+
+```html
+
+<div class="card-body d-flex flex-column justify-content-center text-truncate
+                                            p-0 ps-2 ps-lg-3">
+```
+
+- mobile에서 pagination대비 card mt-1주기
+
+```html
+<li class="splide__slide m-0 mt-1 mt-lg-0 ">
+```

@@ -873,11 +873,11 @@ a {
 /* 모바일에서 점크기 작게 + 왼쪽으로 조금 더 벌리기 */
 @media screen and (max-width: 991px){
     #leftBanner button.splide__pagination__page {
-        width: 3px;
-        height: 3px;
+        width: 2.5px;
+        height: 2.5px;
     }
     #leftBanner ul.splide__pagination {
-        left:-7%;
+        left:-8%;
     }
 }
 
@@ -917,7 +917,7 @@ a {
 @media screen and (max-width: 991px) {
     .header .header-bottom .bottom-left-banner .left-banner-title,
     .header .header-bottom .bottom-left-banner .left-banner-subtitle {
-        font-size: .7rem;
+        font-size: .5rem;
         font-weight: bolder;
         letter-spacing: -.5px;
         margin: 2px;
