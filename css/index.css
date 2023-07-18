@@ -1,0 +1,969 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&family=Noto+Serif+KR:wght@500&display=swap');
+@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css);
+
+:root {
+    --primary-font-family: 'Noto Sans KR', sans-serif;
+    --secondary-font-family: 'Noto Serif KR', sans-serif;
+    --third-font-family: 'NanumSquare', sans-serif;
+
+    --color-main: #00b5b2;
+    --color-submain: #FC5230;
+
+    /* header-bottom(가운데) 설정 */
+    --header-bottom-height: 70px;
+    --header-bottom-mobile-height: 50px;
+
+    --header-bottom-font-lh:60px;
+    --header-bottom-ms: 20px;
+    --header-bottom-mobile-font-lh:45px;
+    --header-bottom-mobile-ms: 15px;
+
+    --header-bottom-font-size: 14px;
+
+    /* header-middle(navbar + 로그인|예약버튼) 설정 */
+    --header-middle-nav-font-size: 14px;
+    --header-middle-nav-1200-font-size: 15px;
+    --header-middle-nav-1400-font-size: 18px;
+
+
+    --3rd-menu-font-size: 16px;
+    --3rd-menu-font-lh: 30px
+}
+
+body {
+    font-family: 'NanumSquare', 'Noto Sans KR', 'Malgun Gothic', 'Nanum Gothic', 'Noto Sans', 'sans-serif';
+    color: #252525;
+    font-size: 18px;
+    line-height: 1.6;
+    font-weight: normal;
+    font-style: normal;
+
+    background: black;
+}
+
+a {
+    /*font-family:  'Noto Sans Korean', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Nanum Gothic', 'Noto Sans', 'sans-serif';*/
+    font-family: var(--primary-font-family);
+    color: #252525;
+    font-size: 18px;
+    line-height: 1.6;
+    font-weight: normal;
+    font-style: normal;
+
+    text-decoration: none !important;
+}
+
+
+.container-fluid {
+    padding: 0;
+}
+
+/*.header div {
+  padding: 0 5%;
+}*/
+
+.header .header-top {
+    /*height: 38px;*/
+    /*background: #f7f7f7;*/
+}
+
+/* 특화질환 및 collapse 공간 */
+.header .header-top div:nth-child(1),
+.header .header-top div:nth-child(2) {
+    padding: 0 5%;
+}
+
+/*.header a {*/
+/* - dropdown 버튼 (특화질환) */
+.header .header-top div:nth-child(1) a {
+    height: 30px;
+    line-height: 30px;
+}
+
+/* - collapse 공간 */
+.header .header-top div:nth-child(2) {
+    /*border-bottom: 1px solid #ccc;*/
+}
+
+.header .header-top div:nth-child(2) ul li {
+    margin-top: 32px;
+    margin-right: 6%;
+}
+
+.header .header-top div:nth-child(2) ul li:hover svg {
+    margin-left: 15px;
+    transition: all 0.3s linear;
+}
+
+/* middle with navbar*/
+.header .header-middle {
+    /*height: 60px;*/
+
+    /*padding: 0 5%;*/ /* 안쪽 navbar의 패딩으로 변경*/
+    /* 임시 */
+    /*background: red;*/
+}
+
+.header .header-middle .navbar {
+    /*padding: 10px 5%;*/
+    padding: 0 5%;
+}
+
+/* 투명색 header-middle 에 hover시  배경색+글자색+hover색 변화 */
+.header .header-middle.on {
+    background: #fff;
+
+    /*box-shadow: 0 1px 8px 3px rgba(0, 0, 0, .05);*/
+    transition: .3s all ease-in-out;
+}
+
+/*.header .header-middle.on .navbar-nav .nav-item a {*/
+.header .header-middle.on a {
+    color: #333 !important;
+}
+
+/*.header .header-middle.on .navbar-nav .nav-item a:hover {*/
+.header .header-middle.on a:hover {
+    color: #00b5b2 !important;
+}
+
+
+.header .header-middle .logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.header .header-middle .logo-image {
+    display: inline-block;
+
+    width: 230px;
+    height: 30px;
+    background: url("../images/logo_white.png") no-repeat;
+    background-size: auto 100%;
+}
+
+.header .header-middle.on .logo-image {
+    background: url("../images/logo.png") no-repeat;
+    background-size: auto 100%;
+}
+
+@media screen and (max-width: 991px) {
+    .header .header-middle .logo-image {
+        width: 135px;
+        height: 20px;
+    }
+}
+
+/*.header .header-middle .navbar-brand {
+    display: inline-block;
+    max-width: 215px; !* 215x40px *!
+}
+
+@media screen and (max-width: 991px) {
+    .header .header-middle .navbar-brand {
+        max-width: 172px; !*172x32px*!
+    }
+}*/
+
+
+/* custom 햄버거 */
+.header .header-middle .navbar-toggler {
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+
+    border: none;
+    outline: none;
+}
+
+.header .header-middle .navbar-toggler span {
+    display: block;
+
+    width: 24px;
+    height: 2px;
+    background: rgb(60, 60, 60);
+
+    margin: 5px 0;
+
+    /* 애니메이션 */
+    transition: all .5s linear;
+}
+
+.header .header-middle .navbar-toggler.on span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.header .header-middle .navbar-toggler.on span:nth-child(2) {
+    transform: scale(0);
+}
+
+.header .header-middle .navbar-toggler.on span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+
+/*
+- ~ lg(991)까지는 큰 logo
+- xl(991) ~ xxl(1399)까지는 작은 logo **
+- xxl(1400)부터 큰 logo 복귀
+*/
+.header .header-middle .navbar-brand {
+    display: inline-block;
+
+    background: url("../images/v3-icon.svg") no-repeat;
+    background-position: -29px -26px;
+
+    width: 153px;
+    height: 34px;
+}
+
+@media screen and (min-width: 992px) and (max-width: 1399px) {
+    .header .header-middle .navbar-brand {
+        background-position: -208px -19px;
+
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* 모바일 아이콘 1개(예약전화) */
+.header .header-middle .navbar-call {
+    width: 32px;
+    height: 32px;
+    /*line-height: 32px;*/
+    text-align: center;
+
+    border: 2px solid #000;
+    border-radius: 5px;
+}
+
+.header .header-middle .navbar-nav {
+    margin-left: 20px;
+}
+
+/* 각 메뉴별 화살표 */
+/* - mega-menu만 화살표 가지도록 설정*/
+/*.header .header-middle .navbar-nav .nav-item .nav-link:after {*/
+.header .header-middle .navbar-nav .nav-item.mega-dropdown .nav-link:after {
+    display: inline-block;
+    content: "";
+    width: 7px;
+    height: 6px;
+    background: url("../images/v4-icon.svg") no-repeat;
+    background-position: -21px -96px;
+
+    /* top위치 이동용 + dropdown 부모용 */
+    position: relative;
+    /*top: -3px;*/
+}
+
+@media screen and (min-width: 992px) {
+    /* 화살표를 lg이후부터 inline-block으로서 약간 내림*/
+    .header .header-middle .navbar-nav .nav-item .nav-link:after {
+        top: -3px;
+    }
+}
+
+/* 메뉴 글자크기 */
+/* 992(lg)부터 등장 +  xl(1200)~  + xxl(1400) 시의 font + mr 정의해주기 */
+/* - lg ~ */
+/*.header .header-middle .navbar-nav .nav-item .nav-link {*/
+.header .header-middle .navbar-nav .nav-item > a {
+    font-size: var(--header-middle-nav-font-size);
+    margin-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    color: #ddd;
+}
+
+/* 로그인 버튼 a태그 글자크기 */
+.header .header-middle .navbar-other a {
+    font-size: var(--header-middle-nav-font-size);
+    line-height: var(--header-middle-nav-font-size);
+}
+
+/* - xl ~ */
+@media screen  and (min-width: 1200px) {
+    /* 메뉴 글자크기 */
+    .header .header-middle .navbar-nav .nav-item > a {
+        font-size: var(--header-middle-nav-1200-font-size);
+        margin-right: 12px;
+    }
+
+    /* 로그인 버튼 a태그 글자크기 */
+    .header .header-middle .navbar-other a {
+        font-size: var(--header-middle-nav-1200-font-size);
+    }
+}
+
+/* - xxl ~ */
+@media screen  and (min-width: 1400px) {
+    /* 메뉴 글자크기 */
+    .header .header-middle .navbar-nav .nav-item .nav-link {
+        font-size: var(--header-middle-nav-1400-font-size);
+        margin-right: 10px;
+    }
+
+    /* 로그인 버튼 a태그 글자크기 */
+    .header .header-middle .navbar-other a {
+        font-size: var(--header-middle-nav-1400-font-size);
+    }
+}
+
+/* 마지막 nav-item은 mr-0 */
+.header .header-middle .navbar-nav .nav-item:last-child .nav-link {
+    margin-right: 0;
+}
+
+
+/* 추가1) toggler가 아닌 부모li태그에 커스텀 클래스를 생성 */
+/* - li.nav-item 중 .has-megamenu를 가진 친구들에게 적용 */
+
+/*.header .header-middle .navbar-nav .nav-item.mega-dropdown:hover .dropdown-menu {*/
+/*    display: block;*/
+/*}*/
+
+
+/* dropdown 메뉴 */
+.header .header-middle .navbar-nav .nav-item .dropdown-menu {
+    width: 100%;
+    padding: 40px 10%;
+
+    /*background: #f9f9f9;*/
+
+    /* dropdown trigger인 a의 높이만큼 내려와서 생기도록 */
+    margin-top: 0;
+    top: 100%;
+
+    border: none;
+    border-radius: 0;
+    /*background: rgba(9, 32, 75, 0.9);*/
+    /*background: #1ececb;*/
+    /*background: rgb(45, 82, 181, 0.95);*/
+
+    /*background: rgb(55, 75, 100);*/
+
+
+    /*background: #1ececb;*/
+    background: #1ececb url("../images/bg_dropdown-001.png") no-repeat 100% 100%;
+}
+
+
+/* mobile 시 dropdown 애니메이션 + border bottom */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        /*transform: translateY(-10px);*/
+    }
+    to {
+        opacity: 1;
+        /*transform: translateY(0);*/
+    }
+}
+
+@media screen and (max-width: 991px) {
+    /*.nav-item.mega-dropdown > a {*/
+    .nav-item > a {
+        border-bottom: 1px solid #c9c9c9;
+    }
+
+    .nav-item.mega-dropdown .dropdown-menu {
+        animation: fade-in 0.6s ease-in-out forwards;
+    }
+}
+/* ul.body-left (메뉴공간) - 공통 설정1 */
+.header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .body-left {
+    /* 넘치면 다음줄로 */
+    flex-wrap: wrap;
+
+    /* 60% 유지 -> 모바일에선 100% */
+    width: 60%;
+    /*padding: 0 5%;*/
+}
+
+@media screen  and (max-width: 991px) {
+    .header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .body-left {
+        width: 100%;
+    }
+}
+
+/*
+    ul.body-left (메뉴공간) 개별설정 1 - 차지공간 설정
+    1) .body-left.menu-2nd -> 50% 씩 차지 + 다음줄 대비 상하간격을 mb로
+    2) .body-left.menu-img -> 110px씩 차지 + 오른쪽 간격을 mr로 간격
+        + 모바일에선 50%
+*/
+/* 1) menu-2nd는 개별 메뉴가 50%씩 차지 + 상하간격을 mb로 */
+.header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .body-left.menu-2nd > li {
+    width: 50%;
+
+    margin-bottom: 20px;
+}
+
+/* 2) menu-img는 개별 메뉴가 110px 이미지와 함께 차지 + 가운데 정렬하여 img+p태그 모으기 + 오른쪽과 거리 두기*/
+.header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .body-left.menu-img > li {
+    width:110px;
+    text-align: center;
+
+    margin-right: 25px;
+}
+
+@media screen  and (max-width: 991px) {
+    .header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .body-left.menu-img > li {
+        width: 50% !important;
+        margin-right: 0!important;
+    }
+}
+
+
+
+/* 공통설정2) 2nd + img  [li의  hover시 > a태그 화살표:after ]  + [2nd의 위쪽하얀선:before를 위한 설정] */
+.header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .body-left > li {
+    position: relative;
+}
+
+
+/* 2nd, img 메뉴 공통) hover시 왼쪽에 대각화살표 */
+.header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .body-left > li:hover > a:after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: -15px;
+    width: 10px;
+    height: 10px;
+    border-left: 3px solid #2cf5fb;
+    border-bottom: 3px solid #2cf5fb;
+    transform: rotate(-135deg);
+}
+
+/* 개별설정2) 2nd 메뉴 위쪽 하얀선:before + hover시 색깔 변경 */
+.header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .body-left.menu-2nd > li:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -3px;
+    width: 5%;
+    height: 2px;
+    background: #ffffff;
+}
+
+.header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .body-left > li:hover:before {
+    background: #2cf5fb;
+}
+
+/* 공통설정3) 각 메뉴(2nd, img) 글자태그 찾아서 li:hover시, 글자태그 글자색 변경 by !important */
+/* - img 메뉴의 글자 p태그 -  hover시  p태그(제목) 글자색 변경 */
+.header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .body-left > li:hover p {
+    font-weight: normal!important;
+    color: #2cf5fb!important;
+}
+
+/* 더알아보기 설정 */
+/*@media screen  and (max-width: 991px) {*/
+
+/*    !* dropdown의 5번째 메뉴부터는 숨김 + 마지막 제외 (더알아보기 버튼 내올거임) *!*/
+/*    !*.header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .body-left li:nth-child(n+5) {*!*/
+/*    .header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .body-left li:nth-child(n+5):not(last-child) {*/
+/*        display: none;*/
+/*    }*/
+/*}*/
+
+/* 개별설정3) - img 메뉴는 img태그의 크기를 padding으로 줄인다.추가 */
+.header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .menu-img > li img {
+    padding: 10%;
+}
+
+/* 개별설정4) 2nd 메뉴 - 3rd메뉴 글자크기와 hover시 글자설정*/
+.header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .menu-3rd > li > a {
+    font-size: var(--3rd-menu-font-size);
+    line-height: var(--3rd-menu-font-lh);
+
+    color: rgba(255, 255, 255, .85) !important;
+    font-family: var(--third-font-family) !important;
+}
+
+.header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .menu-3rd > li:hover > a {
+    color: white!important;
+    font-weight: bold!important;
+}
+
+
+/* 개별설정5) 2nd메뉴 - 3차메뉴를 pl를 줘서 벌려지도록 */
+.header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .menu-3rd > li {
+    padding-left: 7px;
+}
+
+/*.header .header-middle .menu-3rd > li:before {*/
+/*    content: '';*/
+/*    position: absolute;*/
+/*    left: 0;*/
+/*    top: 7px;*/
+/*    width: 2px;*/
+/*    height: 16px;*/
+/*    background: rgba(248,248,248,0.5);*/
+/*    transition: all .3s;*/
+/*}*/
+
+
+
+/* dropdown body-left 마지막 li 더 알아보기 버튼 */
+.header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .body-left > li:last-of-type {
+    width: 100%;
+    text-align: center;
+
+    /*padding: 10px 5%;*/
+    padding: 0 5%;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+
+/* dropdown body-right div */
+.header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .body-right {
+    /*background: red;*/
+    flex: 1;
+}
+
+/* - 제목 */
+.header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .body-right h4 {
+    margin: 30px 0 20px 60px;
+}
+
+/* - 소개 */
+.header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .body-right p {
+    margin-left: 60px;
+    color: rgba(255, 255, 255, 0.69) !important;
+}
+
+
+/* 모바일전용 로그인 메뉴 */
+.header .header-middle .navbar-nav .login-item {
+    /*padding: 0 2% 10px 2%;*/
+    padding-bottom: 10px;
+    margin-left: 5%;
+    margin-right: 5%;
+
+    border-bottom: 1px solid #ccc;
+}
+
+.header .header-middle .navbar-nav .login-item span {
+    color: #ccc;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* 모바일전용 검색 메뉴 */
+.header .header-middle .navbar-nav .search-item {
+    border-bottom: 1px solid #000;
+}
+
+/* lg 로그인 버튼 */
+.header .header-middle .navbar-other .login {
+    position: relative;
+}
+
+/* lg 로그인 hover box */
+.header .header-middle .navbar-other .login .login-box {
+    position: absolute;
+    background: #fff;
+
+    left: 50%;
+    transform: translateX(-50%);
+    top: 40px;
+
+    border: 1px solid #ccc;
+    border-radius: 10px;
+
+    display: none; /* hover를 위해 기본 none */
+
+
+    /* fixed된 이후 hover 등이 안가려지도록 */
+    z-index: 999;
+}
+
+/* .login hover시 얻는 .on -> .login-box 보이도록 */
+.header .header-middle .navbar-other .login.on .login-box {
+    display: block;
+}
+
+
+/* - hover box안에서 span태그로 화살표 */
+.header .header-middle .navbar-other .login .login-box > span {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -20px;
+
+    height: 20px;
+    width: 20px;
+}
+
+.header .header-middle .navbar-other .login .login-box > span i {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    border-width: 10px;
+    border-style: solid dashed dashed;
+    border-color: transparent transparent #e2e2e2;
+}
+
+.header .header-middle .navbar-other .login .login-box > span b {
+    position: absolute;
+    left: 0;
+    top: 1px;
+
+    border-width: 10px;
+    border-style: solid dashed dashed;
+    border-color: transparent transparent #fff;
+}
+
+/* - hover box안에서 각 line p태그 */
+.header .header-middle .navbar-other .login .login-box p {
+    width: 160px;
+
+    line-height: 24px;
+    text-align: center;
+
+    margin: 0;
+    padding: 10px;
+}
+
+/* - 마지막을 제외한 각 p태그에 border-bottom*/
+.header .header-middle .navbar-other .login .login-box p:not(:last-of-type) {
+    border-bottom: 1px solid #f6f6f6;
+}
+
+/* - hover시 .navbar-other 안의 svg stroke색 변경 */
+.header .header-middle.on .navbar-other svg {
+    stroke: #000;
+    stroke-width: .5px; /* 선의 두께를 좀 더 연하게 설정 */
+}
+
+/* modal */
+.modal .modal-content {
+    position: relative;
+    /* modal 패딩 for abs 닫기버튼 등 피하기 위함 */
+    padding: 20px 100px 50px 100px;
+}
+
+/* - 닫기버튼 */
+.modal .modal-content i {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+
+    cursor: pointer;
+
+    background: url("../images/support-icon2.svg") -1145px -454px;
+}
+
+.modal .modal-content i:hover {
+    background-position: -1176px -454px;
+}
+
+.modal .modal-content .modal-header {
+    margin-bottom: 20px;
+}
+
+.modal .modal-content .modal-header span {
+    width: 169px; /* 남은공간 300  /2 =  150px보다 크게 줘서, 2번째 span이 영역 가운데서 시작하게 됨*/
+    text-align: center;
+    font-size: 18px;
+}
+
+/* modal-header 첫번째 span에 빨간색 */
+.modal .modal-content .modal-header span:nth-of-type(1) {
+    color: #be0000;
+}
+
+/* modal-body의 input */
+.modal .modal-content .modal-body input[type=text] {
+    display: block;
+    width: 100%;
+
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #ccc;
+
+    font-size: 15px;
+    line-height: 48px;
+}
+
+/* - 회원가입 line */
+.modal .modal-content .modal-body p {
+    width: 100%;
+    padding: 10px 0;
+    /*color: #007dff;*/
+    font-size: 13px;
+}
+
+.modal .modal-content .modal-body p a {
+    color: #007dff;
+    font-size: 13px;
+}
+
+.modal .modal-content .modal-body p b {
+    display: inline-block;
+    width: 11px;
+    height: 15px;
+
+    background-image: url("../images/ic_smsLogin.png");
+    background-position: -2px 0;
+    background-repeat: no-repeat;
+
+    margin-bottom: -3px;
+}
+
+.modal .modal-content .modal-body input[type=button]:hover {
+    background: #be0000;
+    color: #fff;
+}
+
+/* modal-footer */
+.modal .modal-content .modal-footer {
+    margin-top: 10px;
+}
+
+.modal .modal-content .modal-footer p {
+    width: 100%;
+    position: relative;
+
+    text-align: center;
+    font-size: 13px;
+}
+
+/* 글자 양끝의 line */
+.modal .modal-content .modal-footer p span {
+    display: inline-block;
+    width: 50px;
+    height: 1px;
+    background: #ccc;
+
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.modal .modal-content .modal-footer p span:nth-of-type(1) {
+    left: 0;
+}
+
+.modal .modal-content .modal-footer p span:nth-of-type(2) {
+    right: 0;
+}
+
+/* modal-footer sns 로그인 */
+.modal .modal-content .modal-footer ul li {
+    margin: 0 5px;
+}
+
+.modal .modal-content .modal-footer ul li a {
+    display: inline-block;
+    width: 42px;
+    height: 42px;
+
+    background: url("../images/share.png") no-repeat;
+}
+
+/* - x: -12px부터 -60px씩 움직이면 다른 그림이 나옴 */
+/* - y: -9px에서 -55px로 움직이면 hover시 그림이 나옴 */
+/* - (1) 카톡로그인 */
+.modal .modal-content .modal-footer ul li:nth-of-type(1) a {
+    background-position: -12px -9px;
+}
+
+.modal .modal-content .modal-footer ul li:nth-of-type(1):hover a {
+    background-position: -12px -55px;
+}
+
+/* - (2) 구글로그인 */
+.modal .modal-content .modal-footer ul li:nth-of-type(2) a {
+    background-position: -252px -9px;
+}
+
+.modal .modal-content .modal-footer ul li:nth-of-type(2):hover a {
+    background-position: -252px -55px;
+}
+
+
+/* header bottom */
+.header .header-bottom {
+    /*height: 60px;*/
+    height: var(--header-bottom-height);
+    padding: 0 5%;
+
+    /*background: #ccc;*/
+
+    position: relative;
+}
+
+@media screen and (max-width: 991px) {
+    .header .header-bottom {
+        height: var(--header-bottom-mobile-height);
+    }
+}
+
+/* - second-title */
+.header .header-bottom .second-title {
+    /*font-weight: bold;*/
+    line-height: 60px;
+    font-size: 16px;
+}
+
+@media screen and (max-width: 991px) {
+    .header .header-bottom .second-title {
+        line-height: 50px !important;
+        font-size: 15px;
+    }
+}
+
+/* left banner */
+.header .header-bottom .bottom-left-banner {
+    width: 33.3%;
+
+    /*max-height: 70px;*/
+    /*height: 70px;*/
+}
+
+/*left banner pagination 크기 + 색 */
+#leftBanner button.splide__pagination__page {
+    /* 각 점들은 button 태그의 background + opacity로 색으로 설정*/
+    /*background: var(--color-main);*/
+    /*opacity: 0.3;*/
+
+    /* button 점 크기: 8px 기본*/
+    width: 4px;
+    height: 4px;
+}
+#leftBanner button.splide__pagination__page.is-active {
+    background: var(--color-main);
+    /*opacity: 1;*/
+}
+
+/* 세로나열을 위해, button<li의 부모의 기본 상하 패딩을 제거해야, 좁은 공간에서 자동flex-column의 버튼들이 가로로 안 눕는다.*/
+#leftBanner ul.splide__pagination {
+    padding: 0;
+}
+
+/* 세로나열을 위해, li들간의 간격을 0으로 */
+#leftBanner ul.splide__pagination li {
+    /*  기존 행간 1  */
+    line-height: 0;
+}
+
+/* pagination 위치 조절 */
+#leftBanner ul.splide__pagination {
+    /* 기존 left:auto; right:0.5em */
+    /*right: 35%;*/
+    left:-3%;
+    width: fit-content;
+}
+
+/* 모바일에서 점크기 작게 + 왼쪽으로 조금 더 벌리기 */
+@media screen and (max-width: 991px){
+    #leftBanner button.splide__pagination__page {
+        width: 3px;
+        height: 3px;
+    }
+    #leftBanner ul.splide__pagination {
+        left:-7%;
+    }
+}
+
+
+
+
+/* left banner - img태그 높이 -> 우측 글자높이에 맞춰준다 */
+.header .header-bottom .bottom-left-banner .card > img {
+    max-height: var(--header-bottom-font-lh);
+    width: auto;
+
+    max-width: 25%;
+}
+/* - 모바일시, 우측 글자높이 mobile 버전으로 img태그의 max-height를 조절 */
+@media screen and (max-width: 991px) {
+    .header .header-bottom .bottom-left-banner .card > img {
+        max-height: var(--header-bottom-mobile-font-lh);
+    }
+}
+
+/* left banner - 글 부분 너비 75% */
+.header .header-bottom .bottom-left-banner .card > .card-body {
+    max-width: 75%;
+}
+
+/* left banner font */
+.header .header-bottom .bottom-left-banner .left-banner-title,
+.header .header-bottom .bottom-left-banner .left-banner-subtitle {
+    font-size: 0.95rem;
+    font-weight: bold;
+    /*font-family: var(--secondary-font-family);*/
+
+    letter-spacing: -.5px;
+}
+
+/* - 모바일에서 left-banner 글자크기+자간+간격 줄이기 */
+@media screen and (max-width: 991px) {
+    .header .header-bottom .bottom-left-banner .left-banner-title,
+    .header .header-bottom .bottom-left-banner .left-banner-subtitle {
+        font-size: .7rem;
+        font-weight: bolder;
+        letter-spacing: -.5px;
+        margin: 2px;
+    }
+}
+
+/* .header-middle hover시(.on) left-banner font색 변경 */
+.header .header-middle.on .header-bottom .bottom-left-banner .left-banner-title {
+    color: #00b5b2;
+}
+.header .header-middle.on .header-bottom .bottom-left-banner .left-banner-title > span {
+    color: var(--color-submain);
+}
+.header .header-middle.on .header-bottom .bottom-left-banner .left-banner-subtitle {
+    color: #000;
+}
+
+/* header-bottom 가운데 화살표 */
+/*.arrow {*/
+/*    display: inline-block;*/
+/*    width: 21px;*/
+/*    height: 11px;*/
+
+/*    background: url("../images/v4-icon.svg") no-repeat;*/
+/*    background-position: -347px -488px;*/
+
+/*    position: absolute;*/
+/*    top: 50%;*/
+/*    left: 50%;*/
+/*    transform: translate(-50%, -50%);*/
+/*}*/
+
+/* header-bottom - 우측 버튼들 */
+/*.header .header-bottom ul li {*/
+.header .header-bottom > ul > li {
+    line-height: var(--header-bottom-font-lh);
+    margin-left: var(--header-bottom-ms);
+}
+
+@media screen and (max-width: 991px) {
+    .header .header-bottom > ul > li {
+        line-height: var(--header-bottom-mobile-font-lh) !important;
+        margin-left: var(--header-bottom-mobile-ms);
+    }
+}
+
+.header .header-bottom > ul > li a {
+    font-size: var(--header-bottom-font-size)
+}

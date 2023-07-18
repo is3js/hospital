@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
+
+        :root {
+            --color-main: #FC5230;
+            --color-submain: #12887A;
+
+            --primary-font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        .bg-main {
+            background-color: var(--color-main);
+        }
+        .bg-main-50 {
+            background-color: rgba(var(--color-main), 0.5);
+        }
+
+        .bg-submain {
+            background-color: var(--color-submain);
+        }
+        bg-submain-50 {
+            background-color: rgba(var(--color-submain), 0.5);
+        }
+
+
+        body {
+            font-family: var(--primary-font-family);
+        }
+
+        /*row & col test*/
+        .row {
+            border: dashed 1px red;
+            margin: 10px 0;
+        }
+
+        .ca {
+            border: solid 1px blue;
+            background: #EFEFEF;
+        }
+
+        /*  div.wh(block 정사각형)을 flex or row 속 col아닌데 수평배치 하는 방법*/
+        /*  border, 색, m/p 등 알아볼 때 사용함*/
+        .wh {
+            width: 100px;
+            height: 100px;
+            background: #EFEFEF;
+            float: left;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<!--row/col test -->
+<div class="container">
+    <div class="row">
+        <div class="ca col">1열</div>
+        <div class="ca col">2열</div>
+        <div class="ca col">3열</div>
+    </div>
+</div>
+
+<!--float or margin or padding  test -->
+<div class="container">
+    <div class="wh">float1</div>
+    <div class="wh">float2</div>
+    <div class="wh">float3</div>
+    <div class="clearfix"></div>
+</div>
+
+
+<!--flex test-->
+<div class="d-flex border border-dark my-2" style="height: 200px;">
+    <div class="p-2 border border-success">flex-item1</div>
+    <div class="p-2 border border-success">flex-item2</div>
+    <div class="p-2 border border-success">flex-item3</div>
+</div>
+
+<!--<script src="js/bootstrap.js"></script>-->
+<script src="js/bootstrap.bundle.js"></script>
+</body>
+</html>
