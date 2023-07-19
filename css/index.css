@@ -109,6 +109,14 @@ a {
     padding: 0 5%;
 }
 
+/* lg일때만 위쪽 투명한 선 */
+@media screen and (min-width: 992px){
+    .header .header-middle .navbar > div {
+        border-top: 1px solid rgba(255,255,255,0.2);"
+    }
+}
+
+
 /* 투명색 header-middle 에 hover시  배경색+글자색+hover색 변화 */
 .header .header-middle.on {
     background: #fff;
@@ -177,6 +185,8 @@ a {
 
     border: none;
     outline: none;
+
+    box-shadow: none; /* 클릭시 아웃라인 같은 shadow 제거 */
 }
 
 .header .header-middle .navbar-toggler span {
@@ -184,12 +194,21 @@ a {
 
     width: 24px;
     height: 2px;
-    background: rgb(60, 60, 60);
+    /*background: rgb(60, 60, 60);*/
+    background: #ddd;
 
     margin: 5px 0;
 
     /* 애니메이션 */
     transition: all .5s linear;
+}
+
+/* 토글on or hover on시 햄버거 버튼 검은색으로 */
+.header .header-middle .navbar-toggler.on span{
+    background: rgb(60, 60, 60);
+}
+.header .header-middle.on .navbar-toggler span{
+    background: rgb(60, 60, 60);
 }
 
 .header .header-middle .navbar-toggler.on span:nth-child(1) {

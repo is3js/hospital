@@ -447,3 +447,70 @@ window.document.addEventListener('DOMContentLoaded', () => {
 ```html
 <li class="splide__slide m-0 mt-1 mt-lg-0 ">
 ```
+
+25. 모바일화면에서 더 작은 550px에  height기준을 낮춰, pagination을 작아진 이미지에 맞춘다
+```js
+window.document.addEventListener('DOMContentLoaded', () => {
+    splide = new Splide('#leftBanner', {
+        breakpoints: {
+            // 992(lg) 미만
+            991: {
+                height: 45,
+            },
+            //
+            550: {
+                height: 40,
+            },
+        },
+    }).mount();
+```
+
+
+26. nav.navbar > div.container-fluid의 border-top을 모바일에서 안보이게, css로 옮긴다.
+- 기존
+```html
+<!-- 메뉴 navbar -->
+<nav class="navbar navbar-expand-lg ">
+    <div class="container-fluid" style="border-top: 1px solid rgba(255,255,255,0.2);">
+```
+- 수정
+```css
+/* lg일때만 위쪽 투명한 선 */
+@media screen and (min-width: 992px){
+    .header .header-middle .navbar > div {
+        border-top: 1px solid rgba(255,255,255,0.2);"
+    }
+}
+```
+
+27. navbar 햄버거 버튼의 색을 기본 #ddd로 변경하고, 토글 .on시 + hover시  검은색으로
+```css
+.header .header-middle .navbar-toggler span {
+    display: block;
+
+    width: 24px;
+    height: 2px;
+    /*background: rgb(60, 60, 60);*/
+    background: #ddd;
+
+    margin: 5px 0;
+
+    /* 애니메이션 */
+    transition: all .5s linear;
+}
+
+/* 토글on or hover on시 햄버거 버튼 검은색으로 */
+.header .header-middle .navbar-toggler.on span{
+    background: rgb(60, 60, 60);
+}
+.header .header-middle.on .navbar-toggler span{
+    background: rgb(60, 60, 60);
+}
+```
+
+28. 토글버튼 클릭시 box-shadow 제거
+```css
+.header .header-middle .navbar-toggler {
+    box-shadow: none; /* 클릭시 아웃라인 같은 shadow 제거 */
+}
+```
