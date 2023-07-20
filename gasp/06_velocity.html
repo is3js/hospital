@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/velocity.js"></script>
+</head>
+<body>
+
+<div class="box"></div>
+<script>
+    /* 1. js */
+   // let oDiv = document.querySelector(".box");
+   // Velocity(oDiv, {height: "300px"}, {duration: 3000});
+
+    /* 2. jquery*/
+    // $(".box").velocity({height: "300px"}, {duration:3000})
+
+    /* 3. marginLeft 외 각종 효과*/
+    // $(".box").velocity({marginLeft: "300px"}, {
+    //     duration:3000,
+        // delay: 2000,
+        // loop: 2,
+        // easing: "easeInOutQuint",
+        // display: "none",
+        // visibility: "hidden",
+    //     queue: "a",
+    // });
+
+    /* queue와 jquey로 dequeue*/
+    // $(".box").velocity({marginTop: "300px"}, {
+    //     duration:3000,
+    //     queue: "b",
+    // });
+
+    // $(".box").dequeue("a");
+    // setTimeout(function () {
+    //     $(".box").dequeue("b");
+    // }, 3000)
+
+    /* 4. event */
+    $(".box").velocity({marginLeft: "500px"}, {
+        duration: 3000,
+        begin: function (e) {
+            console.log("시작", e)
+        },
+        complete: function (e) {
+            console.log("종료", e)
+        },
+        progress: function (element, complete, remaining, start, tweenValue) {
+            console.log((complete * 100) + "%")
+        }
+    })
+</script>
+</body>
+</html>

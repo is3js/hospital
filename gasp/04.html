@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/TweenMax.js"></script>
+    <style>
+        div {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+
+            background: red;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box"></div>
+<br>
+<button class="start">시작</button>
+<button class="pause">중지</button>
+<button class="toggle">토글</button>
+<button class="restart">재시작</button>
+
+<script>
+    let tm = new TweenMax.to(".box", 3, {
+        x: 500,
+        paused: true,
+    })
+    let oStartBtn = document.querySelector(".start");
+    oStartBtn.onclick = function () {
+        tm.play();
+    }
+    let oPauseBtn = document.querySelector(".pause");
+    oPauseBtn.onclick = function () {
+        tm.pause();
+    }
+    let oRestartBtn = document.querySelector(".restart");
+    oRestartBtn.onclick = function () {
+        tm.restart();
+    }
+    let oToggleBtn = document.querySelector(".toggle");
+    oToggleBtn.onclick = function () {
+        tm.paused( !tm.paused() )
+    }
+
+
+</script>
+</body>
+</html>

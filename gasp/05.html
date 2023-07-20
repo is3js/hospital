@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/TweenMax.js"></script>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background: #ccc;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box1"></div>
+<div class="box2"></div>
+<div class="box3"></div>
+
+<script>
+   //  /* 순차실행을 개별로 tm을 만들어서 실행하되, delay를 직접 순차적으로 줘야한다.*/
+   // new TweenMax.to(".box1", 3, {
+   //     x: 500
+   // });
+   // new TweenMax.to(".box2", 3, {
+   //     x: 400,
+   //     delay: 3,
+   // });
+   // new TweenMax.to(".box3", 3, {
+   //     x: 300,
+   //     delay: 6,
+   // });
+
+   /* timeline객체에 add하면, delay가 알아서 순차적으로 수행된다. */
+   let tm = new TimelineMax();
+   tm.add(
+       new TweenMax.to(".box1", 3, {
+           x: 500
+       })
+   )
+   tm.add(
+       new TweenMax.to(".box2", 3, {
+           x: 400
+       })
+   )
+   tm.add(
+       new TweenMax.to(".box3", 3, {
+           x: 300
+       })
+   )
+</script>
+</body>
+</html>

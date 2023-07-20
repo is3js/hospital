@@ -91,6 +91,8 @@ $(function () {
             // 필수.. 이게 없어야 mobile 복귀시 작동한다
             $(".mega-dropdown .dropdown-menu").removeAttr('style');
             $(".mega-dropdown a").attr('data-bs-toggle', 'dropdown');
+
+
         }
     });
 

@@ -115,8 +115,16 @@ a {
         border-top: 1px solid rgba(255,255,255,0.2);"
     }
 }
-
-
+/* 모바일에선 좌우패딩 없애서 전체화면을 만들어야 body 스크롤이 안된다? */
+@media screen and (max-width: 991px) {
+    .header .header-middle .navbar {
+        padding: 0 0;
+    }
+}
+.dropdown-menu {
+    max-height: 50vh;
+    overflow-y: auto;
+}
 /* 투명색 header-middle 에 hover시  배경색+글자색+hover색 변화 */
 .header .header-middle.on {
     background: #fff;
@@ -175,6 +183,12 @@ a {
     }
 }*/
 
+
+.header .header-middle .navbar-toggler
+
+{
+    z-index: 1;
+}
 
 /* custom 햄버거 */
 .header .header-middle .navbar-toggler {
