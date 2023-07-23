@@ -96,11 +96,93 @@ $(function () {
         }
     });
 
-
     // header-middle hover시
     $(".header-middle").hover(function () {
         $(this).addClass("on");
     }, function () {
         $(this).removeClass("on");
     });
+
+    // splidejs for left-banner
+    var splide;
+    // window.document.addEventListener('DOMContentLoaded', () => {
+    splide = new Splide('#leftBanner', {
+        // vertical
+        arrows: false,
+        direction: 'ttb', // 슬라이드방향 -> height or heightRatio필수
+        // heightRatio: .25, // direction 바뀔 때 height or heightRatio필수
+        height: 60, // header content 높이 + pagination 위치도 결정됨.
+        paginationDirection: 'ttb', // 페지네이션 방향
+        // pagination: false,
+        // 기본설정 'loop' 무한반복, 'slide' 1회석
+        type: 'loop',
+        perPage: 1,
+        perMove: 1,
+        start: 0,
+        wheel: true,
+        autoplay: true,
+        interval: 4000,
+        // speed: 100,
+        breakpoints: {
+            // 992(lg) 미만
+            991: {
+                height: 45,
+            },
+            //
+            550: {
+                height: 40,
+            },
+        },
+    }).mount();
+
+    // });
+
+    // swiper js for section2-bottom
+    let section2 = new Swiper(".section2-bottom > .swiper-container", {
+        /* 실행옵션 */
+        autoplay: {
+            delay: 3000,
+        },
+
+        /* 애니메이션 및 같이 움직이는 name + number */
+        on: {
+            init: function () { //Swiper2.x的初始化是onFirstInit
+                swiperAnimateCache(this); //隐藏动画元素
+                swiperAnimate(this); //初始化完成开始动画
+            },
+            slideChangeTransitionEnd: function () {
+                swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+                // console.log(this.activeIndex)
+                let offsetY = this.activeIndex * 30;
+                $(".section2-bottom .swiper-name > span").animate({top: -offsetY}, 500);
+                $(".section2-bottom .swiper-number > span").animate({top: -offsetY}, 500);
+            }
+        },
+
+        /* 페이지 네이션 */
+        pagination: {
+            el: '.section2-bottom .swiper-pagination',
+            bulletClass: 'my-bullet',// custom pagination bullet css
+            bulletActiveClass: 'my-bullet-active',
+        },
+
+
+    });
+
+    // scroll magic for sections
+    let controller = new ScrollMagic.Controller();
+    let scene = new ScrollMagic.Scene({
+        triggerElement: ".trigger-section1",
+        triggerHook: "onLeave",
+        duration: "100%",
+    });
+
+    // section1이 section2에 먹히도록
+    scene.setPin(".section1", {pushFollowers: false});
+    // section1에 투명도 부여
+    scene.setTween(".section1", 1, {opacity: .2})
+
+    controller.addScene(scene);
+
 })
+

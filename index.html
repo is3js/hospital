@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="css/animate.css">
     <!-- splide js for left-banner -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+    <!-- swiper js css for section2-bottom -->
+    <link rel="stylesheet" href="css/swiper.css">
+    <link rel="stylesheet" href="css/swiper.animate.min.css">
 
 </head>
 <body>
@@ -367,7 +370,7 @@
                             </a>
                             <!-- dropdown menu -->
                             <div class="dropdown-menu ">
-                                <div class="dropdown-body d-flex overflow-scroll">
+                                <div class="dropdown-body d-flex ">
                                     <!-- left ul -->
                                     <ul class="body-left list-unstyled d-flex menu-img ">
                                         <li><a href="#">
@@ -802,124 +805,8 @@
     </div>
 </div>
 
-<!-- 섹션1 -->
-<div class="section1">
-    <picture>
-        <source media="(max-width: 991px)" srcset="images/main_carousel/carouse_main_mobile.png">
-        <img src="images/main_carousel/carouse_main.png" class="img-fluid w-100" alt="..."
-             style="filter: brightness(.9)"
-        >
-    </picture>
-</div>
 
-<!-- test -->
-<!--<section class="container-fluid">-->
-<!--    <img class="img-fluid" src="images/main_carousel/main_visual1.jpg" alt="">-->
-<!--</section>-->
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-<p>테스트</p>
-
-
-<!-- Modal -->
-<!-- login modal -->
+<!-- header modal(login) -->
 <div class="modal fade" id="loginModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -963,49 +850,221 @@
 </div>
 
 
+<!-- 섹션1: hero -->
+<div class="trigger-section1"></div>
+<div class="section1">
+    <picture class="p-0 m-0">
+        <source media="(max-width: 991px)" srcset="images/main_carousel/carouse_main_mobile.png">
+        <img src="images/main_carousel/carouse_main.png" class="img-fluid w-100" alt="..."
+             style="filter: brightness(.9)"
+        >
+    </picture>
+</div>
+
+<!-- 섹션2: main -->
+<div class="section2">
+    <div class="section2-top d-flex justify-content-between">
+        <div>
+            <p>우아 한의원 소개</p>
+            <p>조재성 원장,</p>
+            <p>김석영 원장</p>
+        </div>
+        <div>
+            저희는 부부 한의사입니다. 익힌 의술들은, 가장 먼저 서로에게, 그 이후로는 가족 및 지인들에게 베풀면서 검증된 치료만 시행합니다.
+            이제는 환자분들을 저희 가족들처럼 보살피겠습니다.
+            조재성 원장은, 통계와 프로그래밍을 추가 전공하여 환자 친화적인 홈페이지를 직접 구현하였습니다.
+            김석영 원장은, 따듯한 마음씨와 공감능력으로, 개원 전부터 많은 사람들이 치료 요청하였습니다.
+            자세한 이야기는 여기를 통해 확인해보시면 좋겠습니다.
+        </div>
+    </div>
+    <div class="section2-middle text-center">
+        <img src="images/main_section/section2_middle_left.png" class="me-3">
+        <img src="images/main_section/section2_middle_right.png" class="ms-3">
+        <img src="images/main_section/section2_middle_text.png" >
+        <img src="images/main_section/section2_middle_center.png" >
+    </div>
+    <div class="section2-bottom">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="images/main_section/section2_bottom_1_left.png"
+                         class="ani" swiper-animate-effect="mySlideInUp" swiper-animate-delay="0.1s"
+                    >
+                    <img src="images/main_section/section2_bottom_1_right.png"
+                         class="ani" swiper-animate-effect="mySlideInDown" swiper-animate-delay="0.1s"
+                    >
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/main_section/section2_bottom_2_left.png"
+                         class="ani" swiper-animate-effect="mySlideInDown" swiper-animate-delay="0.1s"
+                    >
+                    <img src="images/main_section/section2_bottom_2_right.png"
+                         class="ani" swiper-animate-effect="mySlideInUp" swiper-animate-delay="0.1s"
+
+                    >
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/main_section/section2_bottom_3_left.png"
+                         class="ani" swiper-animate-effect="mySlideInUp" swiper-animate-delay="0.1s"
+                    >
+                    <img src="images/main_section/section2_bottom_3_right.png"
+                         class="ani" swiper-animate-effect="mySlideInUp" swiper-animate-delay="0.1s"
+                    >
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/main_section/section2_bottom_4_left.png"
+                         class="ani" swiper-animate-effect="mySlideInDown" swiper-animate-delay="0.1s"
+                    >
+                    <img src="images/main_section/section2_bottom_4_right.png"
+                         class="ani" swiper-animate-effect="mySlideInUp" swiper-animate-delay="0.1s"
+                    >
+                </div>
+            </div>
+            <!-- 페이지네이션 -->
+            <div class="swiper-pagination"></div>
+            <!-- line + name + number-->
+            <p class="swiper-line"></p>
+            <p class="swiper-name">
+            <span>
+                비워탕/비워환<br>
+                짜먹는 경옥고<br>
+                초집중 공진단<br>
+                통증고/통증환
+            </span>
+            </p>
+            <p class="swiper-number">
+            <span>
+                01<br>
+                02<br>
+                03<br>
+                04
+            </span>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+<p>테스트</p>
+
+
+
 <!--jquery: boostrap js 전에 추가-->
 <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js"></script>
 <script src="js/bootstrap.bundle.js"></script>
 
-<script src="js/index.js"></script>
-
 <!-- splidejs for left-banner -->
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
-<script>
-    var splide;
 
-    window.document.addEventListener('DOMContentLoaded', () => {
-        splide = new Splide('#leftBanner', {
-            // vertical
-            arrows: false,
-            direction: 'ttb', // 슬라이드방향 -> height or heightRatio필수
-            // heightRatio: .25, // direction 바뀔 때 height or heightRatio필수
-            height: 60, // header content 높이 + pagination 위치도 결정됨.
-            paginationDirection: 'ttb', // 페지네이션 방향
-            // pagination: false,
-            // 기본설정 'loop' 무한반복, 'slide' 1회석
-            type: 'loop',
-            perPage: 1,
-            perMove: 1,
-            start: 0,
-            wheel: true,
-            autoplay: true,
-            interval: 4000,
-            // speed: 100,
-            breakpoints: {
-                // 992(lg) 미만
-                991: {
-                    height: 45,
-                },
-                //
-                550: {
-                    height: 40,
-                },
-            },
-        }).mount();
+<!-- swiper js for section2-bottom -->
+<script src="js/swiper.js"></script>
+<script src="js/swiper.animate1.0.3.min.js"></script>
 
-    });
-</script>
+<!-- section animation: index.js 앞에 추가 -->
+<script src="js/ScrollMagic.js"></script>
+<script src="js/TweenMax.js"></script>
+<script src="js/animation.gsap.js"></script>
+
+<script src="js/index.js"></script>
 
 </body>
 </html>

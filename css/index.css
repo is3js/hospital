@@ -10,6 +10,9 @@
     --color-submain: #FC5230;
 
     /* header-bottom(가운데) 설정 */
+    --header-top-height: 30px;
+
+    /* header-bottom(가운데) 설정 */
     --header-bottom-height: 70px;
     --header-bottom-mobile-height: 50px;
 
@@ -38,7 +41,14 @@ body {
     font-weight: normal;
     font-style: normal;
 
-    background: black;
+    /*background: black;*/
+}
+
+/* lg일 때, fixed되지 않은 header-top의 높이만큼 body 위를 띄워준다. */
+@media screen and (min-width: 992px){
+    body {
+        padding-top: var(--header-top-height);
+    }
 }
 
 a {
@@ -58,6 +68,9 @@ a {
     padding: 0;
 }
 
+.header {
+    z-index: 999;
+}
 /*.header div {
   padding: 0 5%;
 }*/
@@ -76,8 +89,10 @@ a {
 /*.header a {*/
 /* - dropdown 버튼 (특화질환) */
 .header .header-top div:nth-child(1) a {
-    height: 30px;
-    line-height: 30px;
+    /*height: 30px;*/
+    /*line-height: 30px;*/
+    height: var(--header-top-height);
+    line-height: var(--header-top-height);
 }
 
 /* - collapse 공간 */
@@ -999,4 +1014,334 @@ a {
 
 .header .header-bottom > ul > li a {
     font-size: var(--header-bottom-font-size)
+}
+
+
+/* 섹션1 */
+.section1 {
+    /*background: #fff;*/
+    /*opacity: .5;*/
+}
+
+/* 섹션2 */
+.section2 {
+    position: relative; /* section1을 덮고 올라가려면, relative로 바꿔야한다.*/
+    z-index: 666;
+    background: #fff;
+}
+
+.section2 > div {
+    width: 70%;
+    margin: 0 auto;
+
+    /*height: 300px;*/
+    /*background: red;*/
+}
+
+/* 섹션2-top */
+.section2 .section2-top {
+    padding: 50px 0;
+}
+
+/* 섹션2-top 왼쪽div*/
+.section2 .section2-top div:nth-of-type(1) {
+}
+.section2 .section2-top div:nth-of-type(1) p {
+    font-size: 40px;
+    line-height: 45px;
+    font-weight: bold;
+    color: #222222;
+
+    white-space: nowrap; /* 텍스트 한 줄 표시*/
+}
+.section2 .section2-top div:nth-of-type(1) p:nth-of-type(1) {
+    font-size: 20px;
+    line-height: 25px;
+    color: var(--color-main);
+    white-space: nowrap; /* 텍스트 한 줄 표시*/
+}
+
+/* 섹션2-top 오른쪽div*/
+.section2 .section2-top div:nth-of-type(2) {
+    font-size: 25px;
+    line-height: 35px;
+    color: #222222;
+
+    margin-left: 100px;
+    padding-top: 50px;
+}
+
+/* 섹션2-middle */
+.section2 .section2-middle {
+    /* 겹쳐서 중간에 나올 text img를 absolute로 */
+    position: relative;
+}
+/* 섹션2-middle 첫번째 left 이미지*/
+.section2 .section2-middle img:nth-of-type(1){
+    width: 30%;
+}
+/* 섹션2-middle 첫번째 right 이미지*/
+.section2 .section2-middle img:nth-of-type(2){
+    width: 30%;
+}
+/* 섹션2-middle 두번째 text 이미지*/
+.section2 .section2-middle img:nth-of-type(3){
+    width: 80%;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    opacity: 0;
+}
+/* 섹션2-middle 세번째 center 이미지*/
+.section2 .section2-middle img:nth-of-type(4){
+    width: 25%;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+}
+
+
+/* 섹션2-bottom */
+/* 새 옵션은 직접 가져가야함. */
+.section2-bottom {
+    padding: 100px 0;
+}
+
+/* swiper 설정 */
+/* 1) 컨테이너 설정 */
+.section2-bottom .swiper-container {
+    width: 100%;
+    height: 34vw;
+    border-radius: 35px;
+
+    overflow: hidden;
+
+    /* 임시 */
+    /*background: red;*/
+}
+
+/* 2) slide 설정*/
+.section2-bottom .swiper-container .swiper-slide {
+    position: relative;
+}
+
+.section2-bottom .swiper-container .swiper-slide img {
+    position: absolute;
+
+    width: 36%;
+}
+
+/* 3) 개별 slide의 img 설정 */
+/* - slide 1 */
+.section2-bottom .swiper-container .swiper-slide:nth-child(1) {
+    background: #ffdbc6;
+}
+.section2-bottom .swiper-container .swiper-slide:nth-child(1) img:nth-child(1) {
+    left: 7%;
+    bottom: 5%;
+
+    width: 50%;
+    z-index: 1;
+}
+.section2-bottom .swiper-container .swiper-slide:nth-child(1) img:nth-child(2) {
+    left: 60%;
+    top: 0%;
+
+    width: 40%;
+}
+
+/* - slide 2 */
+.section2-bottom .swiper-container .swiper-slide:nth-child(2) {
+    background: #ace3e5;
+}
+.section2-bottom .swiper-container .swiper-slide:nth-child(2) img:nth-child(1) {
+    left: 10%;
+    top: 25%;
+
+    width: 48%;
+    z-index: 1;
+}
+
+.section2-bottom .swiper-container .swiper-slide:nth-child(2) img:nth-child(2) {
+    left: 65%;
+    top: 25%;
+}
+
+/* - slide 3 */
+.section2-bottom .swiper-container .swiper-slide:nth-child(3) {
+    background: #e0daf5;
+}
+.section2-bottom .swiper-container .swiper-slide:nth-child(3) img:nth-child(1) {
+    left: 45%;
+    bottom: 0;
+    width: 45%;
+}
+
+.section2-bottom .swiper-container .swiper-slide:nth-child(3) img:nth-child(2) {
+    left: 15%;
+    bottom: -20%;
+
+    width: 30%;
+}
+
+/* - slide 4 */
+.section2-bottom .swiper-container .swiper-slide:nth-child(4) {
+    background: #dbdbdb;
+}
+.section2-bottom .swiper-container .swiper-slide:nth-child(4) img:nth-child(1) {
+    left: 20%;
+    bottom: 0;
+
+    width: 55%;
+    z-index: 1;
+}
+
+.section2-bottom .swiper-container .swiper-slide:nth-child(4) img:nth-child(2) {
+    right: 0;
+    bottom: 0;
+
+    width: 30%;
+}
+
+/* - slide img animation */
+@keyframes mySlideInUp {
+    0% {
+        transform: translateY(20%);
+        visibility: visible;
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.mySlideInUp {
+    animation-name: mySlideInUp
+}
+
+@keyframes mySlideInDown {
+    0% {
+        transform: translateY(-20%);
+        visibility: visible;
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.mySlideInDown {
+    animation-name: mySlideInDown
+}
+
+/* 3) swiper pagination bullet css */
+/* - bullet css */
+.section2-bottom .swiper-container .swiper-pagination {
+    position: absolute;
+
+    width: auto; /* 자식들bullets의 크기만큼 차지 */
+
+    left: auto;
+    right: 10%;
+
+    bottom: 5%;
+}
+
+.section2-bottom .swiper-container .swiper-pagination .my-bullet {
+    display: inline-block;
+    width: 1.3vw;
+    height: 1.3vw;
+    border-radius: 50%;
+
+    background: #000; /* 기본 배경색*/
+    margin: 0 5px; /* 좌우 간격*/
+}
+
+/* - 1번째 bullet */
+.section2-bottom .swiper-container .swiper-pagination .my-bullet:nth-child(1) {
+    color: #ff6b29; /* 글자색(표기안됨) or box-shadow 색 */
+    background: #ff6b29; /* 배경색 */
+}
+
+/* - 2번째 bullet */
+.section2-bottom .swiper-container .swiper-pagination .my-bullet:nth-child(2) {
+    color: #16c196; /* 글자색(표기안됨) or box-shadow 색 */
+    background: #16c196; /* 배경색 */
+}
+
+/* - 3번째 bullet */
+.section2-bottom .swiper-container .swiper-pagination .my-bullet:nth-child(3) {
+    color: #9676ff; /* 글자색(표기안됨) or box-shadow 색 */
+    background: #9676ff; /* 배경색 */
+}
+
+/* - 4번째 bullet */
+.section2-bottom .swiper-container .swiper-pagination .my-bullet:nth-child(4) {
+    color: #434040; /* 글자색(표기안됨) or box-shadow 색 */
+    background: #434040; /* 배경색 */
+}
+
+/* - active bullet (border) */
+.section2-bottom .swiper-container .swiper-pagination .my-bullet-active {
+    border: .27vw solid #fff;
+
+    box-sizing: border-box;
+    box-shadow: 0 0 10px; /* 색은 color로 지정한 색이 나오게 된다.*/
+}
+
+/* 4) swiper title(line + name) 설정 */
+.section2-bottom .swiper-container .swiper-line {
+    position: absolute;
+
+    width: 4vw;
+    height: 3px;
+    background: #fff;
+
+    left: 5%;
+    top: 10%;
+
+    z-index: 666; /* slide에 배경 넣으면 wrapper형제들은 안보이게 됨.*/
+}
+
+.section2-bottom .swiper-container .swiper-name,
+.section2-bottom .swiper-container .swiper-number
+{
+    position: absolute;
+    left: 5%;
+    top: 15%;
+
+    line-height: 30px;
+    height: 30px;
+    overflow: hidden;
+
+    font-size: 25px;
+    color: #fff;
+
+    z-index: 666;
+}
+
+.section2-bottom .swiper-container .swiper-number {
+    left: auto;
+    right: 5%;
+    top: 10%;
+
+    /*z-index: 2;*/
+}
+
+.section2-bottom .swiper-container .swiper-name span,
+.section2-bottom .swiper-container .swiper-number span
+{
+    position: relative;
+    display: block;
+    top:0;
 }
