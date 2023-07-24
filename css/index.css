@@ -1091,9 +1091,9 @@ a {
     opacity: 0;
 
     /*font-size: 25px;*/
-    font-size: 2vw;
+    font-size: 1.6vw;
     /*line-height: 35px;*/
-    line-height: 3.2vw;
+    line-height: 2.8vw;
     color: #222222;
 
     /*margin-left: 100px;*/
@@ -1143,7 +1143,8 @@ a {
 /* 섹션2-bottom */
 /* 새 옵션은 직접 가져가야함. */
 .section2-bottom {
-    padding: 100px 0;
+    /*padding: 100px 0;*/
+    padding: 10vw 0;
 }
 
 /* swiper 설정 */
@@ -1154,10 +1155,16 @@ a {
     border-radius: 35px;
 
     overflow: hidden;
-
     /* 임시 */
     /*background: red;*/
 }
+
+@media screen and (max-width: 991px){
+    .section2-bottom .swiper-container {
+        height: 42vw;
+    }
+}
+
 
 /* 2) slide 설정*/
 .section2-bottom .swiper-container .swiper-slide {
