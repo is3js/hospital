@@ -169,20 +169,34 @@ $(function () {
 
     });
 
-    // scroll magic for sections
     let controller = new ScrollMagic.Controller();
+    // section1
     let scene = new ScrollMagic.Scene({
         triggerElement: ".trigger-section1",
         triggerHook: "onLeave",
         duration: "100%",
     });
-
     // section1이 section2에 먹히도록
     scene.setPin(".section1", {pushFollowers: false});
     // section1에 투명도 부여
     scene.setTween(".section1", 1, {opacity: .2})
-
     controller.addScene(scene);
 
+    // section2
+    let scene2 = new ScrollMagic.Scene({
+        triggerElement: ".trigger-section2",
+        // triggerHook: "onEnter",
+        triggerHook: "onCenter",
+        //duration: "100%", // velocity조합에서는 뺀다.
+    });
+    // velocity 설정
+    scene2.setVelocity([".section2-top>div", ".section2-top>div>p"], {
+        top: "0px",
+        opacity: "1"
+    }, {
+        duration: "2000",
+    });
+
+    controller.addScene(scene2);
 })
 

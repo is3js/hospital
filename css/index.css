@@ -1047,28 +1047,52 @@ a {
 .section2 .section2-top div:nth-of-type(1) {
 }
 .section2 .section2-top div:nth-of-type(1) p {
-    font-size: 40px;
-    line-height: 45px;
+    /* velocity [이전 위치] 잡기 */
+    position: relative;
+    /*top: 150px;*/
+    top: 7.5vw;
+    opacity: 0;
+
+    /*font-size: 40px;*/
+    font-size: 2vw;
+    /*line-height: 45px;*/
+    line-height: 2.25vw;
     font-weight: bold;
     color: #222222;
 
     white-space: nowrap; /* 텍스트 한 줄 표시*/
 }
 .section2 .section2-top div:nth-of-type(1) p:nth-of-type(1) {
-    font-size: 20px;
-    line-height: 25px;
+    /* velocity [이전 위치] 잡기 */
+    /*top:50px;*/
+    top:2.5vw;
+
+    /*font-size: 20px;*/
+    font-size: 1vw;
+    /*line-height: 25px;*/
+    line-height: 1.25vw;
     color: var(--color-main);
     white-space: nowrap; /* 텍스트 한 줄 표시*/
 }
 
 /* 섹션2-top 오른쪽div*/
 .section2 .section2-top div:nth-of-type(2) {
-    font-size: 25px;
-    line-height: 35px;
+    /* velocity [이전 위치] 잡기 */
+    position: relative;
+    /*top: 150px;*/
+    top: 7.5vw;
+    opacity: 0;
+
+    /*font-size: 25px;*/
+    font-size: 1.25vw;
+    /*line-height: 35px;*/
+    line-height: 1.75vw;
     color: #222222;
 
-    margin-left: 100px;
-    padding-top: 50px;
+    /*margin-left: 100px;*/
+    margin-left: 5vw;
+    /*padding-top: 50px;*/
+    padding-top: 2.5vw;
 }
 
 /* 섹션2-middle */

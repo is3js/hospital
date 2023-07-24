@@ -1250,7 +1250,7 @@ let section2 = new Swiper(".section2-bottom > .swiper-container", {
 <script src="js/index.js"></script>
 ```
 
-### 작성된 section들에 scroll magic 적용하기
+### section1에 scroll magic + tweenmax 적용하기
 1. js를 `index.js` 앞에 넣어준다.
     - ScrollMagic.js
     - TweenMax.js
@@ -1347,3 +1347,138 @@ scene.setTween(".section1", 1, {opacity: .2})
 ```
 ![img.png](163.png)
 ![img.png](164.png)
+
+
+### section2에 velocity 적용하기
+1. index.js 앞에 `velocity.js`, `animation.velocity.js` 추가하기
+```html
+<!-- section2 middle velocity -->
+<script src="js/velocity.js"></script>
+<script src="js/animation.velocity.js"></script>
+
+<script src="js/index.js"></script>
+```
+
+2. .section2앞에 trigger div 만들어주기
+```html
+<!-- 섹션2: main -->
+<div class="trigger-section2"></div>
+<div class="section2">
+```
+
+3. `index.js`의 scroll magic에서, `scene2객체` 및 설정해주기
+    - controller는 공통으로 쓴다.
+    - **onLeave가 아니라 onEneter에서 수행되게 한다.**
+    - **scroll magic + velocity에서는 `duration`설정을 Scene에서 빼줘야한다.**
+```js
+// section2
+let scene2 = new ScrollMagic.Scene({
+    triggerElement: ".trigger-section2",
+    triggerHook: "onEnter",
+});
+
+// velocity 설정
+scene2.setVelocity();
+
+controller.addScene(scene2);
+```
+
+
+4. section2의 p태그 2,3번째 2줄을 br을 넣어 1줄로 바꿔서 움직이기 용이하게 한다.
+```html
+<div>
+    <p>우아 한의원 소개</p>
+    <p>조재성 원장,<br>
+        김석영 원장</p>
+</div>
+```
+
+5. **tweenMax+css의 원래위치로의 이동/변화와 달리, `velocity`는 원래위치 -> 최종위치로 변경해야한다**
+    - `위치변경`을 위해서 default static -> `relative`로 2개의 p태그 속성을 바꿔놓고, `원래위치보다 이전 위치`로 바꿔놔야한다.
+- 왼쪽div의 p태그를 150px 위로 간격을 주고, 첫번째 p태그는 50px만 위에 간격을 준다.
+```css
+.section2 .section2-top div:nth-of-type(1) p {
+    /* velocity [이전 위치] 잡기 */
+    position: relative;
+    top: 150px;
+    
+    /*...*/
+}
+.section2 .section2-top div:nth-of-type(1) p:nth-of-type(1) {
+    /* velocity [이전 위치] 잡기 */
+    top: 50px;
+    /*...*/
+}
+```
+![img.png](../ui/165.png)
+
+
+- 오른쪽div는 div자체에 top:150px 이전위치를 만들어둔다.
+```css
+.section2 .section2-top div:nth-of-type(2) {
+    /* velocity [이전 위치] 잡기 */
+    position: relative;
+    top: 150px;
+    /*...*/
+}
+```
+
+
+6. 이전위치뿐만 아니라 `이전 상태:투명도0`도 맞춰놓는다.
+
+```css
+.section2 .section2-top div:nth-of-type(1) p {
+    /* velocity [이전 위치] 잡기 */
+    position: relative;
+    top: 150px;
+    opacity: 0;
+    /*...*/
+}
+```
+
+```css
+.section2 .section2-top div:nth-of-type(2) {
+    /* velocity [이전 위치] 잡기 */
+    position: relative;
+    top: 150px;
+    opacity: 0;
+    /*...*/
+}
+```
+
+
+![img.png](../ui/166.png)
+
+
+7. 현재 움직일 것은 `왼쪽div의 p태그들` + `오른쪽div자체`이므로 **velocity에서 선택자를 `div들` + `div>p태그들`로 잡으면 2개의 div와 p태그들이 잡힌다.**
+```js
+// velocity 설정
+scene2.setVelocity([".section2-top>div", ".section2-top>div>p"], {
+    top: "0px",
+    opacity: "1"
+});
+```
+
+- 속도가 너무 빠른데 duration옵션은 css옵션 다음으로 {}로 준다
+```js
+    // velocity 설정
+    scene2.setVelocity([".section2-top>div", ".section2-top>div>p"], {
+        top: "0px",
+        opacity: "1"
+    }, {
+        duration: "2000",
+    });
+```
+
+8. onEnter로 지정할 시, 내리는 타이밍 vs 화면을 올려서 닫히는타이밍이 겹치게 되어 `onCenter`로 변경
+```js
+let scene2 = new ScrollMagic.Scene({
+    triggerElement: ".trigger-section2",
+    // triggerHook: "onEnter",
+    triggerHook: "onCenter",
+});
+```
+
+
+9. 글자크기를 반응형으로 만들기 위해 `px -> vw`단위로 바꾸기
+10. 
