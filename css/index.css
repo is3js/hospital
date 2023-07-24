@@ -1038,6 +1038,12 @@ a {
     /*background: red;*/
 }
 
+@media screen and (max-width: 991px){
+    .section2 > div {
+        width: 90%;
+    }
+}
+
 /* 섹션2-top */
 .section2 .section2-top {
     /*padding: 50px 0;*/
