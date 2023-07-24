@@ -213,10 +213,13 @@ $(function () {
     let scene3 = new ScrollMagic.Scene({
         triggerElement: ".trigger-section2",
         triggerHook: "onLeave",
-        offset: $(".section2-top").height() + 20,
+        offset: $(".section2-top").height() + 30,
         duration: "100%"
     });
-    scene3.setPin(".section2", {pushFollowers: false})
+
+    // scene3.setPin(".section2", {pushFollowers: false})
+    scene3.setPin(".section2") // 아래section(body)가 안올라가도록 pushFollowers 취소
+
     let tm = new TimelineMax();
     tm.add([
         new TweenMax(".middle-left", 1, {

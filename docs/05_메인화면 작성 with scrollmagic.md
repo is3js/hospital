@@ -1572,7 +1572,11 @@ scene3.setTween(tm);
 
 controller.addScene(scene3);
 ```
-
+- **body가 따라 올라와서, `pushFollowers:false를 취소`**
+```js
+// scene3.setPin(".section2", {pushFollowers: false})
+scene3.setPin(".section2") // 아래section(body)가 안올라가도록 pushFollowers 취소
+```
 
 2. **TweenMax용 middle의 4개의 img를 선택하기 위해, class 선택자를 추가한다.**
     - 각 `.middle-xxx` 선택자를 달아준다.

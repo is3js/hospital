@@ -1061,9 +1061,9 @@ a {
     opacity: 0;
 
     /*font-size: 40px;*/
-    font-size: 2.6vw;
+    font-size: 3.5vw;
     /*line-height: 45px;*/
-    line-height: 3.5vw;
+    line-height: 4.1vw;
     font-weight: bold;
     color: #222222;
 
@@ -1075,9 +1075,9 @@ a {
     top:3.3vw;
 
     /*font-size: 20px;*/
-    font-size: 1.66vw;
+    font-size: 1.9vw;
     /*line-height: 25px;*/
-    line-height: 2.2vw;
+    line-height: 2.8vw;
     color: var(--color-main);
     white-space: nowrap; /* 텍스트 한 줄 표시*/
 }
@@ -1091,9 +1091,9 @@ a {
     opacity: 0;
 
     /*font-size: 25px;*/
-    font-size: 1.6vw;
+    font-size: 2.1vw;
     /*line-height: 35px;*/
-    line-height: 2.8vw;
+    line-height: 3.5vw;
     color: #222222;
 
     /*margin-left: 100px;*/
