@@ -170,11 +170,13 @@ $(function () {
     });
 
     let controller = new ScrollMagic.Controller();
-    // section1
+
+    // section1 with TweenMax
     let scene = new ScrollMagic.Scene({
         triggerElement: ".trigger-section1",
         triggerHook: "onLeave",
-        duration: "100%",
+        // duration: "100%",
+        duration: "45%", // 모바일 고려해서 section1 duration
     });
     // section1이 section2에 먹히도록
     scene.setPin(".section1", {pushFollowers: false});
@@ -182,7 +184,7 @@ $(function () {
     scene.setTween(".section1", 1, {opacity: .2})
     controller.addScene(scene);
 
-    // section2
+    // section2 - top with Velocity
     let scene2 = new ScrollMagic.Scene({
         triggerElement: ".trigger-section2",
         // triggerHook: "onEnter",
@@ -196,7 +198,30 @@ $(function () {
     }, {
         duration: "2000",
     });
-
     controller.addScene(scene2);
+
+    // section2 - middle with TimelineMax
+    let scene3 = new ScrollMagic.Scene({
+        triggerElement: ".trigger-section2",
+        triggerHook: "onLeave",
+        offset: $(".section2-top").height() + 40,
+        duration: "100%"
+    });
+    scene3.setPin(".section2", {pushFollowers: false})
+    let tm = new TimelineMax();
+    tm.add([
+        new TweenMax(".middle-left", 1, {
+            transform: "translateX(-100%)",
+            opacity:0
+        }),
+        new TweenMax(".middle-right", 1, {
+            transform: "translateX(100%)",
+            opacity:0
+        }),
+    ]);
+    scene3.setTween(tm);
+
+    controller.addScene(scene3);
+
 })
 

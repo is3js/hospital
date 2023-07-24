@@ -1349,7 +1349,7 @@ scene.setTween(".section1", 1, {opacity: .2})
 ![img.png](164.png)
 
 
-### section2에 velocity 적용하기
+### section2-top에 velocity 적용하기(이전위치 top 박고 -> 원래위치로 top 0 이동 + opacity )
 1. index.js 앞에 `velocity.js`, `animation.velocity.js` 추가하기
 ```html
 <!-- section2 middle velocity -->
@@ -1481,4 +1481,134 @@ let scene2 = new ScrollMagic.Scene({
 
 
 9. 글자크기를 반응형으로 만들기 위해 `px -> vw`단위로 바꾸기
-10. 
+    - px에서 나누기 15 정도로 해서 vw를 맞춰준다.
+
+```css
+.section2 .section2-top div:nth-of-type(1) p {
+    /*top: 150px;*/
+    top: 10vw;
+    /*font-size: 40px;*/
+    font-size: 2.6vw;
+    /*line-height: 45px;*/
+    line-height: 3.5vw;
+.section2 .section2-top div:nth-of-type(1) p:nth-of-type(1) {
+    /*top:50px;*/
+    top:3.3vw;
+    /*font-size: 20px;*/
+    font-size: 1.66vw;
+    /*line-height: 25px;*/
+    line-height: 2.2vw;
+}
+.section2 .section2-top div:nth-of-type(2) {
+    /*top: 150px;*/
+    top: 12vw;
+    /*font-size: 25px;*/
+    font-size: 2vw;
+    /*line-height: 35px;*/
+    line-height: 3.2vw;
+    /*margin-left: 100px;*/
+    margin-left: 6.6vw;
+    /*padding-top: 50px;*/
+    padding-top: 3.3vw;
+}
+```
+10. 모바일을 고려해서 section2 전체의 패딩을 반응형으로 준다
+    - lg 70% -> 모바일 85%
+```css
+.section2 > div {
+    width: 70%;
+    margin: 0 auto;
+
+}
+@media screen and (max-width: 991px){
+    .section2 > div {
+        width: 85%;
+    }
+}
+```
+
+11. scroll이 section1을 덮치고 많이 남아서, duration을 줄여준다.
+    - 모바일을 고려해서 100% -> 45%로 수정한다.
+![img.png](../ui/167.png)
+```js
+    // section1
+    let scene = new ScrollMagic.Scene({
+        triggerElement: ".trigger-section1",
+        triggerHook: "onLeave",
+        // duration: "100%",
+        duration: "45%", // 모바일 고려해서 section1 duration
+    });
+```
+
+
+### section2-middle TimelineMax 적용하기
+1. middel을 수행하려면, **`trigger-section2`가 `onLeave`로 화면에서 사라지고 + `.section2-top`의 `높이+100`정도를 offset으로 준 뒤, duration 100%을 준다**
+- offset을 만들 땐, jquery로 `.section2-top`을 잡고, .height()로 높이를 구한 뒤 + 100을 더 해준다.
+- 해당 scene객체(3)에 setTween해야, 적용된다.
+
+```js
+// section2 - middle with TimelineMax
+let scene3 = new ScrollMagic.Scene({
+    triggerElement: ".trigger-section2",
+    triggerHook: "onLeave",
+    offset: $(".section2-top").height() + 100,
+    duration: "100%"
+});
+let tm = new TimelineMax();
+tm.add();
+scene3.setTween(tm);
+
+controller.addScene(scene3);
+```
+
+
+2. **TweenMax용 middle의 4개의 img를 선택하기 위해, class 선택자를 추가한다.**
+    - 각 `.middle-xxx` 선택자를 달아준다.
+```html
+
+<div class="section2-middle text-center">
+    <img src="images/main_section/section2_middle_left.png"
+         class="me-3 middle-left">
+    <img src="images/main_section/section2_middle_right.png"
+         class="ms-3 middle-right">
+    <img src="images/main_section/section2_middle_text.png"
+         class="middle-text"
+    >
+    <img src="images/main_section/section2_middle_center.png"
+         class="middle-center"
+    >
+</div>
+```
+
+3. **tweenmax를 적용해서 이동할 위치를, 미리 잡아본다.**
+    - 1, 2번째 img태그(left, right)를 각각 transform -100%, 100%를 넣어서 위치를 확인한다.
+
+```css
+/* 섹션2-middle 첫번째 left 이미지*/
+.section2 .section2-middle img:nth-of-type(1){
+    width: 30%;
+    transform: translateX(-100%);
+}
+/* 섹션2-middle 첫번째 right 이미지*/
+.section2 .section2-middle img:nth-of-type(2){
+    width: 30%;
+    transform: translateX(100%);
+}
+```
+![img.png](../ui/168.png)
+
+4. 다시 지우고 Timlinemax객체 안에 add할 array [] 속, tweenMax로 설정한다.
+```js
+let tm = new TimelineMax();
+tm.add([
+    new TweenMax(".middle-left", 1, {
+        transform: "translateX(-100%)",
+        opacity:0
+    }),
+    new TweenMax(".middle-right", 1, {
+        transform: "translateX(100%)",
+        opacity:0
+    }),
+]);
+scene3.setTween(tm);
+```
