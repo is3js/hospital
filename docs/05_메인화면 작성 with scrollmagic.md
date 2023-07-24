@@ -1544,6 +1544,7 @@ let scene2 = new ScrollMagic.Scene({
 ### section2-middle TimelineMax 적용하기
 1. middel을 수행하려면, **`trigger-section2`가 `onLeave`로 화면에서 사라지고 + `.section2-top`의 `높이+100`정도를 offset으로 준 뒤, duration 100%을 준다**
 - offset을 만들 땐, jquery로 `.section2-top`을 잡고, .height()로 높이를 구한 뒤 + 100을 더 해준다.
+- **setPin은 `.section2` 전체에 pushFollowers: false로 걸어준다.**
 - 해당 scene객체(3)에 setTween해야, 적용된다.
 
 ```js
@@ -1554,6 +1555,8 @@ let scene3 = new ScrollMagic.Scene({
     offset: $(".section2-top").height() + 100,
     duration: "100%"
 });
+scene3.setPin(".section2", {pushFollowers: false})
+
 let tm = new TimelineMax();
 tm.add();
 scene3.setTween(tm);
@@ -1612,3 +1615,43 @@ tm.add([
 ]);
 scene3.setTween(tm);
 ```
+
+
+5. 모바일을 고려하여 offset을 높이 + 20으로 줄인다.
+```js
+offset: $(".section2-top").height() + 20,
+```
+
+6. **이제 줌겨져있던 middle-text를 delay를 주고 opacity 1로 만든다.**
+    - delay안주면 left, right와 같이 드러나기 시작하는데, 조금의 딜레이를 주어, `약간 벌어질 때 나오기 시작`하게 한다.
+```js
+tm.add([
+    new TweenMax(".middle-left", 1, {
+        transform: "translateX(-100%)",
+        opacity:0
+    }),
+    new TweenMax(".middle-right", 1, {
+        transform: "translateX(100%)",
+        opacity:0
+    }),
+    new TweenMax(".middle-text", 1, {
+        opacity:1,
+        delay:.4,
+    }),
+]);
+```
+
+![img.png](../ui/169.png)
+![img.png](../ui/170.png) 
+
+
+7. **다끝나고, 덮어써서 연결되는 이미지는 `tm.add()`에 새롭게 추가하여, 자동으로 연결되는 timeline을 활용한다.**
+```js
+tm.add(
+    new TweenMax(".middle-center", 1, {
+        opacity:1,
+    }),
+)
+```
+
+![img.png](../ui/171.png)

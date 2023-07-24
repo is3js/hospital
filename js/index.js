@@ -204,7 +204,7 @@ $(function () {
     let scene3 = new ScrollMagic.Scene({
         triggerElement: ".trigger-section2",
         triggerHook: "onLeave",
-        offset: $(".section2-top").height() + 40,
+        offset: $(".section2-top").height() + 20,
         duration: "100%"
     });
     scene3.setPin(".section2", {pushFollowers: false})
@@ -218,7 +218,17 @@ $(function () {
             transform: "translateX(100%)",
             opacity:0
         }),
+        new TweenMax(".middle-text", 1, {
+            opacity:1,
+            delay:.4,
+        }),
     ]);
+    tm.add(
+        new TweenMax(".middle-center", 1, {
+            opacity:1,
+        }),
+    )
+
     scene3.setTween(tm);
 
     controller.addScene(scene3);
