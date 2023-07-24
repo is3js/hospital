@@ -1469,7 +1469,16 @@ scene2.setVelocity([".section2-top>div", ".section2-top>div>p"], {
         duration: "2000",
     });
 ```
-
+- **스크롤을 올렸다가 다시 내려갈 때, 아직 다 안접혔으면 버그가 나서 `duration을 0.5초`로 줄인다.**
+```js
+// velocity 설정
+scene2.setVelocity([".section2-top>div", ".section2-top>div>p"], {
+    top: "0px",
+    opacity: "1"
+}, {
+    duration: "500",
+});
+```
 8. onEnter로 지정할 시, 내리는 타이밍 vs 화면을 올려서 닫히는타이밍이 겹치게 되어 `onCenter`로 변경
 ```js
 let scene2 = new ScrollMagic.Scene({
@@ -1655,3 +1664,122 @@ tm.add(
 ```
 
 ![img.png](../ui/171.png)
+
+
+8. 모바일 화면을 고려하여 약간 수정해준다.
+    - 소개글 크기 수정
+```css
+.section2 .section2-top div:nth-of-type(2) {
+    /*font-size: 25px;*/
+    font-size: 1.6vw;
+    /*line-height: 35px;*/
+    line-height: 2.2vw;
+}
+```
+
+- carousel있는 section2-bottom의 상하패딩도 vw로 변경
+```css
+/* 섹션2-bottom */
+.section2-bottom {
+    /*padding: 100px 0;*/
+    padding: 10vw 0;
+}
+```
+- 모바일에서 div의 너비 확장 70%-> 85%
+```css
+@media screen and (max-width: 991px){
+    .section2 > div {
+        width: 85%;
+    }
+}
+```
+- **모바일에서는 확장된 너비에 따라 swiper-container의 높이를 확장**
+```css
+@media screen and (max-width: 991px){
+    .section2-bottom .swiper-container {
+        height: 42vw;
+    }
+}
+```
+
+
+- 모바일에선 어차피 middle 이미지들이 아래 bottom carousel과 같이 보여야하며, **top끝나고 바로 시작시, img가 짤리기 때문에, `모바일에서만 자체 magrin을 줘서 머리 안짤리고, 아래 caousel과 간격 좀 주기`**
+    - `my-5 my-lg-0```
+```html
+<div class="section2-middle text-center my-5 my-lg-0">
+```
+![img.png](../ui/172.png)
+
+
+### section2-bottom carousel에 scrollmagic으로 화면에 넘어왔을 때, autoplay 시작하기
+1. 5버전 swiper api문서에서 autoplay > `mySwiper.autoplay.stop()`을 참고한다.
+    - https://www.swiper.com.cn/api/autoplay/112.html
+
+- 일단 예시에서 보이는 `over시 멈춤, 떼면 재시작`을 적용해준다. **나중에 클릭 가능하게 하기 위해**
+```js
+    // - 자동재생 추가옵션: 마우스 올릴 때 일시중지 / 떼면 시작
+    section2Swiper.el.onmouseover = function(){
+        section2Swiper.autoplay.stop();
+    }
+    section2Swiper.el.onmouseout = function(){
+        section2Swiper.autoplay.start();
+    }
+```
+
+- **추가로 swiper carousel을 `객체 생성과 동시에 일시중지`를 시켜놓는다.**
+```js
+// - 일단 정지(scrollmagic에서 화면에 오면 시작 처리)
+section2Swiper.autoplay.stop();
+```
+
+
+2. carousel을 품고 있는 `.sectino-bottom`이 `onCenter`에 있을 때 시작하게 한다.
+    - scene3 내용을 복사해서 scene4를 만들어서 수정해서 작성한다.
+```js
+// section2 - middle with TimelineMax
+let scene4 = new ScrollMagic.Scene({
+    triggerElement: ".section2-bottom",
+    triggerHook: "onCenter",
+});
+
+controller.addScene(scene4);
+```
+3. 이제 화면중간에 .section2-bottom이 왔을 때 `start` event를 잡아서, swiper의 autoplay를 start해줘야한다.
+```js
+// scene4가 시작되면, 일시중지된 swiper 시작
+scene4.on("start", function (event) {
+    console.log("swiper 시작")
+    section2Swiper.autoplay.start();
+})
+```
+4. **이렇게만 하면, 다시 스크롤 올려도 중지가 안된다.**
+    - **onCenter의 start시점에 `scrollmagic event의 function 인자 event`에서 `event.scrollDirection =="FORWARD"`여부를 통해, 내리는 상황인지 올리는 상황인지 판단할 수있다.**
+    - 내리는 상황이 아니라면(else), 올리는 상황이므로 autoplay.stop() 해준다.
+```js
+scene4.on("start", function (event) {
+    // console.log("swiper 시작")
+    // section2Swiper.autoplay.start();
+    // 추가) 내리는 스크롤("FORWARD")인지 아닌지 판단해서 play/stop
+    if( event.scrollDirection === "FORWARD") {
+        console.log("내림")
+    } else {
+        console.log("올림")
+    }
+})
+```
+
+- 시작/중지 코드만 추가해준다.
+```js
+scene4.on("start", function (event) {
+    // console.log("swiper 시작")
+    // section2Swiper.autoplay.start();
+    // 추가) 내리는 스크롤("FORWARD")인지 아닌지 판단해서 play/stop
+    if( event.scrollDirection === "FORWARD") {
+        // console.log("내림")
+        section2Swiper.autoplay.start();
+    } else {
+        // console.log("올림")
+        section2Swiper.autoplay.stop();
+    }
+})
+```

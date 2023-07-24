@@ -138,7 +138,7 @@ $(function () {
     // });
 
     // swiper js for section2-bottom
-    let section2 = new Swiper(".section2-bottom > .swiper-container", {
+    let section2Swiper = new Swiper(".section2-bottom > .swiper-container", {
         /* 실행옵션 */
         autoplay: {
             delay: 3000,
@@ -168,6 +168,15 @@ $(function () {
 
 
     });
+    // - 일단 정지(scrollmagic에서 화면에 오면 시작 처리)
+    section2Swiper.autoplay.stop();
+    // - 자동재생 추가옵션: 마우스 올릴 때 일시중지 / 떼면 시작
+    section2Swiper.el.onmouseover = function(){
+        section2Swiper.autoplay.stop();
+    }
+    section2Swiper.el.onmouseout = function(){
+        section2Swiper.autoplay.start();
+    }
 
     let controller = new ScrollMagic.Controller();
 
@@ -196,7 +205,7 @@ $(function () {
         top: "0px",
         opacity: "1"
     }, {
-        duration: "2000",
+        duration: "300",
     });
     controller.addScene(scene2);
 
@@ -220,7 +229,7 @@ $(function () {
         }),
         new TweenMax(".middle-text", 1, {
             opacity:1,
-            delay:.4,
+            delay:.2,
         }),
     ]);
     tm.add(
@@ -228,10 +237,30 @@ $(function () {
             opacity:1,
         }),
     )
-
     scene3.setTween(tm);
 
     controller.addScene(scene3);
+
+    // section2 - middle with TimelineMax
+    let scene4 = new ScrollMagic.Scene({
+        triggerElement: ".section2-bottom",
+        triggerHook: "onCenter",
+    });
+    // scene4가 시작되면, 일시중지된 swiper 시작
+    scene4.on("start", function (event) {
+        // console.log("swiper 시작")
+        // section2Swiper.autoplay.start();
+        // 추가) 내리는 스크롤("FORWARD")인지 아닌지 판단해서 play/stop
+        if( event.scrollDirection === "FORWARD") {
+            // console.log("내림")
+            section2Swiper.autoplay.start();
+        } else {
+            // console.log("올림")
+            section2Swiper.autoplay.stop();
+        }
+    });
+
+    controller.addScene(scene4);
 
 })
 
