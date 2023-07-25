@@ -218,11 +218,12 @@ $(function () {
         triggerElement: ".trigger-section2",
         triggerHook: "onLeave",
         offset: $(".section2-top").height() + 30,
-        duration: "100%"
+        // duration: "100%"
+        duration: "30%"
     });
 
-    // scene3.setPin(".section2", {pushFollowers: false})
-    scene3.setPin(".section2") // 아래section(body)가 안올라가도록 pushFollowers 취소
+    // scene3.setPin(".section2", {pushFollowers: false}) // 애니 시작시, pin된 현재section의 아래section(3)도 동시에 위로 드래그되어버림
+    scene3.setPin(".section2") // 애니시작시, duration동안, pin 아래 section(3)가 안올라가도록 pushFollowers 취소
 
     let tm = new TimelineMax();
     tm.add([

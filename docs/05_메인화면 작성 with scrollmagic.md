@@ -1669,52 +1669,21 @@ tm.add(
 
 ![img.png](../ui/171.png)
 
-
-8. 모바일 화면을 고려하여 약간 수정해준다.
-    - 소개글 크기 수정
-```css
-.section2 .section2-top div:nth-of-type(2) {
-    /*font-size: 25px;*/
-    font-size: 1.6vw;
-    /*line-height: 35px;*/
-    line-height: 2.2vw;
-}
+8. **현재 section2-middle을 애니메이션을 setPin section2에 해놓은 상태이다.**
+    - `pushFollowers가 true`이므로, pin아래쪽 section(.section3)가 `section2 애니시작시, 동시에 같이 안따라올라가고, 다 끝나야 따라올라간다`
+    - **하지만, mobile환경에서는, 아래쪽이 duration빈 화면이 그대로 보이기 때문에, `duration(가동시간)을 줄임으로써, 아래 빈화면도 같이 줄인다`**
+    - 큰 화면에선 안보인다! 모바일에서만 duration이 길어짐에 따라, 아래 section 앞에 빈화면이 나오지만, **그만큼 애니 시간도 줄어든다.**
+```js
+// section2 - middle with TimelineMax
+let scene3 = new ScrollMagic.Scene({
+    triggerElement: ".trigger-section2",
+    triggerHook: "onLeave",
+    offset: $(".section2-top").height() + 30,
+    // duration: "100%"
+    duration: "30%"
+});
 ```
-
-- carousel있는 section2-bottom의 상하패딩도 vw로 변경
-```css
-/* 섹션2-bottom */
-.section2-bottom {
-    /*padding: 100px 0;*/
-    padding: 10vw 0;
-}
-```
-- 모바일에서 div의 너비 확장 70%-> 85%
-```css
-@media screen and (max-width: 991px){
-    .section2 > div {
-        width: 85%;
-    }
-}
-```
-- **모바일에서는 확장된 너비에 따라 swiper-container의 높이를 확장**
-```css
-@media screen and (max-width: 991px){
-    .section2-bottom .swiper-container {
-        height: 42vw;
-    }
-}
-```
-
-
-- 모바일에선 어차피 middle 이미지들이 아래 bottom carousel과 같이 보여야하며, **top끝나고 바로 시작시, img가 짤리기 때문에, `모바일에서만 자체 magrin을 줘서 머리 안짤리고, 아래 caousel과 간격 좀 주기`**
-    - `my-5 my-lg-0```
-```html
-<div class="section2-middle text-center my-5 my-lg-0">
-```
-![img.png](../ui/172.png)
-
-
+![img.png](../ui/174.png)
 ### section2-bottom carousel에 scrollmagic으로 화면에 넘어왔을 때, autoplay 시작하기
 1. 5버전 swiper api문서에서 autoplay > `mySwiper.autoplay.stop()`을 참고한다.
     - https://www.swiper.com.cn/api/autoplay/112.html
@@ -1825,6 +1794,60 @@ scene4.on("start", function (event) {
 ![img.png](../ui/173.png)
 
 
+6. 모바일 화면을 고려하여 약간 수정해준다.
+    - 소개글 크기 수정
+```css
+.section2 .section2-top div:nth-of-type(2) {
+    /*font-size: 25px;*/
+    font-size: 1.6vw;
+    /*line-height: 35px;*/
+    line-height: 2.2vw;
+}
+```
 
-### 아래하단의 쿠키 허용여부 물어보기
+- carousel있는 section2-bottom의 상하패딩도 vw로 변경
+```css
+/* 섹션2-bottom */
+.section2-bottom {
+    /*padding: 100px 0;*/
+    padding: 10vw 0;
+}
+```
+- 모바일에서 div의 너비 확장 70%-> 85%
+```css
+@media screen and (max-width: 991px){
+    .section2 > div {
+        width: 85%;
+    }
+}
+```
+- **모바일에서는 확장된 너비에 따라 swiper-container의 높이를 확장**
+```css
+@media screen and (max-width: 991px){
+    .section2-bottom .swiper-container {
+        height: 42vw;
+    }
+}
+```
+
+
+- 모바일에선 어차피 middle 이미지들이 아래 bottom carousel과 같이 보여야하며, **top끝나고 바로 시작시, img가 짤리기 때문에, `모바일에서만 자체 magrin을 줘서 머리 안짤리고, 아래 caousel과 간격 좀 주기`**
+    - `my-5 my-lg-0```
+```html
+<div class="section2-middle text-center my-5 my-lg-0">
+```
+![img.png](../ui/172.png)
+
+
+### alert로 아래하단의 쿠키 허용여부 물어보기
+1. boostrap5 `alert`를 검색 후, `Dismissing` 파트 (X 닫기버튼)이 있는 alert예제를 `복사해온다
+2. 텍스트 <-> 닫기 버튼 사이에 `a태그`로 자세히 버튼을 넣어준다.
+```html
+<!-- cookie alert -->
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    빠른 브라우징 경험을 보장하기 위해 쿠키를 사용합니다. 이 사이트를 계속 탐색하면 쿠키 사용에 동의하는 것입니다.
+    <a href="#">자세히</a>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+```
 
