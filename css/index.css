@@ -16,9 +16,9 @@
     --header-bottom-height: 70px;
     --header-bottom-mobile-height: 50px;
 
-    --header-bottom-font-lh:60px;
+    --header-bottom-font-lh: 60px;
     --header-bottom-ms: 20px;
-    --header-bottom-mobile-font-lh:45px;
+    --header-bottom-mobile-font-lh: 45px;
     --header-bottom-mobile-ms: 15px;
 
     --header-bottom-font-size: 14px;
@@ -45,7 +45,7 @@ body {
 }
 
 /* lg일 때, fixed되지 않은 header-top의 높이만큼 body 위를 띄워준다. */
-@media screen and (min-width: 992px){
+@media screen and (min-width: 992px) {
     body {
         padding-top: var(--header-top-height);
     }
@@ -71,6 +71,7 @@ a {
 .header {
     z-index: 999;
 }
+
 /*.header div {
   padding: 0 5%;
 }*/
@@ -125,21 +126,25 @@ a {
 }
 
 /* lg일때만 위쪽 투명한 선 */
-@media screen and (min-width: 992px){
+@media screen and (min-width: 992px) {
     .header .header-middle .navbar > div {
-        border-top: 1px solid rgba(255,255,255,0.2);"
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+    "
     }
 }
+
 /* 모바일에선 좌우패딩 없애서 전체화면을 만들어야 body 스크롤이 안된다? */
 @media screen and (max-width: 991px) {
     .header .header-middle .navbar {
         padding: 0 0;
     }
 }
+
 .dropdown-menu {
     max-height: 50vh;
     overflow-y: auto;
 }
+
 /* 투명색 header-middle 에 hover시  배경색+글자색+hover색 변화 */
 .header .header-middle.on {
     background: #fff;
@@ -199,9 +204,7 @@ a {
 }*/
 
 
-.header .header-middle .navbar-toggler
-
-{
+.header .header-middle .navbar-toggler {
     z-index: 1;
 }
 
@@ -233,10 +236,11 @@ a {
 }
 
 /* 토글on or hover on시 햄버거 버튼 검은색으로 */
-.header .header-middle .navbar-toggler.on span{
+.header .header-middle .navbar-toggler.on span {
     background: rgb(60, 60, 60);
 }
-.header .header-middle.on .navbar-toggler span{
+
+.header .header-middle.on .navbar-toggler span {
     background: rgb(60, 60, 60);
 }
 
@@ -423,6 +427,7 @@ a {
         animation: fade-in 0.6s ease-in-out forwards;
     }
 }
+
 /* ul.body-left (메뉴공간) - 공통 설정1 */
 .header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .body-left {
     /* 넘치면 다음줄로 */
@@ -454,7 +459,7 @@ a {
 
 /* 2) menu-img는 개별 메뉴가 110px 이미지와 함께 차지 + 가운데 정렬하여 img+p태그 모으기 + 오른쪽과 거리 두기*/
 .header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .body-left.menu-img > li {
-    width:110px;
+    width: 110px;
     text-align: center;
 
     margin-right: 25px;
@@ -463,10 +468,9 @@ a {
 @media screen  and (max-width: 991px) {
     .header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .body-left.menu-img > li {
         width: 50% !important;
-        margin-right: 0!important;
+        margin-right: 0 !important;
     }
 }
-
 
 
 /* 공통설정2) 2nd + img  [li의  hover시 > a태그 화살표:after ]  + [2nd의 위쪽하얀선:before를 위한 설정] */
@@ -506,8 +510,8 @@ a {
 /* 공통설정3) 각 메뉴(2nd, img) 글자태그 찾아서 li:hover시, 글자태그 글자색 변경 by !important */
 /* - img 메뉴의 글자 p태그 -  hover시  p태그(제목) 글자색 변경 */
 .header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .body-left > li:hover p {
-    font-weight: normal!important;
-    color: #2cf5fb!important;
+    font-weight: normal !important;
+    color: #2cf5fb !important;
 }
 
 /* 더알아보기 설정 */
@@ -535,8 +539,8 @@ a {
 }
 
 .header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .menu-3rd > li:hover > a {
-    color: white!important;
-    font-weight: bold!important;
+    color: white !important;
+    font-weight: bold !important;
 }
 
 
@@ -555,7 +559,6 @@ a {
 /*    background: rgba(248,248,248,0.5);*/
 /*    transition: all .3s;*/
 /*}*/
-
 
 
 /* dropdown body-left 마지막 li 더 알아보기 버튼 */
@@ -894,6 +897,7 @@ a {
     width: 4px;
     height: 4px;
 }
+
 #leftBanner button.splide__pagination__page.is-active {
     background: var(--color-main);
     /*opacity: 1;*/
@@ -914,22 +918,21 @@ a {
 #leftBanner ul.splide__pagination {
     /* 기존 left:auto; right:0.5em */
     /*right: 35%;*/
-    left:-3%;
+    left: -3%;
     width: fit-content;
 }
 
 /* 모바일에서 점크기 작게 + 왼쪽으로 조금 더 벌리기 */
-@media screen and (max-width: 991px){
+@media screen and (max-width: 991px) {
     #leftBanner button.splide__pagination__page {
         width: 2.5px;
         height: 2.5px;
     }
+
     #leftBanner ul.splide__pagination {
-        left:-8%;
+        left: -8%;
     }
 }
-
-
 
 
 /* left banner - img태그 높이 -> 우측 글자높이에 맞춰준다 */
@@ -939,6 +942,7 @@ a {
 
     max-width: 25%;
 }
+
 /* - 모바일시, 우측 글자높이 mobile 버전으로 img태그의 max-height를 조절 */
 @media screen and (max-width: 991px) {
     .header .header-bottom .bottom-left-banner .card > img {
@@ -976,9 +980,11 @@ a {
 .header .header-middle.on .header-bottom .bottom-left-banner .left-banner-title {
     color: #00b5b2;
 }
+
 .header .header-middle.on .header-bottom .bottom-left-banner .left-banner-title > span {
     color: var(--color-submain);
 }
+
 .header .header-middle.on .header-bottom .bottom-left-banner .left-banner-subtitle {
     color: #000;
 }
@@ -1035,11 +1041,15 @@ a {
     position: absolute;
     left: 5%; /* 100-90 = 10%에서 가운데 정렬을 위해 5%만 */
 
-    bottom:5%;
+    bottom: 5%;
     top: auto;
 
     /*font-size: 0;*/
     /*white-space: nowrap;*/
+}
+
+.section1 .swiper-container .swiper-scrollbar .swiper-scrollbar-drag {
+    background: #fff;
 }
 
 .section1 .swiper-container .swiper-pagination {
@@ -1047,7 +1057,7 @@ a {
     position: absolute;
     left: 5%; /* 100-90 = 10%에서 가운데 정렬을 위해 5%만 */
 
-    bottom:7%;
+    bottom: 8%;
     top: auto;
 
     /*font-size: 0;*/
@@ -1058,15 +1068,6 @@ a {
     align-items: center;
 }
 
-@media screen and (max-width: 991px){
-    .section1 .swiper-container .swiper-scrollbar,
-    .section1 .swiper-container .swiper-pagination {
-        width: 100%;
-        left: 0;
-        line-height: 3vw;
-    }
-}
-
 .section1 .swiper-container .swiper-pagination-bullet {
     flex: 1;
     flex-wrap: wrap;
@@ -1075,9 +1076,9 @@ a {
     /*vertical-align: top;*/
     /*width: 33.3%;*/
 
-    font-size: 1.2vw;
+    font-size: 1vw;
+    line-height: 1.5vw;
     font-weight: 600;
-    line-height: 2vw;
 
     color: #fff;
     /*opacity: 0.6;*/
@@ -1088,6 +1089,20 @@ a {
     border-radius: 0px;
 }
 
+/* 모바일 */
+@media screen and (max-width: 991px) {
+    .section1 .swiper-container .swiper-scrollbar,
+    .section1 .swiper-container .swiper-pagination {
+        width: 90%;
+        left: 5%;
+    }
+
+    .section1 .swiper-container .swiper-pagination-bullet {
+        font-size: 2.8vw;
+        line-height: 3vw;
+        font-weight: normal;
+    }
+}
 
 /* 섹션2 */
 .section2 {
@@ -1104,7 +1119,7 @@ a {
     /*background: red;*/
 }
 
-@media screen and (max-width: 991px){
+@media screen and (max-width: 991px) {
     .section2 > div {
         width: 85%;
     }
@@ -1119,6 +1134,7 @@ a {
 /* 섹션2-top 왼쪽div*/
 .section2 .section2-top div:nth-of-type(1) {
 }
+
 .section2 .section2-top div:nth-of-type(1) p {
     /* velocity [이전 위치] 잡기 */
     position: relative;
@@ -1135,10 +1151,11 @@ a {
 
     white-space: nowrap; /* 텍스트 한 줄 표시*/
 }
+
 .section2 .section2-top div:nth-of-type(1) p:nth-of-type(1) {
     /* velocity [이전 위치] 잡기 */
     /*top:50px;*/
-    top:3.3vw;
+    top: 3.3vw;
 
     /*font-size: 20px;*/
     font-size: 1.9vw;
@@ -1173,18 +1190,21 @@ a {
     /* 겹쳐서 중간에 나올 text img를 absolute로 */
     position: relative;
 }
+
 /* 섹션2-middle 첫번째 left 이미지*/
-.section2 .section2-middle img:nth-of-type(1){
+.section2 .section2-middle img:nth-of-type(1) {
     width: 30%;
     /*transform: translateX(-100%);*/
 }
+
 /* 섹션2-middle 첫번째 right 이미지*/
-.section2 .section2-middle img:nth-of-type(2){
+.section2 .section2-middle img:nth-of-type(2) {
     width: 30%;
     /*transform: translateX(100%);*/
 }
+
 /* 섹션2-middle 두번째 text 이미지*/
-.section2 .section2-middle img:nth-of-type(3){
+.section2 .section2-middle img:nth-of-type(3) {
     width: 80%;
 
     position: absolute;
@@ -1194,8 +1214,9 @@ a {
 
     opacity: 0;
 }
+
 /* 섹션2-middle 세번째 center 이미지*/
-.section2 .section2-middle img:nth-of-type(4){
+.section2 .section2-middle img:nth-of-type(4) {
     width: 25%;
 
     position: absolute;
@@ -1224,8 +1245,9 @@ a {
     /* 임시 */
     /*background: red;*/
 }
+
 /* - 모바일에선 꽉채우는 부모 width가 더 넓어져서 height 좀 더 늘리기 + border-radius 낮추기*/
-@media screen and (max-width: 991px){
+@media screen and (max-width: 991px) {
     .section2-bottom .swiper-container {
         height: 42vw;
         border-radius: 8px;
@@ -1249,6 +1271,7 @@ a {
 .section2-bottom .swiper-container .swiper-slide:nth-child(1) {
     background: #ffdbc6;
 }
+
 .section2-bottom .swiper-container .swiper-slide:nth-child(1) img:nth-child(1) {
     left: 7%;
     bottom: 5%;
@@ -1256,6 +1279,7 @@ a {
     width: 50%;
     z-index: 1;
 }
+
 .section2-bottom .swiper-container .swiper-slide:nth-child(1) img:nth-child(2) {
     left: 60%;
     top: 0%;
@@ -1267,6 +1291,7 @@ a {
 .section2-bottom .swiper-container .swiper-slide:nth-child(2) {
     background: #ace3e5;
 }
+
 .section2-bottom .swiper-container .swiper-slide:nth-child(2) img:nth-child(1) {
     left: 10%;
     top: 25%;
@@ -1284,6 +1309,7 @@ a {
 .section2-bottom .swiper-container .swiper-slide:nth-child(3) {
     background: #e0daf5;
 }
+
 .section2-bottom .swiper-container .swiper-slide:nth-child(3) img:nth-child(1) {
     left: 45%;
     bottom: 0;
@@ -1301,6 +1327,7 @@ a {
 .section2-bottom .swiper-container .swiper-slide:nth-child(4) {
     background: #dbdbdb;
 }
+
 .section2-bottom .swiper-container .swiper-slide:nth-child(4) img:nth-child(1) {
     left: 20%;
     bottom: 0;
@@ -1422,8 +1449,7 @@ a {
 }
 
 .section2-bottom .swiper-container .swiper-name,
-.section2-bottom .swiper-container .swiper-number
-{
+.section2-bottom .swiper-container .swiper-number {
     position: absolute;
     left: 5%;
     top: 15%;
@@ -1451,18 +1477,17 @@ a {
 }
 
 .section2-bottom .swiper-container .swiper-name span,
-.section2-bottom .swiper-container .swiper-number span
-{
+.section2-bottom .swiper-container .swiper-number span {
     position: relative;
     display: block;
-    top:0;
+    top: 0;
 }
 
 /* cookie 설정 */
 .alert {
     position: fixed;
-    left:0;
-    bottom:0;
+    left: 0;
+    bottom: 0;
     width: 100%;
 
     margin: 0;
@@ -1475,5 +1500,5 @@ a {
 
 .alert button {
     /*outline: none!important;*/
-    box-shadow: none!important;
+    box-shadow: none !important;
 }
