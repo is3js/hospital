@@ -1063,6 +1063,7 @@ a {
     .section1 .swiper-container .swiper-pagination {
         width: 100%;
         left: 0;
+        line-height: 3vw;
     }
 }
 
