@@ -1061,7 +1061,8 @@ a {
 @media screen and (max-width: 991px){
     .section1 .swiper-container .swiper-scrollbar,
     .section1 .swiper-container .swiper-pagination {
-        width: 40%;
+        width: 100%;
+        left: 0;
     }
 }
 
