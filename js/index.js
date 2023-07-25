@@ -273,7 +273,7 @@ $(function () {
 
 
     // section1 swiper
-    let titles = ["드리는 말씀", "7월 다이어트 패키지", "12월 겨울 통증"];
+    let titles = ["드리는 말씀", "7월 한방성형 이벤트", "12월 겨울 통증"];
     var section1Swiper = new Swiper('.section1 > .swiper-container', {
         pagination: {
             el: '.section1  .swiper-pagination',
