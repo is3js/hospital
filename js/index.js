@@ -217,9 +217,9 @@ $(function () {
     let scene3 = new ScrollMagic.Scene({
         triggerElement: ".trigger-section2",
         triggerHook: "onLeave",
-        offset: $(".section2-top").height() + 30,
+        offset: $(".section2-top").height() + 25,
         // duration: "100%"
-        duration: "40%"
+        duration: "50%"
     });
 
     // scene3.setPin(".section2", {pushFollowers: false}) // 애니 시작시, pin된 현재section의 아래section(3)도 동시에 위로 드래그되어버림
