@@ -1158,10 +1158,11 @@ a {
     /* 임시 */
     /*background: red;*/
 }
-
+/* - 모바일에선 꽉채우는 부모 width가 더 넓어져서 height 좀 더 늘리기 + border-radius 낮추기*/
 @media screen and (max-width: 991px){
     .section2-bottom .swiper-container {
         height: 42vw;
+        border-radius: 8px;
     }
 }
 
@@ -1344,7 +1345,8 @@ a {
     position: absolute;
 
     width: 4vw;
-    height: 3px;
+    /*height: 3px;*/
+    height: 0.5vw;
     background: #fff;
 
     left: 5%;
@@ -1360,11 +1362,15 @@ a {
     left: 5%;
     top: 15%;
 
-    line-height: 30px;
-    height: 30px;
+    /*line-height: 30px;*/
+    /*height: 30px;*/
+    /*font-size: 25px;*/
+    line-height: 3.3vw;
+    height: 3.3vw;
+    font-size: 3vw;
+
     overflow: hidden;
 
-    font-size: 25px;
     color: #fff;
 
     z-index: 666;

@@ -153,9 +153,13 @@ $(function () {
             slideChangeTransitionEnd: function () {
                 swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
                 // console.log(this.activeIndex)
-                let offsetY = this.activeIndex * 30;
-                $(".section2-bottom .swiper-name > span").animate({top: -offsetY}, 500);
-                $(".section2-bottom .swiper-number > span").animate({top: -offsetY}, 500);
+                // let offsetY = this.activeIndex * 30;
+                // $(".section2-bottom .swiper-name > span").animate({top: -offsetY}, 500);
+                // $(".section2-bottom .swiper-number > span").animate({top: -offsetY}, 500);
+                let fontLineHeightVw = 3.3;
+                let offsetY =  this.activeIndex * fontLineHeightVw;
+                $(".section2-bottom .swiper-name > span").animate({top: -offsetY + "vw"}, 500);
+                $(".section2-bottom .swiper-number > span").animate({top: -offsetY + "vw"}, 500);
             }
         },
 

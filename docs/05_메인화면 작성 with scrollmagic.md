@@ -1787,3 +1787,44 @@ scene4.on("start", function (event) {
     }
 })
 ```
+
+
+5. 모바일을 위해 글자크기를 vw로 수정하기
+    - border-radius는 직접적으로 8px로 줄여주기?
+```css
+/* - 모바일에선 꽉채우는 부모 width가 더 넓어져서 height 좀 더 늘리기 + border-radius 낮추기*/
+@media screen and (max-width: 991px){
+    .section2-bottom .swiper-container {
+        height: 42vw;
+        border-radius: 8px;
+    }
+}
+```
+```css
+.section2-bottom .swiper-container .swiper-line {
+    position: absolute;
+
+    width: 4vw;
+    /*height: 3px;*/
+    height: 0.5vw;
+}
+```
+```css
+.section2-bottom .swiper-container .swiper-name,
+.section2-bottom .swiper-container .swiper-number
+{
+    /*line-height: 30px;*/
+    /*height: 30px;*/
+    /*font-size: 25px;*/
+    line-height: 3vw;
+    height: 3vw;
+    font-size: 2vw;
+
+}
+```
+![img.png](../ui/173.png)
+
+
+
+### 아래하단의 쿠키 허용여부 물어보기
+
