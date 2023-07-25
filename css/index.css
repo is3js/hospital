@@ -1023,6 +1023,70 @@ a {
     /*opacity: .5;*/
 }
 
+/* - swiper */
+.section1 .swiper-container {
+    width: 100%;
+
+    position: relative;
+}
+
+.section1 .swiper-container .swiper-scrollbar {
+    width: 40%;
+    position: absolute;
+    left: 5%; /* 100-90 = 10%에서 가운데 정렬을 위해 5%만 */
+
+    bottom:5%;
+    top: auto;
+
+    /*font-size: 0;*/
+    /*white-space: nowrap;*/
+}
+
+.section1 .swiper-container .swiper-pagination {
+    width: 40%;
+    position: absolute;
+    left: 5%; /* 100-90 = 10%에서 가운데 정렬을 위해 5%만 */
+
+    bottom:7%;
+    top: auto;
+
+    /*font-size: 0;*/
+    /*white-space: nowrap;*/
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media screen and (max-width: 991px){
+    .section1 .swiper-container .swiper-scrollbar,
+    .section1 .swiper-container .swiper-pagination {
+        width: 40%;
+    }
+}
+
+.section1 .swiper-container .swiper-pagination-bullet {
+    flex: 1;
+    flex-wrap: wrap;
+
+    /*display: inline-block;*/
+    /*vertical-align: top;*/
+    /*width: 33.3%;*/
+
+    font-size: 1.2vw;
+    font-weight: 600;
+    line-height: 2vw;
+
+    color: #fff;
+    /*opacity: 0.6;*/
+
+    height: auto;
+    background: none;
+    text-align: center;
+    border-radius: 0px;
+}
+
+
 /* 섹션2 */
 .section2 {
     position: relative; /* section1을 덮고 올라가려면, relative로 바꿔야한다.*/
@@ -1390,4 +1454,24 @@ a {
     position: relative;
     display: block;
     top:0;
+}
+
+/* cookie 설정 */
+.alert {
+    position: fixed;
+    left:0;
+    bottom:0;
+    width: 100%;
+
+    margin: 0;
+    z-index: 999;
+
+    border: none;
+    border-radius: 0;
+    opacity: 0.8;
+}
+
+.alert button {
+    /*outline: none!important;*/
+    box-shadow: none!important;
 }

@@ -1850,4 +1850,40 @@ scene4.on("start", function (event) {
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 ```
+![img.png](../ui/175.png)
 
+3. `.alert`를 선택자로 `왼쪽/하단 0`에 맞춘다음 `width100%`로 `fixed`시킨다.
+    - `margin:0`을 줘서 완전 바닥에 밀착시킨다.
+    - `z999`를 줘서 컨텐츠에 안묻히도록 한다 
+```css
+.alert {
+    position: fixed;
+    left:0;
+    bottom:0;
+    width: 100%;
+
+    margin: 0;
+    z-index: 999;
+}
+```
+![img.png](../ui/176.png)
+
+4. `alert-warning` 클래스를 secondary로 바꿔서 회색으로 바꾼다.
+5. 닫기 버튼 클릭시, 외곽선은 `outline:none; box-shadow:none;`을 `!important`의 css로 삭제해준다.
+```css
+.alert button {
+    /*outline: none!important;*/
+    box-shadow: none!important;
+}
+```
+
+6. 투명도나 border 및 raidus를 삭제해준다.
+```css
+/* cookie 설정 */
+.alert {
+    border: none;
+    border-radius: 0;
+    opacity: 0.8;
+}
+```
+![img.png](../ui/177.png)

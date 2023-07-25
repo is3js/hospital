@@ -169,9 +169,8 @@ $(function () {
             bulletClass: 'my-bullet',// custom pagination bullet css
             bulletActiveClass: 'my-bullet-active',
         },
-
-
     });
+
     // - 일단 정지(scrollmagic에서 화면에 오면 시작 처리)
     section2Swiper.autoplay.stop();
     // - 자동재생 추가옵션: 마우스 올릴 때 일시중지 / 떼면 시작
@@ -182,6 +181,7 @@ $(function () {
         section2Swiper.autoplay.start();
     }
 
+    // ScrollMagic
     let controller = new ScrollMagic.Controller();
 
     // section1 with TweenMax
@@ -219,7 +219,7 @@ $(function () {
         triggerHook: "onLeave",
         offset: $(".section2-top").height() + 30,
         // duration: "100%"
-        duration: "30%"
+        duration: "40%"
     });
 
     // scene3.setPin(".section2", {pushFollowers: false}) // 애니 시작시, pin된 현재section의 아래section(3)도 동시에 위로 드래그되어버림
@@ -269,6 +269,28 @@ $(function () {
     });
 
     controller.addScene(scene4);
+
+
+
+    // section1 swiper
+    let titles = ["드리는 말씀", "7월 다이어트 패키ddddddddddddddddd지", "12월 겨울 통증"];
+    var section1Swiper = new Swiper('.section1 > .swiper-container', {
+        pagination: {
+            el: '.section1  .swiper-pagination',
+            clickable: true,
+            renderBullet: function (index, className) {
+                return '<div class="' + className + '">' + titles[index] + '</div>';
+            },
+        },
+        scrollbar: {
+            el: '.section1 .swiper-scrollbar',
+            // hide: true,
+        },
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+    });
 
 })
 
