@@ -1037,7 +1037,7 @@ a {
 }
 
 .section1 .swiper-container .swiper-scrollbar {
-    width: 40%;
+    width: 60%;
 
     position: absolute;
     left: 5%; /* 100-90 = 10%에서 가운데 정렬을 위해 5%만 */
@@ -1054,12 +1054,12 @@ a {
 .section1 .swiper-container .swiper-scrollbar .swiper-scrollbar-drag {
     background: #ddd;
     opacity: .6;
-    
+
     border-radius: 0;
 }
 
 .section1 .swiper-container .swiper-pagination {
-    width: 40%;
+    width: 60%;
     position: absolute;
     left: 5%; /* 100-90 = 10%에서 가운데 정렬을 위해 5%만 */
 
@@ -1086,7 +1086,10 @@ a {
     line-height: 1.5vw;
     font-weight: 600;
 
-    color: #fff;
+    color: #fff!important;
+    text-shadow: 2px 2px 4px black;
+
+
     /*opacity: 0.6;*/
 
     height: auto;
