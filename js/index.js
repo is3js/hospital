@@ -205,13 +205,15 @@ $(function () {
         //duration: "100%", // velocity조합에서는 뺀다.
     });
     // title velocity 설정
-    scene2.setVelocity([".section2-top>div", ".section2-top>div>p", ".section2-bottom > .section-title > div"], {
+    scene2.setVelocity([".section2-top>div", ".section2-top>div>p"], {
         top: "0px",
         opacity: "1"
     }, {
         duration: "300",
     });
     controller.addScene(scene2);
+
+
 
     // section2 - middle with TimelineMax
     let scene3 = new ScrollMagic.Scene({
@@ -249,7 +251,7 @@ $(function () {
 
     controller.addScene(scene3);
 
-    // section2 - middle with TimelineMax
+    // section4 - bottom swiper
     let scene4 = new ScrollMagic.Scene({
         triggerElement: ".section2-bottom",
         triggerHook: "onCenter",
@@ -269,6 +271,23 @@ $(function () {
     });
 
     controller.addScene(scene4);
+
+    // section2 - top with Velocity
+    let scene5 = new ScrollMagic.Scene({
+        triggerElement: ".section2-bottom",
+        // triggerHook: "onEnter",
+        triggerHook: "onStart",
+        //duration: "100%", // velocity조합에서는 뺀다.
+    });
+    // title velocity 설정
+    scene5.setVelocity([".section2-bottom > .section-title > div"], {
+        top: "0px",
+        opacity: "1"
+    }, {
+        duration: "300",
+    });
+    controller.addScene(scene5);
+
 
 
 
