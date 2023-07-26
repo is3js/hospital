@@ -186,7 +186,8 @@ $(function () {
 
     // section1 with TweenMax
     let scene = new ScrollMagic.Scene({
-        triggerElement: ".trigger-section1",
+        // triggerElement: ".trigger-section1",
+        triggerElement: ".section1",
         triggerHook: "onLeave",
         // duration: "100%",
         duration: "45%", // 모바일 고려해서 section1 duration
@@ -219,9 +220,9 @@ $(function () {
     let scene3 = new ScrollMagic.Scene({
         triggerElement: ".trigger-section2",
         triggerHook: "onLeave",
-        offset: $(".section2-top").height() + 25,
+        offset: $(".section2-top").height() + 30,
         // duration: "100%"
-        duration: "50%"
+        duration: "100%"
     });
 
     // scene3.setPin(".section2", {pushFollowers: false}) // 애니 시작시, pin된 현재section의 아래section(3)도 동시에 위로 드래그되어버림
@@ -272,14 +273,12 @@ $(function () {
 
     controller.addScene(scene4);
 
-    // section2 - top with Velocity
+    // section2 - bottom  title with Velocity
     let scene5 = new ScrollMagic.Scene({
         triggerElement: ".section2-bottom",
-        // triggerHook: "onEnter",
-        triggerHook: "onStart",
+        triggerHook: "onEnter",
         //duration: "100%", // velocity조합에서는 뺀다.
     });
-    // title velocity 설정
     scene5.setVelocity([".section2-bottom > .section-title > div"], {
         top: "0px",
         opacity: "1"
@@ -289,10 +288,8 @@ $(function () {
     controller.addScene(scene5);
 
 
-
-
     // section1 swiper
-    let titles = ["드리는 말씀", "자가진단 프로그램", "7월 한방성형 이벤트"];
+    let titles = ["드리는 말", "자가진단 프로그램", "7월 한방성형 이벤트"];
     var section1Swiper = new Swiper('.section1 > .swiper-container', {
         pagination: {
             el: '.section1  .swiper-pagination',

@@ -1194,9 +1194,10 @@ a {
 .section-title {
     display: flex;
     justify-content: space-between;
-    margin: 1vw auto;
+    margin-bottom: 1vw;
 }
 
+/* - 섹션 title 왼쪽 div 속 p 2개 설정 */
 .section-title > div:nth-of-type(1) p:nth-of-type(1) {
     font-size: 1.9vw;
     line-height: 2.8vw;
@@ -1211,11 +1212,12 @@ a {
     line-height: 4.1vw;
     font-weight: bold;
     color: #222222;
+
     white-space: nowrap; /* 텍스트 한 줄 표시*/
 }
 
-
-.section-title > div:nth-of-type(2)  {
+/* - 섹션 title 오른쪽 div 설정 */
+.section-title > div:nth-of-type(2) {
     font-size: 2.1vw;
     line-height: 3.5vw;
     color: #222222;
@@ -1552,4 +1554,349 @@ a {
 .alert button {
     /*outline: none!important;*/
     box-shadow: none !important;
+}
+
+
+/* 예약 */
+.section1 {
+    position: relative;
+}
+
+/* 전체 box 280 */
+.booking-service-new {
+    position: absolute;
+    width: 25%;
+    right: 5%;
+    height: 280px;
+    /*margin-left: 215px;*/
+    margin-top: -300px;
+
+    z-index: 9999;
+
+    background: #ddd;
+    opacity: .6;
+}
+
+/* 뒤에 깔린 여분 */
+.booking-service-new:before {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    width: 300%;
+    height: 230px;
+
+    background: red;
+    /*opacity: .6;*/
+}
+
+@media screen and (max-width: 991px) {
+    .booking-service-new {
+        position: relative;
+        margin-top: 0;
+        left: 5%;
+        width: 90%;
+    }
+    .booking-service-new:before {
+        display: none;
+    }
+}
+
+
+.booking-service-bx-new {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+}
+
+.booking-service-tab {
+    width: 100%;
+
+    list-style: none !important;
+    margin: 0;
+    padding: 0;
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.booking-service-tab > li {
+    flex: 1;
+    text-align: center;
+}
+
+.booking-service-tab > li > a {
+    display: block; /* a태그를 flex-item 내 가득 채우기 */
+    font-size: 20px;
+    color: #fff;
+    padding: 14px 0 14px;
+    border-radius: 15px 15px 0 0;
+}
+
+.booking-service-tab > li.on a {
+    background-color: darkblue;
+    color: #333;
+}
+
+.booking-service-tab > li:not(.on) a {
+    background-color: darkcyan;
+    color: #fff;
+}
+
+.booking-service-bx-inner-new {
+    width: 100%;
+    height: 230px;
+
+    border-radius: 0 0 15px 15px;
+    /*display: flex;*/
+    /*align-items: center;*/
+    background-color: blue;
+}
+
+
+.booking-service-bx-new .skip {
+    visibility: hidden;
+    position: absolute;
+    left: -5000px;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    overflow: hidden;
+}
+
+.booking-service-se1 .bs-form {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sel-dsg-wrap {
+    position: relative;
+    z-index: 13;
+}
+
+/* 드랍다운 버튼 */
+.sel-dsg-wrap .selb {
+    display: inline-block;
+    border: 1px solid #ddd;
+    text-align: left;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 18px;
+    padding-left: 18px;
+    color: #333;
+    /*font-family: 'SpoqaHanSans';*/
+    letter-spacing: -0.09rem;
+}
+
+.sel-dsg-wrap .selb {
+    position: relative;
+    width: 117px;
+    height: 46px;
+    background: #fff;
+    cursor: pointer;
+}
+
+/* 드랍다운 화살표 */
+.sel-dsg-wrap .selb:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 44px;
+    background: url(../images/main_section/sel-arrb.png) no-repeat 100% 50%;
+    border-radius: 6px;
+}
+
+/* .open시 화살표는 180도 뒤집어서 */
+.sel-dsg-wrap.open .selb:after {
+    transform: rotate(180deg);
+    background-position: 0 -3px;
+}
+
+/* dropdown .open이 달리게 됨. */
+.sel-dsg-wrap .sel-network {
+    display: none;
+    /*display: block;*/
+}
+
+.sel-network {
+    position: absolute;
+    right: 0;
+    top: 50px;
+    width: 283px;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 0 9px rgba(0, 0, 0, 0.14);
+    z-index: 999999;
+}
+
+.sel-network ul {
+    list-style: none;
+    overflow: hidden;
+    padding: 23px 25px 12px 16px;
+}
+
+.sel-network li {
+    float: left;
+    width: 25%;
+    padding-bottom: 10px;
+    flex-wrap: wrap;
+    text-align: center;
+    height: 32px;
+}
+
+/* radio */
+.radio-switch {
+    background-color: #fff;
+    padding: 0;
+    display: flex;
+}
+
+.radio-switch {
+    display: flex;
+    width: 202px;
+    height: 46px;
+    padding: 3px;
+    border: 1px solid #ddd;
+    background: #f1f1f1;
+    box-sizing: border-box;
+    border-radius: 6px;
+    vertical-align: top;
+}
+
+.radio-switch .radioCheck {
+    flex: 1;
+    height: 100%;
+}
+
+.radioCheck {
+    display: inline-block;
+}
+
+.radioCheck input {
+    position: absolute;
+    opacity: 0;
+}
+
+.radio-switch .radioCheck input {
+    height: 0;
+    padding: 0;
+}
+
+.booking-service-se1 .bs-form input {
+    height: 46px;
+    padding-left: 20px;
+    border: 1px solid #ddd;
+    background: #fff;
+    border-radius: 6px;
+    box-sizing: border-box;
+    color: #333;
+    letter-spacing: -0.04rem;
+    font-size: 18px;
+}
+
+.radio-switch input {
+    position: absolute;
+    clip: rect(1px, 1px, 1px, 1px);
+}
+
+
+.radioCheck input:checked + label {
+    color: #333;
+    background-color: transparent;
+}
+
+.radio-switch input:checked + label {
+    width: 97px;
+    background: #fff;
+    border-radius: 3px;
+}
+
+/* 내용물 가운데 정렬 */
+.radioCheck label {
+    display: flex;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 18px;
+    color: #888;
+}
+
+.radio-switch label {
+    display: inline-block;
+    width: 97px;
+    height: 38px;
+    text-align: center;
+    line-height: 38px;
+    font-size: 18px;
+    color: #888;
+    cursor: pointer;
+}
+
+.radioCheck label::before {
+    content: '';
+    /*display: block;*/
+    display: inline-block;
+    text-align: center;
+    width: 26px;
+    height: 26px;
+    background: url("../images/main_section/rev-chk-off.png") no-repeat 50% 50%;
+    margin-right: 7px;
+}
+
+.radioCheck input:checked + label::before {
+    background: url("../images/main_section/rev-chk-on.png") no-repeat 50% 50%;
+}
+
+
+.booking-service-se1 .bs-form .ipt-name {
+    width: 117px;
+}
+
+.booking-service-se1 .bs-form .ipt-tel {
+    width: 202px;
+}
+
+/* validate 자리 */
+.booking-service-validate {
+    height: 35px;
+    padding-top: 7px;
+    box-sizing: border-box;
+}
+
+.booking-service-validate .validate {
+    padding-left: 27px;
+    color: #fd4d4d;
+    font-size: 14px;
+    line-height: 20px;
+    background: url("../images/main_section/ico-i.png") no-repeat 0 50%;
+}
+
+/* 예약 버튼 */
+.booking-service-bx-new .btn-rev {
+    width: 100%;
+    height: 48px;
+    background: #82a8ff;
+    border-radius: 8px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    border: 0;
+    cursor: pointer;
+}
+
+/* 진료일정 */
+.booking-service-time {
+    font-size: 18px;
+    margin-top: 18px;
+    letter-spacing: -0.04rem;
 }
