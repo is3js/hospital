@@ -1027,6 +1027,7 @@ a {
 .section1 {
     /*background: #fff;*/
     /*opacity: .5;*/
+    height: 100vh;
 }
 
 /* - swiper */
