@@ -1565,7 +1565,7 @@ a {
 /* 전체 box 280 */
 .booking-service-new {
     position: absolute;
-    width: 25%;
+    width: 20%;
     right: 5%;
     height: 280px;
     /*margin-left: 215px;*/
@@ -1729,8 +1729,11 @@ a {
 
 .sel-network {
     position: absolute;
-    right: 0;
     top: 50px;
+    right: 0;
+    /*left: 0;*/
+    /*bottom: 50px;*/
+
     width: 283px;
     background: #fff;
     border-radius: 6px;
