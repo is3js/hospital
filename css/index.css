@@ -1077,6 +1077,7 @@ a {
 .section1 .swiper-container .swiper-pagination-bullet {
     flex: 1;
     flex-wrap: wrap;
+    height: auto;
 
     /*display: inline-block;*/
     /*vertical-align: top;*/
@@ -1086,14 +1087,10 @@ a {
     line-height: 1.5vw;
     font-weight: 600;
 
-    color: #fff!important;
+    color: #fff !important;
     text-shadow: 1px 1px 2px #757575;
     text-align: center;
 
-
-    /*opacity: 0.6;*/
-
-    height: auto;
     background: none;
     border-radius: 0px;
 }
@@ -1190,6 +1187,38 @@ a {
     /*margin-left: 100px;*/
     margin-left: 6.6vw;
     /*padding-top: 50px;*/
+    padding-top: 3.3vw;
+}
+
+/* 섹션 title 설정 */
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    margin: 1vw auto;
+}
+.section-title > div:nth-of-type(1) p:nth-of-type(1) {
+    font-size: 1.9vw;
+    line-height: 2.8vw;
+    color: var(--color-main);
+    font-weight: bold;
+
+    white-space: nowrap; /* 텍스트 한 줄 표시*/
+}
+
+.section-title > div:nth-of-type(1) p:nth-of-type(2) {
+    font-size: 3.5vw;
+    line-height: 4.1vw;
+    font-weight: bold;
+    color: #222222;
+    white-space: nowrap; /* 텍스트 한 줄 표시*/
+}
+
+.section-title > div:nth-of-type(2)  {
+    font-size: 2.1vw;
+    line-height: 3.5vw;
+    color: #222222;
+
+    margin-left: 6.6vw;
     padding-top: 3.3vw;
 }
 

@@ -115,5 +115,21 @@ var section1Swiper = new Swiper('.section1 > .swiper-container', {
 - font 설정 및 shadow도 같이 주자. 텍스트들은 가운데 정렬한다
 - 배경과 border radius는 삭제한다.
 ```css
+.section1 .swiper-container .swiper-pagination-bullet {
+    flex: 1;
+    flex-wrap: wrap;
+    height: auto;
 
+    font-size: 1vw;
+    line-height: 1.5vw;
+    font-weight: 600;
+
+    color: #fff!important;
+    text-shadow: 1px 1px 2px #757575;
+    text-align: center;
+    
+    background: none;
+    border-radius: 0px;
+}
 ```
+![img.png](../ui/179.png)
