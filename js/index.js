@@ -204,8 +204,8 @@ $(function () {
         triggerHook: "onCenter",
         //duration: "100%", // velocity조합에서는 뺀다.
     });
-    // velocity 설정
-    scene2.setVelocity([".section2-top>div", ".section2-top>div>p"], {
+    // title velocity 설정
+    scene2.setVelocity([".section2-top>div", ".section2-top>div>p", ".section2-bottom > .section-title > div"], {
         top: "0px",
         opacity: "1"
     }, {
