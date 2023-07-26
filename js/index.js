@@ -279,7 +279,7 @@ $(function () {
             el: '.section1  .swiper-pagination',
             clickable: true,
             renderBullet: function (index, className) {
-                return '<div class="' + className + '" style="color:#ddd">' + titles[index] + '</div>';
+                return '<div class="' + className + '" >' + titles[index] + '</div>';
             },
         },
         scrollbar: {

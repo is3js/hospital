@@ -55,9 +55,65 @@ var section1Swiper = new Swiper('.section1 > .swiper-container', {
 ```
 ![img.png](../ui/178.png)
 
-4. 이제 pagination과 scrollbar를 css로 만들어준다.
+4. 이제 pagination과 scrollbar의 위치를 잡아주기 위해, container를 relative로 만든다.
+```css
+.section1 .swiper-container {
+    width: 100%;
 
-- scrollbar는 carousel전체가 아니라 92%정도로 width를 준다.
-- `albsolute`로서, 8%가 남는데 left:4%를 줘서 가운데 정렬한다.
+    position: relative;
+}
+```
 
+5. `.swiper-scrollbar`와 그 내부 요소인 `.swiper-scrollbar-drag`를 css로 지정해준다.
+- .swiper-scrollbar는 `width를 90%`로 차지했다면, 양옆에 10%가 남으므로 `left:5%`로 왼쪽에 여백을 준다.
+- 나 같은 경우, 전체 중 `왼쪽 70%`를 차지하고 나머지 30%로는 비워둘 것이므로, `width:60%` + `left:5%` 로 잡아준다.
+- 바닥에서는 5%만 띄워준다. top은 auto로 줘서 미리 잡힌 top을 제거한다.
+- scrollbar의 높이는 vw로 잡아서 작은모드에선 작아지게 한다.
+- 기본 둥근 모서리인데 radius를 0으로 제거한다.
+```css
+.section1 .swiper-container .swiper-scrollbar {
+    width: 60%;
 
+    position: absolute;
+    left: 5%; /* 100-90 = 10%에서 가운데 정렬을 위해 5%만 */
+
+    bottom: 5%;
+    top: auto;
+    height: .4vw;
+    border-radius: 0;
+}
+```
+- drag되는 부분은 배경색과 투명도 및 radius를 설정해준다.
+```css
+.section1 .swiper-container .swiper-scrollbar .swiper-scrollbar-drag {
+    background: #ddd;
+    opacity: .6;
+
+    border-radius: 0;
+}
+```
+
+6. pagination은 `.swiper-pagination` 아래 `.swiper-pagination-bullet`를 같이 설정해줘야한다.
+- 일단 absolute로 만들고, scrollbar의 `width와 left는 동일`하게 주고 `bottom은 약간 위`로 준다.
+- **이후 bullet들에 대한 `flex` + `between` + `수직정렬` 옵션을 준다.**
+```css
+.section1 .swiper-container .swiper-pagination {
+    width: 60%;
+    position: absolute;
+    left: 5%; /* 100-90 = 10%에서 가운데 정렬을 위해 5%만 */
+
+    bottom: 8%;
+    top: auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+```
+- bullet들은 between으로 갈라지는 flex-item으로서 `flex:1`을 줘서 **각 공간에서 최대한 펼치게** 만들어줘야한다.(필수)
+- 글자들은 다음줄로 내려가도록 `flex-wrap:wrap`을 줘야한다. height auto로 줘서 알아서 맞춰지게 한다.
+- font 설정 및 shadow도 같이 주자. 텍스트들은 가운데 정렬한다
+- 배경과 border radius는 삭제한다.
+```css
+
+```
