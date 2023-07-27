@@ -32,7 +32,8 @@
                         특화 질환
                     </a>
                 </div>
-                <span class="text-black-50 fs-13 ms-2 ms-lg-3">아래의 왼쪽 상단 배너에서 <span class="text-black">실시간 진료 여부</span> 및 <span class="text-black">의료진별 진료시간</span>을 확인해주세요</span>
+                <span class="text-black-50 fs-13 ms-2 ms-lg-3">아래의 왼쪽 상단 배너에서 <span class="text-black">실시간 진료 여부</span> 및 <span
+                        class="text-black">의료진별 진료시간</span>을 확인해주세요</span>
             </div>
             <!-- 우측 전화번호 -->
             <div class="d-inline-block bg-main px-3">
@@ -112,12 +113,12 @@
                         <div class="splide__track">
                             <ul class="splide__list ">
                                 <li class="splide__slide m-0 mt-1 mt-lg-0 ">
-                                <!--">-->
+                                    <!--">-->
                                     <div class="card border-0 flex-row bg-transparent text-gray ">
                                         <img src="images/doctors/bubu.png" class="card-img-top my-auto" alt="...">
                                         <div class="card-body d-flex flex-column justify-content-center text-truncate
                                             p-0 ps-2 ps-lg-3">
-                                        <!--p-0 ps-2">-->
+                                            <!--p-0 ps-2">-->
                                             <h5 class="card-title left-banner-title text-truncate my-1 ">
                                                 부부 한의사<span class="d-none d-lg-inline-block ms-2">일관성 있는 동일 진료</span>
                                             </h5>
@@ -136,7 +137,8 @@
                                             p-0 ps-2 ps-lg-3">
                                             <!--p-0 ps-2">-->
                                             <h5 class="card-title left-banner-title text-truncate my-1 ">
-                                                조재성 원장님<span class="d-none d-lg-inline-block ms-2">추나 / 근골격계 / 교통사고</span>
+                                                조재성 원장님<span
+                                                    class="d-none d-lg-inline-block ms-2">추나 / 근골격계 / 교통사고</span>
                                             </h5>
                                             <h6 class="card-text left-banner-subtitle text-truncate my-0 ">
                                                 09:00 ~ 21:00
@@ -145,7 +147,6 @@
                                     </div>
 
                                 </li>
-
 
 
                                 <li class="splide__slide m-0">
@@ -219,7 +220,7 @@
 
         <!-- 메뉴 navbar -->
         <nav class="navbar navbar-expand-lg ">
-            <div class="container-fluid" >
+            <div class="container-fluid">
                 <!-- 햄버거 버튼 -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent">
@@ -242,23 +243,23 @@
                 </div>-->
 
                 <!--https://stackoverflow.com/questions/71346814/bootstrap-5-navbar-collapse-div-height-not-working-->
-               <!-- <style>
-                    div#navbarSupportedContent {
-                        position: absolute;
-                        width: 100%;
-                        z-index: 1;
-                        top: 56px;
-                        left: 0;
-                        background: #0062cc;
-                        overflow: hidden;
-                        overflow-y: auto;
-                        max-height: calc(100vh - 56px);
-                    }
-                </style>-->
+                <!-- <style>
+                     div#navbarSupportedContent {
+                         position: absolute;
+                         width: 100%;
+                         z-index: 1;
+                         top: 56px;
+                         left: 0;
+                         background: #0062cc;
+                         overflow: hidden;
+                         overflow-y: auto;
+                         max-height: calc(100vh - 56px);
+                     }
+                 </style>-->
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- navbar 메뉴 -->
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-<!--                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-0" style="height: 100vh">-->
+                        <!--                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-0" style="height: 100vh">-->
                         <!-- 소개 및 이용안내-->
                         <li class="nav-item active mt-3 mt-lg-0 mega-dropdown">
                             <a class="nav-link d-flex justify-content-between align-items-center d-lg-inline-block active"
@@ -837,191 +838,193 @@
         </div>
         <!-- 페이지네이션 -->
         <div class="swiper-pagination"></div>
-        <!-- 스크롤바 -->
+        <!-- 스크롤바(양옆5% + 60%) -> 70% 먹는 중 -->
         <div class="swiper-scrollbar"></div>
-
-
-
     </div>
 
-
-    <!-- 예약 tab -->
-    <div class="booking-service-new ">
-        <div class="booking-service-bx-new ">
+    <!-- 예약 tab 스크롤바 70%를 생각해서 오른쪽5% + 20% -->
+    <div class="booking-service d-none d-lg-block">
+        <div class="booking-service-box">
+            <!-- tab (50px)-->
             <ul class="booking-service-tab">
-                <li class="on"><a href="#booking-service1" class="tab1">온라인 예약</a></li>
-                <li ><a href="#booking-service2" class="tab2">입원 상담</a></li>
+                <li class="on">
+                    <a href="#booking-service1" class="tab1">예약 신청</a>
+                </li>
+                <li>
+                    <a href="#booking-service2" class="tab2">카톡 상담신청</a>
+                </li>
             </ul>
-            <div class="booking-service-bx-inner-new">
-                <div class="bx" id="booking-service1">
-                    <h3 class="skip">온라인 예약</h3>
-                    <div class="booking-service-se1">
-                        <div class="bs-form-wp">
+            <!-- content (230px)-->
+            <div class="booking-service-content">
+                <!-- content 1 -->
+                <div id="booking-service1" class="content-box">
+                    <h3 class="blind">온라인 예약</h3>
+                    <!--                    <div class="booking-service-se1">-->
+                    <div>
+                        <div class="bs-form-wrapper">
+                            <!-- row 1 -->
                             <div class="bs-form">
-                                <!-- 지역선택 디자인 수정 21-06-30 -->
-                                <div class="sel-dsg-wrap">
-                                <!-- .open시 화살표 배경바뀌고, network에 display:block-->
-<!--                                <div class="sel-dsg-wrap open">-->
-
-                                    <button type="button" class="selb">
-                                        잠실
+                                <!-- 클리닉 선택-->
+                                <!-- 자식 button click -> 부모 wrapper  .open시 -> 화살표회전 + select-clinic display:block-->
+                                <!-- <div class="select-clinic-wrapper open">-->
+                                <div class="select-clinic-wrapper">
+                                    <button type="button" class="btn-select">
+                                        통증클리닉
                                     </button>
-                                    <div class="sel-network">
+                                    <div class="select-clinic">
                                         <ul>
-
-                                            <li value="10001"><a class="branch_code" href="javascript:;">강남</a></li>
-
-                                            <li value="10020"><a class="branch_code" href="javascript:;">광주</a></li>
-
-<!--
-                                            <li value="10004"><a class="branch_code" href="javascript:;">광화문</a></li>
-
-                                            <li value="10002"><a class="branch_code" href="javascript:;">노원</a></li>
-
-                                            <li value="10019"><a class="branch_code" href="javascript:;">대구</a></li>
-
-                                            <li value="10012"><a class="branch_code" href="javascript:;">대전</a></li>
-
-                                            <li value="10003"><a class="branch_code" href="javascript:;">목동</a></li>
-
-                                            <li value="10013"><a class="branch_code" href="javascript:;">부산</a></li>
-
-                                            <li value="10006"><a class="branch_code" href="javascript:;">부천</a></li>
-
-                                            <li value="10007"><a class="branch_code" href="javascript:;">분당</a></li>
-
-                                            <li value="10008"><a class="branch_code" href="javascript:;">수원</a></li>
-
-                                            <li value="10009"><a class="branch_code" href="javascript:;">안산</a></li>
-
-                                            <li value="10014"><a class="branch_code" href="javascript:;">울산</a></li>
-
-                                            <li value="10021"><a class="branch_code" href="javascript:;">인천</a></li>
-
-                                            <li value="10010"><a class="branch_code" href="javascript:;">일산</a></li>
-
-                                            <li class="active" value="10005"><a class="branch_code" href="javascript:;">잠실</a></li>
-
-                                            <li value="10015"><a class="branch_code" href="javascript:;">창원</a></li>
-
-                                            <li value="10016"><a class="branch_code" href="javascript:;">천안</a></li>
-
-                                            <li value="10022"><a class="branch_code" href="javascript:;">청주</a></li>
-
--->
-                                            <li value="10011"><a class="branch_code" href="javascript:;">평촌</a></li>
-
-                                            <li value="10017"><a class="branch_code" href="javascript:;">해운대</a></li>
-
+                                            <li class="active" value="10001"><a class="clinic_code" href="javascript:;">
+                                                통증클리닉
+                                            </a></li>
+                                            <li value="10002"><a class="clinic_code" href="javascript:;">
+                                                피부클리닉
+                                            </a></li>
+                                            <li value="10003"><a class="clinic_code" href="javascript:;">
+                                                미용클리닉
+                                            </a></li>
+                                            <li value="10004"><a class="clinic_code" href="javascript:;">
+                                                교통사고
+                                            </a></li>
+                                            <li value="10004"><a class="clinic_code" href="javascript:;">
+                                                한약클리닉
+                                            </a></li>
+                                            <li value="10004"><a class="clinic_code" href="javascript:;">
+                                                수험생
+                                            </a></li>
+                                            <li value="10004"><a class="clinic_code" href="javascript:;">
+                                                소아
+                                            </a></li>
                                         </ul>
-                                        <input type="hidden" name="GET_BCode" value="10005">
+                                        <!--                                            <input type="hidden" name="GET_BCode" value="10005">-->
                                     </div>
-
                                 </div>
-
+                                <!-- 초진/재진 선택 -->
                                 <span class="radio-switch">
-											<span class="radioCheck"><input type="radio" name="GET_FirstYN" id="GET_FirstY" value="Y"><label for="GET_FirstY">초진</label></span>
-											<span class="radioCheck"><input type="radio" name="GET_FirstYN" id="GET_FirstN" value="N"><label for="GET_FirstN">재진</label></span>
-										</span>
+                                    <span class="radioCheck">
+                                        <input type="radio"
+                                               name="GET_FirstYN"
+                                               id="GET_FirstY"
+                                               value="Y">
+                                        <label for="GET_FirstY">초진</label>
+                                    </span>
+                                    <span class="radioCheck">
+                                        <input type="radio"
+                                               name="GET_FirstYN"
+                                               id="GET_FirstN"
+                                               value="N">
+                                        <label for="GET_FirstN">재진</label>
+                                    </span>
+                                </span>
                             </div>
+                            <!-- row 2 -->
                             <div class="bs-form">
-                                <input type="text" class="ipt-name" name="GET_Name" placeholder="이름" maxlength="10">
-                                <input type="tel" class="ipt-tel" name="GET_Tel" placeholder="연락처(숫자만입력)" maxlength="11">
+                                <input type="text" class="input-name" name="GET_Name" placeholder="이름" maxlength="10">
+                                <input type="tel" class="input-tel" name="GET_Tel" placeholder="연락처 (숫자만 입력)"
+                                       oninput="oninputPhone(this)"
+                                       maxlength="14">
                             </div>
+                            <script>
+                                function oninputPhone(target) {
+                                    target.value = target.value
+                                        .replace(/[^0-9]/g, '')
+                                        .replace(/(^02.{0}|^01.{1}|[0-9]{3,4})([0-9]{3,4})([0-9]{4})/g, "$1-$2-$3");
+                                }
+                            </script>
                         </div>
-                        <div class="booking-service-validate">
-                            <!-- 여기영역 show/hide 처리 -->
-                            <p class="validate"></p>
-                            <!-- //여기영역 show/hide 처리 -->
-                        </div>
-                        <button type="button" class="btn-rev reserv">예약</button>
-                        <p class="booking-service-time">7월 26일(수) 진료시간은 9시~19시 입니다.</p>
                     </div>
-                </div>
-
-                <div class="bx" id="booking-service2" style="display: none;">
-                    <h3 class="skip">입원상담</h3>
-                    <div class="booking-service-se1">
-                        <div class="bs-form-wp">
-                            <div class="bs-form">
-                                <!-- 지역선택 디자인 수정 21-06-30 -->
-                                <div class="sel-dsg-wrap">
-
-                                    <button type="button" class="selb">
-                                        잠실
-                                    </button>
-                                    <div class="sel-network">
-                                        <ul>
-
-                                            <li value="10001"><a class="branch_code" href="javascript:;">강남</a></li>
-
-                                            <li value="10020"><a class="branch_code" href="javascript:;">광주</a></li>
-
-                                            <li value="10004"><a class="branch_code" href="javascript:;">광화문</a></li>
-
-                                            <li value="10002"><a class="branch_code" href="javascript:;">노원</a></li>
-
-                                            <li value="10019"><a class="branch_code" href="javascript:;">대구</a></li>
-
-                                            <li value="10012"><a class="branch_code" href="javascript:;">대전</a></li>
-
-                                            <li value="10003"><a class="branch_code" href="javascript:;">목동</a></li>
-
-                                            <li value="10013"><a class="branch_code" href="javascript:;">부산</a></li>
-
-                                            <li value="10006"><a class="branch_code" href="javascript:;">부천</a></li>
-
-                                            <li value="10007"><a class="branch_code" href="javascript:;">분당</a></li>
-
-                                            <li value="10008"><a class="branch_code" href="javascript:;">수원</a></li>
-
-                                            <li value="10009"><a class="branch_code" href="javascript:;">안산</a></li>
-
-                                            <li value="10014"><a class="branch_code" href="javascript:;">울산</a></li>
-
-                                            <li value="10021"><a class="branch_code" href="javascript:;">인천</a></li>
-
-                                            <li value="10010"><a class="branch_code" href="javascript:;">일산</a></li>
-
-                                            <li class="active" value="10005"><a class="branch_code" href="javascript:;">잠실</a></li>
-
-                                            <li value="10015"><a class="branch_code" href="javascript:;">창원</a></li>
-
-                                            <li value="10016"><a class="branch_code" href="javascript:;">천안</a></li>
-
-                                            <li value="10022"><a class="branch_code" href="javascript:;">청주</a></li>
-
-                                            <li value="10017"><a class="branch_code" href="javascript:;">해운대</a></li>
-
-                                        </ul>
-                                        <input type="hidden" name="GET_BCode_CS" value="10005">
-                                    </div>
-
-                                </div>
-
-                                <span class="radio-switch">
-											<span class="radioCheck"><input type="radio" name="GET_FirstYN_CS" id="GET_FirstY_CS" value="Y"><label for="GET_FirstY_CS">초진</label></span>
-											<span class="radioCheck"><input type="radio" name="GET_FirstYN_CS" id="GET_FirstN_CS" value="N"><label for="GET_FirstN_CS">재진</label></span>
-										</span>
-                            </div>
-                            <div class="bs-form">
-                                <input type="text" class="ipt-name" name="GET_Name_CS" placeholder="이름" maxlength="10">
-                                <input type="tel" class="ipt-tel" name="GET_Tel_CS" placeholder="연락처(숫자만입력)" maxlength="11">
-                            </div>
-                        </div>
-                        <div class="booking-service-validate">
-                            <!-- 여기영역 show/hide 처리 -->
-                            <p class="validate"></p>
-                            <!-- //여기영역 show/hide 처리 -->
-                        </div>
-                        <button type="button" class="btn-rev reserv">상담 신청</button>
-                        <p class="booking-service-time">7월 26일(수) 진료시간은 9시~19시 입니다.</p>
+                    <div class="bs-validate">
+                        <!-- show/hide -->
+                        <p class="validate">ㅇㅇㅇ</p>
                     </div>
+                    <button type="button" class="btn-bs">예약 신청하기</button>
+                    <p class="bs-time">7월 26일(수) 진료시간은 09:00~21:00 입니다.</p>
                 </div>
-
             </div>
+            <!-- content 2 -->
+            <div id="booking-service2" class="content-box" style="display: none;">
+                <h3 class="blind">카톡 상담신청</h3>
+                <!--                    <div class="booking-service-se1">-->
+                <div>
+                    <!--                        <div class="bs-form-wp">-->
+                    <!--                            <div class="bs-form">-->
+                    <!--                                &lt;!&ndash; 지역선택 디자인 수정 21-06-30 &ndash;&gt;-->
+                    <!--                                <div class="sel-dsg-wrap">-->
+
+                    <!--                                    <button type="button" class="selb">-->
+                    <!--                                        잠실-->
+                    <!--                                    </button>-->
+                    <!--                                    <div class="sel-network">-->
+                    <!--                                        <ul>-->
+
+                    <!--                                            <li value="10001"><a class="branch_code" href="javascript:;">강남</a></li>-->
+
+                    <!--                                            <li value="10020"><a class="branch_code" href="javascript:;">광주</a></li>-->
+
+                    <!--                                            <li value="10004"><a class="branch_code" href="javascript:;">광화문</a></li>-->
+
+                    <!--                                            <li value="10002"><a class="branch_code" href="javascript:;">노원</a></li>-->
+
+                    <!--                                            <li value="10019"><a class="branch_code" href="javascript:;">대구</a></li>-->
+
+                    <!--                                            <li value="10012"><a class="branch_code" href="javascript:;">대전</a></li>-->
+
+                    <!--                                            <li value="10003"><a class="branch_code" href="javascript:;">목동</a></li>-->
+
+                    <!--                                            <li value="10013"><a class="branch_code" href="javascript:;">부산</a></li>-->
+
+                    <!--                                            <li value="10006"><a class="branch_code" href="javascript:;">부천</a></li>-->
+
+                    <!--                                            <li value="10007"><a class="branch_code" href="javascript:;">분당</a></li>-->
+
+                    <!--                                            <li value="10008"><a class="branch_code" href="javascript:;">수원</a></li>-->
+
+                    <!--                                            <li value="10009"><a class="branch_code" href="javascript:;">안산</a></li>-->
+
+                    <!--                                            <li value="10014"><a class="branch_code" href="javascript:;">울산</a></li>-->
+
+                    <!--                                            <li value="10021"><a class="branch_code" href="javascript:;">인천</a></li>-->
+
+                    <!--                                            <li value="10010"><a class="branch_code" href="javascript:;">일산</a></li>-->
+
+                    <!--                                            <li class="active" value="10005"><a class="branch_code" href="javascript:;">잠실</a></li>-->
+
+                    <!--                                            <li value="10015"><a class="branch_code" href="javascript:;">창원</a></li>-->
+
+                    <!--                                            <li value="10016"><a class="branch_code" href="javascript:;">천안</a></li>-->
+
+                    <!--                                            <li value="10022"><a class="branch_code" href="javascript:;">청주</a></li>-->
+
+                    <!--                                            <li value="10017"><a class="branch_code" href="javascript:;">해운대</a></li>-->
+
+                    <!--                                        </ul>-->
+                    <!--                                        <input type="hidden" name="GET_BCode_CS" value="10005">-->
+                    <!--                                    </div>-->
+
+                    <!--                                </div>-->
+
+                    <!--                                <span class="radio-switch">-->
+                    <!--											<span class="radioCheck"><input type="radio" name="GET_FirstYN_CS" id="GET_FirstY_CS" value="Y"><label for="GET_FirstY_CS">초진</label></span>-->
+                    <!--											<span class="radioCheck"><input type="radio" name="GET_FirstYN_CS" id="GET_FirstN_CS" value="N"><label for="GET_FirstN_CS">재진</label></span>-->
+                    <!--										</span>-->
+                    <!--                            </div>-->
+                    <!--                            <div class="bs-form">-->
+                    <!--                                <input type="text" class="ipt-name" name="GET_Name_CS" placeholder="이름" maxlength="10">-->
+                    <!--                                <input type="tel" class="ipt-tel" name="GET_Tel_CS" placeholder="연락처(숫자만입력)" maxlength="11">-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                        <div class="booking-service-validate">-->
+                    <!--                            &lt;!&ndash; 여기영역 show/hide 처리 &ndash;&gt;-->
+                    <!--                            <p class="validate"></p>-->
+                    <!--                            &lt;!&ndash; //여기영역 show/hide 처리 &ndash;&gt;-->
+                    <!--                        </div>-->
+                    <!--                        <button type="button" class="btn-rev reserv">상담 신청</button>-->
+                    <!--                        <p class="booking-service-time">7월 26일(수) 진료시간은 9시~19시 입니다.</p>-->
+                </div>
+            </div>
+
         </div>
     </div>
+</div>
 </div>
 
 
@@ -1035,7 +1038,7 @@
         </div>
         <div>
             저희는 <strong>부부 한의사</strong>로서, 익힌 의술들을 가장 먼저 서로에게, 그 이후 가족 및 지인들에게 베풀면서 검증된 치료만 시행합니다.<br>
-            이젠 환자분들을  가족처럼 보살피겠습니다.<br>
+            이젠 환자분들을 가족처럼 보살피겠습니다.<br>
             또한, 각자가 가진 능력을 보태어 일관성 있고, 재현성 있는 진료를 제공하겠습니다.
         </div>
     </div>
@@ -1225,7 +1228,6 @@
     <p>테스트</p>
 
 </div>
-
 
 
 <!-- header modal(login) -->
