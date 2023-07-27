@@ -30,7 +30,24 @@
 
 
     --3rd-menu-font-size: 16px;
-    --3rd-menu-font-lh: 30px
+    --3rd-menu-font-lh: 30px;
+
+
+    --swiper-scrollbar-width: 60%;
+
+    /* 예약 tab 탭 */
+    --booking-service-width: 20%;
+    --booking-service-height: 300px;
+    --booking-service-tab-height: 40px;
+    --booking-service-tab-font-size: 16px;
+    --booking-service-content-height: calc(var(--booking-service-height) - var(--booking-service-tab-height));
+
+    --booking-service-right : 3%;
+    --booking-service-bottom : 5%;
+
+
+    --booking-service-color: #fff;
+    --booking-service-opacity: .8;
 }
 
 body {
@@ -1027,7 +1044,12 @@ a {
 .section1 {
     /*background: #fff;*/
     /*opacity: .5;*/
-    height: 100vh;
+}
+
+@media screen and (max-width: 991px){
+    .section1 {
+        height: 100vh;
+    }
 }
 
 /* - swiper */
@@ -1038,7 +1060,8 @@ a {
 }
 
 .section1 .swiper-container .swiper-scrollbar {
-    width: 60%;
+    /*width: 60%;*/
+    width: var(--swiper-scrollbar-width);
 
     position: absolute;
     left: 5%; /* 100-90 = 10%에서 가운데 정렬을 위해 5%만 */
@@ -1560,70 +1583,65 @@ a {
 
 /* 예약 */
 .section1 {
-    position: relative;
+    position: relative!important;
 }
 
-/* 전체 box 280 */
-.booking-service-new {
+/* 예약 투명색 전체 박스 box 280 */
+.booking-service {
     position: absolute;
-    width: 20%;
-    right: 5%;
-    height: 280px;
-    /*margin-left: 215px;*/
-    margin-top: -300px;
+    width: var(--booking-service-width);
+    right: var(--booking-service-right);
 
+    bottom: var(--booking-service-bottom);
+    height: var(--booking-service-height);
+    /*margin-left: 215px;*/
+    /*margin-top: -300px;*/
     z-index: 9999;
 
-    background: #ddd;
-    opacity: .6;
+    /* 임시 */
+    /*background: #ddd;*/
+    opacity: var(--booking-service-opacity);
 }
 
-/* 뒤에 깔린 여분 */
-.booking-service-new:before {
+/* 예약 전체-tab 높이만큼, 뒤에 깔린 배경 */
+.booking-service:before {
     content: '';
-    display: block;
+
     position: absolute;
     bottom: 0;
-    left: 20px;
-    width: 300%;
-    height: 230px;
+    /*left: 0;*/ /* content의 border radius를 뒤에서 삐져나와서 약간 이동*/
+    left:20%;
 
-    background: red;
-    /*opacity: .6;*/
+    display: block;
+    width: 300%; /* block이어도 화면 끝까지 안감. 직접 크게 줘야한다.*/
+    height: var(--booking-service-content-height);
+
+    /* 임시 */
+    /*background: red;*/
+    background: var(--booking-service-color);
 }
 
-@media screen and (max-width: 991px) {
-    .booking-service-new {
-        position: relative;
-        margin-top: 0;
-        left: 5%;
-        width: 90%;
-    }
-    .booking-service-new:before {
-        display: none;
-    }
-}
-
-
-.booking-service-bx-new {
+.booking-service-box {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 280px;
+
     display: flex;
     flex-direction: column;
+
+    width: 100%;
+    height: var(--booking-service-height);
 }
 
 .booking-service-tab {
-    width: 100%;
-
     list-style: none !important;
-    margin: 0;
-    padding: 0;
-    height: 50px;
     display: flex;
     align-items: center;
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+    height: var(--booking-service-tab-height);
 }
 
 .booking-service-tab > li {
@@ -1633,34 +1651,45 @@ a {
 
 .booking-service-tab > li > a {
     display: block; /* a태그를 flex-item 내 가득 채우기 */
-    font-size: 20px;
+
+    line-height: var(--booking-service-tab-height);
+    font-size: var(--booking-service-tab-font-size);
     color: #fff;
-    padding: 14px 0 14px;
+
     border-radius: 15px 15px 0 0;
+
+    /* 임시 */
+    /*background: red;*/
 }
 
-.booking-service-tab > li.on a {
-    background-color: darkblue;
+/* 예약  tab 글자 - .on일 때 */
+.booking-service-tab > li.on > a {
+    background-color: var(--booking-service-color);
     color: #333;
 }
 
-.booking-service-tab > li:not(.on) a {
-    background-color: darkcyan;
+/* 예약  tab 글자 - .on이 아닐 때 */
+.booking-service-tab > li:not(.on) > a {
+    background-color: #00b3b2;
     color: #fff;
 }
 
-.booking-service-bx-inner-new {
+.booking-service-content {
     width: 100%;
-    height: 230px;
+    height: var(--booking-service-content-height);
 
-    border-radius: 0 0 15px 15px;
+    /* 확인 안됨. */
     /*display: flex;*/
     /*align-items: center;*/
-    background-color: blue;
+
+    border-radius: 0 0 15px 15px;
+    background: var(--booking-service-color);
+    /* 임시 */
+    /*background-color: blue;*/
 }
 
 
-.booking-service-bx-new .skip {
+.blind {
     visibility: hidden;
     position: absolute;
     left: -5000px;
@@ -1671,64 +1700,72 @@ a {
     overflow: hidden;
 }
 
-.booking-service-se1 .bs-form {
+.booking-service-content .content-box {
+    /*display: none;*/
+    padding: 2% 5%;
+}
+
+.booking-service-content .bs-form {
     display: flex;
     justify-content: space-between;
+
+    margin-top: 5px;
 }
 
-.sel-dsg-wrap {
-    position: relative;
+.select-clinic-wrapper {
+    /*position: relative;*/
     z-index: 13;
+    width: 100%;
 }
 
-/* 드랍다운 버튼 */
-.sel-dsg-wrap .selb {
-    display: inline-block;
-    border: 1px solid #ddd;
-    text-align: left;
-    border-radius: 6px;
-    box-sizing: border-box;
-    font-size: 18px;
-    padding-left: 18px;
-    color: #333;
-    /*font-family: 'SpoqaHanSans';*/
-    letter-spacing: -0.09rem;
-}
-
-.sel-dsg-wrap .selb {
+/* 예약 between 1 드랍다운 버튼 */
+.select-clinic-wrapper .btn-select {
+    /*display: inline-block;*/
     position: relative;
-    width: 117px;
-    height: 46px;
+    width: 40%;
+    height: var(--booking-service-tab-height);
+
+    border: 1px solid #ddd;
+    border-radius: 6px;
+
+    padding-left: 5%;
+    text-align: left;
+    font-size: calc(var(--booking-service-tab-font-size) * .8);
+    color: #333;
+    letter-spacing: -0.09rem;
+
     background: #fff;
     cursor: pointer;
 }
 
 /* 드랍다운 화살표 */
-.sel-dsg-wrap .selb:after {
+.select-clinic-wrapper .btn-select:after {
     content: '';
-    display: block;
     position: absolute;
     top: 0;
     right: 0;
-    width: 40px;
-    height: 44px;
-    background: url(../images/main_section/sel-arrb.png) no-repeat 100% 50%;
+
+    display: block;
+    width: calc(var(--booking-service-tab-height) * .8);
+    height: calc(var(--booking-service-tab-height) * .8);
     border-radius: 6px;
+
+    background: url(../images/main_section/sel-arrb.png) no-repeat 50% 50%;
 }
 
-/* .open시 화살표는 180도 뒤집어서 */
-.sel-dsg-wrap.open .selb:after {
+/* 예약 부모 wrapper .open시 자식button의 :after bg icon는 180도 뒤집어서 */
+.select-clinic-wrapper.open .btn-select:after {
     transform: rotate(180deg);
-    background-position: 0 -3px;
+    background-position: 50% 100%;
 }
 
 /* dropdown .open이 달리게 됨. */
-.sel-dsg-wrap .sel-network {
+.select-clinic-wrapper .select-clinic {
     display: none;
     /*display: block;*/
 }
 
-.sel-network {
+.select-clinic {
     position: absolute;
     top: 50px;
     right: 0;
@@ -1742,13 +1779,13 @@ a {
     z-index: 999999;
 }
 
-.sel-network ul {
+.select-clinic ul {
     list-style: none;
     overflow: hidden;
     padding: 23px 25px 12px 16px;
 }
 
-.sel-network li {
+.select-clinic li {
     float: left;
     width: 25%;
     padding-bottom: 10px;
@@ -1871,36 +1908,38 @@ a {
 }
 
 /* validate 자리 */
-.booking-service-validate {
+.bs-validate {
     height: 35px;
-    padding-top: 7px;
-    box-sizing: border-box;
+    padding-top: 5px;
 }
 
-.booking-service-validate .validate {
-    padding-left: 27px;
+.bs-validate .validate {
     color: #fd4d4d;
-    font-size: 14px;
     line-height: 20px;
-    background: url("../images/main_section/ico-i.png") no-repeat 0 50%;
+    font-size: 13px;
+
+    background: url("../images/main_section/ico-i.png") no-repeat 0 2%;
+    padding-left: 7%;
 }
 
 /* 예약 버튼 */
-.booking-service-bx-new .btn-rev {
+.booking-service-box .btn-bs {
     width: 100%;
-    height: 48px;
+    height: var(--booking-service-tab-height);
     background: #82a8ff;
+
+    border: 0;
     border-radius: 8px;
-    font-size: 22px;
+    cursor: pointer;
+
+    font-size: var(--booking-service-tab-font-size);
     font-weight: 700;
     color: #fff;
-    border: 0;
-    cursor: pointer;
 }
 
-/* 진료일정 */
-.booking-service-time {
-    font-size: 18px;
-    margin-top: 18px;
+/* 예약 진료시간 p태그  */
+.bs-time {
+    font-size: calc(var(--booking-service-tab-font-size) * .8);
+    margin-top: 5px;
     letter-spacing: -0.04rem;
 }
