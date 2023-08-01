@@ -36,8 +36,8 @@
     --swiper-scrollbar-width: 60%;
 
     /* 예약 tab 탭 */
-    --booking-service-width: 20%;
-    --booking-service-mobile-width: 100%;
+    --booking-service-width: 35%;
+    --booking-service-xxl-width: 25%;
     --booking-service-height: 260px; /* 300px */
     --booking-service-tab-height: 40px;
     --booking-service-tab-font-size: 16px;
@@ -1608,6 +1608,12 @@ a {
     /*opacity: var(--booking-service-opacity);*/
 }
 
+@media screen and (min-width: 1440px){
+    .booking-service {
+        width: var(--booking-service-xxl-width);
+    }
+}
+
 /* 예약 전체-tab 높이만큼, 뒤에 깔린 배경 */
 .booking-service:before {
     content: '';
@@ -1626,18 +1632,6 @@ a {
     background: var(--booking-service-color);
 }
 
-@media screen and (max-width: 991px){
-    .booking-service {
-        position: sticky;
-        width: var(--booking-service-mobile-width);
-        right: var(--booking-service-mobile-right);
-        bottom: 0%;
-    }
-
-    .booking-service:before {
-        display: none;
-    }
-}
 
 
 .booking-service-box {

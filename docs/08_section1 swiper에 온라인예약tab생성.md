@@ -1511,3 +1511,18 @@ $(".booking-service-tab > li > a").on('click', function () {
 
     $('.validate').text(''); // 검증 텍스트 초기화
 ```
+
+9. 전반적인 크기를 lg이후부터 35% -> xxl(1440)이상이면 25%로 유지하도록 수정
+```css
+:root {
+    --booking-service-width: 35%;
+    --booking-service-xxl-width: 25%;
+}
+```
+```css
+@media screen and (min-width: 1440px){
+    .booking-service {
+        width: var(--booking-service-xxl-width);
+    }
+}
+```
