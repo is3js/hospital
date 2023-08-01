@@ -37,6 +37,7 @@
 
     /* 예약 tab 탭 */
     --booking-service-width: 20%;
+    --booking-service-mobile-width: 100%;
     --booking-service-height: 260px; /* 300px */
     --booking-service-tab-height: 40px;
     --booking-service-tab-font-size: 16px;
@@ -44,6 +45,8 @@
 
     --booking-service-right : 2%;
     --booking-service-bottom : 8%;
+    --booking-service-mobile-right : 0;
+    --booking-service-mobile-bottom : 0;
 
     --booking-service-color: #fff;
     --booking-service-opacity: .9;
@@ -1622,6 +1625,20 @@ a {
     /*background: red;*/
     background: var(--booking-service-color);
 }
+
+@media screen and (max-width: 991px){
+    .booking-service {
+        position: sticky;
+        width: var(--booking-service-mobile-width);
+        right: var(--booking-service-mobile-right);
+        bottom: 0%;
+    }
+
+    .booking-service:before {
+        display: none;
+    }
+}
+
 
 .booking-service-box {
     position: absolute;
