@@ -264,9 +264,26 @@
 
     <script src="js/test.js"></script>
 
-
+    <!-- select2 for 예약 시간선택 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </head>
 <body>
+<div class="select-consultTime-wrapper">
+    <select name="GET_ConsultTime" id="consultTime" class="w-100">
+        <option value="">상담가능시간</option>
+        <option value="1:00">09:00~11:00</option>
+        <option value="3:00">11:00~13:00</option>
+        <option value="5:00">13:00~15:00</option>
+        <option value="7:00">15:00~17:00</option>
+        <option value="9:00">17:00~19:00</option>
+    </select>
+</div>
+<script>
+    $('#consultTime').select2({
+    });
+</script>
+
 <div class="section2-bottom">
     <div class="swiper-container">
         <div class="swiper-wrapper">

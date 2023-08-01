@@ -17,7 +17,8 @@
     <!-- swiper js css for section2-bottom -->
     <link rel="stylesheet" href="css/swiper.css">
     <link rel="stylesheet" href="css/swiper.animate.min.css">
-
+    <!-- select2 for 예약 시간선택 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
 </head>
 <body>
 <!-- 헤더 -->
@@ -851,7 +852,7 @@
                     <a href="#booking-service1" class="tab1">예약 신청</a>
                 </li>
                 <li>
-                    <a href="#booking-service2" class="tab2">카톡 상담신청</a>
+                    <a href="#booking-service2" class="tab2">카톡 상담</a>
                 </li>
             </ul>
             <!-- content (230px)-->
@@ -859,7 +860,6 @@
                 <!-- content 1 -->
                 <div id="booking-service1" class="content-box">
                     <h3 class="blind">온라인 예약</h3>
-                    <!--                    <div class="booking-service-se1">-->
                     <div>
                         <div class="bs-form-wrapper">
                             <!-- row 1 -->
@@ -869,24 +869,24 @@
                                 <!-- <div class="select-clinic-wrapper open">-->
                                 <div class="select-clinic-wrapper">
                                     <button type="button" class="btn-select">
-                                        통증클리닉
+                                        클리닉 선택
                                     </button>
                                     <div class="select-clinic">
                                         <ul>
-                                            <li class="active" value="10001"><a class="clinic_code" href="javascript:;">
-                                                통증클리닉
+                                            <li class="active" value="10001"><a class="clinic_code">
+                                                통증
                                             </a></li>
                                             <li value="10002"><a class="clinic_code" href="javascript:;">
-                                                피부클리닉
+                                                피부
                                             </a></li>
                                             <li value="10003"><a class="clinic_code" href="javascript:;">
-                                                미용클리닉
+                                                미용
                                             </a></li>
                                             <li value="10004"><a class="clinic_code" href="javascript:;">
                                                 교통사고
                                             </a></li>
                                             <li value="10004"><a class="clinic_code" href="javascript:;">
-                                                한약클리닉
+                                                한약
                                             </a></li>
                                             <li value="10004"><a class="clinic_code" href="javascript:;">
                                                 수험생
@@ -895,7 +895,8 @@
                                                 소아
                                             </a></li>
                                         </ul>
-                                        <!--                                            <input type="hidden" name="GET_BCode" value="10005">-->
+                                        <!-- 선택된 a태그의 값을 받아주는 hidden input 태그 with 검증에 걸리는 default value-->
+                                        <input type="hidden" name="GET_ClinicCode" value="10000">
                                     </div>
                                 </div>
                                 <!-- 초진/재진 선택 -->
@@ -918,6 +919,16 @@
                             </div>
                             <!-- row 2 -->
                             <div class="bs-form">
+                                <div class="select-consultTime-wrapper">
+                                    <select name="GET_ConsultTime" id="consultTime" class="w-100">
+                                        <option value="">상담 시간 선택</option>
+                                        <option value="09:00~11:00">09:00~11:00</option>
+                                        <option value="11:00~13:00">11:00~13:00</option>
+                                        <option value="13:00~15:00">13:00~15:00</option>
+                                        <option value="15:00~17:00">15:00~17:00</option>
+                                        <option value="17:00~19:00">17:00~19:00</option>
+                                    </select>
+                                </div>
                                 <input type="text" class="input-name" name="GET_Name" placeholder="이름" maxlength="10">
                                 <input type="tel" class="input-tel" name="GET_Tel" placeholder="연락처 (숫자만 입력)"
                                        oninput="oninputPhone(this)"
@@ -930,13 +941,14 @@
                                         .replace(/(^02.{0}|^01.{1}|[0-9]{3,4})([0-9]{3,4})([0-9]{4})/g, "$1-$2-$3");
                                 }
                             </script>
+
                         </div>
                     </div>
                     <div class="bs-validate">
                         <!-- show/hide -->
-                        <p class="validate">ㅇㅇㅇ</p>
+                        <p class="validate"></p>
                     </div>
-                    <button type="button" class="btn-bs">예약 신청하기</button>
+                    <button type="button" class="btn-bs reserve">예약 신청하기</button>
                     <p class="bs-time">7월 26일(수) 진료시간은 09:00~21:00 입니다.</p>
                 </div>
             </div>
@@ -1282,8 +1294,11 @@
 
 
 <!--jquery: boostrap js 전에 추가-->
-<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js"></script>
+<!--<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js"></script>-->
+<!-- select2는 2.2.4이상 필요 -->
+<script src="js/jquery.js"></script>
 <script src="js/bootstrap.bundle.js"></script>
+
 
 <!-- splidejs for left-banner -->
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
@@ -1300,6 +1315,7 @@
 <!-- section2 middle velocity -->
 <script src="js/velocity.js"></script>
 <script src="js/animation.velocity.js"></script>
+
 
 <script src="js/index.js"></script>
 

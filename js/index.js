@@ -308,5 +308,65 @@ $(function () {
         },
     });
 
+
+    // booking service tab
+    // 1) 클리닉 select btn -> wrapper .open toggle
+    $('.select-clinic-wrapper .btn-select').on('click',function(){
+        $(this).parent().toggleClass('open');
+    });
+
+    // 2) 클리닉 select dropdown ul > li.active > a태그.clinic_code 클릭 -> 5가지 동작
+    $('.select-clinic-wrapper .clinic_code').on('click',function() {
+        console.log("click")
+        let currentParent = $(this).parent(); /* li.active[value=] */
+        let currentClinicText = $(this).text(); /* a.clinic_code*/
+        // 1. 셀렉트 버튼의 텍스트변경
+        $('.btn-select').text( currentClinicText );
+
+        // 2. li태그의 value="" -> hidden input으로 입력
+        $('input[name=GET_ClinicCode]').val(currentParent.val()); // tab 1 hidden input
+        $('input[name=GET_ClinicCode_CS]').val(currentParent.val()); // 2번재 tab도 동일한 값을 받음.
+
+        // 3. 모든 a태그의부모인 li태그에 .active 삭제 후, 현재 li에만 active 추가
+        // $('.select-clinic-wrapper .clinic_code').parent().removeClass('active');  // 모든 li에 .active 삭제
+        // currentParent.toggleClass('active');            // 현재 li에만 .active 추가
+        currentParent.addClass('active').siblings().removeClass('active');
+
+        // 4. 마지막으로 wrapper의 .open 삭제하여 닫기
+        $('.select-clinic-wrapper').removeClass('open');
+    });
+
+    // 예약 버튼 with valdiate
+    $('.reserve').on('click',function(){
+        // 1) 클리닉 선택 검증 by hidden input
+        if($('input[name="GET_ClinicCode"]').val() === '10000' ){
+            $(".validate").text("클리닉을 선택해주세요.");
+            return false;
+        }
+        // 2) 초/재진 radio checked 검증
+        if($('input[name="GET_FirstYN"]').is(':checked') == false){
+            $(".validate").text("초진, 재진여부를 체크해주세요.");
+            return false;
+        }
+        // 5) 상담시간 검증
+        if($('#consultTime').val() === "" ){
+            $(".validate").text("상담 시간을 선택해주세요.");
+            return false;
+        }
+        // 3) 이름 검증
+        if($('input[name="GET_Name"]').val().length < 2 ){
+            $(".validate").text("이름을 입력해주세요.");
+            return false;
+        }
+        // 4) 전화번호 검증 ( 번호최소 9글자 + 하이픈 1~3개)
+        if($('input[name="GET_Tel"]').val().length < 10 ){
+            $(".validate").text("연락처를 입력해주세요.");
+            return false;
+        }
+
+    });
+
+
+
 })
 

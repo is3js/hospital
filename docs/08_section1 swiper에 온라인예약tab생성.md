@@ -706,8 +706,61 @@
 ![img.png](../ui/197.png)
 
 
-10. 이제 다른 것들 완료후 jquery처리 전까지 open을 접어둔다.
+10. 이제 `.open`을 제거하고 **jquery에서 `.btn-select` 오픈시 부모인 `wrapper`에 `.open` class를 toggle해준다.**
+```js
+// booking service tab
+// 1) clinic btn -> wrapper .open toggle
+$('.select-clinic-wrapper .btn-select').on('click', function () {
+    $(this).parent().toggleClass('open');
+})
+```
 
+11. 이제 dropdown 내부 li>a태그의 클래스인 `a.clinic_code`를 클릭하면
+   - `.btn-select`의 텍스트를, 현재text로 변경하고
+   - **`hidden된 input태그`를 `name=""`으로 찾아서 ->  클릭된a의 부모 `li에 있는 value=""값을 입력`해준다.**
+   - 또한, 기존 active들을 전체 삭제 후, 클릭된 a태그의 부모 li에 `.active`를 넣어주게 한다. 
+   - 클릭된 순간, wrapper의 `.open`을 제거해준다.
+```html
+<!-- dropdown -->
+<div class="select-clinic">
+    <ul>
+        <li class="active" value="10001"><a class="clinic_code" href="javascript:;">
+            통증클리닉
+        </a></li>
+    </ul>
+    <!-- 선택된 a태그의 값을 받아주는 hidden input 태그 -->
+    <input type="hidden" name="GET_ClinicCode" value="10001">
+</div>
+```
+
+```js
+    // 2) 클리닉 select dropdown ul > li.active > a태그.clinic_code 클릭 -> 5가지 동작
+$('.select-clinic-wrapper .clinic_code').on('click', function () {
+    console.log("click")
+    let currentParent = $(this).parent(); /* li.active[value=] */
+    let currentClinicText = $(this).text(); /* a.clinic_code*/
+    // 1. 셀렉트 버튼의 텍스트변경
+    $('.btn-select').text(currentClinicText);
+
+    // 2. li태그의 value="" -> hidden input으로 입력
+    $('input[name=GET_ClinicCode]').val(currentParent.val()); // tab 1 hidden input
+    $('input[name=GET_ClinicCode_CS]').val(currentParent.val()); // 2번재 tab도 동일한 값을 받음.
+
+    // 3. 모든 a태그의부모인 li태그에 .active 삭제 후, 현재 li에만 active 추가
+    $('.select-clinic-wrapper .clinic_code').parent().removeClass('active');  // 모든 li에 .active 삭제
+    currentParent.toggleClass('active');            // 현재 li에만 .active 추가
+
+    // 4. 마지막으로 wrapper의 .open 삭제하여 닫기
+    $('.select-clinic-wrapper').removeClass('open');
+});
+```
+![img.png](../ui/210.png)
+
+
+12. 부모인 li에 .active추가 -> 나머지는 .active 삭제를 한줄로 만들 수 있다.
+```js
+currentParent.addClass('active').siblings().removeClass('active');
+```
 #### radio버튼을 이미지로 구현
 1. `span.radio-switch`를 flex를 만들고, 부모에 대한 width % + h를 기입한다.
    - 추가로 배경 + padding, border+border-radius를 준다.
@@ -987,3 +1040,136 @@
 ```
 
 ![img.png](../ui/209.png)
+
+
+### validate 처리하기
+
+### 메인버튼 클릭시 validate
+1. 이제 예약하기 버튼을 누르면, 검증이 시행되도록 `.reserve` 클래스 추가 및 jquery 짜놓기
+```html
+<button type="button" class="btn-bs reserve">예약 신청하기</button>
+```
+```js
+// 예약 버튼 with valdiate
+$('.reserve').on('click',function(){
+
+});
+```
+#### dropdown 선택 검증 by hidden input
+1. clinic의 `기본text를 클리닉선택 `+ `hidden input의  value="10000"` 으로 변경해놓고 **default value면 검증에 걸리도록 jquery**를 만든다.
+```html
+<div class="select-clinic-wrapper">
+    <button type="button" class="btn-select">
+        클리닉 선택
+    </button>
+    <!-- 선택된 a태그의 값을 받아주는 hidden input 태그 with 검증에 걸리는 default value-->
+    <div class="select-clinic">
+        <input type="hidden" name="GET_ClinicCode" value="10000">
+    </div>
+</div>
+```
+```js
+// 예약 버튼 with valdiate
+$('.reserve').on('click', function () {
+    // 클리닉 선택 검증 by hidden input
+    if ($('input[name="GET_ClinicCode"]').val() === '10000') {
+        $(".validate").text("클리닉을 선택해주세요.");
+        return false;
+    }
+});
+```
+![img.png](../ui/211.png)
+
+
+#### radio checked 검증 by 가려진 input.is(":checked")로 확인
+1. radio의 input을 name으로 잡아서, `.is(':checked')`가 false이면 검증탈락이다.
+```js
+// 2) 초/재진 radio checked 검증
+if ($('input[name="GET_FirstYN"]').is(':checked') == false) {
+    $(".validate").text("초진, 재진여부를 체크해주세요.");
+    return false;
+}
+```
+![img.png](../ui/212.png)
+
+
+#### 이름 / 전화번호에 검증
+```js
+// 3) 이름 검증
+if($('input[name="GET_Name"]').val().length < 2 ){
+   $(".validate").text("이름을 입력해주세요.");
+   return false;
+}
+// 4) 전화번호 검증 ( 번호최소 9글자 + 하이픈 1~3개)
+if($('input[name="GET_Tel"]').val().length < 10 ){
+   $(".validate").text("연락처를 입력해주세요.");
+   return false;
+}
+```
+
+
+### 상담가능시간 select 구현 후, validate 추가
+- 참고: https://jin2rang.tistory.com/entry/select-%EA%B2%80%EC%83%89%ED%95%98%EA%B8%B0-Select2-JQuery-Select2-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0
+- **select2가 잘 적용이 안됨. 클릭이 안됨.**
+
+
+1. 이름 - 연락처의 .bs-form의 맨앞에 `상담가능시간 wrapper > select`를 추가한다.
+   - **wrapper는 3개요소의 비율을 가져갈 것이므로 `select는 .w-100`을 줘서 전체를 차지하게 한다.**
+   - **placeholder로 작동할 첫번째 옵션에는 `value=""`를 빈값으로 줘서, 검증에 활용할 것이다.**
+```html
+<!-- row 2 -->
+<div class="bs-form">
+    <div class="select-consultTime-wrapper">
+        <select name="GET_ConsultTime" id="consultTime" class="w-100">
+            <option value="">상담 시간 선택</option>
+            <option value="09:00~11:00">09:00~11:00</option>
+            <option value="11:00~13:00">11:00~13:00</option>
+            <option value="13:00~15:00">13:00~15:00</option>
+            <option value="15:00~17:00">15:00~17:00</option>
+            <option value="17:00~19:00">17:00~19:00</option>
+        </select>
+    </div>
+</div>
+<input type="text" class="input-name" name="GET_Name" placeholder="이름" maxlength="10">
+<input type="tel" class="input-tel" name="GET_Tel" placeholder="연락처 (숫자만 입력)"
+       oninput="oninputPhone(this)"
+       maxlength="14">
+</div>
+```
+
+2. css로 비율을 조절한다.
+```css
+.booking-service-content .bs-form .select-consultTime-wrapper {
+    width: 29%;
+}
+
+.booking-service-content .bs-form .input-name {
+    /*width: var(--booking-service-form-row-width-percent-of-left);*/
+    width: 24%;
+}
+
+.booking-service-content .bs-form .input-tel {
+    /*width: var(--booking-service-form-row-width-percent-of-right);*/
+    width: 43%;
+}
+```
+
+3. 일단은 wrapper안의 select를 input과 동일한 css를 준다.
+```css
+.booking-service-content .bs-form input,
+.booking-service-content .bs-form select {
+   
+}
+```
+![img.png](../ui/213.png)
+
+
+4. validate시, `.val()`의 값이 `==""`이면 선택해야한다고 띄운다.
+```js
+// 5) 상담시간 검증
+if($('#consultTime').val() === "" ){
+   $(".validate").text("상담 시간을 선택해주세요.");
+   return false;
+}
+```
+![img.png](../ui/214.png)

@@ -42,11 +42,11 @@
     --booking-service-tab-font-size: 16px;
     --booking-service-content-height: calc(var(--booking-service-height) - var(--booking-service-tab-height));
 
-    --booking-service-right : 3%;
-    --booking-service-bottom : 5%;
+    --booking-service-right : 2%;
+    --booking-service-bottom : 8%;
 
     --booking-service-color: #fff;
-    --booking-service-opacity: .8;
+    --booking-service-opacity: .9;
 
     --booking-service-form-row-width-percent-of-left: 38%;
     --booking-service-form-row-width-percent-of-right: 57%;
@@ -1704,7 +1704,7 @@ a {
 
 .booking-service-content .content-box {
     /*display: none;*/
-    padding: 2% 5%;
+    padding: 2% 3%;
 }
 
 .booking-service-content .bs-form {
@@ -1712,6 +1712,8 @@ a {
     justify-content: space-between;
 
     margin-top: 5px;
+
+    flex-wrap: wrap;
 }
 
 .booking-service-content .bs-form:not(:first-of-type) {
@@ -1897,13 +1899,14 @@ a {
 
 /* row 2 */
 /* input text */
-.booking-service-content .bs-form input {
+.booking-service-content .bs-form input,
+.booking-service-content .bs-form select {
     height: var(--booking-service-tab-height);
     border: 1px solid #ddd;
     border-radius: 6px;
 
     text-align: left;
-    padding-left: 5%;
+    padding-left: 3%;
 
     font-size: calc(var(--booking-service-tab-font-size) * .9);
     font-weight: bold;
@@ -1913,12 +1916,18 @@ a {
     /*outline: none;*/
 }
 
+.booking-service-content .bs-form .select-consultTime-wrapper {
+    width: 29%;
+}
+
 .booking-service-content .bs-form .input-name {
-    width: var(--booking-service-form-row-width-percent-of-left);
+    /*width: var(--booking-service-form-row-width-percent-of-left);*/
+    width: 24%;
 }
 
 .booking-service-content .bs-form .input-tel {
-    width: var(--booking-service-form-row-width-percent-of-right);
+    /*width: var(--booking-service-form-row-width-percent-of-right);*/
+    width: 43%;
 }
 
 /* validate 자리 */
@@ -1951,9 +1960,14 @@ a {
     color: #fff;
 }
 
+
+
+
+
 /* 예약 진료시간 p태그  */
 .bs-time {
     font-size: calc(var(--booking-service-tab-font-size) * .9);
     margin-top: 5px;
     letter-spacing: -0.04rem;
 }
+
