@@ -157,7 +157,7 @@ $(function () {
                 // $(".section2-bottom .swiper-name > span").animate({top: -offsetY}, 500);
                 // $(".section2-bottom .swiper-number > span").animate({top: -offsetY}, 500);
                 let fontLineHeightVw = 3.3;
-                let offsetY =  this.activeIndex * fontLineHeightVw;
+                let offsetY = this.activeIndex * fontLineHeightVw;
                 $(".section2-bottom .swiper-name > span").animate({top: -offsetY + "vw"}, 500);
                 $(".section2-bottom .swiper-number > span").animate({top: -offsetY + "vw"}, 500);
             }
@@ -174,10 +174,10 @@ $(function () {
     // - 일단 정지(scrollmagic에서 화면에 오면 시작 처리)
     section2Swiper.autoplay.stop();
     // - 자동재생 추가옵션: 마우스 올릴 때 일시중지 / 떼면 시작
-    section2Swiper.el.onmouseover = function(){
+    section2Swiper.el.onmouseover = function () {
         section2Swiper.autoplay.stop();
     }
-    section2Swiper.el.onmouseout = function(){
+    section2Swiper.el.onmouseout = function () {
         section2Swiper.autoplay.start();
     }
 
@@ -215,7 +215,6 @@ $(function () {
     controller.addScene(scene2);
 
 
-
     // section2 - middle with TimelineMax
     let scene3 = new ScrollMagic.Scene({
         triggerElement: ".trigger-section2",
@@ -232,20 +231,20 @@ $(function () {
     tm.add([
         new TweenMax(".middle-left", 1, {
             transform: "translateX(-100%)",
-            opacity:0
+            opacity: 0
         }),
         new TweenMax(".middle-right", 1, {
             transform: "translateX(100%)",
-            opacity:0
+            opacity: 0
         }),
         new TweenMax(".middle-text", 1, {
-            opacity:1,
-            delay:.2,
+            opacity: 1,
+            delay: .2,
         }),
     ]);
     tm.add(
         new TweenMax(".middle-center", 1, {
-            opacity:1,
+            opacity: 1,
         }),
     )
     scene3.setTween(tm);
@@ -262,7 +261,7 @@ $(function () {
         // console.log("swiper 시작")
         // section2Swiper.autoplay.start();
         // 추가) 내리는 스크롤("FORWARD")인지 아닌지 판단해서 play/stop
-        if( event.scrollDirection === "FORWARD") {
+        if (event.scrollDirection === "FORWARD") {
             // console.log("내림")
             section2Swiper.autoplay.start();
         } else {
@@ -310,22 +309,59 @@ $(function () {
 
 
     // booking service tab
+    let tabIndex = 0;
+    let namePostFix = '';
+
+    // 첫번째 tab을 제외하고 hide
+    $(".booking-service-content > div").eq(tabIndex).show().siblings().hide();
+
+    // 예약 tab 설정
+    $(".booking-service-tab > li > a").on('click', function () {
+        // 1) a의 index는 무조건 0이다. 형제 없음. -> parent인 li의 index를 파악해야한다.
+        let currentTabLi = $(this).parent();
+        // let currentIndex = currentTabLi.index();
+        tabIndex = currentTabLi.index();
+        namePostFix = tabIndex > 0 ? '_' + tabIndex : '';
+        // let currentContentDiv = $(".booking-service-content > div").eq(currentIndex);
+        let currentContentDiv = $(".booking-service-content > div").eq(tabIndex);
+
+        // 탭 클릭시 form요소들 초기화
+        $('.btn-select').text('클리닉 선택'); // custom select btn의 텍스트 초기화
+        $('input[name=GET_ClinicCode' + namePostFix + ']').val(""); // custom select hidden input value 초기화
+
+        $('input[name="GET_FirstYN' + namePostFix + '"]').prop('checked', false); // radio checked 제거
+
+        $('select[name="GET_ConsultTime' + namePostFix +'"]').prop('selectedIndex', 0); // select태그 0번째요소로 초기화
+
+        $('input[name="GET_Name' + namePostFix + '"]').val('');
+        $('input[name="GET_Tel' + namePostFix + '"]').val('');
+
+        $('.validate').text(''); // 검증 텍스트 초기화
+
+
+        // 2) li에 ".on" 추가, 나머지 삭제
+        currentTabLi.addClass("on").siblings().removeClass("on");
+
+        // 3) li의 index로, .eq(index)에 해당하는 content의 div를 show시킨다.
+        currentContentDiv.show().siblings().hide();
+    })
+
+
     // 1) 클리닉 select btn -> wrapper .open toggle
-    $('.select-clinic-wrapper .btn-select').on('click',function(){
+    $('.select-clinic-wrapper .btn-select').on('click', function () {
         $(this).parent().toggleClass('open');
     });
 
     // 2) 클리닉 select dropdown ul > li.active > a태그.clinic_code 클릭 -> 5가지 동작
-    $('.select-clinic-wrapper .clinic_code').on('click',function() {
-        console.log("click")
+    $('.select-clinic-wrapper .clinic_code').on('click', function () {
         let currentParent = $(this).parent(); /* li.active[value=] */
         let currentClinicText = $(this).text(); /* a.clinic_code*/
         // 1. 셀렉트 버튼의 텍스트변경
-        $('.btn-select').text( currentClinicText );
+        $('.btn-select').text(currentClinicText);
 
         // 2. li태그의 value="" -> hidden input으로 입력
-        $('input[name=GET_ClinicCode]').val(currentParent.val()); // tab 1 hidden input
-        $('input[name=GET_ClinicCode_CS]').val(currentParent.val()); // 2번재 tab도 동일한 값을 받음.
+        // $('input[name=GET_ClinicCode]').val(currentParent.val()); // tab 1 hidden input
+        $('input[name=GET_ClinicCode' + namePostFix + ']').val(currentParent.val()); // tab 1 hidden input
 
         // 3. 모든 a태그의부모인 li태그에 .active 삭제 후, 현재 li에만 active 추가
         // $('.select-clinic-wrapper .clinic_code').parent().removeClass('active');  // 모든 li에 .active 삭제
@@ -337,29 +373,30 @@ $(function () {
     });
 
     // 예약 버튼 with valdiate
-    $('.reserve').on('click',function(){
+    $('.reserve').on('click', function () {
+
         // 1) 클리닉 선택 검증 by hidden input
-        if($('input[name="GET_ClinicCode"]').val() === '10000' ){
+        if ($('input[name="GET_ClinicCode' + namePostFix + '"]').val() == '') {
             $(".validate").text("클리닉을 선택해주세요.");
             return false;
         }
         // 2) 초/재진 radio checked 검증
-        if($('input[name="GET_FirstYN"]').is(':checked') == false){
+        if ($('input[name="GET_FirstYN' + namePostFix + '"]').is(':checked') == false) {
             $(".validate").text("초진, 재진여부를 체크해주세요.");
             return false;
         }
         // 5) 상담시간 검증
-        if($('#consultTime').val() === "" ){
+        if ($('select[name="GET_ConsultTime' + namePostFix +'"]').val() === "") {
             $(".validate").text("상담 시간을 선택해주세요.");
             return false;
         }
         // 3) 이름 검증
-        if($('input[name="GET_Name"]').val().length < 2 ){
+        if ($('input[name="GET_Name' + namePostFix + '"]').val().length < 2) {
             $(".validate").text("이름을 입력해주세요.");
             return false;
         }
         // 4) 전화번호 검증 ( 번호최소 9글자 + 하이픈 1~3개)
-        if($('input[name="GET_Tel"]').val().length < 10 ){
+        if ($('input[name="GET_Tel' + namePostFix + '"]').val().length < 10) {
             $(".validate").text("연락처를 입력해주세요.");
             return false;
         }
