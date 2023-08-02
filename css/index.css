@@ -2058,8 +2058,7 @@ a {
 .booking-service-content .bs-form input,
 .booking-service-content .bs-form select,
 .booking-service-content-mobile .bs-form input,
-.booking-service-content-mobile .bs-form select
-{
+.booking-service-content-mobile .bs-form select {
     height: var(--booking-service-tab-height);
     border: 1px solid #ddd;
     border-radius: 6px;
