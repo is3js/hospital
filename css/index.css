@@ -63,7 +63,7 @@
     :root {
         --booking-service-height: fit-content; /* 300px */
 
-        --booking-service-tab-height: 35px;
+        --booking-service-tab-height: 28px;
 
         --booking-service-tab-font-size: 13px;
 
@@ -1748,7 +1748,7 @@ a {
     font-size: var(--booking-service-tab-font-size);
     color: #333;
 
-    border-radius: 10px 10px 0 0; /* 모바일 radius 약하게*/
+    border-radius:7px 7px 0 0; /* 모바일 radius 약하게*/
     /*border: 1px solid #e5e5e5; !* 모바일 보더 추가*!*/
     /*border-bottom: 0;*/
 
@@ -1798,7 +1798,7 @@ a {
 .booking-service-content-mobile {
     width: 100%;
 
-    border-radius: 10px;
+    border-radius: 7px;
     background: var(--booking-service-mobile-color);
 }
 
@@ -1825,6 +1825,7 @@ a {
 .bs-form {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
     margin-top: 5px;
 
@@ -2100,6 +2101,9 @@ a {
 .booking-service-content .bs-form .select-consultTime-wrapper,
 .booking-service-content-mobile .bs-form .select-consultTime-wrapper {
     width: 29%;
+
+    display: flex;
+    align-items: center;
 }
 
 .booking-service-content .bs-form .input-name,
