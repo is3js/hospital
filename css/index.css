@@ -1182,6 +1182,11 @@ a {
     }
 }
 
+.section2 > .notice {
+    width: 100%;
+    padding: 1% 5%;
+}
+
 /* 섹션2-top */
 .section2 .section2-top {
     /*padding: 50px 0;*/
