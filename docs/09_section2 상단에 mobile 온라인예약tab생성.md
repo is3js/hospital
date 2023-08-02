@@ -119,3 +119,28 @@
          value="Y">
 <label for="GET_FirstY_M">초진</label>
 ```
+
+5. 예약도 scroll + velocity를 적용해준다.
+```css
+/* 이전위치 잡아주기 */
+.booking-service-mobile {
+   /* velocity [이전 위치] 잡기 */
+   top: 10vw;
+   opacity: 0;
+}
+```
+```js
+    // 예약하기
+    let scene6 = new ScrollMagic.Scene({
+        triggerElement: ".booking-service-mobile",
+        triggerHook: "onEnter",
+        offset: 50,
+    });
+    scene6.setVelocity([".booking-service-mobile"], {
+        top: "0px",
+        opacity: "1"
+    }, {
+        duration: "300",
+    });
+    controller.addScene(scene6);
+```

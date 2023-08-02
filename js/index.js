@@ -286,10 +286,11 @@ $(function () {
     });
     controller.addScene(scene5);
 
+    // 예약하기
     let scene6 = new ScrollMagic.Scene({
         triggerElement: ".booking-service-mobile",
         triggerHook: "onEnter",
-        //duration: "100%", // velocity조합에서는 뺀다.
+        offset: 50,
     });
     scene6.setVelocity([".booking-service-mobile"], {
         top: "0px",
