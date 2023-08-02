@@ -1608,6 +1608,7 @@ a {
     /*background: #ddd;*/
     /*opacity: var(--booking-service-opacity);*/
 }
+
 @media screen and (min-width: 1200px){
     .booking-service {
         width: var(--booking-service-xl-width);
@@ -1637,7 +1638,12 @@ a {
     background: var(--booking-service-color);
 }
 
+.booking-service-mobile {
+    position: static;
 
+    margin: 0;
+    padding-top:10px; /* 모바일 추가*/
+}
 
 .booking-service-box {
     position: absolute;
@@ -1651,6 +1657,14 @@ a {
     height: var(--booking-service-height);
 }
 
+.booking-service-box-mobile {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: var(--booking-service-height);
+}
+
+
 .booking-service-tab {
     list-style: none !important;
     display: flex;
@@ -1662,7 +1676,34 @@ a {
     height: var(--booking-service-tab-height);
 }
 
-.booking-service-tab > li {
+.booking-service-tab-mobile {
+    list-style: none !important;
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    margin: 0;
+    padding: 0 5%; /* 모바일은 tab에 패딩 추가*/
+    height: var(--booking-service-tab-height);
+
+    position: relative;
+}
+
+.booking-service-tab-mobile:before {
+    content: '';
+    display: block;
+    width: 100%;
+
+    height: 1px;
+    background-color: #e5e5e5;
+
+    position: absolute;
+    left: 0;
+    bottom: -1px; /* 원본의 border 1px과 겹치게 하기 위해 1px 내림*/
+}
+
+.booking-service-tab > li,
+.booking-service-tab-mobile > li {
     flex: 1;
     text-align: center;
 }
@@ -1681,16 +1722,44 @@ a {
     cursor: pointer;
 }
 
+.booking-service-tab-mobile > li > a {
+    display: block; /* a태그를 flex-item 내 가득 채우기 */
+
+    line-height: var(--booking-service-tab-height);
+    font-size: var(--booking-service-tab-font-size);
+    color: #333;
+
+    border-radius: 5px 5px 0 0; /* 모바일 radius 약하게*/
+    border: 1px solid #e5e5e5; /* 모바일 보더 추가*/
+    /*border-bottom: 0;*/
+
+    cursor: pointer;
+}
+
 /* 예약  tab 글자 - .on일 때 */
 .booking-service-tab > li.on > a {
     background-color: var(--booking-service-color);
     color: #333;
 }
 
+.booking-service-tab-mobile > li.on > a {
+    background-color: var(--booking-service-color);
+    color: #333;
+
+    border-bottom: 1px solid #fff; /* 모바일에서는 흰색 bottom border를 넣어서, tab의 :before 선을 덮는다*/
+    position: relative; /* absolute의 before 선을 덮어쓰려면 relative로 바꿔줘야한다. */
+}
+
+
 /* 예약  tab 글자 - .on이 아닐 때 */
 .booking-service-tab > li:not(.on) > a {
     background-color: #00b3b2;
     color: #fff;
+}
+
+.booking-service-tab-mobile > li:not(.on) > a {
+    background-color: #f1f1f1;
+    color: #aaaaaa;
 }
 
 .booking-service-content {
@@ -1963,7 +2032,8 @@ a {
 }
 
 /* 예약 버튼 */
-.booking-service-box .btn-bs {
+.booking-service-box .btn-bs,
+.booking-service-box-mobile .btn-bs {
     width: 100%;
     height: var(--booking-service-tab-height);
     background: #82a8ff;

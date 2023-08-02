@@ -1345,8 +1345,8 @@ scene.setPin(".section1", {pushFollowers: false});
 // section1에 투명도 부여
 scene.setTween(".section1", 1, {opacity: .2})
 ```
-![img.png](163.png)
-![img.png](164.png)
+![img.png](../ui/163.png)
+![img.png](../ui/164.png)
 
 
 ### section2-top에 velocity 적용하기(이전위치 top 박고 -> 원래위치로 top 0 이동 + opacity )

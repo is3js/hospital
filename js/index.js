@@ -206,7 +206,7 @@ $(function () {
         //duration: "100%", // velocity조합에서는 뺀다.
     });
     // title velocity 설정
-    scene2.setVelocity([".section2-top>div", ".section2-top>div>p"], {
+    scene2.setVelocity([".booking-service-mobile", ".section2-top>div", ".section2-top>div>p"], {
         top: "0px",
         opacity: "1"
     }, {

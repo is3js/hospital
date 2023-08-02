@@ -82,7 +82,7 @@
     left: 0; /* 만약, content의 left여백이 있다면 그만큼 주기?! */
 
     display: block;
-    width: 300%; /* block이어도 화면 끝까지 안감. 직접 크게 줘야한다.*/
+    width: 88%; /* block이어도 화면 끝까지 안감. 직접 크게 줘야한다.*/
     height: calc(var(--booking-service-height) - var(--booking-service-tab-height));
 
     /* 임시 */
