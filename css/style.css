@@ -3,6 +3,11 @@
     font-size: 13px;
 }
 
+.fs-11 {
+    font-size: 11px;
+}
+
+
 /* 글자색 */
 .text-yellow{
     color: rgb(252, 255, 0);
