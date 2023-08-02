@@ -219,7 +219,9 @@ $(function () {
     let scene3 = new ScrollMagic.Scene({
         triggerElement: ".trigger-section2",
         triggerHook: "onLeave",
-        offset: $(".section2-top").height(),
+        // triggerElement: ".section2",
+        // triggerHook: "onEnter",
+        offset: $(".section2-top").height()-100,
         // duration: "100%"
         duration: "100%"
     });
