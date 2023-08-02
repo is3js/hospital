@@ -6,7 +6,7 @@
     --secondary-font-family: 'Noto Serif KR', sans-serif;
     --third-font-family: 'NanumSquare', sans-serif;
 
-    --color-main: #374e8c;
+    --color-main: #00b5b2;
     --color-submain: #FC5230;
 
     /* header-bottom(가운데) 설정 */
@@ -2190,7 +2190,7 @@ a {
 .booking-service-box-mobile .btn-bs {
     width: 100%;
     height: var(--booking-service-tab-height);
-    background: var(--color-main);
+    background: #374e8c;
 
     border: 0;
     border-radius: 8px;
@@ -2211,8 +2211,9 @@ a {
 
 .bs-time-mobile {
     font-size: calc(var(--booking-service-tab-font-size) * .8);
-    margin: 0;
-    margin-top: 5px;
+    font-weight: bold;
+    margin: 10px 0;
+    /*margin-top: 5px;*/
 
     text-align: center;
     letter-spacing: 0;
