@@ -1665,11 +1665,11 @@ a {
 }
 
 /* 이전위치 잡아주기 */
-.booking-service-mobile {
-    /* velocity [이전 위치] 잡기 */
-    top: 10vw;
-    opacity: 0;
-}
+/*.booking-service-mobile {*/
+/*    !* velocity [이전 위치] 잡기 *!*/
+/*    top: 10vw;*/
+/*    opacity: 0;*/
+/*}*/
 
 
 .booking-service-box {

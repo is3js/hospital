@@ -275,7 +275,8 @@ $(function () {
     // section2 - bottom  title with Velocity
     let scene5 = new ScrollMagic.Scene({
         triggerElement: ".section2-bottom",
-        triggerHook: "onEnter",
+        // triggerHook: "onEnter",
+        triggerHook: "onCenter",
         //duration: "100%", // velocity조합에서는 뺀다.
     });
     scene5.setVelocity([".section2-bottom > .section-title > div"], {
@@ -287,18 +288,18 @@ $(function () {
     controller.addScene(scene5);
 
     // 예약하기
-    let scene6 = new ScrollMagic.Scene({
-        triggerElement: ".booking-service-mobile",
-        triggerHook: "onEnter",
-        offset: 50,
-    });
-    scene6.setVelocity([".booking-service-mobile"], {
-        top: "0px",
-        opacity: "1"
-    }, {
-        duration: "300",
-    });
-    controller.addScene(scene6);
+    // let scene6 = new ScrollMagic.Scene({
+    //     triggerElement: ".booking-service-mobile",
+    //     triggerHook: "onEnter",
+    //     offset: 50,
+    // });
+    // scene6.setVelocity([".booking-service-mobile"], {
+    //     top: "0px",
+    //     opacity: "1"
+    // }, {
+    //     duration: "300",
+    // });
+    // controller.addScene(scene6);
 
 
 
