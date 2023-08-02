@@ -189,8 +189,8 @@ $(function () {
         // triggerElement: ".trigger-section1",
         triggerElement: ".section1",
         triggerHook: "onLeave",
-        duration: "100%",
-        // duration: "45%", // 모바일 고려해서 section1 duration
+        // duration: "100%",
+        duration: "45%", // 모바일 고려해서 section1 duration
     });
     // section1이 section2에 먹히도록
     scene.setPin(".section1", {pushFollowers: false});
@@ -285,6 +285,20 @@ $(function () {
         duration: "300",
     });
     controller.addScene(scene5);
+
+    let scene6 = new ScrollMagic.Scene({
+        triggerElement: ".booking-service-mobile",
+        triggerHook: "onEnter",
+        //duration: "100%", // velocity조합에서는 뺀다.
+    });
+    scene6.setVelocity([".booking-service-mobile"], {
+        top: "0px",
+        opacity: "1"
+    }, {
+        duration: "300",
+    });
+    controller.addScene(scene6);
+
 
 
     // section1 swiper
