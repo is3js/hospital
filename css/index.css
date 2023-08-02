@@ -1183,7 +1183,7 @@ a {
 }
 
 .section2 > .notice {
-    width: 100%;
+    width: 100% !important;
     padding: 1% 5%;
 }
 
