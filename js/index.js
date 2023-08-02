@@ -219,7 +219,7 @@ $(function () {
     let scene3 = new ScrollMagic.Scene({
         triggerElement: ".trigger-section2",
         triggerHook: "onLeave",
-        offset: $(".section2-top").height() + 30,
+        offset: $(".section2-top").height(),
         // duration: "100%"
         duration: "100%"
     });
@@ -276,7 +276,7 @@ $(function () {
     let scene5 = new ScrollMagic.Scene({
         triggerElement: ".section2-bottom",
         // triggerHook: "onEnter",
-        offset: 200, // 안주면 너무 빨리 뜬다.
+        offset: 50, // 안주면 너무 빨리 뜬다.
         triggerHook: "onCenter",
         //duration: "100%", // velocity조합에서는 뺀다.
     });
