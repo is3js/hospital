@@ -189,7 +189,7 @@ $(function () {
         // triggerElement: ".trigger-section1",
         triggerElement: ".section1",
         triggerHook: "onLeave",
-        duration: "100%",
+        duration: "80%",
         // duration: "45%", // 모바일 고려해서 section1 duration
     });
     // section1이 section2에 먹히도록
