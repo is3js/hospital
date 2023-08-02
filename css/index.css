@@ -1176,6 +1176,10 @@ a {
     .section2 > div {
         width: 85%;
     }
+
+    .section2 > .booking-service-mobile {
+        width: 100%;
+    }
 }
 
 /* 섹션2-top */
@@ -1756,7 +1760,8 @@ a {
     font-size: var(--booking-service-tab-font-size);
     color: #333;
 
-    border-radius:7px 7px 0 0; /* 모바일 radius 약하게*/
+    /*border-radius:7px 7px 0 0; !* 모바일 radius 약하게*!*/
+    border-radius:15px 15px 0 0; /* 모바일 radius 약하게*/
     /*border: 1px solid #e5e5e5; !* 모바일 보더 추가*!*/
     /*border-bottom: 0;*/
 
@@ -1806,7 +1811,8 @@ a {
 .booking-service-content-mobile {
     width: 100%;
 
-    border-radius: 7px;
+    /*border-radius: 7px;*/
+    border-radius: 0;
     background: var(--booking-service-mobile-color);
 }
 

@@ -120,27 +120,30 @@
 <label for="GET_FirstY_M">초진</label>
 ```
 
-5. 예약도 scroll + velocity를 적용해준다.
+5. 모바일에서는 w100%이 되게하고 radius를 제거하자
 ```css
-/* 이전위치 잡아주기 */
-.booking-service-mobile {
-   /* velocity [이전 위치] 잡기 */
-   top: 10vw;
-   opacity: 0;
+@media screen and (max-width: 991px) {
+    .section2 > div {
+        width: 85%;
+    }
+
+    .section2 > .booking-service-mobile {
+        width: 100%;
+    }
 }
 ```
-```js
-    // 예약하기
-    let scene6 = new ScrollMagic.Scene({
-        triggerElement: ".booking-service-mobile",
-        triggerHook: "onEnter",
-        offset: 50,
-    });
-    scene6.setVelocity([".booking-service-mobile"], {
-        top: "0px",
-        opacity: "1"
-    }, {
-        duration: "300",
-    });
-    controller.addScene(scene6);
+```css
+.booking-service-content-mobile {
+    width: 100%;
+
+    /*border-radius: 7px;*/
+    border-radius: 0;
+    background: var(--booking-service-mobile-color);
+}
+```
+```css
+.booking-service-tab-mobile > li > a {
+    /*border-radius:7px 7px 0 0; !* 모바일 radius 약하게*!*/
+    border-radius: 15px 15px 0 0; /* 모바일 radius 약하게*/
+}
 ```
