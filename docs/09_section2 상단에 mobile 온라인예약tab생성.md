@@ -110,4 +110,11 @@
 ![img.png](../ui/216.png)
 
 3. content 디자인 설정
-4. 
+4. radio는 id가 똑같은게 생기면 클릭이 안되니 id-label연결 id에 `_M`을 붙여준다
+```html
+  <input type="radio"
+         name="GET_FirstYN"
+         id="GET_FirstY_M"
+         value="Y">
+<label for="GET_FirstY_M">초진</label>
+```

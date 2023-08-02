@@ -44,10 +44,10 @@
     --booking-service-tab-font-size: 16px;
     --booking-service-content-height: calc(var(--booking-service-height) - var(--booking-service-tab-height));
 
-    --booking-service-right : 2%;
-    --booking-service-bottom : 8%;
-    --booking-service-mobile-right : 0;
-    --booking-service-mobile-bottom : 0;
+    --booking-service-right: 2%;
+    --booking-service-bottom: 8%;
+    --booking-service-mobile-right: 0;
+    --booking-service-mobile-bottom: 0;
 
     --booking-service-color: #fff;
     --booking-service-opacity: .9;
@@ -1052,7 +1052,7 @@ a {
     /*opacity: .5;*/
 }
 
-@media screen and (max-width: 991px){
+@media screen and (max-width: 991px) {
     .section1 {
         height: 100vh;
     }
@@ -1589,7 +1589,7 @@ a {
 
 /* 예약 */
 .section1 {
-    position: relative!important;
+    position: relative !important;
 }
 
 /* 예약 투명색 전체 박스 box 280 */
@@ -1609,12 +1609,13 @@ a {
     /*opacity: var(--booking-service-opacity);*/
 }
 
-@media screen and (min-width: 1200px){
+@media screen and (min-width: 1200px) {
     .booking-service {
         width: var(--booking-service-xl-width);
     }
 }
-@media screen and (min-width: 1400px){
+
+@media screen and (min-width: 1400px) {
     .booking-service {
         width: var(--booking-service-xxl-width);
     }
@@ -1627,7 +1628,7 @@ a {
     position: absolute;
     bottom: 0;
     /*left: 0;*/ /* content의 border radius를 뒤에서 삐져나와서 약간 이동*/
-    left:20%;
+    left: 20%;
 
     display: block;
     width: 88%; /* block이어도 화면 끝까지 안감. 직접 크게 줘야한다.*/
@@ -1642,7 +1643,7 @@ a {
     position: static;
 
     margin: 0;
-    padding-top:10px; /* 모바일 추가*/
+    padding-top: 10px; /* 모바일 추가*/
 }
 
 .booking-service-box {
@@ -1743,10 +1744,10 @@ a {
 }
 
 .booking-service-tab-mobile > li.on > a {
-    background-color: var(--booking-service-color);
-    color: #333;
+    background-color: var(--color-main);
+    color: #fff;
 
-    border-bottom: 1px solid #fff; /* 모바일에서는 흰색 bottom border를 넣어서, tab의 :before 선을 덮는다*/
+    border-bottom: 1px solid var(--color-main); /* 모바일에서는 흰색 bottom border를 넣어서, tab의 :before 선을 덮는다*/
     position: relative; /* absolute의 before 선을 덮어쓰려면 relative로 바꿔줘야한다. */
 }
 
@@ -1776,6 +1777,12 @@ a {
     /*background-color: blue;*/
 }
 
+.booking-service-content-mobile {
+    width: 100%;
+
+    border-radius: 0 0 15px 15px;
+    background: var(--color-main);
+}
 
 .blind {
     visibility: hidden;
@@ -1793,7 +1800,11 @@ a {
     padding: 2% 3%;
 }
 
-.booking-service-content .bs-form {
+.booking-service-content-mobile .content-box-mobile {
+    padding: 2% 3%;
+}
+
+.bs-form {
     display: flex;
     justify-content: space-between;
 
@@ -1802,7 +1813,7 @@ a {
     flex-wrap: wrap;
 }
 
-.booking-service-content .bs-form:not(:first-of-type) {
+.bs-form:not(:first-of-type) {
     margin-top: 10px;
 }
 
@@ -1811,11 +1822,31 @@ a {
     /*width: 40%;*/
     width: var(--booking-service-form-row-width-percent-of-left);
 
-    position: relative; /* for dropdown 영역 div.select-clicic*/
+    position: relative; /* for dropdown 영역 div.select-clinic*/
 }
 
 /* 예약 between 1 드랍다운 버튼 */
 .select-clinic-wrapper .btn-select {
+    display: inline-block;
+    position: relative; /* for after select bg icon */
+    width: 100%;
+    height: var(--booking-service-tab-height);
+
+    border: 1px solid #ddd;
+    border-radius: 6px;
+
+    text-align: left;
+    padding-left: 10%;
+    font-size: calc(var(--booking-service-tab-font-size) * .9);
+    font-weight: bold;
+    color: #333;
+    letter-spacing: -0.09rem;
+
+    background: #fff;
+    cursor: pointer;
+}
+
+.select-clinic-wrapper .btn-select-mobile {
     display: inline-block;
     position: relative; /* for after select bg icon */
     width: 100%;
@@ -1857,12 +1888,34 @@ a {
     background-position: 50% 100%;
 }
 
+.select-clinic-wrapper .btn-select-mobile:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    display: block;
+    width: calc(var(--booking-service-tab-height) * .8);
+    height: calc(var(--booking-service-tab-height) * .8);
+
+    border-radius: 6px;
+
+    background: url(../images/main_section/sel-arrb.png) no-repeat 50% 50%;
+}
+
+.select-clinic-wrapper.open .btn-select-mobile:after {
+    transform: rotate(180deg);
+    background-position: 50% 100%;
+}
+
 /* 예약 select버튼 dropdown 부모 wrapper에 .open시 보이게 됨. */
-.select-clinic-wrapper .select-clinic {
+.select-clinic-wrapper .select-clinic,
+.select-clinic-wrapper .select-clinic-mobile {
     display: none;
 }
 
-.select-clinic-wrapper.open .select-clinic {
+.select-clinic-wrapper.open .select-clinic,
+.select-clinic-wrapper.open .select-clinic-mobile {
     display: block;
 }
 
@@ -1878,7 +1931,21 @@ a {
     z-index: 999999;
 }
 
-.select-clinic ul {
+.select-clinic-wrapper .select-clinic-mobile {
+    position: absolute;
+    top: 50px;
+    left: 0;
+
+    width: 350px;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 0 9px rgba(0, 0, 0, 0.14);
+    z-index: 999999;
+}
+
+
+.select-clinic ul,
+.select-clinic-mobile ul {
     list-style: none;
 
     display: flex;
@@ -1889,7 +1956,8 @@ a {
     margin: 0;
 }
 
-.select-clinic li {
+.select-clinic li,
+.select-clinic-mobile li {
     width: 25%;
 
     text-align: center;
@@ -1897,7 +1965,8 @@ a {
     padding-bottom: 10px;
 }
 
-.select-clinic li a {
+.select-clinic li a,
+.select-clinic-mobile li a {
     display: inline-block;
     font-size: calc(var(--booking-service-tab-font-size) * .9);
     padding: 2%;
@@ -1905,7 +1974,9 @@ a {
 
 
 .select-clinic li:hover a,
-.select-clinic li.active a {
+.select-clinic li.active a,
+.select-clinic-mobile li:hover a,
+.select-clinic-mobile li.active a {
     font-weight: 700;
     border-bottom: 1px solid #333;
 }
@@ -1964,13 +2035,12 @@ a {
 }
 
 
-
 .radioCheck label::before {
     content: '';
     /*display: inline-block;*/
     /*text-align: center;*/
-    width: calc(var(--booking-service-tab-height)*.5);
-    height: calc(var(--booking-service-tab-height)*.5);;
+    width: calc(var(--booking-service-tab-height) * .5);
+    height: calc(var(--booking-service-tab-height) * .5);;
 
     margin-right: 7px;
 
@@ -1986,7 +2056,10 @@ a {
 /* row 2 */
 /* input text */
 .booking-service-content .bs-form input,
-.booking-service-content .bs-form select {
+.booking-service-content .bs-form select,
+.booking-service-content-mobile .bs-form input,
+.booking-service-content-mobile .bs-form select
+{
     height: var(--booking-service-tab-height);
     border: 1px solid #ddd;
     border-radius: 6px;
@@ -2002,16 +2075,19 @@ a {
     /*outline: none;*/
 }
 
-.booking-service-content .bs-form .select-consultTime-wrapper {
+.booking-service-content .bs-form .select-consultTime-wrapper,
+.booking-service-content-mobile .bs-form .select-consultTime-wrapper {
     width: 29%;
 }
 
-.booking-service-content .bs-form .input-name {
+.booking-service-content .bs-form .input-name,
+.booking-service-content-mobile .bs-form .input-name {
     /*width: var(--booking-service-form-row-width-percent-of-left);*/
     width: 24%;
 }
 
-.booking-service-content .bs-form .input-tel {
+.booking-service-content .bs-form .input-tel,
+.booking-service-content-mobile .bs-form .input-tel {
     /*width: var(--booking-service-form-row-width-percent-of-right);*/
     width: 43%;
 }
@@ -2026,6 +2102,20 @@ a {
     color: #fd4d4d;
     line-height: 20px;
     font-size: 13px;
+
+    background: url("../images/main_section/ico-i.png") no-repeat 0 2%;
+    padding-left: 7%;
+}
+
+.bs-validate-mobile {
+    height: 30px;
+    padding-top: 3px;
+}
+
+.bs-validate-mobile .validate {
+    color: #fcc7c7;
+    line-height: 20px;
+    font-size: 11px;
 
     background: url("../images/main_section/ico-i.png") no-repeat 0 2%;
     padding-left: 7%;
@@ -2048,13 +2138,18 @@ a {
 }
 
 
-
-
-
 /* 예약 진료시간 p태그  */
 .bs-time {
     font-size: calc(var(--booking-service-tab-font-size) * .9);
     margin-top: 5px;
     letter-spacing: -0.04rem;
+}
+
+.bs-time-mobile {
+    font-size: calc(var(--booking-service-tab-font-size) * .9);
+    margin: 0;
+    margin-top: 5px;
+    letter-spacing: -0.04rem;
+    color: white;
 }
 
