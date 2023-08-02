@@ -42,7 +42,9 @@
     --booking-service-height: 260px; /* 300px */
     --booking-service-tab-height: 40px;
     --booking-service-tab-font-size: 16px;
+    --booking-service-letter-spacing: -0.09rem;
     --booking-service-content-height: calc(var(--booking-service-height) - var(--booking-service-tab-height));
+
 
     --booking-service-right: 2%;
     --booking-service-bottom: 8%;
@@ -65,6 +67,8 @@
         --booking-service-tab-font-size: 13px;
 
         --booking-service-content-height: calc(var(--booking-service-height) - var(--booking-service-tab-height));
+
+        --booking-service-letter-spacing: 0;
     }
 
 }
@@ -1853,7 +1857,8 @@ a {
     font-size: calc(var(--booking-service-tab-font-size) * .9);
     font-weight: bold;
     color: #333;
-    letter-spacing: -0.09rem;
+    /*letter-spacing: -0.09rem;*/
+    letter-spacing: var(--booking-service-letter-spacing);
 
     background: #fff;
     cursor: pointer;
@@ -1873,7 +1878,9 @@ a {
     font-size: calc(var(--booking-service-tab-font-size) * .9);
     font-weight: bold;
     color: #333;
-    letter-spacing: -0.09rem;
+    /*letter-spacing: -0.09rem;*/
+    letter-spacing: var(--booking-service-letter-spacing);
+
 
     background: #fff;
     cursor: pointer;
@@ -2082,7 +2089,9 @@ a {
     font-size: calc(var(--booking-service-tab-font-size) * .9);
     font-weight: bold;
     color: #333;
-    letter-spacing: -0.09rem;
+    /*letter-spacing: -0.09rem;*/
+    letter-spacing: var(--booking-service-letter-spacing);
+
 
     /*outline: none;*/
 }
@@ -2161,7 +2170,9 @@ a {
     font-size: calc(var(--booking-service-tab-font-size) * .9);
     margin: 0;
     margin-top: 5px;
-    letter-spacing: -0.04rem;
+
+    text-align: center;
+    letter-spacing: 0;
     color: white;
 }
 
