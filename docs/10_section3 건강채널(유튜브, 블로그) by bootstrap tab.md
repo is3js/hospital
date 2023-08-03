@@ -104,7 +104,7 @@ controller.addScene(scene6);
 
 6. `ul.nav-tabs > li > a`로 글자크기를 조정해준다.
    - **활성화되기 전 기본 상태를 처리한다고 생각한다.**
-   - **border:none을 해줘야 둘러싼 border가 active/hover시에 안나타난다.**
+   - **`border:none`을 해줘야 둘러싼 border가 active/hover시에 안나타난다.**
 ```css
 .section3 .media-box .nav {
     font-size: 13px;
@@ -118,7 +118,32 @@ controller.addScene(scene6);
    border: none;
 }
 ```
+![img.png](../ui/218.png)
 
-7. a에 대해 `a.active`와 `:hover, :focus`를 설정해주면 된다.
-   - **hover시에는 border를 제거하면 위치가 바뀔 수 있으니 `border-color:transparent`를 넣어주자.**
+7. `ul.nav-tabs`의 아래border를 제거해주고, **각 `a태그`에 `rounded-pill` + `bg-gray`를 걸어준다.**
+   - 추가로 `me-2`로 간격을 벌려주고, `py-1, px-3`로 padding을 좁혀준다.
+```css
+/* 탭 기본border 삭제 */
+.section3 .media-box .nav-tabs {
+    border: none;
+}
+```
+```html
+<!--<a class="nav-link active"-->
+<a class="nav-link active rounded-pill bg-gray me-2 py-1 px-3"
+   id="ex1-tab-1"
+   data-bs-toggle="tab"
+   href="#tabs-youtube"
+   role="tab"
+>
+```
+```css
+/* 활성화(a.active) tab 글자 */
+.section3 .media-box .nav-tabs > li > a.active {
+    /*border-bottom: 2px solid var(--color-main)!important;*/
+    background-color: var(--color-main);
 
+    color: #fff;
+}
+```
+![img.png](../ui/219.png)

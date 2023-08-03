@@ -2223,6 +2223,7 @@ a {
 
 
 .section3 {
+    width: 100%;
     position: relative; /* */
     z-index: 666;
     background: #fff;
@@ -2243,6 +2244,11 @@ a {
     padding: 10px 0;
 }
 
+/* 탭 기본border 삭제 */
+.section3 .media-box .nav-tabs {
+    border: none;
+}
+
 /* 활성화되기 전, tab 글자 */
 .section3 .media-box .nav-tabs > li > a {
     font-size: 13px;
@@ -2250,26 +2256,12 @@ a {
 
     border: none;
 }
-.section3 .media-box .nav-tabs > li > a:hover,
-.section3 .media-box .nav-tabs > li > a:focus {
-}
 
 /* 활성화(a.active) tab 글자 */
 .section3 .media-box .nav-tabs > li > a.active {
     /*border-bottom: 2px solid var(--color-main)!important;*/
-
     background-color: var(--color-main);
 
     color: #fff;
-    /*font-weight: bold;*/
 }
 
-/*.section3 .media-box .nav-tabs > li > a.focus,*/
-/*.section3 .media-box .nav-tabs > li > a:hover {*/
-/*    border: none;*/
-/*    border-radius: 0;*/
-/*}*/
-
-.section3 .media-box .nav-tabs {
-    border: none;
-}
