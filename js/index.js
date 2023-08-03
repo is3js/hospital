@@ -467,6 +467,18 @@ $(function () {
 
     });
 
+    // section3 - title with Velocity
+    let scene6 = new ScrollMagic.Scene({
+        triggerElement: ".section3",
+        triggerHook: "onEnter",
+    });
+    scene6.setVelocity([".section3 > .section-title > div"], {
+        top: "0px",
+        opacity: "1"
+    }, {
+        duration: "300",
+    });
+    controller.addScene(scene6);
 
 
 })
