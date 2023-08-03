@@ -221,7 +221,7 @@ $(function () {
         triggerHook: "onLeave",
         // triggerElement: ".section2",
         // triggerHook: "onEnter",
-        offset: $(".section2-top").height()-100,
+        offset: $(".section2-top").height()-80,
         // duration: "100%"
         duration: "100%"
     });
@@ -333,6 +333,8 @@ $(function () {
 
     // 첫번째 tab을 제외하고 hide
     $(".booking-service-content > div").eq(tabIndex).show().siblings().hide();
+    // - 모바일
+    $(".booking-service-content-mobile > div").eq(tabIndex).show().siblings().hide();
 
     // 예약 tab 설정
     $(".booking-service-tab > li > a").on('click', function () {
@@ -365,9 +367,44 @@ $(function () {
         currentContentDiv.show().siblings().hide();
     })
 
+    // 모바일
+    $(".booking-service-tab-mobile > li > a").on('click', function () {
+        // 1) a의 index는 무조건 0이다. 형제 없음. -> parent인 li의 index를 파악해야한다.
+        let currentTabLi = $(this).parent();
+        // let currentIndex = currentTabLi.index();
+        tabIndex = currentTabLi.index();
+        namePostFix = tabIndex > 0 ? '_' + tabIndex : '';
+        // let currentContentDiv = $(".booking-service-content > div").eq(currentIndex);
+        let currentContentDiv = $(".booking-service-content-mobile > div").eq(tabIndex);
+
+        // 탭 클릭시 form요소들 초기화
+        $('.btn-select-mobile').text('클리닉 선택'); // custom select btn의 텍스트 초기화
+        $('input[name=GET_ClinicCode' + namePostFix + ']').val(""); // custom select hidden input value 초기화
+
+        $('input[name="GET_FirstYN' + namePostFix + '"]').prop('checked', false); // radio checked 제거
+
+        $('select[name="GET_ConsultTime' + namePostFix +'"]').prop('selectedIndex', 0); // select태그 0번째요소로 초기화
+
+        $('input[name="GET_Name' + namePostFix + '"]').val('');
+        $('input[name="GET_Tel' + namePostFix + '"]').val('');
+
+        $('.validate').text(''); // 검증 텍스트 초기화
+
+
+        // 2) li에 ".on" 추가, 나머지 삭제
+        currentTabLi.addClass("on").siblings().removeClass("on");
+
+        // 3) li의 index로, .eq(index)에 해당하는 content의 div를 show시킨다.
+        currentContentDiv.show().siblings().hide();
+    })
+
 
     // 1) 클리닉 select btn -> wrapper .open toggle
     $('.select-clinic-wrapper .btn-select').on('click', function () {
+        $(this).parent().toggleClass('open');
+    });
+    // - 모바일
+    $('.select-clinic-wrapper .btn-select-mobile').on('click', function () {
         $(this).parent().toggleClass('open');
     });
 
@@ -376,7 +413,9 @@ $(function () {
         let currentParent = $(this).parent(); /* li.active[value=] */
         let currentClinicText = $(this).text(); /* a.clinic_code*/
         // 1. 셀렉트 버튼의 텍스트변경
-        $('.btn-select').text(currentClinicText);
+        $('.btn-select:visible').text(currentClinicText);
+        // - 모바일
+        $('.btn-select-mobile:visible').text(currentClinicText);
 
         // 2. li태그의 value="" -> hidden input으로 입력
         // $('input[name=GET_ClinicCode]').val(currentParent.val()); // tab 1 hidden input
@@ -391,34 +430,40 @@ $(function () {
         $('.select-clinic-wrapper').removeClass('open');
     });
 
+
     // 예약 버튼 with valdiate
     $('.reserve').on('click', function () {
 
         // 1) 클리닉 선택 검증 by hidden input
-        if ($('input[name="GET_ClinicCode' + namePostFix + '"]').val() == '') {
+        if ($('input[name="GET_ClinicCode' + namePostFix + '"]:visible').val() == '') {
             $(".validate").text("클리닉을 선택해주세요.");
             return false;
         }
         // 2) 초/재진 radio checked 검증
-        if ($('input[name="GET_FirstYN' + namePostFix + '"]').is(':checked') == false) {
+        if ($('input[name="GET_FirstYN' + namePostFix + '"]:visible').is(':checked') == false) {
             $(".validate").text("초진, 재진여부를 체크해주세요.");
             return false;
         }
+
         // 5) 상담시간 검증
-        if ($('select[name="GET_ConsultTime' + namePostFix +'"]').val() === "") {
+        if ($('select[name="GET_ConsultTime' + namePostFix +'"]:visible').val() === "") {
             $(".validate").text("상담 시간을 선택해주세요.");
             return false;
         }
         // 3) 이름 검증
-        if ($('input[name="GET_Name' + namePostFix + '"]').val().length < 2) {
+        if ($('input[name="GET_Name' + namePostFix + '"]:visible').val().length < 2) {
             $(".validate").text("이름을 입력해주세요.");
             return false;
         }
         // 4) 전화번호 검증 ( 번호최소 9글자 + 하이픈 1~3개)
-        if ($('input[name="GET_Tel' + namePostFix + '"]').val().length < 10) {
-            $(".validate").text("연락처를 입력해주세요.");
+        if ($('input[name="GET_Tel' + namePostFix + '"]:visible').val().length < 10) {
+            $(".validate:visible").text("연락처를 입력해주세요.");
             return false;
         }
+
+        // 검증다통과시 .validate 텍스트 돌려놓기
+        $(".validate:visible").text("");
+
 
     });
 

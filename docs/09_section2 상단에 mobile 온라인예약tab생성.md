@@ -147,3 +147,56 @@
     border-radius: 15px 15px 0 0; /* 모바일 radius 약하게*/
 }
 ```
+
+6. jquery에 모바일버전 추가하기
+```js
+    // 첫번째 tab을 제외하고 hide
+    $(".booking-service-content > div").eq(tabIndex).show().siblings().hide();
+    // - 모바일
+    $(".booking-service-content-mobile > div").eq(tabIndex).show().siblings().hide();
+```
+```js
+    // 모바일
+    $(".booking-service-tab-mobile > li > a").on('click', function () {
+```
+```js
+    // - 모바일
+    $('.select-clinic-wrapper .btn-select-mobile').on('click', function () {
+        $(this).parent().toggleClass('open');
+    });
+```
+- 클리닉에 대해서는 내부에서 text만 모바일 셀렉트 버튼에 처리해준다.
+```js
+    $('.select-clinic-wrapper .clinic_code').on('click', function () {
+        // - 모바일
+        $('.btn-select-mobile').text(currentClinicText);
+```
+
+7. **select태그는, 기존input들은 `name공통` -> 모바일에 id만 달라도 검증시, 1개만 추출되어 검사됨인데, `select태그의 경우, name으로 추출시, pc 태그까지 복수로 잡힌다`**
+   - **그래서 찾아낸 방법이 `:visible`로 `현재 화면에 보이는 태그만 필터링`하도록 하면 1개만 잡히며, 모든 태그에 추가해준다.**
+```js
+  // 5) 상담시간 검증
+  if ($('select[name="GET_ConsultTime' + namePostFix +'"]:visible').val() === "") {
+      $(".validate").text("상담 시간을 선택해주세요.");
+      return false;
+  }
+```
+```js
+        // 1) 클리닉 선택 검증 by hidden input
+        if ($('input[name="GET_ClinicCode' + namePostFix + '"]:visible').val() == '') {
+        // 2) 초/재진 radio checked 검증
+        if ($('input[name="GET_FirstYN' + namePostFix + '"]:visible').is(':checked') == false) {
+        // 3) 이름 검증
+        if ($('input[name="GET_Name' + namePostFix + '"]:visible').val().length < 2) {
+        // 4) 전화번호 검증 ( 번호최소 9글자 + 하이픈 1~3개)
+        if ($('input[name="GET_Tel' + namePostFix + '"]:visible').val().length < 10) {
+        // 검증다통과시 .validate 텍스트 돌려놓기
+        $(".validate:visible").text("");
+```
+8. 추가로 pc와 모바일이 공통으로 사용되는 곳에 visible을 달아서 처리해준다.
+```js
+// 1. 셀렉트 버튼의 텍스트변경
+$('.btn-select:visible').text(currentClinicText);
+// - 모바일
+$('.btn-select-mobile:visible').text(currentClinicText);
+```

@@ -1952,7 +1952,7 @@ a {
 
 .select-clinic-wrapper.open .btn-select-mobile:after {
     transform: rotate(180deg);
-    background-position: 50% 100%;
+    background-position: 50% 75%;
 }
 
 /* 예약 select버튼 dropdown 부모 wrapper에 .open시 보이게 됨. */
@@ -1983,7 +1983,7 @@ a {
     top: 50px;
     left: 0;
 
-    width: 350px;
+    width: 150%;
     background: #fff;
     border-radius: 6px;
     box-shadow: 0 0 9px rgba(0, 0, 0, 0.14);
