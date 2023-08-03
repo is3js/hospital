@@ -1980,7 +1980,7 @@ a {
 
 .select-clinic-wrapper .select-clinic-mobile {
     position: absolute;
-    top: 50px;
+    top: 40px;
     left: 0;
 
     width: 150%;
@@ -2190,7 +2190,7 @@ a {
 .booking-service-box-mobile .btn-bs {
     width: 100%;
     height: var(--booking-service-tab-height);
-    background: #374e8c;
+    background: #12887a;
 
     border: 0;
     border-radius: 8px;
@@ -2210,13 +2210,13 @@ a {
 }
 
 .bs-time-mobile {
-    font-size: calc(var(--booking-service-tab-font-size) * .8);
+    font-size: calc(var(--booking-service-tab-font-size) * .9);
     font-weight: bold;
     margin: 10px 0;
     /*margin-top: 5px;*/
 
     text-align: center;
     letter-spacing: 0;
-    color: white;
+    color: #222;
 }
 

@@ -200,3 +200,125 @@ $('.btn-select:visible').text(currentClinicText);
 // - 모바일
 $('.btn-select-mobile:visible').text(currentClinicText);
 ```
+
+9. 이제 검증후 처리(추가 ajax 처리)는 나중에 홈페이지를 참고한다.
+```js
+$('.reserv').on('click',function(){
+		if($('input[name="GET_BCode'+counseling_gubun+'"]').val() === '10000' ){
+			$(".validate").text("병의원을 선택해주세요.");
+			return false;
+		}
+
+		if($('input[name="GET_FirstYN'+counseling_gubun+'"]').is(':checked') == false){
+			$(".validate").text("초진, 재진여부를 체크해주세요.");
+			return false;
+		}
+
+		if($('input[name="GET_Name'+counseling_gubun+'"]').val().length < 1 ){
+			$(".validate").text("이름을 입력해주세요.");
+			return false;
+		}
+
+		if($('input[name="GET_Tel'+counseling_gubun+'"]').val().length < 9 ){
+			$(".validate").text("연락처를 입력해주세요.");
+			return false;
+		}
+
+		//숫자만 체크
+		var tel_check = /^[0-9]*$/;
+		if( tel_check.test( $('input[name="GET_Tel'+counseling_gubun+'"]').val()) == false ) {
+			$(".validate").text("연락처는 숫자만 입력 가능합니다.");
+			return false;
+		}
+
+		$.ajax({
+			url : '/inc/MainReserveSpam_ajax.asp',
+			type : 'POST',
+			data : { 
+				GET_Tel : escape($('input[name="GET_Tel'+counseling_gubun+'"]').val()), 
+				TABGUBUN : tabGubun
+			},
+			success : function(result) {
+				
+				if(!result){
+
+				} else {
+					
+					if( result == "1") {
+						// 스팸차단메세지
+						if(tabGubun == "CS") {
+							$('#txtGubun').text('입원 상담 신청');
+						} else {
+							$('#txtGubun').text('온라인 예약 접수');
+						}
+
+						$('.online-spamCheck').show();
+						$('body').addClass('is-layer-pop');
+					} 
+					else if (result == "2") {
+						// 예약 대기열 메세지
+						if(tabGubun == "CS") {
+							$('#txtGubun2').text('빠른 상담');
+						} else {
+							$('#txtGubun2').text('빠른 예약');
+						}
+
+						$('#checkNum').text($('input[name="GET_Tel'+counseling_gubun+'"]').val());
+						$('.online-waitCheck').show();
+						$('body').addClass('is-layer-pop');
+					}
+					else {
+						// 휴대폰 번호 인증 오픈
+						goAuthCell('main', counseling_gubun);
+					}
+				}
+			}
+		});
+	});
+
+	function goAuthCell(cd, gb){
+		$.ajax({
+			url: "/popup/authCell/authCell.asp",
+			type: "POST",
+			timeout: 10000,
+			data: { cd: cd, gb: gb, cell: $('input[name="GET_Tel'+gb+'"]').val() },
+			dataType: "html",
+			success: function(data){
+				$("#AUTH_Cell").val('');
+				$(".validate").text("");
+
+				$("#jasangWrap").append(data);
+			},
+			error: function(xhr){
+				//alert('['+xhr.status+'] 서버전송오류가 발생했습니다.');
+			}
+		});
+	}
+
+	//메인 딤드 팝업(로드영역 클래스, 처리대상, 검색어) - 쿠키체크
+	if( getCkie("pop_01") != "Y" ) {
+		load_list("event-slider","MainPopList");
+	}
+
+	//메인 TOP 롤링배너
+	load_list("main-visual","MainTopList");
+
+	//메인 의료진소개
+	load_list("doctor-infos-items", "MainDoctorList");
+
+	//자생건강영상
+	load_list("channel-slide","MainTvList", "치료법");
+
+	//나눔소식, 자생소식
+	load_list("contribution","MainNewsList");
+
+	//공지사항, 언론보도
+	load_list("news-list","MainNoticePress");
+
+	//건강정보
+	load_list("health","MainHealth");
+
+	//카드뷰
+	load_list("cardview-area","MainCardList", "");
+
+```
