@@ -481,33 +481,51 @@ $(function () {
 
 
     /* 건강채널 swiper */
-    var section3Swiper = new Swiper('.section3  .swiper-container', {
-        slidesPerView: 2.5,
-        slidesPerGroup: 2.5,
-        spaceBetween: '2%',
-        breakpoints: {
-            991: {
-                slidesPerView: 1.5,
-                slidesPerGroup: 1.5,
-                spaceBetween: '10%'
+    function initSection3Swiper(tabIndex) {
+        console.log(tabIndex)
+        console.log($('.section3').find('.swiper-container').eq(tabIndex))
+        new Swiper($('.section3').find('.swiper-container').eq(tabIndex), {
+            slidesPerView: 2.5,
+            slidesPerGroup: 2.5,
+            spaceBetween: '3%',
+            breakpoints: {
+                991: {
+                    slidesPerView: 1.5,
+                    slidesPerGroup: 1.5,
+                    spaceBetween: '10%'
+                },
             },
-        },
 
-        on: {
-            slideChangeTransitionStart: function () {
-                console.log(this.slides.length);
-                console.log(this.activeIndex);
-                console.log(this.params.slidesPerView);
-                if (this.isEnd || this.slides.length - .5 === this.activeIndex + this.params.slidesPerView) {
-                    $('.section3 .tab-pane').addClass('hide-before');
-                    // this.navigation.$nextEl.css('display', 'none');
-                } else {
-                    $('.section3 .tab-pane').removeClass('hide-before');
-                    // this.navigation.$nextEl.css('display', 'block');
-                }
-            },
-        }
+            on: {
+                slideChangeTransitionStart: function () {
 
+                    if (this.isEnd || this.slides.length - .5 === this.activeIndex + this.params.slidesPerView) {
+                        // $('.section3 .tab-pane').addClass('hide-before');
+                        $('.section3').find('.tab-pane').eq(tabIndex).addClass('hide-before');
+                        // this.navigation.$nextEl.css('display', 'none');
+                    } else {
+                        // $('.section3 .tab-pane').removeClass('hide-before');
+                        $('.section3').find('.tab-pane').eq(tabIndex).removeClass('hide-before');
+                        // this.navigation.$nextEl.css('display', 'block');
+                    }
+                },
+            }
+
+        });
+    }
+
+    initSection3Swiper(0);
+
+
+    // section3 tab 클릭시 index 찾기 리스너
+    $('.section3 a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
+        var targetTabHref = $(e.target).attr('href');
+        var targetPanel = $(targetTabHref)
+        var AllPanels = $('.section3 .tab-content').find('.tab-pane');
+
+        var index = AllPanels.index(targetPanel);
+
+        initSection3Swiper(index);
     });
 
 })

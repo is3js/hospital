@@ -352,6 +352,11 @@ span.play {
 
 ![img.png](../ui/228.png)
 
+- tab-pane에서는 `px-0`을 줘서 넓힌다.
+```html
+<div class="tab-pane fade show active position-relative px-0"
+```
+
 10. swiper가 끝이면 사라지도록 js에서 처리해주기
    - nextEl관련 문서에서 조건문을 확인한다
    - https://www.swiper.com.cn/api/navigation/304.html
@@ -387,3 +392,22 @@ var section3Swiper = new Swiper('.section3  .swiper-container', {
 ![img.png](../ui/229.png)
 ![img_1.png](../ui/230.png)
 ![img_2.png](../ui/231.png)
+
+11. **boostrap tab클릭시마다, swiper를 새롭게 초기화해줘야한다.**
+    1. .section3안의 tab의 클릭요소인 `a[data-bs-toggle="tab"]`요소에 .on() 이벤트리스너를 다는데
+    2. **boostrap5에서 탭이 보일때 작동하는 `shown.bs.tab`를 .on()에 달고, e를 받는다.**
+    3. `e.target`으로 걸리는 a태그에서 **tab의 id가 달린 `href` attr**값을 가져온다.
+    4. 이제, .section3안의 .tab-pane들을 .find()를 찾은 뒤, **`.index()`의 값으로 `$` + `tabHref == #tab-panel-id` == `targetTab element`가 나오므로 index를 찾아낼 수 있다.**
+```js
+ $('.section3 a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
+     var targetTabHref = $(e.target).attr('href');
+     var targetPanel = $(targetTabHref)
+     var AllPanels = $('.section3 .tab-content').find('.tab-pane');
+
+     var index = AllPanels.index(targetPanel);
+     console.log(index)
+ });
+```
+
+12. **이제 swiper들도 여러개 찾아 낸 뒤, index를 입력받아 초기화할 수 있게 한다.**
+   - 이 때, 사라지게 하는 `.tab-panel:before`도 특정index를 지정해줘야할 것이다.
