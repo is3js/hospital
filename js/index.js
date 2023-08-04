@@ -206,7 +206,7 @@ $(function () {
         //duration: "100%", // velocity조합에서는 뺀다.
     });
     // title velocity 설정
-    scene2.setVelocity([ ".section2-top>div", ".section2-top>div>p"], {
+    scene2.setVelocity([".section2-top>div", ".section2-top>div>p"], {
         top: "0px",
         opacity: "1"
     }, {
@@ -221,7 +221,7 @@ $(function () {
         triggerHook: "onLeave",
         // triggerElement: ".section2",
         // triggerHook: "onEnter",
-        offset: $(".section2-top").height()-80,
+        offset: $(".section2-top").height() - 80,
         // duration: "100%"
         duration: "100%"
     });
@@ -305,7 +305,6 @@ $(function () {
     // controller.addScene(scene6);
 
 
-
     // section1 swiper
     let titles = ["드리는 말", "자가진단 프로그램", "7월 한방성형 이벤트"];
     var section1Swiper = new Swiper('.section1 > .swiper-container', {
@@ -352,7 +351,7 @@ $(function () {
 
         $('input[name="GET_FirstYN' + namePostFix + '"]').prop('checked', false); // radio checked 제거
 
-        $('select[name="GET_ConsultTime' + namePostFix +'"]').prop('selectedIndex', 0); // select태그 0번째요소로 초기화
+        $('select[name="GET_ConsultTime' + namePostFix + '"]').prop('selectedIndex', 0); // select태그 0번째요소로 초기화
 
         $('input[name="GET_Name' + namePostFix + '"]').val('');
         $('input[name="GET_Tel' + namePostFix + '"]').val('');
@@ -383,7 +382,7 @@ $(function () {
 
         $('input[name="GET_FirstYN' + namePostFix + '"]').prop('checked', false); // radio checked 제거
 
-        $('select[name="GET_ConsultTime' + namePostFix +'"]').prop('selectedIndex', 0); // select태그 0번째요소로 초기화
+        $('select[name="GET_ConsultTime' + namePostFix + '"]').prop('selectedIndex', 0); // select태그 0번째요소로 초기화
 
         $('input[name="GET_Name' + namePostFix + '"]').val('');
         $('input[name="GET_Tel' + namePostFix + '"]').val('');
@@ -446,7 +445,7 @@ $(function () {
         }
 
         // 5) 상담시간 검증
-        if ($('select[name="GET_ConsultTime' + namePostFix +'"]:visible').val() === "") {
+        if ($('select[name="GET_ConsultTime' + namePostFix + '"]:visible').val() === "") {
             $(".validate").text("상담 시간을 선택해주세요.");
             return false;
         }
@@ -483,32 +482,32 @@ $(function () {
 
     /* 건강채널 swiper */
     var section3Swiper = new Swiper('.section3  .swiper-container', {
-        slidesPerView: 3,
-        slidesPerGroup : 3,
-        spaceBetween : '2%',
+        slidesPerView: 2.5,
+        slidesPerGroup: 2.5,
+        spaceBetween: '2%',
         breakpoints: {
-
             991: {
-                slidesPerView: 2,
-                slidesPerGroup: 2,
+                slidesPerView: 1.5,
+                slidesPerGroup: 1.5,
                 spaceBetween: '10%'
             },
+        },
+
+        on: {
+            slideChangeTransitionStart: function () {
+                console.log(this.slides.length);
+                console.log(this.activeIndex);
+                console.log(this.params.slidesPerView);
+                if (this.isEnd || this.slides.length - .5 === this.activeIndex + this.params.slidesPerView) {
+                    $('.section3 .tab-pane').addClass('hide-before');
+                    // this.navigation.$nextEl.css('display', 'none');
+                } else {
+                    $('.section3 .tab-pane').removeClass('hide-before');
+                    // this.navigation.$nextEl.css('display', 'block');
+                }
+            },
         }
-        // pagination: {
-        //     el: '.section1  .swiper-pagination',
-        //     clickable: true,
-        //     renderBullet: function (index, className) {
-        //         return '<div class="' + className + '" >' + titles[index] + '</div>';
-        //     },
-        // },
-        // scrollbar: {
-        //     el: '.section1 .swiper-scrollbar',
-        //     // hide: true,
-        // },
-        // autoplay: {
-        //     delay: 5000,
-        //     disableOnInteraction: false,
-        // },
+
     });
 
 })

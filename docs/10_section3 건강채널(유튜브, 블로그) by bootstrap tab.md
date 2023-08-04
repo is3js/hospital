@@ -298,7 +298,7 @@ span.play {
      }
  });
 ```
-![img.png](225.png)
+![img.png](../ui/225.png)
 
 
 7. 이제 tab의 글자를 모바일에선 작게 수정해준다.
@@ -309,3 +309,81 @@ span.play {
     }
 }
 ```
+
+8. **3개를 2.5, 2개를 1.5씩 보이고 + 넘겨주면, 극적인 효과를 줄 수 있다.**
+```js
+    var section3Swiper = new Swiper('.section3  .swiper-container', {
+        slidesPerView: 2.5,
+        slidesPerGroup : 2.5,
+        spaceBetween : '2%',
+        breakpoints: {
+
+            991: {
+                slidesPerView: 1.5,
+                slidesPerGroup: 1.5,
+                spaceBetween: '10%'
+            },
+        }
+    });
+```
+![img.png](../ui/226.png)
+
+9. 1.5, 2.5에 대해 잘린 세로선을 넣어주기 위해 `container바깥에서 상하패딩을 줬던 부모`인 `.tab-pane`에 `:before`로 선을 넣어준다.
+   - top0right0에서 1.1px로 width를 주고 cover로 채워준다.
+   - 이 떄, swiper-container보다 앞쪽으로 나오도록 `z-index:2;`를 준다.
+```css
+/* slide 2.5, 1.5 slide에 따라, 상하패딩을 가진 .tab-pane에 before로 [자린 세로선] 주기 */
+.section3 .tab-pane:before {
+   content: '';
+   position: absolute;
+   top: 0;
+   right: 0;
+
+   display: block;
+   width: 1.1px;
+   height: 100%;
+
+   background: url("../images/main_section/sd-line.png") no-repeat 0 50%;
+   background-size: cover;
+
+   z-index: 2;
+}
+```
+
+![img.png](../ui/228.png)
+
+10. swiper가 끝이면 사라지도록 js에서 처리해주기
+   - nextEl관련 문서에서 조건문을 확인한다
+   - https://www.swiper.com.cn/api/navigation/304.html
+
+- **:before의 가상요소는 jquery로 .css()를 투입못하여, display none을 동적으로 못한다**
+- **그러므로 `요소.hide-before:before`를 새롭게 정의해준 뒤, 해당요소에 `.hide-before`를 add/remove class한다**
+
+```css
+.section3 .tab-pane.hide-before:before {
+    display: none;
+}
+```
+- **이 때, 1.5개를 1.5씩 넘어갈 때, 4개 중에 2에서 더이상 activeIndex가안넘어가므로, 수식을 if조건절에 추가한다**
+```js
+    /* 건강채널 swiper */
+var section3Swiper = new Swiper('.section3  .swiper-container', {
+    on: {
+        slideChangeTransitionStart: function () {
+            console.log(this.slides.length);
+            console.log(this.activeIndex);
+            console.log(this.params.slidesPerView);
+            if (this.isEnd || this.slides.length - .5 === this.activeIndex + this.params.slidesPerView) {
+                $('.section3 .tab-pane').addClass('hide-before');
+                // this.navigation.$nextEl.css('display', 'none');
+            } else {
+                $('.section3 .tab-pane').removeClass('hide-before');
+                // this.navigation.$nextEl.css('display', 'block');
+            }
+        },
+    }
+});
+```
+![img.png](../ui/229.png)
+![img_1.png](../ui/230.png)
+![img_2.png](../ui/231.png)

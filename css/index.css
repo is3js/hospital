@@ -1772,7 +1772,7 @@ a {
     color: #333;
 
     /*border-radius:7px 7px 0 0; !* 모바일 radius 약하게*!*/
-    border-radius:15px 15px 0 0; /* 모바일 radius 약하게*/
+    border-radius: 15px 15px 0 0; /* 모바일 radius 약하게*/
     /*border: 1px solid #e5e5e5; !* 모바일 보더 추가*!*/
     /*border-bottom: 0;*/
 
@@ -2187,6 +2187,7 @@ a {
     font-weight: 700;
     color: #fff;
 }
+
 .booking-service-box-mobile .btn-bs {
     width: 100%;
     height: var(--booking-service-tab-height);
@@ -2221,17 +2222,18 @@ a {
 }
 
 
-
 .section3 {
     width: 100%;
     position: relative; /* */
     z-index: 666;
     background: #fff;
 }
+
 .section3 > div {
     width: 70%;
     margin: 0 auto;
 }
+
 @media screen and (max-width: 991px) {
     .section3 > div {
         width: 85%;
@@ -2257,7 +2259,7 @@ a {
     border: none;
 }
 
-@media screen and (max-width: 991px){
+@media screen and (max-width: 991px) {
     .section3 .media-box .nav-tabs > li > a {
         font-size: 9px;
     }
@@ -2272,14 +2274,13 @@ a {
 }
 
 
-
 /* section3 건강채널 */
 span.play {
     position: absolute;
     display: block;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     width: 30%;
     height: 30%;
     font-size: 0;
@@ -2301,7 +2302,7 @@ span.play {
     font-size: 1em;
 }
 
-@media screen and (max-width: 991px){
+@media screen and (max-width: 991px) {
     .media-box .card-body {
         padding: 10px 5px;
     }
@@ -2315,7 +2316,7 @@ span.play {
 
 /* 건강채널 tab content swiper */
 .tab-content .tab-pane {
-    padding: 7% 0;
+    padding: 5% 0 0 3%;
 }
 
 .tab-content .tab-pane .swiper-container {
@@ -2327,4 +2328,25 @@ span.play {
 
 .tab-content .tab-pane .swiper-container .swiper-slide {
     position: relative;
+}
+
+/* slide 2.5, 1.5 slide에 따라, 상하패딩을 가진 .tab-pane에 before로 [자린 세로선] 주기 */
+.section3 .tab-pane:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    display: block;
+    width: 1.1px;
+    height: 100%;
+
+    background: url("../images/main_section/sd-line.png") no-repeat 0 50%;
+    background-size: cover;
+
+    z-index: 2;
+}
+
+.section3 .tab-pane.hide-before:before {
+    display: none;
 }
