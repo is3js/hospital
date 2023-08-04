@@ -467,5 +467,96 @@ $('.section3 a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
 ```
 ![img.png](../ui/232.png)
 
+13. **swiper 초기화 실행시, 슬라이드 갯수(`this.slides.length`)가 preview갯수(`this.params.slidesPerView`)보다 적으면 [잘린 세로선]을 숨긴다**
+   - on 파라미터에서 init 함수에 짜면 된다.
+```js
+on: {
+    // 시작시 preview 수보다, 주어진 slide의 갯수가 더 적으면, 잘린가로선을 hide시킨다.
+    init: function () {
+        if (this.slides.length < this.params.slidesPerView) {
+            $('.section3').find('.tab-pane').eq(tabIndex).addClass('hide-before');
+        }
+    }
+,
+    slideChangeTransitionStart: function () {
+    }
+}
+```
 
-13. 이제 blog는 `span.play` 대신 `span.category`를 만들어준다.
+![img.png](../ui/235.png)
+
+14. 이제 youtube, blog 모두  `span.play` 대신 `span.category`를 만들어준다.
+    - `height를 18%`로 주되, 큰 화면에 너무 커지지 않도록, `max-height를 30px`로 지정해준다.
+    - 글자를 가운데 정렬하고, `lh:100%`에 padding2%를 준 뒤, fz를 13px -> 모바일 11px로 준다.
+```html
+<div class="swiper-slide">
+    <div class="card border-0">
+        <a href="#" class="position-relative">
+            <img src="images/main_section/youtube-example.jpg"
+                 class="card-img-top rounded-0"
+                 alt="...">
+            <span class="play"></span>
+            <span class="category">피부 미용</span>
+        </a>
+        <div class="card-body  text-start">
+            <h6 class="card-title fw-bold ellipsis-2">
+                갱년기 최고의 한약, 우아한의원에서 알려드립니다! dddd ddddddddddddddddddddddd
+                ddddddddddddddddddddddddd
+                ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ
+            </h6>
+        </div>
+    </div>
+</div>
+```
+```css
+span.category{
+    position: absolute;
+    content: "";
+    top:8%;
+    right:-4%;
+    width: 50%;
+    height: 18%;
+    max-height: 30px;
+    background: var(--color-main);
+    box-shadow: 4px 4px 15px rgba(0, 181, 178, .5);
+    
+    color: white;
+    text-align: center;
+    line-height: 100%;
+    padding: 2%;
+    font-size: 13px;
+}
+
+@media screen and (max-width: 991px){
+    span.category{
+        font-size: 11px;
+    }
+}
+```
+
+15. swiper js의 breakpoints를 활용해서, 1440까지는 2.5, 더 커지면 3.5로 준다.
+```js
+function initSection3Swiper(tabIndex) {
+        // console.log(tabIndex)
+        // console.log($('.section3').find('.swiper-container').eq(tabIndex))
+        new Swiper($('.section3').find('.swiper-container').eq(tabIndex), {
+            slidesPerView: 3.5,
+            slidesPerGroup: 3.5,
+            spaceBetween: '3%',
+            breakpoints: {
+                991: {
+                    slidesPerView: 1.5,
+                    slidesPerGroup: 1.5,
+                    spaceBetween: '25%'
+                },
+                1440: {
+                    slidesPerView: 2.5,
+                    slidesPerGroup: 2.5,
+                    spaceBetween: '20%',
+                }
+
+            },
+        }
+}
+```
+![img.png](../ui/233.png)
