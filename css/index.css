@@ -2288,6 +2288,31 @@ span.play {
     background-size: auto 100%;
 }
 
+
+
+span.category{
+    position: absolute;
+    content: "";
+    top:8%;
+    right:-4%;
+    width: 55%;
+    height: 18%;
+    max-height: 30px;
+    background: var(--color-main);
+    color: white;
+    text-align: center;
+    line-height: 100%;
+    font-size: 13px;
+    padding: 2%;
+    box-shadow: 4px 4px 15px rgba(0, 181, 178, .5);
+}
+
+@media screen and (max-width: 991px){
+    span.category{
+        font-size: 11px;
+    }
+}
+
 .media-box .ellipsis-2 {
     width: 100%;
     display: -webkit-box;

@@ -482,28 +482,44 @@ $(function () {
 
     /* 건강채널 swiper */
     function initSection3Swiper(tabIndex) {
-        console.log(tabIndex)
-        console.log($('.section3').find('.swiper-container').eq(tabIndex))
+        // console.log(tabIndex)
+        // console.log($('.section3').find('.swiper-container').eq(tabIndex))
         new Swiper($('.section3').find('.swiper-container').eq(tabIndex), {
-            slidesPerView: 2.5,
-            slidesPerGroup: 2.5,
+            slidesPerView: 3.5,
+            slidesPerGroup: 3.5,
             spaceBetween: '3%',
             breakpoints: {
                 991: {
                     slidesPerView: 1.5,
                     slidesPerGroup: 1.5,
-                    spaceBetween: '10%'
+                    spaceBetween: '25%'
                 },
+                1440: {
+                    slidesPerView: 2.5,
+                    slidesPerGroup: 2.5,
+                    spaceBetween: '20%',
+                }
+
             },
 
             on: {
+                // 시작시 preview 수보다, 주어진 slide의 갯수가 더 적으면, 잘린가로선을 hide시킨다.
+                init: function () {
+                    if (this.slides.length < this.params.slidesPerView) {
+                        $('.section3').find('.tab-pane').eq(tabIndex).addClass('hide-before');
+                    }
+                },
+
                 slideChangeTransitionStart: function () {
+                    // var previewLength = this.params.slidesPerView * this.width;
 
                     if (this.isEnd || this.slides.length - .5 === this.activeIndex + this.params.slidesPerView) {
+                        // 잘린 세로선 띄우기
                         // $('.section3 .tab-pane').addClass('hide-before');
                         $('.section3').find('.tab-pane').eq(tabIndex).addClass('hide-before');
                         // this.navigation.$nextEl.css('display', 'none');
                     } else {
+                        // 잘린 세로선 삭제
                         // $('.section3 .tab-pane').removeClass('hide-before');
                         $('.section3').find('.tab-pane').eq(tabIndex).removeClass('hide-before');
                         // this.navigation.$nextEl.css('display', 'block');
@@ -517,7 +533,7 @@ $(function () {
     initSection3Swiper(0);
 
 
-    // section3 tab 클릭시 index 찾기 리스너
+    // section3 tab 클릭시 index 찾기 -> 해당index의 swiper 초기화
     $('.section3 a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
         var targetTabHref = $(e.target).attr('href');
         var targetPanel = $(targetTabHref)

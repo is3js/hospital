@@ -411,3 +411,61 @@ var section3Swiper = new Swiper('.section3  .swiper-container', {
 
 12. **이제 swiper들도 여러개 찾아 낸 뒤, index를 입력받아 초기화할 수 있게 한다.**
    - 이 때, 사라지게 하는 `.tab-panel:before`도 특정index를 지정해줘야할 것이다.
+   - **swiper를 index에따라 초기화하는 함수 `initSection3Swiper(index)`를 정의하고**
+   - **css가 아니므로 `복수를 찾을 때는 .find()`를 사용해서 찾고  `.eq( index )`로 선택하게 한다.**
+   - 해당인덱스로 [잘린 세로선]도 .find도 찾은 뒤, add/removeClass `hide-before`를 처리해준다.
+   - **`클릭리스너가 작동하기 전인 index 0은 최초로 직접 호출`해줘야한다.**
+```js
+function initSection3Swiper(tabIndex) {
+   // console.log(tabIndex)
+   // console.log($('.section3').find('.swiper-container').eq(tabIndex))
+   new Swiper($('.section3').find('.swiper-container').eq(tabIndex), {
+      slidesPerView: 2.5,
+      slidesPerGroup: 2.5,
+      spaceBetween: '3%',
+      breakpoints: {
+         991: {
+            slidesPerView: 1.5,
+            slidesPerGroup: 1.5,
+            spaceBetween: '10%'
+         },
+      },
+
+      on: {
+         slideChangeTransitionStart: function () {
+
+            if (this.isEnd || this.slides.length - .5 === this.activeIndex + this.params.slidesPerView) {
+               // 잘린 세로선 띄우기
+               // $('.section3 .tab-pane').addClass('hide-before');
+               $('.section3').find('.tab-pane').eq(tabIndex).addClass('hide-before');
+               // this.navigation.$nextEl.css('display', 'none');
+            } else {
+               // 잘린 세로선 삭제
+               // $('.section3 .tab-pane').removeClass('hide-before');
+               $('.section3').find('.tab-pane').eq(tabIndex).removeClass('hide-before');
+               // this.navigation.$nextEl.css('display', 'block');
+            }
+         },
+      }
+
+   });
+}
+
+initSection3Swiper(0);
+```
+```js
+// section3 tab 클릭시 index 찾기 -> 해당index의 swiper 초기화
+$('.section3 a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
+    var targetTabHref = $(e.target).attr('href');
+    var targetPanel = $(targetTabHref)
+    var AllPanels = $('.section3 .tab-content').find('.tab-pane');
+
+    var index = AllPanels.index(targetPanel);
+
+    initSection3Swiper(index);
+});
+```
+![img.png](../ui/232.png)
+
+
+13. 이제 blog는 `span.play` 대신 `span.category`를 만들어준다.
