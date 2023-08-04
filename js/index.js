@@ -481,7 +481,35 @@ $(function () {
     controller.addScene(scene6);
 
 
+    /* 건강채널 swiper */
+    var section3Swiper = new Swiper('.section3  .swiper-container', {
+        slidesPerView: 3,
+        slidesPerGroup : 3,
+        spaceBetween : '2%',
+        breakpoints: {
 
+            991: {
+                slidesPerView: 2,
+                slidesPerGroup: 2,
+                spaceBetween: '10%'
+            },
+        }
+        // pagination: {
+        //     el: '.section1  .swiper-pagination',
+        //     clickable: true,
+        //     renderBullet: function (index, className) {
+        //         return '<div class="' + className + '" >' + titles[index] + '</div>';
+        //     },
+        // },
+        // scrollbar: {
+        //     el: '.section1 .swiper-scrollbar',
+        //     // hide: true,
+        // },
+        // autoplay: {
+        //     delay: 5000,
+        //     disableOnInteraction: false,
+        // },
+    });
 
 })
 

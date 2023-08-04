@@ -2257,6 +2257,12 @@ a {
     border: none;
 }
 
+@media screen and (max-width: 991px){
+    .section3 .media-box .nav-tabs > li > a {
+        font-size: 9px;
+    }
+}
+
 /* 활성화(a.active) tab 글자 */
 .section3 .media-box .nav-tabs > li > a.active {
     /*border-bottom: 2px solid var(--color-main)!important;*/
@@ -2265,3 +2271,60 @@ a {
     color: #fff;
 }
 
+
+
+/* section3 건강채널 */
+span.play {
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 30%;
+    height: 30%;
+    font-size: 0;
+    background: url('../images/main_section/btn-play.png') no-repeat 50% 50%;
+    background-size: auto 100%;
+}
+
+.media-box .ellipsis-2 {
+    width: 100%;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    height: 2.6em;
+    line-height: 1.3em;
+    font-size: 1em;
+}
+
+@media screen and (max-width: 991px){
+    .media-box .card-body {
+        padding: 10px 5px;
+    }
+
+    .media-box .ellipsis-2 {
+        height: 2.4em;
+        line-height: 1.2em;
+        font-size: .6em;
+    }
+}
+
+/* 건강채널 tab content swiper */
+.tab-content .tab-pane {
+    padding: 7% 0;
+}
+
+.tab-content .tab-pane .swiper-container {
+    width: 100%;
+
+    /* 임시 */
+    /*background: red;*/
+}
+
+.tab-content .tab-pane .swiper-container .swiper-slide {
+    position: relative;
+}

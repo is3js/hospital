@@ -1,3 +1,4 @@
+### section 추가 
 1. .section3를 만들고, `.section-title`의 정해진 틀을 복붙한다.
 ```html
 <div class="section3">
@@ -147,3 +148,164 @@ controller.addScene(scene6);
 }
 ```
 ![img.png](../ui/219.png)
+
+
+### 카드
+8. tab content에 병원두러보기 세로 카드를 집어넣는다.
+```html
+<div class="card border-dark-subtle border-1 rounded-5 h-100">
+    <img src="images/facilities/f1.png" class="card-img-top rounded-top-5 " alt="...">
+    <div class="card-body  text-start">
+        <h5 class=" card-title fw-bold">접수실</h5>
+        <p class=" card-text text-truncate" style="color: darkgray">접수와 대기를 하는 공간</p>
+    </div>
+</div>
+```
+```html
+<div class="card border-0">
+```
+- card-img-top의 radius를 제거한다
+```html
+<a href="#" class="position-relative">
+    <img src="images/main_section/youtube-example.jpg" class="card-img-top rounded-0" alt="...">
+</a>
+```
+- relative a태그안에 span.play태그를 만들어놓고, absolute로 만들어서 플레이버튼이 들어가게 한다.
+- 이 때, w/h를 20%로 두고. bg-size를 w는 auto, h를 100%로 준다
+```html
+<a href="#" class="position-relative">
+    <img src="images/main_section/youtube-example.jpg" class="card-img-top rounded-0" alt="...">
+    <span class="play"></span>
+</a>
+```
+```css
+/* 유튜브 */
+span.play {
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 20%;
+    height: 20%;
+    font-size: 0;
+    background: url('../images/main_section/btn-play.png') no-repeat 50% 50%;
+    background-size: auto 100%;
+}
+```
+![img.png](../ui/221.png)
+
+9. 이제 밑에 글자는 2줄로 뜨고, 점점점 처리하기 위해, `글자태그h6.ellipsis-2`을 추가하고
+   - w100%를 준 다음
+   - height를 lh의 절반을 이용해 2줄이 되게 하고, fz도 같이 정해준다.
+   - **display를 `-webkit-box`로 필수로 주고, `-webkit-line-clamp: 2;-webkit-box-orient: vertical;`을 필수로 줘야 2줄 ellipsis가 된다.**
+   - `text-overflow: ellipsis;`는 단독으로 안되고 `overflow: hidden;`도 같이 줘야한다.
+   - 반응형으로서 부모의 padding조절 및 h/lh/fz를 조절한다.
+
+```html
+
+<div class="card-body  text-start">
+    <div class="card-body  text-start">
+        <h6 class="card-title fw-bold ellipsis-2">
+            갱년기 최고의 한약, 우아한의원에서 알려드립니다! dddd ddddddddddddddddddddddd ddddddddddddddddddddddddd
+        </h6>
+    </div>
+</div>
+```
+```css
+.media-box .ellipsis-2 {
+    width: 100%;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    height: 2.6em;
+    line-height: 1.3em;
+    font-size: 1em;
+}
+
+@media screen and (max-width: 991px){
+    .media-box .card-body {
+        padding: 10px 0;
+    }
+
+    .media-box .ellipsis-2 {
+        height: 2.4em;
+        line-height: 1.2em;
+        font-size: .6em;
+    }
+}
+```
+
+### swiper 달아주기
+1. .col <-> .card 사이에 swiper-container / wrapper / slide를 추가한다.
+2. container 설정
+```css
+/* 건강채널 tab content swiper */
+.tab-content .tab-pane .swiper-container {
+   width: 100%;
+
+   /* 임시 */
+   background: red;
+}
+```
+3. container의 부모에 상하 padding 설정 ( pagination 등 놓을 자리 마련?)
+```css
+/* 건강채널 tab content swiper */
+.tab-content .tab-pane {
+   padding: 5% 0;
+}
+```
+
+4. slide를 relative로 만들어서, 내부요소를 absolute로 추가가능하게 만들기
+```css
+.tab-content .tab-pane .swiper-container .swiper-slide {
+    position: relative;
+}
+```
+
+5. 이제 slide복사해서 여러개 만들어놓기
+6. js로 swiper 돌아가게 만들기
+   - container를 찝어서 객체로 만든다(7버전 이하)
+   - 참고: https://www.swiper.com.cn/api/carousel/198.html
+   - 이 때, **3개씩 보이게 하고, 넘어갈 때도 3개씩 넘어가게 만든다. 3개가 빠짝 붙어있으니 간격을 직접 줄 수 있다.**
+```js
+ /* 건강채널 swiper */
+ var section3Swiper = new Swiper('.section3  .swiper-container', {
+     slidesPerView: 3,
+     slidesPerGroup : 3,
+     spaceBetween : '2%',
+ });
+```
+![img.png](../ui/224.png)
+- **breakpoints를 활용해서, 모바일에선 2개씩 보이게 할 수 있다.**
+```js
+ /* 건강채널 swiper */
+ var section3Swiper = new Swiper('.section3  .swiper-container', {
+     slidesPerView: 3,
+     slidesPerGroup : 3,
+     spaceBetween : '2%',
+     breakpoints: {
+
+         991: {
+             slidesPerView: 2,
+             slidesPerGroup: 2,
+             spaceBetween: '10%'
+         },
+     }
+ });
+```
+![img.png](225.png)
+
+
+7. 이제 tab의 글자를 모바일에선 작게 수정해준다.
+```css
+@media screen and (max-width: 991px){
+    .section3 .media-box .nav-tabs > li > a {
+        font-size: 9px;
+    }
+}
+```
