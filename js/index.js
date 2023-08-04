@@ -505,7 +505,7 @@ $(function () {
             on: {
                 // 시작시 preview 수보다, 주어진 slide의 갯수가 더 적으면, 잘린가로선을 hide시킨다.
                 init: function () {
-                    if (this.slides.length < this.params.slidesPerView) {
+                    if (this.slides.length <= this.params.slidesPerView + .5) {
                         $('.section3').find('.tab-pane').eq(tabIndex).addClass('hide-before');
                     }
                 },

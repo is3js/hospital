@@ -469,11 +469,12 @@ $('.section3 a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
 
 13. **swiper 초기화 실행시, 슬라이드 갯수(`this.slides.length`)가 preview갯수(`this.params.slidesPerView`)보다 적으면 [잘린 세로선]을 숨긴다**
    - on 파라미터에서 init 함수에 짜면 된다.
+   - **이 때, preview == perview는 1.5, 2.5, 3.5이므로 `0.5를 더해서 비교해준다.`**
 ```js
 on: {
     // 시작시 preview 수보다, 주어진 slide의 갯수가 더 적으면, 잘린가로선을 hide시킨다.
     init: function () {
-        if (this.slides.length < this.params.slidesPerView) {
+        if (this.slides.length <= this.params.slidesPerView + .5) {
             $('.section3').find('.tab-pane').eq(tabIndex).addClass('hide-before');
         }
     }
