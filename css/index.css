@@ -1291,21 +1291,20 @@ a {
     margin-left: 6.6vw;
     padding-top: 3.3vw;
 }
+
 /* - 섹션 subtitle은 오른쪽의 위쪽공간을 조금 줄인다. */
 .section-subtitle > div:nth-of-type(2) {
     padding-top: 2vw;
 }
 
 /* velocity를 위한 이전 위치 잡기 */
-.section-title > div:nth-of-type(1),
-.section-subtitle > div:nth-of-type(1) {
+.section-title > div:nth-of-type(1) {
     position: relative;
     top: 10vw;
     opacity: 0;
 }
 
-.section-title > div:nth-of-type(2),
-.section-subtitle > div:nth-of-type(2) {
+.section-title > div:nth-of-type(2) {
     position: relative;
     top: 12vw;
     opacity: 0;

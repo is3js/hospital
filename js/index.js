@@ -221,7 +221,7 @@ $(function () {
         triggerHook: "onLeave",
         // triggerElement: ".section2",
         // triggerHook: "onEnter",
-        offset: $(".section2-top").height() - 80,
+        offset: $(".section2-top").height() - 100,
         // duration: "100%"
         duration: "100%"
     });
@@ -456,7 +456,7 @@ $(function () {
         triggerElement: ".section3",
         // triggerHook: "onEnter",
         triggerHook: "onCenter",
-        offset: -35,
+        offset: -40,
     });
     scene6.setVelocity([".section3 > .section-title > div"], {
         top: "0px",
@@ -466,19 +466,6 @@ $(function () {
     });
     controller.addScene(scene6);
 
-    // section2-middle2 치료후기 - title with Velocity
-    let scene7 = new ScrollMagic.Scene({
-        triggerElement: ".section2-top",
-        triggerHook: "onLeave",
-        offset: $(".section2-middle").height() +45,
-    });
-    scene7.setVelocity([".section2-middle2 > .section-subtitle > div"], {
-        top: "0px",
-        opacity: "1"
-    }, {
-        duration: "300",
-    });
-    controller.addScene(scene7);
 
 
     /* 건강채널 swiper */
