@@ -290,21 +290,6 @@ $(function () {
     });
     controller.addScene(scene5);
 
-    // 예약하기
-    // let scene6 = new ScrollMagic.Scene({
-    //     triggerElement: ".booking-service-mobile",
-    //     triggerHook: "onEnter",
-    //     offset: 50,
-    // });
-    // scene6.setVelocity([".booking-service-mobile"], {
-    //     top: "0px",
-    //     opacity: "1"
-    // }, {
-    //     duration: "300",
-    // });
-    // controller.addScene(scene6);
-
-
     // section1 swiper
     let titles = ["드리는 말", "자가진단 프로그램", "7월 한방성형 이벤트"];
     var section1Swiper = new Swiper('.section1 > .swiper-container', {
@@ -330,12 +315,12 @@ $(function () {
     let tabIndex = 0;
     let namePostFix = '';
 
-    // 첫번째 tab을 제외하고 hide
+    // - 첫번째 tab을 제외하고 hide
     $(".booking-service-content > div").eq(tabIndex).show().siblings().hide();
     // - 모바일
     $(".booking-service-content-mobile > div").eq(tabIndex).show().siblings().hide();
 
-    // 예약 tab 설정
+    // - 예약 tab 설정
     $(".booking-service-tab > li > a").on('click', function () {
         // 1) a의 index는 무조건 0이다. 형제 없음. -> parent인 li의 index를 파악해야한다.
         let currentTabLi = $(this).parent();
@@ -366,7 +351,7 @@ $(function () {
         currentContentDiv.show().siblings().hide();
     })
 
-    // 모바일
+    // - 모바일 예약tab 설정
     $(".booking-service-tab-mobile > li > a").on('click', function () {
         // 1) a의 index는 무조건 0이다. 형제 없음. -> parent인 li의 index를 파악해야한다.
         let currentTabLi = $(this).parent();
@@ -469,7 +454,9 @@ $(function () {
     // section3 - title with Velocity
     let scene6 = new ScrollMagic.Scene({
         triggerElement: ".section3",
-        triggerHook: "onEnter",
+        // triggerHook: "onEnter",
+        triggerHook: "onCenter",
+        offset: -35,
     });
     scene6.setVelocity([".section3 > .section-title > div"], {
         top: "0px",
@@ -478,6 +465,20 @@ $(function () {
         duration: "300",
     });
     controller.addScene(scene6);
+
+    // section2-middle2 치료후기 - title with Velocity
+    let scene7 = new ScrollMagic.Scene({
+        triggerElement: ".section2-top",
+        triggerHook: "onLeave",
+        offset: $(".section2-middle").height() +45,
+    });
+    scene7.setVelocity([".section2-middle2 > .section-subtitle > div"], {
+        top: "0px",
+        opacity: "1"
+    }, {
+        duration: "300",
+    });
+    controller.addScene(scene7);
 
 
     /* 건강채널 swiper */

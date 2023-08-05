@@ -534,8 +534,35 @@ span.category{
     }
 }
 ```
+15. 이제 tab마다 활성화된 tab과 category 커스텀해줄 수 있다. 여기선 youtube만 해본다.
+- 카테고리는 추가 class를 만든 뒤, 배경만 따로 지정해준다.
+```html
+<span class="category category-youtube">한약 치료</span>
+```
+```css
+/* 유튜브 카테고리는 따로 색깔 */
+span.category.category-youtube {
+    background: #f63232!important;
+    box-shadow: 2px 2px 7px rgba(246, 50, 50, .4);
+}
+```
+- **tab 중에서 a태그의 tab-content 겨냥 id를 추출해서 active된 a태그의 배경을 바꾼다.**
+```css
+/* 활성화(a.active) tab 글자 */
+.section3 .media-box .nav-tabs > li > a.active {
+    background-color: var(--color-main);
 
-15. swiper js의 breakpoints를 활용해서, 1440까지는 2.5, 더 커지면 3.5로 준다.
+    color: #fff;
+}
+/* - youtube content를 겨냥하는 tab은 빨간색으로 활성화 */
+.section3 .media-box .nav-tabs > li > a.active[href="#tabs-youtube"] {
+    background-color: #f63232;
+    color: #fff;
+}
+```
+![img.png](../ui/234.png)
+
+16. swiper js의 breakpoints를 활용해서, 1440까지는 2.5, 더 커지면 3.5로 준다.
 ```js
 function initSection3Swiper(tabIndex) {
         // console.log(tabIndex)

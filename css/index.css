@@ -1254,7 +1254,8 @@ a {
 }
 
 /* 섹션 title 설정 */
-.section-title {
+.section-title,
+.section-subtitle {
     display: flex;
     justify-content: space-between;
     margin-bottom: 1vw;
@@ -1270,7 +1271,8 @@ a {
     white-space: nowrap; /* 텍스트 한 줄 표시*/
 }
 
-.section-title > div:nth-of-type(1) p:nth-of-type(2) {
+.section-title > div:nth-of-type(1) p:nth-of-type(2),
+.section-subtitle > div:nth-of-type(1) p:nth-of-type(1) {
     font-size: 3.5vw;
     line-height: 4.1vw;
     font-weight: bold;
@@ -1280,7 +1282,8 @@ a {
 }
 
 /* - 섹션 title 오른쪽 div 설정 */
-.section-title > div:nth-of-type(2) {
+.section-title > div:nth-of-type(2),
+.section-subtitle > div:nth-of-type(2) {
     font-size: 2.1vw;
     line-height: 3.5vw;
     color: #222222;
@@ -1288,14 +1291,21 @@ a {
     margin-left: 6.6vw;
     padding-top: 3.3vw;
 }
+/* - 섹션 subtitle은 오른쪽의 위쪽공간을 조금 줄인다. */
+.section-subtitle > div:nth-of-type(2) {
+    padding-top: 2vw;
+}
 
-.section-title > div:nth-of-type(1) {
+/* velocity를 위한 이전 위치 잡기 */
+.section-title > div:nth-of-type(1),
+.section-subtitle > div:nth-of-type(1) {
     position: relative;
     top: 10vw;
     opacity: 0;
 }
 
-.section-title > div:nth-of-type(2) {
+.section-title > div:nth-of-type(2),
+.section-subtitle > div:nth-of-type(2) {
     position: relative;
     top: 12vw;
     opacity: 0;
@@ -2273,6 +2283,12 @@ a {
     color: #fff;
 }
 
+/* - youtube content를 겨냥하는 tab은 빨간색으로 활성화 */
+.section3 .media-box .nav-tabs > li > a.active[href="#tabs-youtube"] {
+    background-color: #f63232;
+    color: #fff;
+}
+
 
 /* section3 건강채널 */
 span.play {
@@ -2289,17 +2305,16 @@ span.play {
 }
 
 
-
-span.category{
+span.category {
     position: absolute;
     content: "";
-    top:8%;
-    right:-4%;
+    top: 8%;
+    right: -4%;
     width: 50%;
     height: 18%;
     max-height: 30px;
     background: var(--color-main);
-    box-shadow: 4px 4px 15px rgba(0, 181, 178, .5);
+    box-shadow: 2px 2px 7px rgba(0, 181, 178, .5);
 
     color: white;
     text-align: center;
@@ -2308,10 +2323,16 @@ span.category{
     font-size: 13px;
 }
 
-@media screen and (max-width: 991px){
-    span.category{
+@media screen and (max-width: 991px) {
+    span.category {
         font-size: 11px;
     }
+}
+
+/* 유튜브 카테고리는 따로 색깔 */
+span.category.category-youtube {
+    background: #f63232 !important;
+    box-shadow: 2px 2px 7px rgba(246, 50, 50, .4);
 }
 
 .media-box .ellipsis-2 {
