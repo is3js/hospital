@@ -490,3 +490,18 @@
     asdfasdfasdfsadf
 </p>
 ```
+
+
+14. 글자를 줄여도 `.card-img-overlay`는 absolute로서 넘어버린다.
+    - review-bg.png를 활용하도록 이미지를 변경해주고
+    - **lg에서는 공지사항에 딱 붙는 상태로 두고, 2~3줄로 줄이기 전에 `div.tab-content`에 `모바일시 mb-5`를 줘서 간격을 벌려주자.**
+```html
+<div class="tab-content mb-5 mb-lg-0" id="review-content">
+    <!-- tab 1 전체 -->
+    <div class="tab-pane fade show active position-relative px-0"
+```
+![img.png](../ui/259.png)
+
+
+15. 이제 p태그에 3줄 줄임을 적용한다.
+16. 
