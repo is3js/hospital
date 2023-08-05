@@ -7,18 +7,36 @@
     font-size: 11px;
 }
 
+.fs-tab {
+    font-size: 13px;
+}
+
+@media screen and (max-width: 991px) {
+    .fs-tab {
+        font-size: 9px;
+    }
+}
+
+.wrap-text {
+    white-space: pre-wrap;
+}
 
 /* 글자색 */
-.text-yellow{
+.text-yellow {
     color: rgb(252, 255, 0);
 }
 
-.text-yellow-sm{
+.text-yellow-sm {
     color: rgb(255, 243, 167);
 }
 
 .text-gray {
     color: #ddd !important;
+}
+
+.text-gray-bolder {
+    color: #adadad !important;
+    font-weight: bold;
 }
 
 .text-main {
@@ -29,8 +47,24 @@
     text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
 }
 
+/* 글자 그림자 */
+/* - 배경 어두울 때 */
+.text-shadow {
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* - 하얀바탕일 때 */
+.text-shadow-sm {
+    text-shadow: .5px .5px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* - 배경 밝을 때 */
+.text-shadow-lg {
+    text-shadow: 1px 1px 1px #000000;
+}
+
 /* 배경색 */
-.bg-blue{
+.bg-blue {
     background-color: rgb(45, 82, 181);
 }
 
@@ -38,7 +72,15 @@
     background: #00b5b2;
 }
 
-.bg-blue-90{
+.bg-submain {
+    background: #FC5230;
+}
+
+.bg-submain-90 {
+    background-color: rgba(252, 82, 48, .9);
+}
+
+.bg-blue-90 {
     background-color: rgba(9, 32, 75, .9);
 }
 

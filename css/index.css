@@ -2251,31 +2251,36 @@ a {
 
 
 /* sectino3 media tab */
-.section3 .media-box {
+.section3 .media-box,
+.section2-middle2 .review-box {
     padding: 10px 0;
 }
 
 /* 탭 기본border 삭제 */
-.section3 .media-box .nav-tabs {
+.section3 .media-box .nav-tabs,
+.section2-middle2 .review-box .nav-tabs {
     border: none;
 }
 
 /* 활성화되기 전, tab 글자 */
-.section3 .media-box .nav-tabs > li > a {
-    font-size: 13px;
+.section3 .media-box .nav-tabs > li > a,
+.section2-middle2 .review-box .nav-tabs > li > a {
+    /*font-size: 13px;*/
     color: #999;
 
     border: none;
 }
 
-@media screen and (max-width: 991px) {
-    .section3 .media-box .nav-tabs > li > a {
-        font-size: 9px;
-    }
-}
+/*@media screen and (max-width: 991px) {*/
+/*    .section3 .media-box .nav-tabs > li > a,*/
+/*    .section2-middle2 .review-box .nav-tabs > li > a {*/
+/*        font-size: 9px;*/
+/*    }*/
+/*}*/
 
 /* 활성화(a.active) tab 글자 */
-.section3 .media-box .nav-tabs > li > a.active {
+.section3 .media-box .nav-tabs > li > a.active,
+.section2-middle2 .review-box .nav-tabs > li > a.active {
     /*border-bottom: 2px solid var(--color-main)!important;*/
     background-color: var(--color-main);
 
@@ -2286,6 +2291,14 @@ a {
 .section3 .media-box .nav-tabs > li > a.active[href="#tabs-youtube"] {
     background-color: #f63232;
     color: #fff;
+}
+
+/* section2-middle2 치료후기 */
+@media screen and (min-width: 992px){
+    /* w-25에서 위로 넘치는 img가 나타나는 구간에서 mt 추가 */
+    .section2-middle2 .review-box .tab-content .card {
+        margin-top: 60px;
+    }
 }
 
 
