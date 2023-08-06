@@ -9,11 +9,13 @@
 
 .fs-tab {
     font-size: 13px;
+    letter-spacing: -.05rem;
 }
 
 @media screen and (max-width: 991px) {
     .fs-tab {
         font-size: 9px;
+        letter-spacing: -.05rem;
     }
 }
 
@@ -60,6 +62,56 @@
     text-shadow: 1px 1px 1px #000000;
 }
 
+/* 글자간격 */
+/* - padding 2 p태그 기준 */
+.ellipsis-3 {
+    width: 100%;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    font-size: 13px;
+    height: 4.52em;
+    line-height: 1.25em;
+}
+
+/* - padding 1 p태그 기준 */
+@media screen and (max-width: 991px) {
+    .ellipsis-3 {
+        font-size: 9px;
+        height: 4.65em;
+        line-height: 1.35em;
+    }
+}
+
+/* - padding 2 p태그 기준 */
+.ellipsis-4 {
+    width: 100%;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    font-size: 13px;
+    height: 5.8em;
+    line-height: 1.26em;
+}
+
+/* - padding 1 p태그 기준 */
+@media screen and (max-width: 991px) {
+    .ellipsis-4 {
+        font-size: 9px;
+        height: 5.5em;
+        line-height: 1.25em;
+    }
+}
+
+
 /* 배경색 */
 .bg-blue {
     background-color: rgb(45, 82, 181);
@@ -83,6 +135,10 @@
 
 .bg-gray {
     background: #f7f7f7;
+}
+
+.bg-gray-120 {
+    background: #eeeeee;
 }
 
 

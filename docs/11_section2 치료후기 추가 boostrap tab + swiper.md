@@ -412,11 +412,13 @@
 ```css
 .fs-tab {
     font-size: 13px;
+    letter-spacing: -.05rem;
 }
 
 @media screen and (max-width: 991px) {
     .fs-tab {
         font-size: 9px;
+        letter-spacing: -.05rem;
     }
 }
 ```
@@ -504,4 +506,46 @@
 
 
 15. 이제 p태그에 3줄 줄임을 적용한다.
-16. 
+    - **일단 `padding을 모바일1, lg2`로 만들어놓는다.**
+```html
+<p class="w-100 bg-gray rounded small p-1 p-lg-2 m-0 text-wrap fs-13 border-1 border-dark fs-tab ellipsis-3">
+```
+- 이후 style.css에 `.ellipsis-3`를 반응형으로 맞춰서 정의해준다.
+```css
+/* 글자간격 */
+/* - padding 2 p태그 기준 */
+.ellipsis-3 {
+    width: 100%;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    height: 4.52em;
+    line-height: 1.25em;
+}
+/* - padding 1 p태그 기준 */
+@media screen and (max-width: 991px) {
+    .ellipsis-3 {
+        height: 4.65em;
+        line-height: 1.35em;
+    }
+}
+```
+![img.png](../ui/260.png)
+![img.png](../ui/261.png)
+
+14. 디스크클리닉 부분만 rounded-pill / 20대/남성에 `ms-1`
+```html
+<!--클리닉 명-->
+<!--<p class="d-inline-block rounded-pill shadow-sm px-1 px-lg-2  bg-submain m-0">-->
+<p class="d-inline-block m-0">
+    <a href="#"
+       class="text-decoration-none fs-tab text-truncate text-white text-shadow-sm rounded-pill shadow-sm px-1 px-lg-2 bg-submain">
+        디스크 클리닉
+    </a>
+    <span class="fs-tab ms-1 fw-bold">20대/남성</span>
+</p>
+```

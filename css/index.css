@@ -2410,23 +2410,3 @@ span.category.category-youtube {
     display: none;
 }
 
-
-.ellipsis-3 {
-    width: 100%;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-
-    overflow: hidden;
-    text-overflow: ellipsis;
-
-    height: 4.52em;
-    line-height: 1.25em;
-}
-
-@media screen and (max-width: 991px) {
-    .ellipsis-3 {
-        height: 4.65em;
-        line-height: 1.35em;
-    }
-}
