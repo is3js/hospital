@@ -74,7 +74,7 @@
     text-overflow: ellipsis;
 
     font-size: 13px;
-    height: 4.52em;
+    max-height: 4.52em;
     line-height: 1.25em;
 }
 
@@ -82,7 +82,7 @@
 @media screen and (max-width: 991px) {
     .ellipsis-3 {
         font-size: 9px;
-        height: 4.65em;
+        max-height: 4.65em;
         line-height: 1.35em;
     }
 }
@@ -98,7 +98,7 @@
     text-overflow: ellipsis;
 
     font-size: 13px;
-    height: 5.8em;
+    max-height: 5.8em;
     line-height: 1.26em;
 }
 
@@ -106,7 +106,7 @@
 @media screen and (max-width: 991px) {
     .ellipsis-4 {
         font-size: 9px;
-        height: 5.5em;
+        max-height: 5.5em;
         line-height: 1.25em;
     }
 }

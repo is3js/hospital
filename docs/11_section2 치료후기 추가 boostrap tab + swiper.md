@@ -549,3 +549,85 @@
     <span class="fs-tab ms-1 fw-bold">20대/남성</span>
 </p>
 ```
+
+15. 후기의 `.ellipsis-4`를 적용하기 위해 css + fz까지 포함하여 정의하고, 배경을 좀 더 어둡게 만든다.
+```css
+.bg-gray-120 {
+    background: #eeeeee;
+}
+```
+```css
+/* - padding 2 p태그 기준 */
+.ellipsis-4 {
+    width: 100%;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    font-size: 13px;
+    height: 5.8em;
+    line-height: 1.26em;
+}
+
+/* - padding 1 p태그 기준 */
+@media screen and (max-width: 991px) {
+    .ellipsis-4 {
+        font-size: 9px;
+        height: 5.5em;
+        line-height: 1.25em;
+    }
+}
+```
+```html
+<!--후기 -->
+<p class="w-100 bg-gray-120 rounded small p-1 p-lg-2 m-0 text-wrap ellipsis-4 fw-bold">
+    친절하시고 좋았습니다^^
+    dddddddddddddddddㅋㅋㅋdddddddddddddddddㅋㅋㅋdddddddddddddddddㅋㅋㅋdddddddddddddddddㅋㅋㅋdddddddddddddddddㅋㅋㅋdddddddddddddddddㅋㅋㅋdddddddddddddddddㅋㅋㅋdddddddddddddddddㅋㅋㅋdddddddddddddddddㅋㅋㅋ
+    asdfasdfasdfsadf
+    asdfasdf
+    asdfasdfasdfasdfasdfasdfasdf dadf asdfasdfasdfsadf
+    asdfasdf
+    asdfasdfasdfasdfasdfasdfasdf dadf asdfasdfasdfsadf
+    asdfasdf
+    asdfasdfasdfasdfasdfasdfasdf dadf asdfasdfasdfsadf
+    asdfasdf
+    asdfasdfasdfasdfasdfasdfasdf dadf asdfasdfasdfsadf
+    asdfasdf
+    asdfasdfasdfasdfasdfasdfasdf dadf asdfasdfasdfsadf
+    asdfasdf
+    asdfasdfasdfasdfasdfasdfasdf dadf
+</p>
+```
+![img.png](../ui/262.png)
+
+
+16. **치료후기부분이 항상 4줄을 유지하고 있으니 `height`를 `max-height`로 수정한다.**
+```css
+/* - padding 2 p태그 기준 */
+.ellipsis-4 {
+    width: 100%;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    font-size: 13px;
+    max-height: 5.8em;
+    line-height: 1.26em;
+}
+
+/* - padding 1 p태그 기준 */
+@media screen and (max-width: 991px) {
+    .ellipsis-4 {
+        font-size: 9px;
+        max-height: 5.5em;
+        line-height: 1.25em;
+    }
+}
+```
+![img.png](../ui/263.png)
