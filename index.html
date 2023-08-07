@@ -1307,66 +1307,65 @@
             </div>
         </div>
     </div>
-</div>
-<!-- 예약 mobile tab -->
-<div class="booking-service-mobile pt-5 d-lg-none ">
-    <div class="booking-service-box-mobile">
-        <!-- tab (50px)-->
-        <ul class="booking-service-tab-mobile">
-            <li class="on">
-                <a>예약 신청</a>
-            </li>
-            <li>
-                <a>빠른 상담</a>
-            </li>
-        </ul>
-        <!-- content (230px)-->
-        <div class="booking-service-content-mobile">
-            <!-- content 1 -->
-            <!--<div id="booking-service1" class="content-box">-->
-            <div class="content-box-mobile">
-                <h3 class="blind">예약 신청</h3>
-                <div>
-                    <div class="bs-form-wrapper">
-                        <!-- row 1 -->
-                        <div class="bs-form">
-                            <!-- 클리닉 선택-->
-                            <!-- 자식 button click -> 부모 wrapper  .open시 -> 화살표회전 + select-clinic display:block-->
-                            <!-- <div class="select-clinic-wrapper open">-->
-                            <div class="select-clinic-wrapper">
-                                <button type="button" class="btn-select-mobile">
-                                    클리닉 선택
-                                </button>
-                                <div class="select-clinic-mobile">
-                                    <ul>
-                                        <li class="active" value="10001"><a class="clinic_code">
-                                            통증
-                                        </a></li>
-                                        <li value="10002"><a class="clinic_code" href="javascript:;">
-                                            피부
-                                        </a></li>
-                                        <li value="10003"><a class="clinic_code" href="javascript:;">
-                                            미용
-                                        </a></li>
-                                        <li value="10004"><a class="clinic_code" href="javascript:;">
-                                            교통사고
-                                        </a></li>
-                                        <li value="10004"><a class="clinic_code" href="javascript:;">
-                                            한약
-                                        </a></li>
-                                        <li value="10004"><a class="clinic_code" href="javascript:;">
-                                            수험생
-                                        </a></li>
-                                        <li value="10004"><a class="clinic_code" href="javascript:;">
-                                            소아
-                                        </a></li>
-                                    </ul>
-                                    <!-- 선택된 a태그의 값을 받아주는 hidden input 태그 with 검증에 걸리는 default value-->
-                                    <input type="hidden" name="GET_ClinicCode" value="">
+    <!-- 예약 mobile tab -->
+    <div class="booking-service-mobile pt-5 d-lg-none ">
+        <div class="booking-service-box-mobile">
+            <!-- tab (50px)-->
+            <ul class="booking-service-tab-mobile">
+                <li class="on">
+                    <a>예약 신청</a>
+                </li>
+                <li>
+                    <a>빠른 상담</a>
+                </li>
+            </ul>
+            <!-- content (230px)-->
+            <div class="booking-service-content-mobile">
+                <!-- content 1 -->
+                <!--<div id="booking-service1" class="content-box">-->
+                <div class="content-box-mobile">
+                    <h3 class="blind">예약 신청</h3>
+                    <div>
+                        <div class="bs-form-wrapper">
+                            <!-- row 1 -->
+                            <div class="bs-form">
+                                <!-- 클리닉 선택-->
+                                <!-- 자식 button click -> 부모 wrapper  .open시 -> 화살표회전 + select-clinic display:block-->
+                                <!-- <div class="select-clinic-wrapper open">-->
+                                <div class="select-clinic-wrapper">
+                                    <button type="button" class="btn-select-mobile">
+                                        클리닉 선택
+                                    </button>
+                                    <div class="select-clinic-mobile">
+                                        <ul>
+                                            <li class="active" value="10001"><a class="clinic_code">
+                                                통증
+                                            </a></li>
+                                            <li value="10002"><a class="clinic_code" href="javascript:;">
+                                                피부
+                                            </a></li>
+                                            <li value="10003"><a class="clinic_code" href="javascript:;">
+                                                미용
+                                            </a></li>
+                                            <li value="10004"><a class="clinic_code" href="javascript:;">
+                                                교통사고
+                                            </a></li>
+                                            <li value="10004"><a class="clinic_code" href="javascript:;">
+                                                한약
+                                            </a></li>
+                                            <li value="10004"><a class="clinic_code" href="javascript:;">
+                                                수험생
+                                            </a></li>
+                                            <li value="10004"><a class="clinic_code" href="javascript:;">
+                                                소아
+                                            </a></li>
+                                        </ul>
+                                        <!-- 선택된 a태그의 값을 받아주는 hidden input 태그 with 검증에 걸리는 default value-->
+                                        <input type="hidden" name="GET_ClinicCode" value="">
+                                    </div>
                                 </div>
-                            </div>
-                            <!-- 초진/재진 선택 -->
-                            <span class="radio-switch">
+                                <!-- 초진/재진 선택 -->
+                                <span class="radio-switch">
                                     <span class="radioCheck">
                                         <input type="radio"
                                                name="GET_FirstYN"
@@ -1382,84 +1381,84 @@
                                         <label for="GET_FirstN_M">재진</label>
                                     </span>
                                 </span>
-                        </div>
-                        <!-- row 2 -->
-                        <div class="bs-form">
-                            <div class="select-consultTime-wrapper">
-                                <select name="GET_ConsultTime" class="w-100">
-                                    <option value="">상담 시간 선택</option>
-                                    <option value="09:00~11:00">09:00~11:00</option>
-                                    <option value="11:00~13:00">11:00~13:00</option>
-                                    <option value="13:00~15:00">13:00~15:00</option>
-                                    <option value="15:00~17:00">15:00~17:00</option>
-                                    <option value="17:00~19:00">17:00~19:00</option>
-                                </select>
                             </div>
-                            <input type="text" class="input-name" name="GET_Name" placeholder="이름" maxlength="10">
-                            <input type="tel" class="input-tel" name="GET_Tel" placeholder="연락처 (숫자만 입력)"
-                                   oninput="oninputPhone(this)"
-                                   maxlength="14">
-                        </div>
-                        <script>
-                            function oninputPhone(target) {
-                                target.value = target.value
-                                    .replace(/[^0-9]/g, '')
-                                    .replace(/(^02.{0}|^01.{1}|[0-9]{3,4})([0-9]{3,4})([0-9]{4})/g, "$1-$2-$3");
-                            }
-                        </script>
-
-                    </div>
-                </div>
-                <div class="bs-validate-mobile">
-                    <!-- show/hide -->
-                    <p class="validate"></p>
-                </div>
-                <button type="button" class="btn-bs reserve">예약 신청하기</button>
-                <p class="bs-time-mobile">7월 26일(수) 진료시간은 09:00~21:00 입니다.</p>
-            </div>
-
-            <!-- content 2 -->
-            <div class="content-box-mobile" style="display: none;">
-                <h3 class="blind">빠른 상담</h3>
-                <div>
-                    <div class="bs-form-wrapper">
-                        <!-- row 1 -->
-                        <div class="bs-form">
-                            <!-- 클리닉 선택-->
-                            <div class="select-clinic-wrapper">
-                                <button type="button" class="btn-select-mobile">
-                                    클리닉 선택
-                                </button>
-                                <div class="select-clinic-mobile">
-                                    <ul>
-                                        <li class="active" value="10001"><a class="clinic_code">
-                                            통증
-                                        </a></li>
-                                        <li value="10002"><a class="clinic_code" href="javascript:;">
-                                            피부
-                                        </a></li>
-                                        <li value="10003"><a class="clinic_code" href="javascript:;">
-                                            미용
-                                        </a></li>
-                                        <li value="10004"><a class="clinic_code" href="javascript:;">
-                                            교통사고
-                                        </a></li>
-                                        <li value="10004"><a class="clinic_code" href="javascript:;">
-                                            한약
-                                        </a></li>
-                                        <li value="10004"><a class="clinic_code" href="javascript:;">
-                                            수험생
-                                        </a></li>
-                                        <li value="10004"><a class="clinic_code" href="javascript:;">
-                                            소아
-                                        </a></li>
-                                    </ul>
-                                    <!-- 선택된 a태그의 값을 받아주는 hidden input 태그 with 검증에 걸리는 default value-->
-                                    <input type="hidden" name="GET_ClinicCode_1" value="">
+                            <!-- row 2 -->
+                            <div class="bs-form">
+                                <div class="select-consultTime-wrapper">
+                                    <select name="GET_ConsultTime" class="w-100">
+                                        <option value="">상담 시간 선택</option>
+                                        <option value="09:00~11:00">09:00~11:00</option>
+                                        <option value="11:00~13:00">11:00~13:00</option>
+                                        <option value="13:00~15:00">13:00~15:00</option>
+                                        <option value="15:00~17:00">15:00~17:00</option>
+                                        <option value="17:00~19:00">17:00~19:00</option>
+                                    </select>
                                 </div>
+                                <input type="text" class="input-name" name="GET_Name" placeholder="이름" maxlength="10">
+                                <input type="tel" class="input-tel" name="GET_Tel" placeholder="연락처 (숫자만 입력)"
+                                       oninput="oninputPhone(this)"
+                                       maxlength="14">
                             </div>
-                            <!-- 초진/재진 선택 -->
-                            <span class="radio-switch">
+                            <script>
+                                function oninputPhone(target) {
+                                    target.value = target.value
+                                        .replace(/[^0-9]/g, '')
+                                        .replace(/(^02.{0}|^01.{1}|[0-9]{3,4})([0-9]{3,4})([0-9]{4})/g, "$1-$2-$3");
+                                }
+                            </script>
+
+                        </div>
+                    </div>
+                    <div class="bs-validate-mobile">
+                        <!-- show/hide -->
+                        <p class="validate"></p>
+                    </div>
+                    <button type="button" class="btn-bs reserve">예약 신청하기</button>
+                    <p class="bs-time-mobile">7월 26일(수) 진료시간은 09:00~21:00 입니다.</p>
+                </div>
+
+                <!-- content 2 -->
+                <div class="content-box-mobile" style="display: none;">
+                    <h3 class="blind">빠른 상담</h3>
+                    <div>
+                        <div class="bs-form-wrapper">
+                            <!-- row 1 -->
+                            <div class="bs-form">
+                                <!-- 클리닉 선택-->
+                                <div class="select-clinic-wrapper">
+                                    <button type="button" class="btn-select-mobile">
+                                        클리닉 선택
+                                    </button>
+                                    <div class="select-clinic-mobile">
+                                        <ul>
+                                            <li class="active" value="10001"><a class="clinic_code">
+                                                통증
+                                            </a></li>
+                                            <li value="10002"><a class="clinic_code" href="javascript:;">
+                                                피부
+                                            </a></li>
+                                            <li value="10003"><a class="clinic_code" href="javascript:;">
+                                                미용
+                                            </a></li>
+                                            <li value="10004"><a class="clinic_code" href="javascript:;">
+                                                교통사고
+                                            </a></li>
+                                            <li value="10004"><a class="clinic_code" href="javascript:;">
+                                                한약
+                                            </a></li>
+                                            <li value="10004"><a class="clinic_code" href="javascript:;">
+                                                수험생
+                                            </a></li>
+                                            <li value="10004"><a class="clinic_code" href="javascript:;">
+                                                소아
+                                            </a></li>
+                                        </ul>
+                                        <!-- 선택된 a태그의 값을 받아주는 hidden input 태그 with 검증에 걸리는 default value-->
+                                        <input type="hidden" name="GET_ClinicCode_1" value="">
+                                    </div>
+                                </div>
+                                <!-- 초진/재진 선택 -->
+                                <span class="radio-switch">
                                     <span class="radioCheck">
                                         <input type="radio"
                                                name="GET_FirstYN_1"
@@ -1475,198 +1474,198 @@
                                         <label for="GET_FirstN_M_1">재진</label>
                                     </span>
                                 </span>
-                        </div>
-                        <!-- row 2 -->
-                        <div class="bs-form">
-                            <div class="select-consultTime-wrapper">
-                                <select name="GET_ConsultTime_1" class="w-100">
-                                    <option value="">상담 시간 선택</option>
-                                    <option value="09:00~11:00">09:00~11:00</option>
-                                    <option value="11:00~13:00">11:00~13:00</option>
-                                    <option value="13:00~15:00">13:00~15:00</option>
-                                    <option value="15:00~17:00">15:00~17:00</option>
-                                    <option value="17:00~19:00">17:00~19:00</option>
-                                </select>
                             </div>
-                            <input type="text" class="input-name" name="GET_Name_1" placeholder="이름" maxlength="10">
-                            <input type="tel" class="input-tel" name="GET_Tel_1" placeholder="연락처 (숫자만 입력)"
-                                   oninput="oninputPhone(this)"
-                                   maxlength="14">
-                        </div>
-                        <script>
-                            function oninputPhone(target) {
-                                target.value = target.value
-                                    .replace(/[^0-9]/g, '')
-                                    .replace(/(^02.{0}|^01.{1}|[0-9]{3,4})([0-9]{3,4})([0-9]{4})/g, "$1-$2-$3");
-                            }
-                        </script>
+                            <!-- row 2 -->
+                            <div class="bs-form">
+                                <div class="select-consultTime-wrapper">
+                                    <select name="GET_ConsultTime_1" class="w-100">
+                                        <option value="">상담 시간 선택</option>
+                                        <option value="09:00~11:00">09:00~11:00</option>
+                                        <option value="11:00~13:00">11:00~13:00</option>
+                                        <option value="13:00~15:00">13:00~15:00</option>
+                                        <option value="15:00~17:00">15:00~17:00</option>
+                                        <option value="17:00~19:00">17:00~19:00</option>
+                                    </select>
+                                </div>
+                                <input type="text" class="input-name" name="GET_Name_1" placeholder="이름" maxlength="10">
+                                <input type="tel" class="input-tel" name="GET_Tel_1" placeholder="연락처 (숫자만 입력)"
+                                       oninput="oninputPhone(this)"
+                                       maxlength="14">
+                            </div>
+                            <script>
+                                function oninputPhone(target) {
+                                    target.value = target.value
+                                        .replace(/[^0-9]/g, '')
+                                        .replace(/(^02.{0}|^01.{1}|[0-9]{3,4})([0-9]{3,4})([0-9]{4})/g, "$1-$2-$3");
+                                }
+                            </script>
 
+                        </div>
                     </div>
+                    <div class="bs-validate-mobile">
+                        <!-- show/hide -->
+                        <p class="validate"></p>
+                    </div>
+                    <button type="button" class="btn-bs reserve">상담 신청하기</button>
+                    <p class="bs-time-mobile">7월 26일(수) 진료시간은 09:00~21:00 입니다.</p>
                 </div>
-                <div class="bs-validate-mobile">
-                    <!-- show/hide -->
-                    <p class="validate"></p>
-                </div>
-                <button type="button" class="btn-bs reserve">상담 신청하기</button>
-                <p class="bs-time-mobile">7월 26일(수) 진료시간은 09:00~21:00 입니다.</p>
             </div>
         </div>
     </div>
-</div>
-<!-- 공지사항 -->
-<div class="notice "
-     style="
+    <!-- 공지사항 -->
+    <div class="notice "
+         style="
          background: url('images/main_section/main-bg.jpg') no-repeat 50%;
          background-size: cover;
           color:#ddd;
             "
->
-    <ul class="d-flex align-items-center list-unstyled m-0 p-0">
-        <li class="w-50 flex-wrap m-0 me-3">
-            <div class="py-1 py-lg-2">
-                <a href="#" class="text-white fw-bold text-shadow fs-13">
-                    공지사항 <span class="fs-11">+</span>
-                </a>
-            </div>
-            <dl class="lh-sm">
-                <style>
-                    dl {
-                        /*position: relative;*/
-                    }
-
-                    dl > dd:before {
-                        content: "";
-                        display: inline-block;
-                        /*position: absolute;*/
-                        width: 5px;
-                        height: 5px;
-                        border-radius: 50%;
-                        background: #fff;
-                        left: 0px;
-                        top: 40%;
-                    }
-                </style>
-                <dd class="m-0 p-0 text-truncate">
-                    <a href="#" class="fs-11 text-white text-shadow" style="">
-                        진료시간 변경안내이빈다.dddddddddddddddddddddddddddddddddddddddddddddddddd
+    >
+        <ul class="d-flex align-items-center list-unstyled m-0 p-0">
+            <li class="w-50 flex-wrap m-0 me-3">
+                <div class="py-1 py-lg-2">
+                    <a href="#" class="text-white fw-bold text-shadow fs-13">
+                        공지사항 <span class="fs-11">+</span>
                     </a>
-                </dd>
-                <dd class="m-0 p-0 text-truncate">
-                    <a href="#" class="fs-11 text-white text-shadow" style="">
-                        진료시간 변경안내이빈다.dddddddddddddddddddddddddddddddddddddddddddddddddd
-                    </a>
-                </dd>
-            </dl>
-        </li>
+                </div>
+                <dl class="lh-sm">
+                    <style>
+                        dl {
+                            /*position: relative;*/
+                        }
 
-        <li class="w-50 flex-wrap m-0 me-3">
-            <div class="py-2 py-lg-3">
-                <a href="#" class="text-white fw-bold text-shadow fs-13">
-                    온라인 상담 <span class="fs-11">+</span>
-                </a>
-            </div>
-            <dl class="lh-sm">
-                <style>
-                    dl {
-                        /*position: relative;*/
-                    }
+                        dl > dd:before {
+                            content: "";
+                            display: inline-block;
+                            /*position: absolute;*/
+                            width: 5px;
+                            height: 5px;
+                            border-radius: 50%;
+                            background: #fff;
+                            left: 0px;
+                            top: 40%;
+                        }
+                    </style>
+                    <dd class="m-0 p-0 text-truncate">
+                        <a href="#" class="fs-11 text-white text-shadow" style="">
+                            진료시간 변경안내이빈다.dddddddddddddddddddddddddddddddddddddddddddddddddd
+                        </a>
+                    </dd>
+                    <dd class="m-0 p-0 text-truncate">
+                        <a href="#" class="fs-11 text-white text-shadow" style="">
+                            진료시간 변경안내이빈다.dddddddddddddddddddddddddddddddddddddddddddddddddd
+                        </a>
+                    </dd>
+                </dl>
+            </li>
 
-                    dl > dd:before {
-                        content: "";
-                        display: inline-block;
-                        /*position: absolute;*/
-                        width: 5px;
-                        height: 5px;
-                        border-radius: 50%;
-                        background: #fff;
-                        left: 0px;
-                        top: 40%;
-                    }
-                </style>
-                <dd class="m-0 p-0 text-truncate">
-                    <a href="#" class="fs-11 text-white" style="">
-                        진료시간 변경안내이빈다.dddddddddddddddddddddddddddddddddddddddddddddddddd
+            <li class="w-50 flex-wrap m-0 me-3">
+                <div class="py-2 py-lg-3">
+                    <a href="#" class="text-white fw-bold text-shadow fs-13">
+                        온라인 상담 <span class="fs-11">+</span>
                     </a>
-                </dd>
-                <dd class="m-0 p-0 text-truncate">
-                    <a href="#" class="fs-11 text-white" style="">
-                        진료시간 변경안내이빈다.dddddddddddddddddddddddddddddddddddddddddddddddddd
-                    </a>
-                </dd>
-            </dl>
-        </li>
+                </div>
+                <dl class="lh-sm">
+                    <style>
+                        dl {
+                            /*position: relative;*/
+                        }
 
-    </ul>
-</div>
-<!-- 한약 소개-->
-<div class="section2-bottom">
-    <div class="section-title">
-        <div>
-            <p>우아 한약 소개</p>
-            <p>탕/환/단/고</p>
-        </div>
-        <div>
-            <strong>검증된</strong> 우아 한의원의 효자 상품들을 소개합니다
-        </div>
+                        dl > dd:before {
+                            content: "";
+                            display: inline-block;
+                            /*position: absolute;*/
+                            width: 5px;
+                            height: 5px;
+                            border-radius: 50%;
+                            background: #fff;
+                            left: 0px;
+                            top: 40%;
+                        }
+                    </style>
+                    <dd class="m-0 p-0 text-truncate">
+                        <a href="#" class="fs-11 text-white" style="">
+                            진료시간 변경안내이빈다.dddddddddddddddddddddddddddddddddddddddddddddddddd
+                        </a>
+                    </dd>
+                    <dd class="m-0 p-0 text-truncate">
+                        <a href="#" class="fs-11 text-white" style="">
+                            진료시간 변경안내이빈다.dddddddddddddddddddddddddddddddddddddddddddddddddd
+                        </a>
+                    </dd>
+                </dl>
+            </li>
+
+        </ul>
     </div>
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <img src="images/main_section/section2_bottom_1_left.png"
-                     class="ani" swiper-animate-effect="mySlideInUp" swiper-animate-delay="0.1s"
-                >
-                <img src="images/main_section/section2_bottom_1_right.png"
-                     class="ani" swiper-animate-effect="mySlideInDown" swiper-animate-delay="0.1s"
-                >
+    <!-- 한약 소개-->
+    <div class="section2-bottom">
+        <div class="section-title">
+            <div>
+                <p>우아 한약 소개</p>
+                <p>탕/환/단/고</p>
             </div>
-            <div class="swiper-slide">
-                <img src="images/main_section/section2_bottom_2_left.png"
-                     class="ani" swiper-animate-effect="mySlideInDown" swiper-animate-delay="0.1s"
-                >
-                <img src="images/main_section/section2_bottom_2_right.png"
-                     class="ani" swiper-animate-effect="mySlideInUp" swiper-animate-delay="0.1s"
-
-                >
-            </div>
-            <div class="swiper-slide">
-                <img src="images/main_section/section2_bottom_3_left.png"
-                     class="ani" swiper-animate-effect="mySlideInUp" swiper-animate-delay="0.1s"
-                >
-                <img src="images/main_section/section2_bottom_3_right.png"
-                     class="ani" swiper-animate-effect="mySlideInUp" swiper-animate-delay="0.1s"
-                >
-            </div>
-            <div class="swiper-slide">
-                <img src="images/main_section/section2_bottom_4_left.png"
-                     class="ani" swiper-animate-effect="mySlideInDown" swiper-animate-delay="0.1s"
-                >
-                <img src="images/main_section/section2_bottom_4_right.png"
-                     class="ani" swiper-animate-effect="mySlideInUp" swiper-animate-delay="0.1s"
-                >
+            <div>
+                <strong>검증된</strong> 우아 한의원의 효자 상품들을 소개합니다
             </div>
         </div>
-        <!-- 페이지네이션 -->
-        <div class="swiper-pagination"></div>
-        <!-- line + name + number-->
-        <p class="swiper-line"></p>
-        <p class="swiper-name">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="images/main_section/section2_bottom_1_left.png"
+                         class="ani" swiper-animate-effect="mySlideInUp" swiper-animate-delay="0.1s"
+                    >
+                    <img src="images/main_section/section2_bottom_1_right.png"
+                         class="ani" swiper-animate-effect="mySlideInDown" swiper-animate-delay="0.1s"
+                    >
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/main_section/section2_bottom_2_left.png"
+                         class="ani" swiper-animate-effect="mySlideInDown" swiper-animate-delay="0.1s"
+                    >
+                    <img src="images/main_section/section2_bottom_2_right.png"
+                         class="ani" swiper-animate-effect="mySlideInUp" swiper-animate-delay="0.1s"
+
+                    >
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/main_section/section2_bottom_3_left.png"
+                         class="ani" swiper-animate-effect="mySlideInUp" swiper-animate-delay="0.1s"
+                    >
+                    <img src="images/main_section/section2_bottom_3_right.png"
+                         class="ani" swiper-animate-effect="mySlideInUp" swiper-animate-delay="0.1s"
+                    >
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/main_section/section2_bottom_4_left.png"
+                         class="ani" swiper-animate-effect="mySlideInDown" swiper-animate-delay="0.1s"
+                    >
+                    <img src="images/main_section/section2_bottom_4_right.png"
+                         class="ani" swiper-animate-effect="mySlideInUp" swiper-animate-delay="0.1s"
+                    >
+                </div>
+            </div>
+            <!-- 페이지네이션 -->
+            <div class="swiper-pagination"></div>
+            <!-- line + name + number-->
+            <p class="swiper-line"></p>
+            <p class="swiper-name">
             <span>
                 비워탕/비워환<br>
                 짜먹는 경옥고<br>
                 초집중 공진단<br>
                 통증고/통증환
             </span>
-        </p>
-        <p class="swiper-number">
+            </p>
+            <p class="swiper-number">
                 <span>
                     01<br>
                     02<br>
                     03<br>
                     04
                 </span>
-        </p>
+            </p>
+        </div>
     </div>
-</div>
 </div>
 
 <!-- 건강채널 -->

@@ -863,7 +863,6 @@ pagination: {
 ```
 10. **이제 `bullet css`로 pagination 동그라미를 `bg:none!important`로 제거하고, 글자스타일을 정한다.**
     - container바깥에 존재하는 pagitino경로 및 직접 지정해준 하위 bullet css 경로 설정시 조심한다.
-    - 
 ```css
 /* 지정 bullet css [active전 글자] */
 .section2-middle2 .swiper-pagination .review-bullet {
@@ -874,7 +873,7 @@ pagination: {
     flex-wrap: wrap; /* 글자가 세로로 나열안되도록*/
     text-align: center;
 
-    margin: 0 3px; /* 좌우 간격 */
+    margin: 0 5px; /* 좌우 간격 */
     
     background: none!important; /* 동그라미 삭제 */
 
@@ -885,3 +884,14 @@ pagination: {
 
 ```
 ![img.png](../ui/274.png)
+
+
+11. active bullet 도 직접 지정해준대로 경로를 설정해서 설정한다.
+```css
+/* 치료후기 지정 bullet css [active 글자] */
+.section2-middle2 .swiper-pagination .review-bullet-active {
+    color: var(--color-main)!important; /* active전 글자색 */
+    transform: scale(1.3);
+}
+```
+![img.png](../ui/275.png)
