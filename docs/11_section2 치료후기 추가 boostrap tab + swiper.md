@@ -897,6 +897,63 @@ pagination: {
 ![img.png](../ui/275.png)
 
 
+12. pagination을 아래쪽으로 두기
+- html을 container아래로 pagination을 이동시키고
+```html
+<!-- 치료후기 공간 -->
+<div class="w-75 flex-grow-1 ">
+    <div class="swiper-container ">
+    </div>
+    <!-- 페이지네이션 -->
+    <div class="swiper-pagination"></div>
+</div>
+```
+- relative의 위치를 top이 아닌 bottom에서 -로 준다.
+```css
+.section2-middle2 .swiper-pagination {
+    top:auto;
+    bottom: -30px;
+}
+
+@media screen and (max-width: 991px) {
+    /* 모바일에선 사라지는 mt위족공간 -60px -> top - 도 그만큼 줄임*/
+    .section2-middle2 .swiper-pagination {
+        /*top: -10px;*/
+        bottom: -10px;
+    }
+}
+```
+![img.png](../ui/276.png)
+![img.png](../ui/277.png)
+
+13. tab에서 준 mb-3 등의 여백을 삭제하고, lg부터 밑에 공지사항과 붙기위해 여백이 사라진 경우를 어떻게 처리할지 고민해본다.
+- 탭에서 아래로 벌린 mb-3 삭제
+```html
+<div class="review-box p-0">
+    <!--<ul class="nav nav-tabs mb-3 gap-1 column-gap-2" id="review-tabs" role="tablist">-->
+    <ul class="nav nav-tabs gap-1 column-gap-2" id="review-tabs" role="tablist">
+```
+- w-75부분을 lg(992) ~ xxl(1400)까지는 전체적으로 올려버린다?
+```css
+/* lg ~ xxl까지 공자사항에 붙는 구간에서 pagination이 들어잇는 w-75부분을 약간 올린다. */
+@media screen and (min-width: 992px) and (max-width: 1440px) {
+    .section2-middle2 .tab-content .w-75 {
+        position: relative;
+        top: -50px!important;
+    }
+}
+```
+14. 위쪽에 pagination을배치할려고 만들어둔 `.tab-pane`들의 `padding`의 top을 5% -> 3%로 수정한다
+
+```css
+/* 건강채널 + 치료후기 tab content swiper 기본설정 */
+.tab-content .tab-pane {
+    /* pagination 위쪽배치를 위한 패딩 5% -> 이동 후 3% */
+    padding: 3% 0 0 3%;
+}
+```
+
 ### 각 tab index마다 Swiper초기화시키기
 1. 의료진별로 치료후기를 tab content에 복사해서 옮겨준다
 2. 
+
