@@ -2436,20 +2436,27 @@ span.category.category-youtube {
         top: -10px;
     }
 }
-
-.section2-middle2 .swiper-pagination-bullet {
-    /*flex: 1;*/
+/* 치료후기 지정 bullet css [active전 글자] */
+.section2-middle2 .swiper-pagination .review-bullet {
+/*    !*flex: 1;*!*/
     width: auto; /* content크기만큼 차지하도록*/
-    flex-wrap: wrap; /* 글자가 세로로 나열안되도록*/
     height: auto;
 
-    margin-right: 7px; /* 글자 간격 */
+    flex-wrap: wrap; /* 글자가 세로로 나열안되도록*/
+    text-align: center;
+
+    margin: 0 3px; /* 좌우 간격 */
 
     background: none!important; /* 동그라미 삭제 */
 
-    color: var(--color-main)!important; /* active 글자체 */
-    font-weight: 900;
-    text-shadow: 1px 1px 2px #757575;
-    text-align: center;
-
+    color: #999!important; /* active전 글자색 */
+    font-weight: bold;
+    /*text-shadow: 1px 1px 2px #757575;*/
 }
+
+/* 치료후기 지정 bullet css [active 글자] */
+.section2-middle2 .swiper-pagination .review-bullet-active {
+    color: var(--color-main)!important; /* active전 글자색 */
+    text-shadow: 1px 1px 1.5px var(--color-main);
+}
+

@@ -848,5 +848,40 @@ pagination: {
 ```
 ![img.png](../ui/273.png)
 
-9. **이제 css로 pagination 동그라미를 `bg:none!important`로 제거하고, 글자스타일을 정한다.**
-    - container바깥에 있으니, css 경로 설정시 조심한다.
+9. **bullet element에 대한 `적용 css`를 현재 .swiper-pagination `하위의 적용된 css이름`를 직접 지정**할 수 있다.
+- js로 css클래스명을 지정해놓으면, css에서는 `.swiper-pagination` 하위의 css를 직접 정의해주면 된다.
+```js
+pagination: {
+        el: '.section2-middle2  .swiper-pagination',
+        bulletClass: 'review-bullet',// 적용될 bullet css class명 지정하기
+        bulletActiveClass: 'review-bullet-active',
+        clickable: true,
+        renderBullet: function (index, className) {
+            return '<span class="' + className + ' fs-tab">' + (index + 1) + '</span>';
+        },
+    },
+```
+10. **이제 `bullet css`로 pagination 동그라미를 `bg:none!important`로 제거하고, 글자스타일을 정한다.**
+    - container바깥에 존재하는 pagitino경로 및 직접 지정해준 하위 bullet css 경로 설정시 조심한다.
+    - 
+```css
+/* 지정 bullet css [active전 글자] */
+.section2-middle2 .swiper-pagination .review-bullet {
+/*    !*flex: 1;*!*/
+    width: auto; /* content크기만큼 차지하도록*/
+    height: auto;
+
+    flex-wrap: wrap; /* 글자가 세로로 나열안되도록*/
+    text-align: center;
+
+    margin: 0 3px; /* 좌우 간격 */
+    
+    background: none!important; /* 동그라미 삭제 */
+
+    color: #999!important; /* active전 글자색 */
+    font-weight: bold;
+    /*text-shadow: 1px 1px 2px #757575;*/
+}
+
+```
+![img.png](../ui/274.png)

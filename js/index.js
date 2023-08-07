@@ -549,6 +549,8 @@ $(function () {
 
             pagination: {
                 el: '.section2-middle2  .swiper-pagination',
+                bulletClass: 'review-bullet',// 적용될 bullet css class명 지정하기
+                bulletActiveClass: 'review-bullet-active',
                 clickable: true,
                 renderBullet: function (index, className) {
                     return '<span class="' + className + ' fs-tab">' + (index + 1) + '</span>';
