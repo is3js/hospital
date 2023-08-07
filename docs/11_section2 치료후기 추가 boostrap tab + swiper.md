@@ -634,3 +634,76 @@
 
 
 ### swiper 적용하기
+
+
+1. div.tab-content 아래 tab내부에서도 `.card-img-overlay`안에서 lg의료진이미지(.w-25)가 아닌 `.w-75` <-> 후기시작부분 사이에 swiper-container/wrapper/slide를 넣어준다.
+```html
+<div class="tab-content mb-5 mb-lg-0" id="review-content">
+    <!-- tab 1 전체 -->
+    <div class="tab-pane fade show active position-relative px-0"
+         id="tabs-review-1"
+         role="tabpanel"
+    >
+        <!-- tab 1 내용 -->
+        <div class="row ">
+            <div class="col">
+                <div class="card border-0 w-100">
+                    <img class="card-img " src="images/main_section/review-bg.png" alt="">
+                    <div class="card-img-overlay d-flex flex-row p-0">
+
+                        <!-- 치료후기 공간 -->
+                        <div class="w-75 flex-grow-1 ">
+                            <div class="swiper-container ">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <!-- 후기1 -->
+                                        <div class="d-flex rounded w-100 py-1 ">
+```
+2. tab안의 container/slide css 설정은 건강채널시 했었다.
+```css
+/* 건강채널 + 치료후기 tab content swiper */
+.tab-content .tab-pane {
+    padding: 5% 0 0 3%;
+}
+
+.tab-content .tab-pane .swiper-container {
+    width: 100%;
+
+    /* 임시 */
+    /*background: red;*/
+}
+
+.tab-content .tab-pane .swiper-container .swiper-slide {
+    position: relative;
+}
+```
+
+3. tab의 index에 따른 swiper 객체 초기화 로직을 가져온다.
+
+- 특정section > tab에서의 `tabIndex`에 따른 swiper 초기화 함수를 작성하고 **`index 0`값을 넣어 초기화 한다.**
+    - **작은화면에서는 1개, 큰화면부터 2개씩 보이게 할 것이다.**
+```js
+// sec2-mid2 치료후기 swiper
+function initReviewSwiper(tabIndex) {
+
+    new Swiper($('.section2-middle2').find('.swiper-container').eq(tabIndex), {
+        slidesPerView: 2,
+        slidesPerGroup: 2,
+        spaceBetween: '3%',
+        breakpoints: {
+            991: {
+                slidesPerView: 1,
+                slidesPerGroup: 1,
+                spaceBetween: '5%'
+            },
+        },
+    });
+}
+
+initReviewSwiper(0);
+```
+
+
+4. 이제 후기들이 swiper를 탈 수 있게 `slide`를 3까지 정도 복사한다.
+![img.png](../ui/264.png)
+![img.png](../ui/265.png)

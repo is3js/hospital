@@ -456,7 +456,7 @@ $(function () {
         triggerElement: ".section3",
         // triggerHook: "onEnter",
         triggerHook: "onCenter",
-        offset: -80,
+        offset: -120,
     });
     scene6.setVelocity([".section3 > .section-title > div"], {
         top: "0px",
@@ -468,7 +468,7 @@ $(function () {
 
 
 
-    /* 건강채널 swiper */
+    /* section3 건강채널 swiper */
     function initSection3Swiper(tabIndex) {
         // console.log(tabIndex)
         // console.log($('.section3').find('.swiper-container').eq(tabIndex))
@@ -531,6 +531,49 @@ $(function () {
 
         initSection3Swiper(index);
     });
+
+    // sec2-mid2 치료후기 swiper
+    function initReviewSwiper(tabIndex) {
+
+        new Swiper($('.section2-middle2').find('.swiper-container').eq(tabIndex), {
+            slidesPerView: 2,
+            slidesPerGroup: 2,
+            spaceBetween: '3%',
+            breakpoints: {
+                991: {
+                    slidesPerView: 1,
+                    slidesPerGroup: 1,
+                    spaceBetween: '5%'
+                },
+            },
+
+            on: {
+                // 시작시 preview 수보다, 주어진 slide의 갯수가 더 적으면, 잘린가로선을 hide시킨다.
+                init: function () {
+                    if (this.slides.length <= this.params.slidesPerView + .5) {
+                        // $('.section2-middle2').find('.tab-pane').eq(tabIndex).addClass('hide-before');
+                    }
+                },
+
+                slideChangeTransitionStart: function () {
+                    // var previewLength = this.params.slidesPerView * this.width;
+
+                    if (this.isEnd || this.slides.length === this.activeIndex + this.params.slidesPerView) {
+                        // 잘린 세로선 띄우기
+                        // $('.section2-middle2').find('.tab-pane').eq(tabIndex).addClass('hide-before');
+                        // this.navigation.$nextEl.css('display', 'none');
+                    } else {
+                        // 잘린 세로선 삭제
+                        // $('.section2-middle2').find('.tab-pane').eq(tabIndex).removeClass('hide-before');
+                        // this.navigation.$nextEl.css('display', 'block');
+                    }
+                },
+            }
+
+        });
+    }
+
+    initReviewSwiper(0);
 
 })
 
