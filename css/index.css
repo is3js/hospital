@@ -2462,7 +2462,7 @@ span.category.category-youtube {
 /* 치료후기 지정 bullet css [active 글자] */
 .section2-middle2 .swiper-pagination .review-bullet-active {
     color: var(--color-main)!important; /* active전 글자색 */
-    transform: scale(1.3);
+    transform: scale(1.5);
 }
 
 
