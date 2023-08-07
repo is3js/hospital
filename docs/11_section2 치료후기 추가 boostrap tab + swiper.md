@@ -895,3 +895,8 @@ pagination: {
 }
 ```
 ![img.png](../ui/275.png)
+
+
+### 각 tab index마다 Swiper초기화시키기
+1. 의료진별로 치료후기를 tab content에 복사해서 옮겨준다
+2. 

@@ -42,6 +42,18 @@
     color: #00b5b2;
 }
 
+.text-review-clinic-scan {
+    color: #7b8cba;
+}
+
+.text-review-clinic-self {
+    color: rgba(252, 82, 48, .8);
+}
+
+.text-review-clinic-naver {
+    color: rgba(25, 135, 84, 0.8);
+}
+
 .text-shadow {
     text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
 }
@@ -145,6 +157,17 @@
     background: #eeeeee;
 }
 
+.bg-review-clinic-scan {
+    background: #7b8cba;
+}
+
+.bg-review-clinic-self {
+    background: rgba(252, 82, 48, .8);
+}
+
+.bg-review-clinic-naver {
+    background: rgba(25, 135, 84, 0.8);;
+}
 
 /* 버튼 */
 .btn-main {
