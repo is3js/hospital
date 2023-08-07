@@ -2294,7 +2294,7 @@ a {
 }
 
 /* section2-middle2 치료후기 */
-@media screen and (min-width: 992px){
+@media screen and (min-width: 992px) {
     /* w-25에서 위로 넘치는 img가 나타나는 구간에서 mt 추가 */
     .section2-middle2 .review-box .tab-content .card {
         margin-top: 60px;
@@ -2410,3 +2410,46 @@ span.category.category-youtube {
     display: none;
 }
 
+/* 치료후기 swiper 설정 */
+.section2-middle2 .swiper-container {
+    position: relative;
+}
+
+.section2-middle2 .swiper-pagination {
+    position: relative; /* container밖으로 뺌 */
+
+    width: 100%;
+    top: -60px;
+    bottom: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /*background: none;*/
+    /*border-radius: 0px;*/
+}
+
+@media screen and (max-width: 991px) {
+    /* 모바일에선 사라지는 mt위족공간 -60px -> top - 도 그만큼 줄임*/
+    .section2-middle2 .swiper-pagination {
+        top: -10px;
+    }
+}
+
+.section2-middle2 .swiper-pagination-bullet {
+    /*flex: 1;*/
+    width: auto; /* content크기만큼 차지하도록*/
+    flex-wrap: wrap; /* 글자가 세로로 나열안되도록*/
+    height: auto;
+
+    margin-right: 7px; /* 글자 간격 */
+
+    background: none!important; /* 동그라미 삭제 */
+
+    color: var(--color-main)!important; /* active 글자체 */
+    font-weight: 900;
+    text-shadow: 1px 1px 2px #757575;
+    text-align: center;
+
+}

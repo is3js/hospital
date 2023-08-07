@@ -547,29 +547,13 @@ $(function () {
                 },
             },
 
-            on: {
-                // 시작시 preview 수보다, 주어진 slide의 갯수가 더 적으면, 잘린가로선을 hide시킨다.
-                init: function () {
-                    if (this.slides.length <= this.params.slidesPerView + .5) {
-                        // $('.section2-middle2').find('.tab-pane').eq(tabIndex).addClass('hide-before');
-                    }
+            pagination: {
+                el: '.section2-middle2  .swiper-pagination',
+                clickable: true,
+                renderBullet: function (index, className) {
+                    return '<span class="' + className + ' fs-tab">' + (index + 1) + '</span>';
                 },
-
-                slideChangeTransitionStart: function () {
-                    // var previewLength = this.params.slidesPerView * this.width;
-
-                    if (this.isEnd || this.slides.length === this.activeIndex + this.params.slidesPerView) {
-                        // 잘린 세로선 띄우기
-                        // $('.section2-middle2').find('.tab-pane').eq(tabIndex).addClass('hide-before');
-                        // this.navigation.$nextEl.css('display', 'none');
-                    } else {
-                        // 잘린 세로선 삭제
-                        // $('.section2-middle2').find('.tab-pane').eq(tabIndex).removeClass('hide-before');
-                        // this.navigation.$nextEl.css('display', 'block');
-                    }
-                },
-            }
-
+            },
         });
     }
 

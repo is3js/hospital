@@ -386,11 +386,13 @@
 
 - **문제점**
     1. 글자크기가 모바일에서 작아지도록 -> tab과 엮어서 style.css에 지정해놓고 공용으로 쓰자.
-    2. **말풍선을 2줄 제한으로 -> ellipsis-2를 활용하자. 혹은 3줄으로** 
+    2. **말풍선을 2줄 제한으로 -> ellipsis-2를 활용하자. 혹은 3줄으로**
 
 
 13. tab용 전용폰트를 css로 style.css에 정의해놓고 쓴다.
+
 - 기존 스타일
+
 ```css
 /* 활성화되기 전, tab 글자 */
 .section3 .media-box .nav-tabs > li > a,
@@ -408,7 +410,9 @@
     }
 }
 ```
+
 - 새로운 css 정의 후 적용
+
 ```css
 .fs-tab {
     font-size: 13px;
@@ -422,6 +426,7 @@
     }
 }
 ```
+
 ```css
 /* 활성화되기 전, tab 글자 */
 .section3 .media-box .nav-tabs > li > a,
@@ -439,7 +444,9 @@
 /*    }*/
 /*}*/
 ```
+
 ```html
+
 <div class="media-box">
     <ul class="nav nav-tabs mb-3" id="media-tabs" role="tablist">
         <li class="nav-item" role="presentation">
@@ -462,13 +469,16 @@
             </a>
         </li>
 ```
+
 ```html
+
 <div class="review-box p-0">
     <ul class="nav nav-tabs mb-3 gap-2" id="review-tabs" role="tablist">
         <li class="nav-item" role="presentation">
             <!--<a class="nav-link active"-->
             <a class="nav-link active rounded-pill bg-gray me-lg-2 py-1 px-3 fs-tab"
 ```
+
 ```html
     <!--클리닉 명-->
 <p class="d-inline-block rounded-pill shadow-sm px-2  bg-submain m-0">
@@ -493,24 +503,28 @@
 </p>
 ```
 
-
 14. 글자를 줄여도 `.card-img-overlay`는 absolute로서 넘어버린다.
     - review-bg.png를 활용하도록 이미지를 변경해주고
     - **lg에서는 공지사항에 딱 붙는 상태로 두고, 2~3줄로 줄이기 전에 `div.tab-content`에 `모바일시 mb-5`를 줘서 간격을 벌려주자.**
+
 ```html
+
 <div class="tab-content mb-5 mb-lg-0" id="review-content">
     <!-- tab 1 전체 -->
     <div class="tab-pane fade show active position-relative px-0"
 ```
-![img.png](../ui/259.png)
 
+![img.png](../ui/259.png)
 
 15. 이제 p태그에 3줄 줄임을 적용한다.
     - **일단 `padding을 모바일1, lg2`로 만들어놓는다.**
+
 ```html
 <p class="w-100 bg-gray rounded small p-1 p-lg-2 m-0 text-wrap fs-13 border-1 border-dark fs-tab ellipsis-3">
 ```
+
 - 이후 style.css에 `.ellipsis-3`를 반응형으로 맞춰서 정의해준다.
+
 ```css
 /* 글자간격 */
 /* - padding 2 p태그 기준 */
@@ -526,6 +540,7 @@
     height: 4.52em;
     line-height: 1.25em;
 }
+
 /* - padding 1 p태그 기준 */
 @media screen and (max-width: 991px) {
     .ellipsis-3 {
@@ -534,10 +549,12 @@
     }
 }
 ```
+
 ![img.png](../ui/260.png)
 ![img.png](../ui/261.png)
 
 14. 디스크클리닉 부분만 rounded-pill / 20대/남성에 `ms-1`
+
 ```html
 <!--클리닉 명-->
 <!--<p class="d-inline-block rounded-pill shadow-sm px-1 px-lg-2  bg-submain m-0">-->
@@ -551,11 +568,13 @@
 ```
 
 15. 후기의 `.ellipsis-4`를 적용하기 위해 css + fz까지 포함하여 정의하고, 배경을 좀 더 어둡게 만든다.
+
 ```css
 .bg-gray-120 {
     background: #eeeeee;
 }
 ```
+
 ```css
 /* - padding 2 p태그 기준 */
 .ellipsis-4 {
@@ -581,6 +600,7 @@
     }
 }
 ```
+
 ```html
 <!--후기 -->
 <p class="w-100 bg-gray-120 rounded small p-1 p-lg-2 m-0 text-wrap ellipsis-4 fw-bold">
@@ -601,10 +621,11 @@
     asdfasdfasdfasdfasdfasdfasdf dadf
 </p>
 ```
+
 ![img.png](../ui/262.png)
 
-
 16. **치료후기부분이 항상 4줄을 유지하고 있으니 `height`를 `max-height`로 수정한다.**
+
 ```css
 /* - padding 2 p태그 기준 */
 .ellipsis-4 {
@@ -630,14 +651,16 @@
     }
 }
 ```
-![img.png](../ui/263.png)
 
+![img.png](../ui/263.png)
 
 ### swiper 적용하기
 
+1. div.tab-content 아래 tab내부에서도 `.card-img-overlay`안에서 lg의료진이미지(.w-25)가 아닌 `.w-75` <-> 후기시작부분 사이에
+   swiper-container/wrapper/slide를 넣어준다.
 
-1. div.tab-content 아래 tab내부에서도 `.card-img-overlay`안에서 lg의료진이미지(.w-25)가 아닌 `.w-75` <-> 후기시작부분 사이에 swiper-container/wrapper/slide를 넣어준다.
 ```html
+
 <div class="tab-content mb-5 mb-lg-0" id="review-content">
     <!-- tab 1 전체 -->
     <div class="tab-pane fade show active position-relative px-0"
@@ -659,7 +682,9 @@
                                         <!-- 후기1 -->
                                         <div class="d-flex rounded w-100 py-1 ">
 ```
+
 2. tab안의 container/slide css 설정은 건강채널시 했었다.
+
 ```css
 /* 건강채널 + 치료후기 tab content swiper */
 .tab-content .tab-pane {
@@ -682,6 +707,7 @@
 
 - 특정section > tab에서의 `tabIndex`에 따른 swiper 초기화 함수를 작성하고 **`index 0`값을 넣어 초기화 한다.**
     - **작은화면에서는 1개, 큰화면부터 2개씩 보이게 할 것이다.**
+
 ```js
 // sec2-mid2 치료후기 swiper
 function initReviewSwiper(tabIndex) {
@@ -703,13 +729,124 @@ function initReviewSwiper(tabIndex) {
 initReviewSwiper(0);
 ```
 
-
 4. 이제 후기들이 swiper를 탈 수 있게 `slide`를 3까지 정도 복사한다.
-![img.png](../ui/264.png)
-![img.png](../ui/265.png)
+   ![img.png](../ui/264.png)
+   ![img.png](../ui/265.png)
 
 - 4줄 제한으로 늘리고 나니 **mb-5 mb-lg-0**에서 mb-5로는 조금 모자란다.
 - **아래의 예약서비스의 pt-4를 pt-5로 늘려서, 스크롤매직과 관계없이 처리되게 한다.(mb-5를 직접 늘려줘도 버그남)**
+
 ```html
+
 <div class="booking-service-mobile pt-5 d-lg-none ">
 ```
+
+![img.png](../ui/266.png)
+
+5. 이제 pagination을 설정해준다.
+    - container 내부에 wrapper와 형제로 `-pagination`을 추가해준다.
+
+```html
+<!-- 치료후기 공간 -->
+<div class="w-75 flex-grow-1 ">
+    <div class="swiper-container ">
+        <!-- 페이지네이션 -->
+        <div class="swiper-pagination"></div>
+        <!-- 슬라이드 wrapper -->
+        <div class="swiper-wrapper">
+```
+
+- **pagination의 부모인 `해당섹션의 conatiner`만 relative설정 해준다.**
+
+```css
+/* 치료후기 swiper 설정 */
+.section2-middle2 .swiper-container {
+    position: relative;
+}
+```
+
+- **js에서 pagination html element설정을 해준다.**
+
+```js
+new Swiper($('.section2-middle2').find('.swiper-container').eq(tabIndex), {
+    slidesPerView: 2,
+    slidesPerGroup: 2,
+    spaceBetween: '3%',
+    breakpoints: {
+        991: {
+            slidesPerView: 1,
+            slidesPerGroup: 1,
+            spaceBetween: '5%'
+        },
+    },
+    pagination: {
+        el: '.section2-middle2  .swiper-pagination',
+        clickable: true,
+    },
+});
+```
+
+![img.png](267.png)
+
+6. pagination이 container 내부에 있을 경우, top으로 위치를 조절하면 잘려서 안보인다.
+    - **`container밖으로 pagination을 빼고` + `absolute를 취소`해야 container와 같이 자리를 잡는다.**
+```html
+<!-- 치료후기 공간 -->
+<div class="w-75 flex-grow-1 ">
+    <!-- 페이지네이션 -->
+    <div class="swiper-pagination"></div>
+    <div class="swiper-container ">
+```
+```css
+.section2-middle2 .swiper-pagination{
+    position: relative;
+}
+```
+![img.png](../ui/268.png)
+
+7. css로 `.card에 준 lg-mt공간(60px)`에 `top-`으로 자리를 잡는다.
+![img.png](../ui/269.png)
+```css
+.section2-middle2 .swiper-pagination{
+    position: relative; /* container밖으로 뺌 */
+
+    width: 100%;
+    top: -60px;
+    bottom: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*border-radius: 0px;*/
+}
+```
+![img.png](../ui/270.png)
+![img.png](../ui/271.png)
+- 모바일에선 적용안되는 mt이므로, top-도 모바일에선 -60을 -10px정도로 줄여준다
+```css
+@media screen and (max-width: 991px) {
+    .section2-middle2 .swiper-pagination {
+        top: -10px;
+    }
+}
+```
+![img.png](../ui/272.png)
+
+
+8. 이제 pagniation Bullet을 글자로 render한다.
+   - index인자는 0부터 오니 +1로 시작하게 하고
+   - tab을 글자크기와 동일하도록 `.fs-tab`을 span태그에 적용해준다.
+
+```js
+pagination: {
+    el: '.section2-middle2  .swiper-pagination',
+    clickable: true,
+    renderBullet: function (index, className) {
+        return '<span class="' + className + ' fs-tab">' + (index + 1) + '</span>';
+    },
+},
+```
+![img.png](../ui/273.png)
+
+9. **이제 css로 pagination 동그라미를 `bg:none!important`로 제거하고, 글자스타일을 정한다.**
+    - container바깥에 있으니, css 경로 설정시 조심한다.
