@@ -232,11 +232,13 @@ $(function () {
     let tm = new TimelineMax();
     tm.add([
         new TweenMax(".middle-left", 1, {
-            transform: "translateX(-100%)",
+            // transform: "translateX(-100%)",
+            transform: "translateX(-50%)",
             opacity: 0
         }),
         new TweenMax(".middle-right", 1, {
-            transform: "translateX(100%)",
+            // transform: "translateX(100%)",
+            transform: "translateX(50%)",
             opacity: 0
         }),
         new TweenMax(".middle-text", 1, {

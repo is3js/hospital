@@ -1613,6 +1613,8 @@ scene3.setPin(".section2") // 아래section(body)가 안올라가도록 pushFoll
 ```
 ![img.png](../ui/168.png)
 
+
+
 4. 다시 지우고 Timlinemax객체 안에 add할 array [] 속, tweenMax로 설정한다.
 ```js
 let tm = new TimelineMax();
@@ -1627,6 +1629,20 @@ tm.add([
     }),
 ]);
 scene3.setTween(tm);
+```
+
+- **right가 100%으로 가버리면, 나중에 right로 스크롤이 생겨버린다. 각각을 50%로 변경해주도록 한다.**
+```js
+        new TweenMax(".middle-left", 1, {
+            // transform: "translateX(-100%)",
+            transform: "translateX(-50%)",
+            opacity: 0
+        }),
+        new TweenMax(".middle-right", 1, {
+            // transform: "translateX(100%)",
+            transform: "translateX(50%)",
+            opacity: 0
+        }),
 ```
 
 
