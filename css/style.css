@@ -180,3 +180,9 @@
     --bs-btn-disabled-bg: rgb(45, 82, 181);
     --bs-btn-disabled-border-color: rgb(45, 82, 181);
 }
+
+
+/* margin, padidng */
+.mb-6 {
+    margin-bottom: 4.5rem;
+}

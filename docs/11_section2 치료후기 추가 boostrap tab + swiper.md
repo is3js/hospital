@@ -707,3 +707,9 @@ initReviewSwiper(0);
 4. 이제 후기들이 swiper를 탈 수 있게 `slide`를 3까지 정도 복사한다.
 ![img.png](../ui/264.png)
 ![img.png](../ui/265.png)
+
+- 4줄 제한으로 늘리고 나니 **mb-5 mb-lg-0**에서 mb-5로는 조금 모자란다.
+- **아래의 예약서비스의 pt-4를 pt-5로 늘려서, 스크롤매직과 관계없이 처리되게 한다.(mb-5를 직접 늘려줘도 버그남)**
+```html
+<div class="booking-service-mobile pt-5 d-lg-none ">
+```
