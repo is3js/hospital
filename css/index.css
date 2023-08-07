@@ -2437,7 +2437,7 @@ span.category.category-youtube {
     /* 모바일에선 사라지는 mt위족공간 -60px -> top - 도 그만큼 줄임*/
     .section2-middle2 .swiper-pagination {
         /*top: -10px;*/
-        bottom: -10px;
+        bottom: -12px;
     }
 }
 

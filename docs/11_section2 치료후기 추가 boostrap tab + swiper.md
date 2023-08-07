@@ -927,7 +927,7 @@ pagination: {
 ![img.png](../ui/277.png)
 
 13. tab에서 준 mb-3 등의 여백을 삭제하고, lg부터 밑에 공지사항과 붙기위해 여백이 사라진 경우를 어떻게 처리할지 고민해본다.
-- 탭에서 아래로 벌린 mb-3 삭제
+- 탭에서 아래로 벌린 mb-3  ->  mb-2로 줄임(삭제하면, 너무 붙음)
 ```html
 <div class="review-box p-0">
     <!--<ul class="nav nav-tabs mb-3 gap-1 column-gap-2" id="review-tabs" role="tablist">-->
