@@ -2495,20 +2495,30 @@ span.category.category-naver {
 
 /* 치료후기 화살표 */
 .section2-middle2 .swiper-button-prev {
-    height: 100%;
     top: 0;
-    left: -7%;
+    height: 100%;
+
+    left: -6%;
 
     margin-top: 4%;
-    /* subtract .swiper-wrapper bottom-margin to vertically center arrow */
-    transform: scaleX(.7);
+
+    transform: scaleX(.8);
 }
 .section2-middle2 .swiper-button-next {
-    height: 100%;
     top: 0;
-    right: -7%;
+    height: 100%;
+
+    right: -6%;
 
     margin-top: 4%;
-    /* subtract .swiper-wrapper bottom-margin to vertically center arrow */
-    transform: scaleX(.7);
+
+    transform: scaleX(.8);
+}
+
+/* 치료후기 좌우측 화살표 모바일에서만 보이도록*/
+@media screen and (min-width: 992px){
+    .section2-middle2 .swiper-button-prev,
+    .section2-middle2 .swiper-button-next {
+        display: none;
+    }
 }

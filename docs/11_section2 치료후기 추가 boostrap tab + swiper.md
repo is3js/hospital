@@ -1003,9 +1003,112 @@ navigation : {
 ```
 ![img.png](../ui/279.png)
 
-4. 기본화살표의 위치와 스타일을 지정해야한다.
-    - 
+4. `기본화살표의 위치`를 지정해야한다.
+    - 위치 참고: https://codepen.io/aaronkahlhamer/pen/oeVQxQ
+    - 각 css class를 선택하고, **`top 0`으로 시작한 뒤, `부모의 높이를 100%`로 차지하면, 자동으로 부모의 가운데 놓이게 된다.**
+    - **left, right를 -로 바깥으로 점 더 벌린다.**
+    - 위치를 조정하기 위해 mt를 좀 더 준다.
+    - 화살표의 가로폭을 줄이기 위해 scaleX()를 이용한다.
+```css
+/* 치료후기 화살표 */
+.section2-middle2 .swiper-button-prev {
+    top: 0;
+    height: 100%;
+    
+    left: -7%;
 
+    margin-top: 4%;
+    transform: scaleX(.7);
+}
+.section2-middle2 .swiper-button-next {
+    top: 0;
+    height: 100%;
+    
+    right: -7%;
+
+    margin-top: 4%;
+    transform: scaleX(.7);
+}
+```
+
+5. 화살표의 모양은, 일단 bg로 정해진 이미지를 사용하는데
+    - swiper css의 옵션으로 `white, black`이 주어지며, **black을 투명도 0.05로 사용해서 회색처럼 만들어 사용할 것이다.**
+```css
+/* 투명도 */
+.opacity-5 {
+    opacity: 0.05 !important;
+}
+```
+```html
+<!-- 탐색 버튼 -->
+<div class="swiper-button-prev swiper-button-black opacity-5"></div>
+<div class="swiper-button-next swiper-button-black opacity-5"></div>
+```
+![img.png](../ui/280.png)
+
+- custom svg로 만드는 법: https://github.com/nolimits4web/Swiper/issues/1280
+
+6. 이제 버튼들은 모바일에서만 보이게 한다.
+```css
+/* 치료후기 좌우측 화살표 모바일에서만 보이도록*/
+@media screen and (min-width: 992px){
+    .section2-middle2 .swiper-button-prev,
+    .section2-middle2 .swiper-button-next {
+        display: none;
+    }
+}
+```
+
+7. 이제 isEnd를 판단해서 처음과 끝에서 가리도록 하자.
+- https://www.swiper.com.cn/api/navigation/304.html
+    - isEnd는 있어도 isStart는 없으니, activeIndex === 0 으로 판단한다.
+    - **init시 처음부터 prev를 가리고 싶지만, init에서 `navigation.$prevEl를 못찾는다`.**
+```js
+ on: {
+
+    slideChangeTransitionStart: function () {
+        // 끝에서 next버튼 가리기
+        if (this.isEnd) {
+            this.navigation.$nextEl.css('display', 'none');
+        } else {
+            this.navigation.$nextEl.css('display', 'block');
+        }
+
+        // 처음시 prev버튼 가리기
+        if (this.activeIndex === 0) {
+            this.navigation.$prevEl.css('display', 'none');
+        } else {
+            this.navigation.$prevEl.css('display', 'block');
+        }
+    },
+}
+```
+8. init시에 prev 요소를 jquery로 직접 찾아서 hide시킨다.
+```js
+on: {
+    init: function () {
+        // activeIndex === 0 (첫번째)일때, 직접 찾아서 prevEl hide
+        // - init에서는 this.navigation.$prevEl 등이 안찾아짐.
+        if (this.activeIndex === 0) {
+            $('.section2-middle2 .swiper-button-prev').hide();
+        }
+    }
+}
+```
+
+9. init시에  0 or 1페이지일 경우 버튼을 안보이게 할 건데
+    - init에서는 prev/nextEl이 안찾아지므로, **직접 jquery로 요소를 hide시킨다**
+```js
+on: {
+    init: function () {
+        // 1page만 존재할 시, 둘다안보이기
+        if (this.slides.length < 2) {
+            $('.section2-middle2 .swiper-button-next').hide();
+            $('.section2-middle2 .swiper-button-prev').hide();
+        }
+    }
+}
+```
 ### 각 tab index마다 Swiper초기화시키기
 1. 의료진별로 치료후기를 tab content에 복사해서 옮겨준다
 2. 

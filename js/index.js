@@ -469,7 +469,6 @@ $(function () {
     controller.addScene(scene6);
 
 
-
     /* section3 건강채널 swiper */
     function initSection3Swiper(tabIndex) {
         // console.log(tabIndex)
@@ -559,10 +558,42 @@ $(function () {
                 },
             },
             grabCursor: true,
-            navigation : {
+            navigation: {
                 nextEl: '.section2-middle2 .swiper-button-next',
                 prevEl: '.section2-middle2 .swiper-button-prev',
             },
+            on: {
+                init: function () {
+                    // activeIndex === 0 (첫번째)일때, 직접 찾아서 prevEl hide
+                    // - init에서는 this.navigation.$prevEl 등이 안찾아짐.
+                    if (this.activeIndex === 0) {
+                        $('.section2-middle2 .swiper-button-prev').hide();
+                    }
+                    // 1page만 존재할 시, 둘다안보이기
+                    if (this.slides.length < 2) {
+                        $('.section2-middle2 .swiper-button-prev').hide();
+                        $('.section2-middle2 .swiper-button-next').hide();
+                    }
+
+                },
+                slideChangeTransitionStart: function () {
+                    // 끝에서 next버튼 가리기
+                    if (this.isEnd) {
+                        this.navigation.$nextEl.css('display', 'none');
+                    } else {
+                        this.navigation.$nextEl.css('display', 'block');
+                    }
+
+                    // 처음시 prev버튼 가리기
+                    if (this.activeIndex === 0) {
+                        this.navigation.$prevEl.css('display', 'none');
+                    } else {
+                        this.navigation.$prevEl.css('display', 'block');
+                    }
+
+
+                },
+            }
         });
     }
 
