@@ -1049,14 +1049,17 @@ navigation : {
 - custom svg로 만드는 법: https://github.com/nolimits4web/Swiper/issues/1280
 
 6. 이제 버튼들은 모바일에서만 보이게 한다.
+    - **이 때, 버튼을 hide/show를 동적으로 하므로, `lg에서 js작동안되도록 !important`를 적용한다**
 ```css
 /* 치료후기 좌우측 화살표 모바일에서만 보이도록*/
+/* - js동적으로 display를 변화시키므로, !important 필수 */
 @media screen and (min-width: 992px){
     .section2-middle2 .swiper-button-prev,
     .section2-middle2 .swiper-button-next {
-        display: none;
+        display: none!important;
     }
 }
+
 ```
 
 7. 이제 isEnd를 판단해서 처음과 끝에서 가리도록 하자.

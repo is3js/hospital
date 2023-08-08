@@ -2516,9 +2516,10 @@ span.category.category-naver {
 }
 
 /* 치료후기 좌우측 화살표 모바일에서만 보이도록*/
+/* - js동적으로 display를 변화시키므로, !important 필수 */
 @media screen and (min-width: 992px){
     .section2-middle2 .swiper-button-prev,
     .section2-middle2 .swiper-button-next {
-        display: none;
+        display: none!important;
     }
 }
