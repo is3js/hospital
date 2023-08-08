@@ -582,6 +582,11 @@ $(function () {
                     }
 
                 },
+                // swiper 초기화시 기존 pagination 버그때문에, 업데이트 안되는 버그 해결
+                slideChange: function () {
+                    this.pagination.render();
+                    this.pagination.update();
+                },
                 slideChangeTransitionStart: function () {
                     // 끝에서 next버튼 가리기
                     if (this.isEnd) {
