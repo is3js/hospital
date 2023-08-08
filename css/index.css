@@ -2287,9 +2287,14 @@ a {
     color: #fff;
 }
 
+/* tab active color */
 /* - youtube content를 겨냥하는 tab은 빨간색으로 활성화 */
 .section3 .media-box .nav-tabs > li > a.active[href="#tabs-youtube"] {
-    background-color: #f63232;
+    background-color: var(--color-pink)!important;
+    color: #fff;
+}
+.section3 .media-box .nav-tabs > li > a.active[href="#tabs-blog"] {
+    background-color: var(--color-green)!important;
     color: #fff;
 }
 
@@ -2343,8 +2348,13 @@ span.category {
 
 /* 유튜브 카테고리는 따로 색깔 */
 span.category.category-youtube {
-    background: #f63232 !important;
-    box-shadow: 2px 2px 7px rgba(246, 50, 50, .4);
+    background: #F07F7F !important;
+    box-shadow: 2px 2px 7px rgba(240, 127, 127, 0.4);
+}
+
+span.category.category-naver {
+    background: var(--color-green) !important;
+    box-shadow: 2px 2px 7px rgba(128, 186, 150, 0.4);
 }
 
 .media-box .ellipsis-2 {
@@ -2376,7 +2386,13 @@ span.category.category-youtube {
 /* 건강채널 + 치료후기 tab content swiper 기본설정 */
 .tab-content .tab-pane {
     /* pagination 위쪽배치를 위한 패딩 5% -> 이동 후 3% */
-    padding: 3% 0 0 3%;
+    padding: 3% 0 0 0;
+}
+
+@media screen and (max-width: 991px){
+    .tab-content .tab-pane {
+        padding-bottom: 5%;
+    }
 }
 
 .tab-content .tab-pane .swiper-container {
@@ -2465,7 +2481,9 @@ span.category.category-youtube {
     transform: scale(1.5);
 }
 
-
+.section2-middle2 .tab-content .w-75 {
+    padding: 0 5%;
+}
 
 /* lg ~ xxl까지 공자사항에 붙는 구간에서 pagination이 들어잇는 w-75부분을 약간 올린다. */
 @media screen and (min-width: 992px) and (max-width: 1440px) {
@@ -2473,4 +2491,24 @@ span.category.category-youtube {
         position: relative;
         top: -50px!important;
     }
+}
+
+/* 치료후기 화살표 */
+.section2-middle2 .swiper-button-prev {
+    height: 100%;
+    top: 0;
+    left: -3%;
+
+    margin-top: 3%;
+    /* subtract .swiper-wrapper bottom-margin to vertically center arrow */
+    transform: scaleX(.8);
+}
+.section2-middle2 .swiper-button-next {
+    height: 100%;
+    top: 0;
+    right: -3%;
+
+    margin-top: 3%;
+    /* subtract .swiper-wrapper bottom-margin to vertically center arrow */
+    transform: scaleX(.8);
 }

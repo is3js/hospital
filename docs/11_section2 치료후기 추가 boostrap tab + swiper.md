@@ -946,12 +946,65 @@ pagination: {
 14. 위쪽에 pagination을배치할려고 만들어둔 `.tab-pane`들의 `padding`의 top을 5% -> 3%로 수정한다
 
 ```css
-/* 건강채널 + 치료후기 tab content swiper 기본설정 */
 .tab-content .tab-pane {
     /* pagination 위쪽배치를 위한 패딩 5% -> 이동 후 3% */
-    padding: 3% 0 0 3%;
+    padding: 3% 0 0 0;
 }
 ```
+- lg에서는 아래쪽 패딩을 넣으면 공지사항과 떨어져버리니 모바일로 준다.
+```css
+@media screen and (max-width: 991px){
+    .tab-content .tab-pane {
+        padding-bottom: 5%;
+    }
+}
+```
+
+
+15. 치료후기가 담긴 w-75 존에 가로 패딩을 넣어주고, **prev, next 버튼을 넣어보자.**
+```css
+.section2-middle2 .tab-content .w-75 {
+    padding: 0 5%;
+}
+```
+![img.png](../ui/278.png)
+
+
+### swiper에 next/prev 넣기
+- https://www.swiper.com.cn/api/navigation/355.html
+1. container바깥으로 화살표를 내기 위해 `container 외부`에 `div.swiper-button-prev`와 `-next`를 div로 넣으면 기본 화살표가 나온다.
+    - 작동은 하지 않는다.
+```html
+<!-- 치료후기 공간 -->
+<div class="w-75 flex-grow-1">
+    <div class="swiper-container ">
+    </div>
+    <!-- relative로 만들어서 밖으로 뺀 페이지네이션 -->
+    <div class="swiper-pagination"></div>
+    <!-- 탐색 버튼 -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+</div>
+```
+
+2. 이 때, 부모인 div.w-75를 relateive로 설정해서 `기본 absolute`성질을 유지하게 한다.
+```html
+<div class="w-75 flex-grow-1 position-relative">
+```
+
+3. js에서 navigation 옵션으로 각 버튼의 el들을 직접 지정해준다.
+    - 이 때, 버튼이 등장하면서 grab하는 cursor가 사라지는데 옵션으로 넣어주면 같이 된다.
+```js
+grabCursor: true,
+navigation : {
+    nextEl: '.section2-middle2 .swiper-button-next',
+    prevEl: '.section2-middle2 .swiper-button-prev',
+},
+```
+![img.png](../ui/279.png)
+
+4. 기본화살표의 위치와 스타일을 지정해야한다.
+    - 
 
 ### 각 tab index마다 Swiper초기화시키기
 1. 의료진별로 치료후기를 tab content에 복사해서 옮겨준다

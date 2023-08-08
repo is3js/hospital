@@ -558,6 +558,11 @@ $(function () {
                     return '<span class="' + className + ' fs-tab">' + (index + 1) + '</span>';
                 },
             },
+            grabCursor: true,
+            navigation : {
+                nextEl: '.section2-middle2 .swiper-button-next',
+                prevEl: '.section2-middle2 .swiper-button-prev',
+            },
         });
     }
 

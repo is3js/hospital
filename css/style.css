@@ -1,3 +1,9 @@
+:root {
+    --color-pink: #F07F7F;
+    --color-purple: #ab8dca;
+    --color-green: #80BA96;
+}
+
 /* 글자크기 */
 .fs-13 {
     font-size: 13px;
@@ -42,16 +48,16 @@
     color: #00b5b2;
 }
 
-.text-review-clinic-scan {
-    color: #ab8dca;
+.text-purple {
+    color:  var(--color-purple);
 }
 
-.text-review-clinic-self {
-    color: #F07F7F;
+.text-pink {
+    color:  var(--color-pink);
 }
 
-.text-review-clinic-naver {
-    color: #80BA96;
+.text-green {
+    color: var(--color-green);
 }
 
 .text-shadow {
@@ -157,16 +163,17 @@
     background: #eeeeee;
 }
 
-.bg-review-clinic-scan {
-    background: #ab8dca;
+.bg-purple {
+    background: var(--color-purple);
 }
 
-.bg-review-clinic-self {
-    background: #F07F7F;
+
+.bg-pink {
+    background: var(--color-pink);
 }
 
-.bg-review-clinic-naver {
-    background: #80BA96;
+.bg-green {
+    background: var(--color-green);
 }
 
 /* 버튼 */
@@ -208,4 +215,14 @@
 /* margin, padidng */
 .mb-6 {
     margin-bottom: 4.5rem;
+}
+
+
+/* 투명도 */
+.opacity-5 {
+    opacity: 0.05 !important;
+}
+
+.opacity-10 {
+    opacity: 0.05 !important;
 }

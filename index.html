@@ -1146,7 +1146,7 @@
                                 <div class="card-img-overlay d-flex flex-row p-0">
 
                                     <!-- 치료후기 공간 -->
-                                    <div class="w-75 flex-grow-1 ">
+                                    <div class="w-75 flex-grow-1 position-relative swiper">
                                         <div class="swiper-container ">
                                             <!-- 슬라이드 wrapper -->
                                             <div class="swiper-wrapper">
@@ -1159,7 +1159,7 @@
                                                             <!--클리닉 명-->
                                                             <p class="d-inline-block m-0">
                                                                 <a href="#"
-                                                                   class="text-decoration-none fs-tab text-truncate text-white text-shadow-sm rounded-pill shadow-sm px-1 px-lg-2 bg-review-clinic-scan">
+                                                                   class="text-decoration-none fs-tab text-truncate text-white text-shadow-sm rounded-pill shadow-sm px-1 px-lg-2 bg-purple">
                                                                     디스크 클리닉
                                                                 </a>
                                                                 <span class="fs-tab ms-1 fw-bolder">20대/남성/김**</span>
@@ -1168,7 +1168,7 @@
                                                             <!--날짜와 평가점수-->
                                                             <div class="d-flex flex-row justify-content-between fs-tab py-1 px-1">
                                                                 <div class="small text-gray-bolder">2023-07-05 | <span
-                                                                        class="text-review-clinic-scan">자필 스캔</span>
+                                                                        class="text-purple">자필 스캔</span>
                                                                 </div>
                                                                 <div class="small text-danger ">❤❤❤❤❤</div>
                                                             </div>
@@ -1198,7 +1198,7 @@
                                                         <div class="flex-grow-1 mx-1 text-start text-truncate ">
                                                             <p class="d-inline-block m-0">
                                                                 <a href="#"
-                                                                   class="text-decoration-none fs-tab text-truncate text-white text-shadow-sm rounded-pill shadow-sm px-1 px-lg-2 bg-review-clinic-self">
+                                                                   class="text-decoration-none fs-tab text-truncate text-white text-shadow-sm rounded-pill shadow-sm px-1 px-lg-2 bg-pink">
                                                                     다이어트 클리닉
                                                                 </a>
                                                                 <span class="fs-tab ms-1 fw-bolder">20대/여성/stylegirls3@gmail.com</span>
@@ -1207,7 +1207,7 @@
                                                             <!--날짜와 평가점수-->
                                                             <div class="d-flex flex-row justify-content-between fs-tab py-1 px-1">
                                                                 <div class="small text-gray-bolder">2023-07-05 | <span
-                                                                        class="text-review-clinic-self">로그인후 작성</span>
+                                                                        class="text-pink">로그인후 작성</span>
                                                                 </div>
                                                                 <div class="small text-danger ">❤❤❤❤❤</div>
                                                             </div>
@@ -1237,7 +1237,7 @@
                                                             <!--클리닉 명-->
                                                             <p class="d-inline-block m-0">
                                                                 <a href="#"
-                                                                   class="text-decoration-none fs-tab text-truncate text-white text-shadow-sm rounded-pill shadow-sm px-1 px-lg-2 bg-review-clinic-naver text-success">
+                                                                   class="text-decoration-none fs-tab text-truncate text-white text-shadow-sm rounded-pill shadow-sm px-1 px-lg-2 bg-green text-success">
                                                                     디스크 클리닉
                                                                 </a>
                                                                 <span class="fs-tab ms-1 fw-bolder">20대/남성/asdjfk@naver.com</span>
@@ -1246,7 +1246,7 @@
                                                             <!--날짜와 평가점수-->
                                                             <div class="d-flex flex-row justify-content-between fs-tab py-1 px-1">
                                                                 <div class="small text-gray-bolder">2023-07-05 | <span
-                                                                        class="text-review-clinic-naver">네이버 후기</span>
+                                                                        class="text-green">네이버 후기</span>
                                                                 </div>
                                                                 <div class="small text-danger ">❤❤❤❤❤</div>
                                                             </div>
@@ -1271,8 +1271,12 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- 페이지네이션 -->
+                                        <!-- relative로 만들어서 밖으로 뺀 페이지네이션 -->
                                         <div class="swiper-pagination"></div>
+
+                                        <!-- 탐색 버튼 -->
+                                        <div class="swiper-button-prev swiper-button-black opacity-5"></div>
+                                        <div class="swiper-button-next swiper-button-black opacity-5"></div>
                                     </div>
                                     <!-- lg부터 의료진 이미지 -->
                                     <div class="w-25 d-none d-lg-block overflow-hidden"
@@ -1297,7 +1301,7 @@
                     </div>
                 </div>
                 <!-- tab 3 원장2 -->
-                <div class="tab-pane fade position-relative px-0"
+                <div class="tab-pane fade position-relative"
                      id="tabs-review-3"
                      role="tabpanel"
                 >
@@ -1686,7 +1690,7 @@
         <ul class="nav nav-tabs mb-3" id="media-tabs" role="tablist">
             <li class="nav-item" role="presentation">
                 <!--<a class="nav-link active"-->
-                <a class="nav-link active rounded-pill bg-gray me-2 py-1 px-3 fs-tab"
+                <a class="nav-link active rounded-pill bg-gray me-2 py-1 px-3 fs-tab "
                    id="ex1-tab-1"
                    data-bs-toggle="tab"
                    href="#tabs-youtube"
@@ -1696,13 +1700,13 @@
                 </a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link rounded-pill bg-gray me-2 py-1 px-3 fs-tab"
+                <a class="nav-link rounded-pill bg-gray me-2 py-1 px-3 fs-tab "
                    id="ex1-tab-2"
                    data-bs-toggle="tab"
                    href="#tabs-blog"
                    role="tab"
                 >
-                    우아한의원 블로그
+                    우아 Blog
                 </a>
             </li>
             <li class="ms-auto">
@@ -1815,7 +1819,7 @@
                                             <img src="images/main_section/youtube-example.jpg"
                                                  class="card-img-top rounded-0"
                                                  alt="...">
-                                            <span class="category">blog</span>
+                                            <span class="category category-naver">blog</span>
                                         </a>
                                         <div class="card-body  text-start">
                                             <h6 class="card-title fw-bold ellipsis-2">
@@ -1832,7 +1836,7 @@
                                             <img src="images/main_section/youtube-example.jpg"
                                                  class="card-img-top rounded-0"
                                                  alt="...">
-                                            <span class="category">음식조절</span>
+                                            <span class="category category-naver">음식조절</span>
                                         </a>
                                         <div class="card-body  text-start">
                                             <h6 class="card-title fw-bold ellipsis-2">
