@@ -470,9 +470,11 @@ $(function () {
 
 
     /* section3 건강채널 swiper */
-    function initSection3Swiper(tabcontentId, tabIndex) {
+    function initSection3Swiper(tabContentId, tabIndex) {
         // new Swiper($('.section3').find('.swiper-container').eq(tabIndex), {
-        new Swiper($(tabcontentId).find('.swiper-container').eq(tabIndex), {
+        let currentTabContent = $(tabContentId);
+
+        new Swiper(currentTabContent.find('.swiper-container').eq(tabIndex), {
             slidesPerView: 3.5,
             slidesPerGroup: 3.5,
             spaceBetween: '3%',
@@ -495,7 +497,7 @@ $(function () {
                 init: function () {
                     if (this.slides.length <= this.params.slidesPerView + .5) {
                         // $('.section3').find('.tab-pane').eq(tabIndex).addClass('hide-before');
-                        $(tabcontentId).find('.tab-pane').eq(tabIndex).addClass('hide-before');
+                        currentTabContent.find('.tab-pane').eq(tabIndex).addClass('hide-before');
                     }
                 },
 
@@ -506,13 +508,13 @@ $(function () {
                         // 잘린 세로선 띄우기
                         // $('.section3 .tab-pane').addClass('hide-before');
                         // $('.section3').find('.tab-pane').eq(tabIndex).addClass('hide-before');
-                        $(tabcontentId).find('.tab-pane').eq(tabIndex).addClass('hide-before');
+                        currentTabContent.find('.tab-pane').eq(tabIndex).addClass('hide-before');
                         // this.navigation.$nextEl.css('display', 'none');
                     } else {
                         // 잘린 세로선 삭제
                         // $('.section3 .tab-pane').removeClass('hide-before');
                         // $('.section3').find('.tab-pane').eq(tabIndex).removeClass('hide-before');
-                        $(tabcontentId).find('.tab-pane').eq(tabIndex).removeClass('hide-before');
+                        currentTabContent.find('.tab-pane').eq(tabIndex).removeClass('hide-before');
                         // this.navigation.$nextEl.css('display', 'block');
                     }
                 },
@@ -542,7 +544,7 @@ $(function () {
         var AllPanels = $(targetTabContentId).find('.tab-pane');
         var index = AllPanels.index(targetPanel);
 
-        initSection3Swiper(index);
+        initSection3Swiper(targetTabContentId, index);
     });
 
     // sec2-mid2 치료후기 swiper
