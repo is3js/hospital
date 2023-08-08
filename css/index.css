@@ -2288,12 +2288,14 @@ a {
 }
 
 /* tab active color */
-/* - youtube content를 겨냥하는 tab은 빨간색으로 활성화 */
-.section3 .media-box .nav-tabs > li > a.active[href="#tabs-youtube"] {
+/* - ul.nav-tabs 의 id를 기준으로 판단 하도록 변경 */
+/*.section3 .media-box .nav-tabs > li > a.active[href="#tabs-youtube"] {*/
+.section3 .media-box ul.nav-tabs#youtube-tabs > li > a.active {
     background-color: var(--color-pink)!important;
     color: #fff;
 }
-.section3 .media-box .nav-tabs > li > a.active[href="#tabs-blog"] {
+/*.section3 .media-box .nav-tabs > li > a.active[href="#tabs-blog"] {*/
+.section3 .media-box ul.nav-tabs#blog-tabs > li > a.active {
     background-color: var(--color-green)!important;
     color: #fff;
 }

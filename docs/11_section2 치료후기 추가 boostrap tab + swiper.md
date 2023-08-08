@@ -786,7 +786,7 @@ new Swiper($('.section2-middle2').find('.swiper-container').eq(tabIndex), {
 });
 ```
 
-![img.png](267.png)
+![img.png](../ui/267.png)
 
 6. pagination이 container 내부에 있을 경우, top으로 위치를 조절하면 잘려서 안보인다.
     - **`container밖으로 pagination을 빼고` + `absolute를 취소`해야 container와 같이 자리를 잡는다.**
@@ -1158,4 +1158,18 @@ on: {
             $('.section2-middle2').find('.swiper-button-next').eq(tabIndex).hide();
         }
     }
+```
+
+
+4. **tab에 넣을 때 pagination이 고장나는 문제 해결**
+- https://github.com/nolimits4web/swiper/issues/2915
+- **on에서 slideChange 메서드에 `this.pagination`을 다시 render후 update하도록 한다.**
+```js
+on: {
+    // swiper 초기화시 기존 pagination 버그때문에, 업데이트 안되는 버그 해결
+    slideChange: function () {
+        this.pagination.render();
+        this.pagination.update();
+    }
+,
 ```

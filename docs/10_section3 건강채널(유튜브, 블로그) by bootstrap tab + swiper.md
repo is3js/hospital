@@ -588,3 +588,61 @@ function initSection3Swiper(tabIndex) {
 }
 ```
 ![img.png](../ui/233.png)
+
+
+### 유튜브/블로그  세로로 2개의 탭으로 구현
+- tab의 종류는 전체 + 카테고리들로 한다.
+1. `div.media-box` 내부에  ul.nav-tabs + div.tab-content 를 복사해서 2개로 만든다.
+    - 각 id를 media-tabs / media-content를 -> youtube-, blog- 로 변경한다.
+2. 각 tab속 a태그의 id를 tab-youbute-xxx 형식으로 변경한다.
+```html
+<!-- 유튜브 -->
+<ul class="nav nav-tabs mb-3" id="youtube-tabs"
+<!-- 블로그 -->
+<ul class="nav nav-tabs mb-3" id="blog-tabs"
+```
+3. content 와 연결되는 a태그의 href를 #content-tabs-all, -1, -2,  ... 로 변경한다.
+    - content의 id도 맞춰서 변경한다.
+```html
+<ul class="nav nav-tabs mb-3" id="youtube-tabs" role="tablist">
+    <li class="nav-item" role="presentation">
+        <!--<a class="nav-link active"-->
+        <a class="nav-link active rounded-pill bg-gray me-2 py-1 px-3 fs-tab "
+           id="youtube-tab-1"
+           data-bs-toggle="tab"
+           href="#contents-youtube-all"
+           role="tab"
+        >
+            전체
+        </a>
+    </li>
+```
+```html
+<div class="tab-content" id="youtube-content">
+    <!-- tab all -->
+    <div class="tab-pane fade show active position-relative px-0"
+         id="contents-youtube-all"
+         role="tabpanel"
+    >
+```
+
+4. 기존 tab의 href를 가지고 a.active의 색을 정했는데, `ul#xxx-tabs`의 id를 바탕으로 active 색을 정해준다.
+```css
+/* tab active color */
+/* - ul.nav-tabs 의 id를 기준으로 판단 */
+/*.section3 .media-box .nav-tabs > li > a.active[href="#tabs-youtube"] {*/
+.section3 .media-box ul.nav-tabs#youtube-tabs > li > a.active {
+    background-color: var(--color-pink)!important;
+    color: #fff;
+}
+/*.section3 .media-box .nav-tabs > li > a.active[href="#tabs-blog"] {*/
+.section3 .media-box ul.nav-tabs#blog-tabs > li > a.active {
+    background-color: var(--color-green)!important;
+    color: #fff;
+}
+```
+![img.png](../ui/281.png)
+
+5. 각각의 tab예시에서 category-xxx를 일괄통일하도록 변경해준다.
+6. **js에서 tabIndex를 찾을 때, 서로 다른 범주에서 찾아야하므로 div.tab-content에 달아둔 `id="youtube-content"` 와 `id="blog-content"`를 활용한다**
+

@@ -470,10 +470,9 @@ $(function () {
 
 
     /* section3 건강채널 swiper */
-    function initSection3Swiper(tabIndex) {
-        // console.log(tabIndex)
-        // console.log($('.section3').find('.swiper-container').eq(tabIndex))
-        new Swiper($('.section3').find('.swiper-container').eq(tabIndex), {
+    function initSection3Swiper(tabcontentId, tabIndex) {
+        // new Swiper($('.section3').find('.swiper-container').eq(tabIndex), {
+        new Swiper($(tabcontentId).find('.swiper-container').eq(tabIndex), {
             slidesPerView: 3.5,
             slidesPerGroup: 3.5,
             spaceBetween: '3%',
@@ -495,7 +494,8 @@ $(function () {
                 // 시작시 preview 수보다, 주어진 slide의 갯수가 더 적으면, 잘린가로선을 hide시킨다.
                 init: function () {
                     if (this.slides.length <= this.params.slidesPerView + .5) {
-                        $('.section3').find('.tab-pane').eq(tabIndex).addClass('hide-before');
+                        // $('.section3').find('.tab-pane').eq(tabIndex).addClass('hide-before');
+                        $(tabcontentId).find('.tab-pane').eq(tabIndex).addClass('hide-before');
                     }
                 },
 
@@ -505,12 +505,14 @@ $(function () {
                     if (this.isEnd || this.slides.length - .5 === this.activeIndex + this.params.slidesPerView) {
                         // 잘린 세로선 띄우기
                         // $('.section3 .tab-pane').addClass('hide-before');
-                        $('.section3').find('.tab-pane').eq(tabIndex).addClass('hide-before');
+                        // $('.section3').find('.tab-pane').eq(tabIndex).addClass('hide-before');
+                        $(tabcontentId).find('.tab-pane').eq(tabIndex).addClass('hide-before');
                         // this.navigation.$nextEl.css('display', 'none');
                     } else {
                         // 잘린 세로선 삭제
                         // $('.section3 .tab-pane').removeClass('hide-before');
-                        $('.section3').find('.tab-pane').eq(tabIndex).removeClass('hide-before');
+                        // $('.section3').find('.tab-pane').eq(tabIndex).removeClass('hide-before');
+                        $(tabcontentId).find('.tab-pane').eq(tabIndex).removeClass('hide-before');
                         // this.navigation.$nextEl.css('display', 'block');
                     }
                 },
@@ -519,15 +521,25 @@ $(function () {
         });
     }
 
-    initSection3Swiper(0);
-
+    // initSection3Swiper(0);
+    initSection3Swiper('#youtube-tabs-content',0);
+    initSection3Swiper('#blog-tabs-content',0);
 
     // section3 tab 클릭시 index 찾기 -> 해당index의 swiper 초기화
+    // - section3안에 youtube/blog tab자체가 2개라서 시작지를 추가
+    // $('.section3 a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
     $('.section3 a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
+
         var targetTabHref = $(e.target).attr('href');
         var targetPanel = $(targetTabHref)
-        var AllPanels = $('.section3 .tab-content').find('.tab-pane');
+        // var AllPanels = $('.section3 .tab-content').find('.tab-pane');
 
+        var targetTabUlId = $(e.target).parent().parent().attr("id");
+        // youtube-tabs or blog-tabs
+        var targetTabContentId = '#' + targetTabUlId + '-content';
+        //#blog-tabs-content #youtube-tabs-content
+
+        var AllPanels = $(targetTabContentId).find('.tab-pane');
         var index = AllPanels.index(targetPanel);
 
         initSection3Swiper(index);
