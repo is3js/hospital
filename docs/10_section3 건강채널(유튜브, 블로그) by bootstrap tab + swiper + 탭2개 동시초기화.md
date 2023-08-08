@@ -594,17 +594,24 @@ function initSection3Swiper(tabIndex) {
 - tab의 종류는 전체 + 카테고리들로 한다.
 1. `div.media-box` 내부에  ul.nav-tabs + div.tab-content 를 복사해서 2개로 만든다.
     - 각 id를 media-tabs / media-content를 -> youtube-, blog- 로 변경한다.
-2. 각 tab속 a태그의 id를 tab-youbute-xxx 형식으로 변경한다.
+2. 각 `ul.nav.nav-tabs`의 `tab속 a태그의 id`를 `youtube-tab`, `blog-tab`로 정하고,
+    - **tab으로 연결된 tab-content을 찾을 수 있도록 `div.tab-content`의 id를 이어 붙인 `youtube-tab-content`, `blog-tab-content`로 변경한다**
+    - mb-4로 전체 tab끝에 아래쫏 마진을 각각 준다.
 ```html
 <!-- 유튜브 -->
-<ul class="nav nav-tabs mb-3" id="youtube-tabs"
+<ul class="nav nav-tabs mb-3" id="youtube-tab"
 <!-- 블로그 -->
-<ul class="nav nav-tabs mb-3" id="blog-tabs"
+<ul class="nav nav-tabs mb-3" id="blog-tab"
+```
+```html
+<div class="tab-content mb-4" id="youtube-tab-content">
+
+<div class="tab-content mb-4" id="blog-tab-content">
 ```
 3. content 와 연결되는 a태그의 href를 #content-tabs-all, -1, -2,  ... 로 변경한다.
     - content의 id도 맞춰서 변경한다.
 ```html
-<ul class="nav nav-tabs mb-3" id="youtube-tabs" role="tablist">
+<ul class="nav nav-tabs mb-3" id="youtube-tab" role="tablist">
     <li class="nav-item" role="presentation">
         <!--<a class="nav-link active"-->
         <a class="nav-link active rounded-pill bg-gray me-2 py-1 px-3 fs-tab "
@@ -618,7 +625,7 @@ function initSection3Swiper(tabIndex) {
     </li>
 ```
 ```html
-<div class="tab-content" id="youtube-content">
+<div class="tab-content" id="youtube-tab-content">
     <!-- tab all -->
     <div class="tab-pane fade show active position-relative px-0"
          id="contents-youtube-all"
@@ -645,4 +652,95 @@ function initSection3Swiper(tabIndex) {
 
 5. 각각의 tab예시에서 category-xxx를 일괄통일하도록 변경해준다.
 6. **js에서 tabIndex를 찾을 때, 서로 다른 범주에서 찾아야하므로 div.tab-content에 달아둔 `id="youtube-content"` 와 `id="blog-content"`를 활용한다**
+- tab안의 a태그를 클릭 후 -> ul.nav-tabs의 `#xxx-tab`의 아이디를 찾고
+- **해당 tab의 id에 `-content`를 붙여서 div.tab-content의 id `xxx-tab-content`로 youtube vs blog의 content를 구분할 수 있게 한다.**
+```js
+$('.section3 a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
 
+    var targetTabHref = $(e.target).attr('href');
+    var targetPanel = $(targetTabHref)
+    
+    // var AllPanels = $('.section3 .tab-content').find('.tab-pane');
+    var targetTabUlId = $(e.target).parent().parent().attr("id"); // youtube-tabs or blog-tabs
+    var targetTabContentId = '#' + targetTabUlId + '-content'; //#blog-tabs-content #youtube-tabs-content
+```
+- tabcontent의 id로 element를 찾은 뒤, tab내용인 `.tab-pane들`을 찾은 뒤, targetPanel의 index인 tabIndex를 찾는다.
+- **swiper 초기화 함수에 해당 `targetContentId를 추가`해서 넘겨줘서, 특정 tab content내에서 특정 index로 .swiper-container내부요소들을 찾는다.**
+```js
+$('.section3 a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
+
+    var targetTabHref = $(e.target).attr('href');
+    var targetPanel = $(targetTabHref)
+
+    // var AllPanels = $('.section3 .tab-content').find('.tab-pane');
+    var targetTabUlId = $(e.target).parent().parent().attr("id"); // youtube-tabs or blog-tabs
+    var targetTabContentId = '#' + targetTabUlId + '-content'; //#blog-tabs-content #youtube-tabs-content
+
+    var AllPanels = $(targetTabContentId).find('.tab-pane');
+    var index = AllPanels.index(targetPanel);
+
+    initSection3Swiper(targetTabContentId, index);
+});
+```
+- swiper 초기화함수에서 **기존에 `.section3`에서 찾는게 아니라 `특정tabContentId`로 요소들을 찾도록 변경한다.**
+```js
+function initSection3Swiper(tabContentId, tabIndex) {
+    // new Swiper($('.section3').find('.swiper-container').eq(tabIndex), {
+    let currentTabContent = $(tabContentId);
+
+    new Swiper(currentTabContent.find('.swiper-container').eq(tabIndex), {
+        slidesPerView: 3.5,
+        slidesPerGroup: 3.5,
+        spaceBetween: '3%',
+        breakpoints: {
+            991: {
+                slidesPerView: 1.5,
+                slidesPerGroup: 1.5,
+                spaceBetween: '25%'
+            },
+            1440: {
+                slidesPerView: 2.5,
+                slidesPerGroup: 2.5,
+                spaceBetween: '20%',
+            }
+
+        },
+
+        on: {
+            // 시작시 preview 수보다, 주어진 slide의 갯수가 더 적으면, 잘린가로선을 hide시킨다.
+            init: function () {
+                if (this.slides.length <= this.params.slidesPerView + .5) {
+                    // $('.section3').find('.tab-pane').eq(tabIndex).addClass('hide-before');
+                    currentTabContent.find('.tab-pane').eq(tabIndex).addClass('hide-before');
+                }
+            },
+
+            slideChangeTransitionStart: function () {
+                // var previewLength = this.params.slidesPerView * this.width;
+
+                if (this.isEnd || this.slides.length - .5 === this.activeIndex + this.params.slidesPerView) {
+                    // 잘린 세로선 띄우기
+                    // $('.section3 .tab-pane').addClass('hide-before');
+                    // $('.section3').find('.tab-pane').eq(tabIndex).addClass('hide-before');
+                    currentTabContent.find('.tab-pane').eq(tabIndex).addClass('hide-before');
+                    // this.navigation.$nextEl.css('display', 'none');
+                } else {
+                    // 잘린 세로선 삭제
+                    // $('.section3 .tab-pane').removeClass('hide-before');
+                    // $('.section3').find('.tab-pane').eq(tabIndex).removeClass('hide-before');
+                    currentTabContent.find('.tab-pane').eq(tabIndex).removeClass('hide-before');
+                    // this.navigation.$nextEl.css('display', 'block');
+                }
+            },
+        }
+
+    });
+}
+```
+
+- 0번째 index를 미리 초기화할 때도, 특정tabContentId를 건네주고, youtube/blog 각각을 초기화한다
+```js
+initSection3Swiper('#youtube-tab-content',0);
+initSection3Swiper('#blog-tab-content',0);
+```
+![img.png](../ui/282.png)

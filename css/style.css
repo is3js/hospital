@@ -2,6 +2,8 @@
     --color-pink: #F07F7F;
     --color-purple: #ab8dca;
     --color-green: #80BA96;
+    --color-youtube: #f63232;
+    --color-naver: #0eca8b;
 }
 
 /* 글자크기 */
@@ -49,15 +51,15 @@
 }
 
 .text-purple {
-    color:  var(--color-purple)!important;
+    color:  var(--color-purple);
 }
 
 .text-pink {
-    color:  var(--color-pink)!important;
+    color:  var(--color-pink);
 }
 
 .text-green {
-    color: var(--color-green)!important;
+    color: var(--color-green);
 }
 
 .text-shadow {

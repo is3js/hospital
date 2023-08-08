@@ -458,7 +458,7 @@ $(function () {
         triggerElement: ".section3",
         // triggerHook: "onEnter",
         triggerHook: "onCenter",
-        offset: -120,
+        offset: -30,
     });
     scene6.setVelocity([".section3 > .section-title > div"], {
         top: "0px",
@@ -524,22 +524,19 @@ $(function () {
     }
 
     // initSection3Swiper(0);
-    initSection3Swiper('#youtube-tabs-content',0);
-    initSection3Swiper('#blog-tabs-content',0);
+    initSection3Swiper('#youtube-tab-content',0);
+    initSection3Swiper('#blog-tab-content',0);
 
     // section3 tab 클릭시 index 찾기 -> 해당index의 swiper 초기화
     // - section3안에 youtube/blog tab자체가 2개라서 시작지를 추가
-    // $('.section3 a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
     $('.section3 a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
 
         var targetTabHref = $(e.target).attr('href');
         var targetPanel = $(targetTabHref)
-        // var AllPanels = $('.section3 .tab-content').find('.tab-pane');
 
-        var targetTabUlId = $(e.target).parent().parent().attr("id");
-        // youtube-tabs or blog-tabs
-        var targetTabContentId = '#' + targetTabUlId + '-content';
-        //#blog-tabs-content #youtube-tabs-content
+        // var AllPanels = $('.section3 .tab-content').find('.tab-pane');
+        var targetTabUlId = $(e.target).parent().parent().attr("id"); // youtube-tabs or blog-tabs
+        var targetTabContentId = '#' + targetTabUlId + '-content'; //#blog-tabs-content #youtube-tabs-content
 
         var AllPanels = $(targetTabContentId).find('.tab-pane');
         var index = AllPanels.index(targetPanel);
