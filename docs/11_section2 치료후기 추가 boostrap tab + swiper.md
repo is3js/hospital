@@ -1059,7 +1059,6 @@ navigation : {
         display: none!important;
     }
 }
-
 ```
 
 7. 이제 isEnd를 판단해서 처음과 끝에서 가리도록 하자.
@@ -1113,6 +1112,50 @@ on: {
 }
 ```
 ### 각 tab index마다 Swiper초기화시키기
-1. 의료진별로 치료후기를 tab content에 복사해서 옮겨준다
-2. 
+1. 의료진별로 전체 치료후기 중 각각의 원장별 후기를 tab content에 복사해서 옮겨준다
+2. 건강채널을 참고해서, `.section2-middle2` 하위 tab에 대한 `show.bs.tab`에 대한 리스너를 달아서
+    - 특정#tab-content id에 걸린 tab 클릭시, 해당 tab-content의 index에 swiper를 초기화해준다.
+```js
+// section2-middle2 치료후기 tab 클릭시 index 찾기 -> 해당index의 swiper 초기화
+$('.section2-middle2 a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
+    var targetTabHref = $(e.target).attr('href');
+    var targetPanel = $(targetTabHref)
+    var AllPanels = $('.section2-middle2 .tab-content').find('.tab-pane');
 
+    var index = AllPanels.index(targetPanel);
+
+    initReviewSwiper(index);
+});
+```
+
+
+3. 이 때, pagination이 고장이 난다. swiper초기화시 `el들`을 `.find()`로 찾고 `.eq(tabInndex)`로 특정해줘야한다.
+    - this.navigation으로 조절되는 부분은, 이미 el옵션에서 연결되있어서 따로 안찾아줘도 된다.
+```js
+pagination: {
+    // el: '.section2-middle2  .swiper-pagination',
+    el: $('.section2-middle2').find('.swiper-pagination').eq(tabIndex),
+```
+```js
+navigation: {
+    // nextEl: '.section2-middle2 .swiper-button-next',
+    // prevEl: '.section2-middle2 .swiper-button-prev',
+    nextEl: $('.section2-middle2').find('.swiper-button-next').eq(tabIndex),
+    prevEl: $('.section2-middle2').find('.swiper-button-prev').eq(tabIndex),
+},
+```
+```js
+on: {
+    init: function () {
+        if (this.activeIndex === 0) {
+            // $('.section2-middle2 .swiper-button-prev').hide();
+            $('.section2-middle2').find('.swiper-button-prev').eq(tabIndex).hide();
+        }
+        if (this.slides.length < 2) {
+            // $('.section2-middle2 .swiper-button-prev').hide();
+            // $('.section2-middle2 .swiper-button-next').hide();
+            $('.section2-middle2').find('.swiper-button-prev').eq(tabIndex).hide();
+            $('.section2-middle2').find('.swiper-button-next').eq(tabIndex).hide();
+        }
+    }
+```

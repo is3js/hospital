@@ -549,7 +549,8 @@ $(function () {
             },
 
             pagination: {
-                el: '.section2-middle2  .swiper-pagination',
+                // el: '.section2-middle2  .swiper-pagination',
+                el: $('.section2-middle2').find('.swiper-pagination').eq(tabIndex),
                 bulletClass: 'review-bullet',// 적용될 bullet css class명 지정하기
                 bulletActiveClass: 'review-bullet-active',
                 clickable: true,
@@ -559,20 +560,25 @@ $(function () {
             },
             grabCursor: true,
             navigation: {
-                nextEl: '.section2-middle2 .swiper-button-next',
-                prevEl: '.section2-middle2 .swiper-button-prev',
+                // nextEl: '.section2-middle2 .swiper-button-next',
+                // prevEl: '.section2-middle2 .swiper-button-prev',
+                nextEl: $('.section2-middle2').find('.swiper-button-next').eq(tabIndex),
+                prevEl: $('.section2-middle2').find('.swiper-button-prev').eq(tabIndex),
             },
             on: {
                 init: function () {
                     // activeIndex === 0 (첫번째)일때, 직접 찾아서 prevEl hide
                     // - init에서는 this.navigation.$prevEl 등이 안찾아짐.
                     if (this.activeIndex === 0) {
-                        $('.section2-middle2 .swiper-button-prev').hide();
+                        // $('.section2-middle2 .swiper-button-prev').hide();
+                        $('.section2-middle2').find('.swiper-button-prev').eq(tabIndex).hide();
                     }
                     // 1page만 존재할 시, 둘다안보이기
                     if (this.slides.length < 2) {
-                        $('.section2-middle2 .swiper-button-prev').hide();
-                        $('.section2-middle2 .swiper-button-next').hide();
+                        // $('.section2-middle2 .swiper-button-prev').hide();
+                        // $('.section2-middle2 .swiper-button-next').hide();
+                        $('.section2-middle2').find('.swiper-button-prev').eq(tabIndex).hide();
+                        $('.section2-middle2').find('.swiper-button-next').eq(tabIndex).hide();
                     }
 
                 },
@@ -590,8 +596,6 @@ $(function () {
                     } else {
                         this.navigation.$prevEl.css('display', 'block');
                     }
-
-
                 },
             }
         });
@@ -599,5 +603,15 @@ $(function () {
 
     initReviewSwiper(0);
 
+    // section2-middle2 치료후기 tab 클릭시 index 찾기 -> 해당index의 swiper 초기화
+    $('.section2-middle2 a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
+        var targetTabHref = $(e.target).attr('href');
+        var targetPanel = $(targetTabHref)
+        var AllPanels = $('.section2-middle2 .tab-content').find('.tab-pane');
+
+        var index = AllPanels.index(targetPanel);
+
+        initReviewSwiper(index);
+    });
 })
 
