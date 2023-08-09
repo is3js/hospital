@@ -2251,6 +2251,68 @@ a {
 
 
 /* sectino3 media tab */
+
+/* tab 스크롤을 위한 설정 */
+.tab-wrapper {
+    width: 100%;
+    /*height: 32px;*/
+    white-space: nowrap; /* 더보기의 글자가 다음줄 안넘어가게 함.*/
+}
+
+.tab-wrapper > .tab-scroll {
+    flex-grow: 1; /* flex-item으로서 w-100% */
+    /* 우측 더보기에 대한 우측간격은 남겨두기*/
+    margin-right: 10%;
+
+
+    /*height: 32px;*/
+    flex-wrap: nowrap;
+    overflow: hidden;
+
+    /* 가리개를 위해 row방향용 flex로 만들어 놓기 */
+    display: flex;
+
+    /* 가리개 absolute를 위함 */
+    position: relative;
+}
+
+.tab-wrapper > .tab-scroll > ul {
+    /* 가로가 넘쳐 부모 height를 넘치는 경우, flex를 다 가로로 넘치게 함 */
+    flex:none;
+}
+
+.opacity-start {
+    opacity: .8;
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width:5%;
+
+    background: linear-gradient(to left, rgba(255, 255, 255, 0.08), white);
+    /* draggable(1004)보다 더 위에*/
+    z-index: 1005;
+}
+
+.opacity-end {
+    opacity: .8;
+
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width:5%;
+
+    /*background: white;*/
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.08), white);
+
+
+    /* draggable(1004)보다 더 위에*/
+    z-index: 1005;
+}
+
+
 .section3 .media-box,
 .section2-middle2 .review-box {
     padding: 10px 0;

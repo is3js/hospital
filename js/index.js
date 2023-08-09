@@ -458,7 +458,7 @@ $(function () {
         triggerElement: ".section3",
         // triggerHook: "onEnter",
         triggerHook: "onCenter",
-        offset: -30,
+        offset: -80,
     });
     scene6.setVelocity([".section3 > .section-title > div"], {
         top: "0px",
