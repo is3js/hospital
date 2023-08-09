@@ -2254,35 +2254,40 @@ a {
 
 /* tab 스크롤을 위한 설정 */
 .tab-wrapper {
+    display: flex;
+    align-items: start;
+
     width: 100%;
     /*height: 32px;*/
+
     white-space: nowrap; /* 더보기의 글자가 다음줄 안넘어가게 함.*/
-
-
 }
 
 .tab-wrapper > .tab-scroll {
     flex-grow: 1; /* flex-item으로서 w-100% */
-    /* 우측 더보기에 대한 우측간격은 남겨두기*/
+    /* ms-auto로 우측에 몰린 더보기에 대해, 간격을 유지하기 위해 */
     margin-right: 10%;
 
     /*height: 32px;*/
     flex-wrap: nowrap;
     overflow: hidden;
 
-    /* 가리개를 위해 row방향용 flex로 만들어 놓기 */
+    /* scroll 공간은 무조건 display:flex로 만들어놔야한다. */
     display: flex;
-
-    /* 가리개 absolute를 위함 */
-    position: relative;
 }
 
 .tab-wrapper > .tab-scroll > ul {
+    /*flex:none;*/
     /* 가로가 넘쳐 부모 height를 넘치는 경우, flex를 다 가로로 넘치게 함 */
-    flex:none;
+    flex-wrap: nowrap;
 
     /* 좌측 absolute 가리개의 width만큼 패딩 주기 */
     padding-left: 5%;
+}
+
+.scroll-opacity {
+    /* 가리개 absolute를 위함 */
+    position: relative;
 }
 
 .tab-scroll.scroll-opacity::before {
