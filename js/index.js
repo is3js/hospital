@@ -524,8 +524,8 @@ $(function () {
     }
 
     // initSection3Swiper(0);
-    initSection3Swiper('#youtube-tab-content',0);
-    initSection3Swiper('#blog-tab-content',0);
+    initSection3Swiper('#youtube-tab-content', 0);
+    initSection3Swiper('#blog-tab-content', 0);
 
     // section3 tab 클릭시 index 찾기 -> 해당index의 swiper 초기화
     // - section3안에 youtube/blog tab자체가 2개라서 시작지를 추가
@@ -631,12 +631,12 @@ $(function () {
     });
 
     // tab draggable
-    //1. ul의 부모공간을 bound될 공간으로서 먼저 찾고
+    // - 1) ul의 부모공간(scroll 공간)을 먼저 따로 찾고,
     var $tabScroll = $(".tab-scroll");
-    //2. 내부 ul태그를 target으로 찾는다.
+    // - 2) 내부 tab의 ul태그를 찾은 뒤
     var $tabTarget = $tabScroll.find("ul");
-
-    Draggable.create($tabTarget, {
+    // - 3) Draggable.create 해주되, bounds 옵션에 부모공간 변수를 넣어준다.
+    new Draggable.create($tabTarget, {
         type: "x",
         bounds: $tabScroll,
         throwProps: true,
@@ -646,5 +646,28 @@ $(function () {
             // console.log("drag ended");
         }
     });
+
+    // - 4) tab에서 클릭되는 a들을 find로 찾은 뒤. click 리스너를 걸어서, 중간/우측가장자리에 있을 때 이동시켜준다.
+    var scrollInnerWidth = $tabScroll.width();
+    var targetOuterWidth = $tabTarget.outerWidth();
+
+    $tabTarget.find("a").on("click", function (event) {
+        var offsetLeft = $(this).offset().left;
+        var aOuterWidth = $(this).outerWidth();
+        var eventPoint = offsetLeft - aOuterWidth / 2;
+        var textEndPoint = offsetLeft + aOuterWidth / 2;
+
+
+        if ((scrollInnerWidth > targetOuterWidth) || scrollInnerWidth / 2 > textEndPoint) {
+            // 왼쪽 가장자리
+        } else if ((scrollInnerWidth < targetOuterWidth) && (targetOuterWidth - scrollInnerWidth / 2 < eventPoint)) {
+            // 오른쪽 가장자리
+            TweenMax.to($tabTarget, .1, {x: -(targetOuterWidth - scrollInnerWidth)});
+        } else {
+            // 중간 자리
+            TweenMax.to($tabTarget, .1, {x: -((offsetLeft - scrollInnerWidth / 2))});
+        }
+    });
+
 })
 

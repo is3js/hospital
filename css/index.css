@@ -2277,7 +2277,6 @@ a {
 }
 
 .tab-wrapper > .tab-scroll > ul {
-    /*flex:none;*/
     /* 가로가 넘쳐 부모 height를 넘치는 경우, flex를 다 가로로 넘치게 함 */
     flex-wrap: nowrap;
 
@@ -2290,39 +2289,29 @@ a {
     position: relative;
 }
 
-.tab-scroll.scroll-opacity::before {
+.scroll-opacity::before,
+.scroll-opacity::after {
+
     content: '';
+    position: absolute;
 
     opacity: .8;
-
-    position: absolute;
-    left: 0;
     top: 0;
     height: 100%;
     width:5%;
 
-    background: linear-gradient(to left, rgba(255, 255, 255, 0.08), white);
     /* draggable(1004)보다 더 위에*/
     z-index: 1200;
 }
 
-.tab-scroll.scroll-opacity::after {
-    content: '';
+.scroll-opacity::before {
+    left: 0;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0.08), white);
+}
 
-    opacity: .8;
-
-    position: absolute;
+.scroll-opacity::after {
     right: 0;
-    top: 0;
-    height: 100%;
-    width:5%;
-
-    /*background: white;*/
     background: linear-gradient(to right, rgba(255, 255, 255, 0.08), white);
-
-
-    /* draggable(1004)보다 더 위에*/
-    z-index: 1200;
 }
 
 

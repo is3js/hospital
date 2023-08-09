@@ -1,3 +1,5 @@
+### 디자인 
+
 1. 더보기를 li에서 div로 바꿔서 뺄 준비를 하고, **ul.nav-tabs를 `div.tab-scroll`안에 가둔다. div.tab-scroll + 더보기를 `div.tab-wrapper`로 감싼다.**
 ```html
 <div class="review-box p-0">
@@ -70,59 +72,62 @@
    - gradient 참고: https://codepen.io/kidd1118/pen/qxQwvE
    - **`.scroll-opacity`를 선택자를 만들고, before/after에 대한 `relative`가 되게 한다.**
 ```html
-<div class="tab-scroll scroll-opacity">
-```
-
-```html
 <div class="tab-scroll">
     <ul class="nav nav-tabs mb-2 gap-1 column-gap-2 scroll-opacity" id="review-tabs" role="tablist">
 ```
 ```css
-.nav-tabs.scroll-opacity::before {
-    content: '';
-
-    opacity: .8;
-
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width:5%;
-
-    background: linear-gradient(to left, rgba(255, 255, 255, 0.08), white);
-    /* draggable(1004)보다 더 위에*/
-    z-index: 2000;
-}
-
-.nav-tabs.scroll-opacity::after {
-    content: '';
-
-    opacity: .8;
-
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 100%;
-    width:5%;
-
-    /*background: white;*/
-    background: linear-gradient(to right, rgba(255, 255, 255, 0.08), white);
-
-
-    /* draggable(1004)보다 더 위에*/
-    z-index: 2000;
+.scroll-opacity {
+    /* 가리개 absolute를 위함 */
+    position: relative;
 }
 ```
-![img_1.png](../ui/283.png)
+
+6. 이제 `.scroll-opacity`의 before/after를 정해준다
+   - 공통사항은 묶어주고 다른 것만 분리한다
 ```css
-.tab-wrapper > .tab-scroll {
-    /* 좌측 absolute 가리개의 width만큼 패딩 주기 */
-    padding-left: 5%;
+.scroll-opacity::before,
+.scroll-opacity::after {
+
+    content: '';
+    position: absolute;
+
+    opacity: .8;
+    top: 0;
+    height: 100%;
+    width:5%;
+
+    /* draggable(1004)보다 더 위에*/
+    z-index: 1200;
+}
+
+.scroll-opacity::before {
+    left: 0;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0.08), white);
+}
+
+.scroll-opacity::after {
+    right: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.08), white);
+}
+```
+
+![img_1.png](../ui/283.png)
+
+7. **왼쪽 가래개가 width 5%를 차지하고 있는데, drag되기 전까지 첫tab이 안묻히도록 공간에 padding-left를 넣어준다.**
+```css
+.tab-wrapper > .tab-scroll > ul {
+   /* 가로가 넘쳐 부모 height를 넘치는 경우, flex를 다 가로로 넘치게 함 */
+   flex-wrap: nowrap;
+
+   /* 좌측 absolute 가리개의 width만큼 패딩 주기 */
+   padding-left: 5%;
 }
 ```
 ![img.png](../ui/284.png)
 
 
+
+### draggable 적용
 
 - draggable.js 및 없으면 TweenMax.js 추가
 ```html
@@ -132,3 +137,51 @@
 <script src="js/index.js"></script>
 ```
 
+```js
+ // tab draggable
+ // - 1) ul의 부모공간(scroll 공간)을 먼저 따로 찾고, 
+ var $tabScroll = $(".tab-scroll");
+ // - 2) 내부 tab의 ul태그를 찾은 뒤
+ var $tabTarget = $tabScroll.find("ul");
+ // - 3) Draggable.create 해주되, bounds 옵션에 부모공간 변수를 넣어준다.
+ Draggable.create($tabTarget, {
+     type: "x",
+     bounds: $tabScroll,
+     throwProps: true,
+     onClick: function (e) {
+     },
+     onDragEnd: function () {
+         // console.log("drag ended");
+     }
+ });
+```
+
+
+### Tweenmax 적용
+- 왼쪽가장자리에 이동시, 버그가 난다. 그냥 중간/우측가장자리일때 이동 공식을 사용한다.
+```js
+ // - 4) tab에서 클릭되는 a들을 find로 찾은 뒤. click 리스너를 걸어서, 중간/우측가장자리에 있을 때 이동시켜준다.
+var scrollInnerWidth = $tabScroll.width();
+var targetOuterWidth = $tabTarget.outerWidth();
+
+$tabTarget.find("a").on("click", function (event) {
+    var offsetLeft = $(this).offset().left;
+    var aOuterWidth = $(this).outerWidth();
+    var eventPoint = offsetLeft - aOuterWidth / 2;
+    var textEndPoint = offsetLeft + aOuterWidth / 2;
+
+
+    if ((scrollInnerWidth > targetOuterWidth) || scrollInnerWidth / 2 > textEndPoint) {
+        // 왼쪽 가장자리
+    } else if ((scrollInnerWidth < targetOuterWidth) && (targetOuterWidth - scrollInnerWidth / 2 < eventPoint)) {
+        // 오른쪽 가장자리
+        TweenMax.to($tabTarget, .1, {x: -(targetOuterWidth - scrollInnerWidth)});
+    } else {
+        // 중간 자리
+        TweenMax.to($tabTarget, .1, {x: -((offsetLeft - scrollInnerWidth / 2))});
+    }
+});
+```
+
+
+### 유튜브/블로그 탭도 똑같이 적용시켜준다.
