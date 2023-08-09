@@ -27,6 +27,24 @@
     }
 }
 
+.fs-dx {
+    font-size: 18px;
+}
+
+@media screen and (max-width: 991px) {
+    .fs-dx {
+        font-size: 9px;
+        letter-spacing: -.05rem;
+    }
+}
+
+@media screen and (min-width: 991px) and (max-width: 1399px) {
+    .fs-dx {
+        font-size: 13px;
+        letter-spacing: -.01rem;
+    }
+}
+
 
 /* 글자색 */
 .text-yellow {
@@ -228,3 +246,4 @@
 .opacity-10 {
     opacity: 0.10 !important;
 }
+

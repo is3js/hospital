@@ -677,7 +677,6 @@ $(function () {
 
             if ((scrollInnerWidth > targetOuterWidth) || scrollInnerWidth / 2 > textEndPoint) {
                 // 왼쪽 가장자리
-                console.log('left')
             } else if ((scrollInnerWidth < targetOuterWidth) && (targetOuterWidth - scrollInnerWidth / 2 < eventPoint)) {
                 // 오른쪽 가장자리
                 new TweenMax.to($tabTarget, .1, {x: -(targetOuterWidth - scrollInnerWidth)});
@@ -689,5 +688,20 @@ $(function () {
     })
 
 
+
+    // section4 건강채널 - title with Velocity
+    let scene7 = new ScrollMagic.Scene({
+        triggerElement: ".section4",
+        // triggerHook: "onCenter",
+        triggerHook: "onEnter",
+        offset: -80,
+    });
+    scene7.setVelocity([".section4 > .section-title > div"], {
+        top: "0px",
+        opacity: "1"
+    }, {
+        duration: "300",
+    });
+    controller.addScene(scene7);
 })
 

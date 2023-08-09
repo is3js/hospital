@@ -217,7 +217,6 @@ $tabTarget.find("a").on("click", function (event) {
 
             if ((scrollInnerWidth > targetOuterWidth) || scrollInnerWidth / 2 > textEndPoint) {
                 // 왼쪽 가장자리
-                console.log('left')
             } else if ((scrollInnerWidth < targetOuterWidth) && (targetOuterWidth - scrollInnerWidth / 2 < eventPoint)) {
                 // 오른쪽 가장자리
                 TweenMax.to($tabTarget, .1, {x: -(targetOuterWidth - scrollInnerWidth)});

@@ -2231,20 +2231,25 @@ a {
 }
 
 
-.section3 {
+.section3, .section4
+{
     width: 100%;
     position: relative; /* */
     z-index: 666;
     background: #fff;
 }
 
-.section3 > div {
+.section3 > div,
+.section4 > div
+{
     width: 70%;
     margin: 0 auto;
 }
 
 @media screen and (max-width: 991px) {
-    .section3 > div {
+    .section3 > div,
+    .section4 > div
+    {
         width: 85%;
     }
 }
