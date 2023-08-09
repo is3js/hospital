@@ -2298,7 +2298,7 @@ a {
 
     background: linear-gradient(to left, rgba(255, 255, 255, 0.08), white);
     /* draggable(1004)보다 더 위에*/
-    z-index: 1005;
+    z-index: 1200;
 }
 
 .tab-scroll.scroll-opacity::after {
@@ -2317,7 +2317,7 @@ a {
 
 
     /* draggable(1004)보다 더 위에*/
-    z-index: 1005;
+    z-index: 1200;
 }
 
 

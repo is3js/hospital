@@ -71,7 +71,7 @@
 
     background: linear-gradient(to left, rgba(255, 255, 255, 0.08), white);
     /* draggable(1004)보다 더 위에*/
-    z-index: 1005;
+    z-index: 2000;
 }
 
 .nav-tabs.scroll-opacity::after {
@@ -90,7 +90,7 @@
 
 
     /* draggable(1004)보다 더 위에*/
-    z-index: 1005;
+    z-index: 2000;
 }
 ```
 ![img_1.png](../ui/283.png)
