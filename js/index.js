@@ -630,44 +630,64 @@ $(function () {
         initReviewSwiper(index);
     });
 
+
     // tab draggable
-    // - 1) ul의 부모공간(scroll 공간)을 먼저 따로 찾고,
-    var $tabScroll = $(".tab-scroll");
-    // - 2) 내부 tab의 ul태그를 찾은 뒤
-    var $tabTarget = $tabScroll.find("ul");
-    // - 3) Draggable.create 해주되, bounds 옵션에 부모공간 변수를 넣어준다.
-    new Draggable.create($tabTarget, {
-        type: "x",
-        bounds: $tabScroll,
-        throwProps: true,
-        onClick: function (e) {
-        },
-        onDragEnd: function () {
-            // console.log("drag ended");
-        }
-    });
+    // // - 1) ul의 부모공간(scroll 공간)을 먼저 따로 찾고,
+    // var $tabScroll = $(".tab-scroll");
+    // // - 2) 내부 tab의 ul태그를 찾은 뒤
+    // var $tabTarget = $tabScroll.find("ul");
+    // // - 3) Draggable.create 해주되, bounds 옵션에 부모공간 변수를 넣어준다.
+    // new Draggable.create($tabTarget, {
+    //     type: "x",
+    //     bounds: $tabScroll,
+    //     throwProps: true,
+    //     onClick: function (e) {
+    //     },
+    //     onDragEnd: function () {
+    //         // console.log("drag ended");
+    //     }
+    // });
+    // 5) .tab-scroll이 여러개인 경우를 대비해서, 아래와 같이 each -> 내부 this로 처리
+    $(".tab-scroll").each(function () {
+        var $tabScroll = $(this);
+        var $tabTarget = $tabScroll.find("ul");
+        new Draggable.create($tabTarget, {
+            type: "x",
+            bounds: $tabScroll,
+            throwProps: true,
+            onClick: function (e) {
+            },
+            onDragEnd: function () {
+                // console.log("drag ended");
+            }
+        });
 
-    // - 4) tab에서 클릭되는 a들을 find로 찾은 뒤. click 리스너를 걸어서, 중간/우측가장자리에 있을 때 이동시켜준다.
-    var scrollInnerWidth = $tabScroll.width();
-    var targetOuterWidth = $tabTarget.outerWidth();
-
-    $tabTarget.find("a").on("click", function (event) {
-        var offsetLeft = $(this).offset().left;
-        var aOuterWidth = $(this).outerWidth();
-        var eventPoint = offsetLeft - aOuterWidth / 2;
-        var textEndPoint = offsetLeft + aOuterWidth / 2;
 
 
-        if ((scrollInnerWidth > targetOuterWidth) || scrollInnerWidth / 2 > textEndPoint) {
-            // 왼쪽 가장자리
-        } else if ((scrollInnerWidth < targetOuterWidth) && (targetOuterWidth - scrollInnerWidth / 2 < eventPoint)) {
-            // 오른쪽 가장자리
-            TweenMax.to($tabTarget, .1, {x: -(targetOuterWidth - scrollInnerWidth)});
-        } else {
-            // 중간 자리
-            TweenMax.to($tabTarget, .1, {x: -((offsetLeft - scrollInnerWidth / 2))});
-        }
-    });
+        // - 4) tab에서 클릭되는 a들을 find로 찾은 뒤. click 리스너를 걸어서, 중간/우측가장자리에 있을 때 이동시켜준다.
+        var scrollInnerWidth = $tabScroll.width();
+        var targetOuterWidth = $tabTarget.outerWidth();
+
+        $tabTarget.find("a").on("click", function (event) {
+            var offsetLeft = $(this).offset().left;
+            var aOuterWidth = $(this).outerWidth();
+            var eventPoint = offsetLeft - aOuterWidth / 2;
+            var textEndPoint = offsetLeft + aOuterWidth / 2;
+
+
+            if ((scrollInnerWidth > targetOuterWidth) || scrollInnerWidth / 2 > textEndPoint) {
+                // 왼쪽 가장자리
+                console.log('left')
+            } else if ((scrollInnerWidth < targetOuterWidth) && (targetOuterWidth - scrollInnerWidth / 2 < eventPoint)) {
+                // 오른쪽 가장자리
+                new TweenMax.to($tabTarget, .1, {x: -(targetOuterWidth - scrollInnerWidth)});
+            } else {
+                // 중간 자리
+                new TweenMax.to($tabTarget, .1, {x: -((offsetLeft - scrollInnerWidth / 2))});
+            }
+        });
+    })
+
 
 })
 

@@ -184,4 +184,47 @@ $tabTarget.find("a").on("click", function (event) {
 ```
 
 
-### 유튜브/블로그 탭도 똑같이 적용시켜준다.
+### 유튜브/블로그 탭도 똑같이 적용해주는데, `.tab-scroll`이 복수로 뽑히는 것을 처리한다.
+- 지금까지의 Draggable + TweenMax를 여러개의 `.tab-scroll`요소를 each + function + this를 이용해서 처리되게 한다.
+```js
+    // 5) .tab-scroll이 여러개인 경우를 대비해서, 아래와 같이 each -> 내부 this로 처리
+    $(".tab-scroll").each(function () {
+        var $tabScroll = $(this);
+        var $tabTarget = $tabScroll.find("ul");
+        new Draggable.create($tabTarget, {
+            type: "x",
+            bounds: $tabScroll,
+            throwProps: true,
+            onClick: function (e) {
+            },
+            onDragEnd: function () {
+                // console.log("drag ended");
+            }
+        });
+
+
+
+        // - 4) tab에서 클릭되는 a들을 find로 찾은 뒤. click 리스너를 걸어서, 중간/우측가장자리에 있을 때 이동시켜준다.
+        var scrollInnerWidth = $tabScroll.width();
+        var targetOuterWidth = $tabTarget.outerWidth();
+
+        $tabTarget.find("a").on("click", function (event) {
+            var offsetLeft = $(this).offset().left;
+            var aOuterWidth = $(this).outerWidth();
+            var eventPoint = offsetLeft - aOuterWidth / 2;
+            var textEndPoint = offsetLeft + aOuterWidth / 2;
+
+
+            if ((scrollInnerWidth > targetOuterWidth) || scrollInnerWidth / 2 > textEndPoint) {
+                // 왼쪽 가장자리
+                console.log('left')
+            } else if ((scrollInnerWidth < targetOuterWidth) && (targetOuterWidth - scrollInnerWidth / 2 < eventPoint)) {
+                // 오른쪽 가장자리
+                TweenMax.to($tabTarget, .1, {x: -(targetOuterWidth - scrollInnerWidth)});
+            } else {
+                // 중간 자리
+                TweenMax.to($tabTarget, .1, {x: -((offsetLeft - scrollInnerWidth / 2))});
+            }
+        });
+    })
+```
