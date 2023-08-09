@@ -629,5 +629,22 @@ $(function () {
 
         initReviewSwiper(index);
     });
+
+    // tab draggable
+    //1. ul의 부모공간을 bound될 공간으로서 먼저 찾고
+    var $tabScroll = $(".tab-scroll");
+    //2. 내부 ul태그를 target으로 찾는다.
+    var $tabTarget = $tabScroll.find("ul");
+
+    Draggable.create($tabTarget, {
+        type: "x",
+        bounds: $tabScroll,
+        throwProps: true,
+        onClick: function (e) {
+        },
+        onDragEnd: function () {
+            // console.log("drag ended");
+        }
+    });
 })
 

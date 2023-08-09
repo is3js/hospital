@@ -52,3 +52,63 @@
 }
 ```
 
+- gradient 참고: https://codepen.io/kidd1118/pen/qxQwvE
+```html
+<div class="tab-scroll">
+    <ul class="nav nav-tabs mb-2 gap-1 column-gap-2 scroll-opacity" id="review-tabs" role="tablist">
+```
+```css
+.nav-tabs.scroll-opacity::before {
+    content: '';
+
+    opacity: .8;
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width:5%;
+
+    background: linear-gradient(to left, rgba(255, 255, 255, 0.08), white);
+    /* draggable(1004)보다 더 위에*/
+    z-index: 1005;
+}
+
+.nav-tabs.scroll-opacity::after {
+    content: '';
+
+    opacity: .8;
+
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width:5%;
+
+    /*background: white;*/
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.08), white);
+
+
+    /* draggable(1004)보다 더 위에*/
+    z-index: 1005;
+}
+```
+![img_1.png](../ui/283.png)
+```css
+.tab-wrapper > .tab-scroll {
+    /* 좌측 absolute 가리개의 width만큼 패딩 주기 */
+    padding-left: 5%;
+}
+```
+![img.png](../ui/284.png)
+
+
+
+- draggable.js 및 없으면 TweenMax.js 추가
+```html
+<!-- draggable js for tab -->
+<script src="js/Draggable.min.js"></script>
+
+<script src="js/index.js"></script>
+```
+
