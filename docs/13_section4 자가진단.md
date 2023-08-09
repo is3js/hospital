@@ -56,3 +56,57 @@
     });
     controller.addScene(scene7);
 ```
+
+
+2. 진단관련 링크 3개를 flex가 아닌 boostrap으로 col-4로 3개를 나열한다.
+    - 이 때, div>a의 구성으로서, `div로 배경` + `a로 글자크기 + my`로  배경 + 크기를 구성한다.
+    - col-4는 점점 넓어지므로, `px`를 반응형으로 여백을 줘서, div>a의 폭을 줄인다.
+```html
+<div class="dx-box ">
+        <!-- 진단 버튼 3개 -->
+        <div class="row">
+            <div class="col-4 px-3 px-md-4 px-lg-5">
+                <div class="text-center rounded rounded-pill border shadow-sm"
+                     style="background-image: url('images/dx/001.png');
+                            background-repeat: no-repeat;
+                            background-position: top center;
+                            background-size: cover;
+                            background-color: #efefef;">
+                    <a href="#" class="d-inline-block text-decoration-none text-dark fw-bolder ">
+                        <h6 class="fs-dx my-1 my-md-2 my-lg-3">디스크 진단</h6>
+                    </a>
+                </div>
+            </div>
+            <div class="col-4 px-3 px-md-4 px-lg-5">
+                <div class="text-center rounded rounded-pill border shadow-sm"
+                     style="background-image: url('images/dx/002.png');
+                            background-repeat: no-repeat;
+                            background-position: top center;
+                            background-size: cover;
+                            background-color: #efefef;">
+                    <a href="#" class="d-inline-block text-decoration-none text-dark fw-bolder ">
+                        <h6 class="fs-dx my-1 my-md-2 my-lg-3">체질 진단</h6>
+                    </a>
+                </div>
+            </div>
+            <div class="col-4 px-3 px-md-4 px-lg-5">
+                <div class="text-center rounded rounded-pill border shadow-sm"
+                     style="background-image: url('images/dx/003.png');
+                            background-repeat: no-repeat;
+                            background-position: top center;
+                            background-size: cover;
+                            background-color: #efefef;">
+                    <a href="#" class="d-inline-block text-decoration-none text-dark fw-bolder">
+                        <h6 class="fs-dx my-1 my-md-2 my-lg-3">문진표 작성</h6>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <p>123</p>
+            <p>123</p>
+            <p>123</p>
+            <p>123</p>
+        </div>
+    </div>
+```
