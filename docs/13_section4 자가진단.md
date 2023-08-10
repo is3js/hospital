@@ -330,7 +330,7 @@
 
 
 
-#### check 답변
+#### 1개 check 답변
 1. .dx-slide를 복사해서 중복체크 답변을 만든다.
    - input에서 checkbox 및 name만 바꾼다. id는 -1, -2 씩 늘어간다.
 ```html
@@ -411,3 +411,8 @@
     display: block;
 }
 ```
+
+#### group check 답변 for count
+- slide는 넘어가지만, count를 같이 세야 하는 경우, slide가 넘어가더라도 `같은 name[]`을 사용해야하며, jquery로 length만 check된 것으로 셀 것이기 때문에, value는 아무값이나 똑같이 준다.
+- 같은 질문(같은name)이지만, count는 세분화될 수 있기 때문에, **`name="질환_a[]"`, `질환_b[]`의 count용 그룹을 따로 name으로 뺀다**
+- 아래는 같은 질문이면서, 같은 그룹
