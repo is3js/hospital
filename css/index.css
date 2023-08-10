@@ -58,6 +58,9 @@
 
     --booking-service-form-row-width-percent-of-left: 38%;
     --booking-service-form-row-width-percent-of-right: 57%;
+
+    /* 자가진단 */
+    --dx-question-font-size: 16px; /* 앞에 before의 height도 결정되므로 변수로 정해줌*/
 }
 
 @media screen and (max-width: 991px) {
@@ -71,6 +74,9 @@
         --booking-service-content-height: calc(var(--booking-service-height) - var(--booking-service-tab-height));
 
         --booking-service-letter-spacing: -0.04rem;
+
+        --dx-question-font-size: 11px; /* 앞에 before의 height도 결정되므로 변수로 정해줌*/
+
     }
 
 }
@@ -2231,8 +2237,7 @@ a {
 }
 
 
-.section3, .section4
-{
+.section3, .section4 {
     width: 100%;
     position: relative; /* */
     z-index: 666;
@@ -2240,16 +2245,14 @@ a {
 }
 
 .section3 > div,
-.section4 > div
-{
+.section4 > div {
     width: 70%;
     margin: 0 auto;
 }
 
 @media screen and (max-width: 991px) {
     .section3 > div,
-    .section4 > div
-    {
+    .section4 > div {
         width: 85%;
     }
 }
@@ -2303,7 +2306,7 @@ a {
     opacity: .8;
     top: 0;
     height: 100%;
-    width:5%;
+    width: 5%;
 
     /* draggable(1004)보다 더 위에*/
     z-index: 1200;
@@ -2318,7 +2321,6 @@ a {
     right: 0;
     background: linear-gradient(to right, rgba(255, 255, 255, 0.08), white);
 }
-
 
 
 .section3 .media-box,
@@ -2361,14 +2363,15 @@ a {
 /* - ul.nav-tabs 의 id를 기준으로 판단 하도록 변경 */
 /*.section3 .media-box .nav-tabs > li > a.active[href="#tabs-youtube"] {*/
 .section3 .media-box ul.nav-tabs#youtube-tab > li > a.active {
-    background-color: var(--color-pink)!important;
-    background-color: var(--color-youtube)!important;
+    background-color: var(--color-pink) !important;
+    background-color: var(--color-youtube) !important;
     color: #fff;
 }
+
 /*.section3 .media-box .nav-tabs > li > a.active[href="#tabs-blog"] {*/
 .section3 .media-box ul.nav-tabs#blog-tab > li > a.active {
-    background-color: var(--color-green)!important;
-    background-color: var(--color-naver)!important;
+    background-color: var(--color-green) !important;
+    background-color: var(--color-naver) !important;
     color: #fff;
 }
 
@@ -2425,7 +2428,7 @@ span.category.category-youtube {
     /*background: #F07F7F !important;*/
     /*box-shadow: 2px 2px 7px rgba(240, 127, 127, 0.4);*/
     background: var(--color-youtube) !important;
-    box-shadow: 2px 2px 7px rgba(246,50,50,0.4);
+    box-shadow: 2px 2px 7px rgba(246, 50, 50, 0.4);
 }
 
 span.category.category-naver {
@@ -2465,7 +2468,7 @@ span.category.category-naver {
     padding: 3% 0 0 0;
 }
 
-@media screen and (max-width: 991px){
+@media screen and (max-width: 991px) {
     .tab-content .tab-pane {
         padding-bottom: 5%;
     }
@@ -2514,7 +2517,7 @@ span.category.category-naver {
     width: 100%;
     /*top: -60px;*/
     /*bottom: auto;*/
-    top:auto;
+    top: auto;
     bottom: -30px;
 
     display: flex;
@@ -2535,7 +2538,7 @@ span.category.category-naver {
 
 /* 치료후기 지정 bullet css [active전 글자] */
 .section2-middle2 .swiper-pagination .review-bullet {
-/*    !*flex: 1;*!*/
+    /*    !*flex: 1;*!*/
     width: auto; /* content크기만큼 차지하도록*/
     height: auto;
 
@@ -2544,16 +2547,16 @@ span.category.category-naver {
 
     margin: 0 5px; /* 좌우 간격 */
 
-    background: none!important; /* 동그라미 삭제 */
+    background: none !important; /* 동그라미 삭제 */
 
-    color: #999!important; /* active전 글자색 */
+    color: #999 !important; /* active전 글자색 */
     font-weight: bold;
     /*text-shadow: 1px 1px 2px #757575;*/
 }
 
 /* 치료후기 지정 bullet css [active 글자] */
 .section2-middle2 .swiper-pagination .review-bullet-active {
-    color: var(--color-main)!important; /* active전 글자색 */
+    color: var(--color-main) !important; /* active전 글자색 */
     transform: scale(1.5);
 }
 
@@ -2565,7 +2568,7 @@ span.category.category-naver {
 @media screen and (min-width: 992px) and (max-width: 1440px) {
     .section2-middle2 .tab-content .w-75 {
         position: relative;
-        top: -50px!important;
+        top: -50px !important;
     }
 }
 
@@ -2580,6 +2583,7 @@ span.category.category-naver {
 
     transform: scaleX(.8);
 }
+
 .section2-middle2 .swiper-button-next {
     top: 0;
     height: 100%;
@@ -2593,9 +2597,149 @@ span.category.category-naver {
 
 /* 치료후기 좌우측 화살표 모바일에서만 보이도록*/
 /* - js동적으로 display를 변화시키므로, !important 필수 */
-@media screen and (min-width: 992px){
+@media screen and (min-width: 992px) {
     .section2-middle2 .swiper-button-prev,
     .section2-middle2 .swiper-button-next {
-        display: none!important;
+        display: none !important;
     }
+}
+
+
+/* section4 dx */
+.dx-question {
+    margin: 0;
+    width: 100%;
+    text-align: left;
+
+    position: relative;
+    /* 왼쪽에 before(세로선) 를 넣을 공간 */
+    padding: 0 0 0 10px;
+
+    font-size: var(--dx-question-font-size);
+    line-height: calc(var(--dx-question-font-size) * 1.5);
+    font-weight: bold;
+}
+
+/* 질문 앞에 세로선 */
+.dx-question:before {
+    content: '';
+    position: absolute;
+
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    background: var(--color-main);
+    width: 3px;
+    height: 100%;
+}
+
+/* 답변 - radio */
+.dx-box input[type="radio"] + label {
+    position: relative;
+    padding-left: var(--dx-question-font-size);
+
+    font-size: var(--dx-question-font-size);
+    color: #666;
+
+    cursor: pointer;
+    display: inline-block;
+}
+
+.dx-box input[type="radio"] + label:before {
+    content: '';
+    position: absolute;
+
+    left: 0;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    width: var(--dx-question-font-size);
+    height: var(--dx-question-font-size);
+
+    border: 1px solid #ddd;
+    border-radius: 100%;
+}
+
+.dx-box input[type="radio"] + label:after {
+    display: none;
+
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    width: calc(var(--dx-question-font-size) * .5);
+    height: calc(var(--dx-question-font-size) * .5);
+
+    background: var(--color-main);
+    border-radius: 100%;
+}
+
+.dx-box input[type="radio"]:checked + label:after {
+    display: block;
+}
+
+
+/* 답변 checkbox */
+.dx-box input[type="checkbox"] + label {
+    position: relative;
+    padding-left: var(--dx-question-font-size);
+
+    font-size: var(--dx-question-font-size);
+    color: #666;
+
+    cursor: pointer;
+    display: inline-block;
+}
+
+.dx-box input[type="checkbox"] + label:before {
+    content: '';
+    position: absolute;
+
+    left: 0;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    width: var(--dx-question-font-size);
+    height: var(--dx-question-font-size);
+
+    border: 1px solid #ddd;
+    /*border-radius: 100%;*/
+    border-radius: 3px;
+}
+
+
+.dx-box input[type="checkbox"] + label:after {
+    display: none;
+
+    /*content: '';*/
+    content: '✔';
+    text-align: center;
+    color: var(--color-main);
+    font-weight: 800;
+    font-size: calc(var(--dx-question-font-size) * 1.3);
+
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    /*width: calc(var(--dx-question-font-size) * .5);*/
+    /*height: calc(var(--dx-question-font-size) * .5);*/
+
+
+    /*background: var(--color-main);*/
+    background: transparent;
+    border-radius: 100%;
+}
+
+.dx-box input[type="checkbox"]:checked + label:after {
+    display: block;
+}
+
+
+.dx-question.dx-question-checkbox > i {
+    display: inline-block!important;
 }

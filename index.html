@@ -2668,12 +2668,12 @@
             <p>허리 디스크 등</p>
         </div>
         <div>
-            내원 전, <strong>스스로 체크</strong>하자!
+            내원 전, <strong>스스로 체크</strong>하는 우아 자체 시스템!
         </div>
     </div>
     <div class="dx-box ">
         <!-- 진단 버튼 3개 -->
-        <div class="row">
+        <div class="row my-2">
             <div class="col-4 px-3 px-md-4 px-lg-5">
                 <div class="text-center rounded rounded-pill border shadow-sm"
                      style="background-image: url('images/dx/001.png');
@@ -2682,7 +2682,7 @@
                             background-size: cover;
                             background-color: #efefef;">
                     <a href="#" class="d-inline-block text-decoration-none text-dark fw-bolder ">
-                        <h6 class="fs-dx my-1 my-md-2 my-lg-3">디스크 진단</h6>
+                        <h6 class="fs-dx-btn my-1 my-md-2 my-lg-3">디스크 진단</h6>
                     </a>
                 </div>
             </div>
@@ -2694,7 +2694,7 @@
                             background-size: cover;
                             background-color: #efefef;">
                     <a href="#" class="d-inline-block text-decoration-none text-dark fw-bolder ">
-                        <h6 class="fs-dx my-1 my-md-2 my-lg-3">체질 진단</h6>
+                        <h6 class="fs-dx-btn my-1 my-md-2 my-lg-3">체질 진단</h6>
                     </a>
                 </div>
             </div>
@@ -2706,12 +2706,324 @@
                             background-size: cover;
                             background-color: #efefef;">
                     <a href="#" class="d-inline-block text-decoration-none text-dark fw-bolder">
-                        <h6 class="fs-dx my-1 my-md-2 my-lg-3">문진표 작성</h6>
+                        <h6 class="fs-dx-btn my-1 my-md-2 my-lg-3">문진표 작성</h6>
                     </a>
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row mt-3 mt-lg-5 px-3">
+            <div class="col-12 col-md-5">
+                <img src="images/dx/low_disc.png" alt="" class="img-fluid">
+            </div>
+            <div class="col-12 col-md-7 g-3">
+                <form action="">
+                    <!-- radio 택1 답변 -->
+                    <div class="dx-slide">
+                        <div class="dx-question">
+                            당신의 성별은 무엇인가요?
+                        </div>
+                        <div class="dx-answer mt-2 ps-2 ps-lg-3">
+                            <div class="dx-answer-detail">
+                                <input type="radio" class="blind"
+                                       name="sex"
+                                       id="sex-1"
+                                       value="1"
+                                >
+                                <label for="sex-1" class="fs-dx-answer">
+                                    남자
+                                </label>
+                            </div>
+                            <div class="dx-answer-detail">
+                                <input type="radio" class="blind"
+                                       name="sex"
+                                       id="sex-2"
+                                       value="2"
+                                >
+                                <label for="sex-2" class="fs-dx-answer">
+                                    여자
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dx-slide">
+                        <div class="dx-question">
+                            당신의 연령대는 어디에 속하나요?
+                        </div>
+                        <div class="dx-answer mt-2 ps-2 ps-lg-3">
+                            <div class="dx-answer-detail">
+                                <input type="radio" class="blind"
+                                       name="answerAge"
+                                       id="answer-age-1"
+                                       value="1"
+                                >
+                                <label for="answer-age-1" class="fs-dx-answer">
+                                    9세 이하
+                                </label>
+                            </div>
+                            <div class="dx-answer-detail">
+                                <input type="radio" class="blind"
+                                       name="answerAge"
+                                       id="answer-age-2"
+                                       value="2"
+                                >
+                                <label for="answer-age-2" class="fs-dx-answer">
+                                    10대
+                                </label>
+                            </div>
+                            <div class="dx-answer-detail">
+                                <input type="radio" class="blind"
+                                       name="answerAge"
+                                       id="answer-age-3"
+                                       value="3"
+                                >
+                                <label for="answer-age-3" class="fs-dx-answer">
+                                    20대
+                                </label>
+                            </div>
+                            <div class="dx-answer-detail">
+                                <input type="radio" class="blind"
+                                       name="answerAge"
+                                       id="answer-age-4"
+                                       value="4"
+                                >
+                                <label for="answer-age-4" class="fs-dx-answer">
+                                    30대
+                                </label>
+                            </div>
+                            <div class="dx-answer-detail">
+                                <input type="radio" class="blind"
+                                       name="answerAge"
+                                       id="answer-age-5"
+                                       value="5"
+                                >
+                                <label for="answer-age-5" class="fs-dx-answer">
+                                    40대
+                                </label>
+                            </div>
+                            <div class="dx-answer-detail">
+                                <input type="radio" class="blind"
+                                       name="answerAge"
+                                       id="answer-age-6"
+                                       value="6"
+                                >
+                                <label for="answer-age-6" class="fs-dx-answer">
+                                    50대
+                                </label>
+                            </div>
+                            <div class="dx-answer-detail">
+                                <input type="radio" class="blind"
+                                       name="answerAge"
+                                       id="answer-age-7"
+                                       value="7"
+                                >
+                                <label for="answer-age-7" class="fs-dx-answer">
+                                    60대
+                                </label>
+                            </div>
+                            <div class="dx-answer-detail">
+                                <input type="radio" class="blind"
+                                       name="answerAge"
+                                       id="answer-age-8"
+                                       value="8"
+                                >
+                                <label for="answer-age-8" class="fs-dx-answer">
+                                    70대 이상
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dx-slide">
+                        <div class="dx-question">
+                            통증의 정도를 숫자로 표현해요.
+                        </div>
+                        <div class="dx-answer mt-2 ps-2 ps-lg-3">
+                            <img src="images/dx/nps.png" alt="" class="img-fluid" style="max-width: 500px">
+                            <div class="dx-answer-detail">
+                                <input type="radio" class="blind"
+                                       name="answerPainScore"
+                                       id="answer-pain-1"
+                                       value="0"
+                                >
+                                <label for="answer-pain-1" class="fs-dx-answer">
+                                    0 (통증 전혀 없음)
+                                </label>
+                            </div>
+                            <div class="dx-answer-detail">
+                                <input type="radio" class="blind"
+                                       name="answerPainScore"
+                                       id="answer-pain-2"
+                                       value="1"
+                                >
+                                <label for="answer-pain-2" class="fs-dx-answer">
+                                    1 (약간 아파요)
+                                </label>
+                            </div>
+                            <div class="dx-answer-detail">
+                                <input type="radio" class="blind"
+                                       name="answerPainScore"
+                                       id="answer-pain-3"
+                                       value="2"
+                                >
+                                <label for="answer-pain-3" class="fs-dx-answer">
+                                    2 (조금 아파요)
+                                </label>
+                            </div>
+                            <div class="dx-answer-detail">
+                                <input type="radio" class="blind"
+                                       name="answerPainScore"
+                                       id="answer-pain-4"
+                                       value="3"
+                                >
+                                <label for="answer-pain-4" class="fs-dx-answer">
+                                    3 (생각보다 아파요)
+                                </label>
+                            </div>
+                            <div class="dx-answer-detail">
+                                <input type="radio" class="blind"
+                                       name="answerPainScore"
+                                       id="answer-pain-5"
+                                       value="4"
+                                >
+                                <label for="answer-pain-5" class="fs-dx-answer">
+                                    4 (그냥 아파요)
+                                </label>
+                            </div>
+                            <div class="dx-answer-detail">
+                                <input type="radio" class="blind"
+                                       name="answerPainScore"
+                                       id="answer-pain-6"
+                                       value="5"
+                                >
+                                <label for="answer-pain-6" class="fs-dx-answer">
+                                    5 (꽤 아파요)
+                                </label>
+                            </div>
+                            <div class="dx-answer-detail">
+                                <input type="radio" class="blind"
+                                       name="answerPainScore"
+                                       id="answer-pain-7"
+                                       value="6"
+                                >
+                                <label for="answer-pain-7" class="fs-dx-answer">
+                                    6 (많이 아파요)
+                                </label>
+                            </div>
+                            <div class="dx-answer-detail">
+                                <input type="radio" class="blind"
+                                       name="answerPainScore"
+                                       id="answer-pain-8"
+                                       value="7"
+                                >
+                                <label for="answer-pain-8" class="fs-dx-answer">
+                                    7 (생각보다 더 아파요)
+                                </label>
+                            </div>
+                            <div class="dx-answer-detail">
+                                <input type="radio" class="blind"
+                                       name="answerPainScore"
+                                       id="answer-pain-9"
+                                       value="8"
+                                >
+                                <label for="answer-pain-9" class="fs-dx-answer">
+                                    8 (매우 아파요)
+                                </label>
+                            </div>
+                            <div class="dx-answer-detail">
+                                <input type="radio" class="blind"
+                                       name="answerPainScore"
+                                       id="answer-pain-10"
+                                       value="9"
+                                >
+                                <label for="answer-pain-10" class="fs-dx-answer">
+                                    9 (약이 필요할 정도로 아파요)
+                                </label>
+                            </div>
+                            <div class="dx-answer-detail">
+                                <input type="radio" class="blind"
+                                       name="answerPainScore"
+                                       id="answer-pain-11"
+                                       value="10"
+                                >
+                                <label for="answer-pain-11" class="fs-dx-answer">
+                                    10 (통증이 극심해서 못참겠어요)
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 중복체크 답변 -->
+                    <div class="dx-slide">
+                        <div class="dx-question dx-question-checkbox">
+                            해당 질환의 가족력이 있나요?
+                            <!-- .dx-question-checkbox 을 추가할 때만 css에 의해 보이게 돔.-->
+                            <i class="text-submain fs-tab" style="display: none;">(중복체크 가능)</i>
+                        </div>
+                        <div class="dx-answer mt-2 ps-2 ps-lg-3">
+                            <div class="dx-answer-detail">
+                                <input type="checkbox" class="blind"
+                                       name="family"
+                                       id="family-1"
+                                       value="0"
+                                >
+                                <label for="family-1" class="fs-dx-answer">
+                                    없음
+                                </label>
+                            </div>
+                            <div class="dx-answer-detail">
+                                <input type="checkbox" class="blind"
+                                       name="family"
+                                       id="family-2"
+                                       value="1"
+                                >
+                                <label for="family-2" class="fs-dx-answer">
+                                    할아버지
+                                </label>
+                            </div>
+                            <div class="dx-answer-detail">
+                                <input type="checkbox" class="blind"
+                                       name="family"
+                                       id="family-3"
+                                       value="2"
+                                >
+                                <label for="family-3" class="fs-dx-answer">
+                                    할머니
+                                </label>
+                            </div>
+                            <div class="dx-answer-detail">
+                                <input type="checkbox" class="blind"
+                                       name="family"
+                                       id="family-4"
+                                       value="3"
+                                >
+                                <label for="family-4" class="fs-dx-answer">
+                                    아빠
+                                </label>
+                            </div>
+                            <div class="dx-answer-detail">
+                                <input type="checkbox" class="blind"
+                                       name="family"
+                                       id="family-5"
+                                       value="4"
+                                >
+                                <label for="family-5" class="fs-dx-answer">
+                                    엄마
+                                </label>
+                            </div>
+                            <div class="dx-answer-detail">
+                                <input type="checkbox" class="blind"
+                                       name="family"
+                                       id="family-6"
+                                       value="5"
+                                >
+                                <label for="family-6" class="fs-dx-answer">
+                                    형제
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <p>123</p>
             <p>123</p>
             <p>123</p>
             <p>123</p>

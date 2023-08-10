@@ -27,21 +27,39 @@
     }
 }
 
-.fs-dx {
+.fs-dx-btn {
     font-size: 18px;
 }
 
 @media screen and (max-width: 991px) {
-    .fs-dx {
+    .fs-dx-btn {
         font-size: 9px;
         letter-spacing: -.05rem;
     }
 }
 
 @media screen and (min-width: 991px) and (max-width: 1399px) {
-    .fs-dx {
+    .fs-dx-btn {
         font-size: 13px;
         letter-spacing: -.01rem;
+    }
+}
+
+.fs-dx-answer {
+    font-size: 18px;
+}
+
+@media screen and (max-width: 991px) {
+    .fs-dx-answer {
+        font-size: 11px;
+        letter-spacing: -.01rem;
+    }
+}
+
+@media screen and (min-width: 991px) and (max-width: 1399px) {
+    .fs-dx-answer {
+        font-size: 13px;
+        letter-spacing: -.005rem;
     }
 }
 
@@ -67,6 +85,11 @@
 .text-main {
     color: #00b5b2;
 }
+
+.text-submain {
+    color: #FC5230;
+}
+
 
 .text-purple {
     color:  var(--color-purple);
