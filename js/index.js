@@ -706,7 +706,12 @@ $(function () {
 
 
     /* dx 진단 swiper */
+    let $dxFirstBtn = $('.dx-box #step-first');
+    let $dxNextBtn = $(".dx-box #step-next");
+    let $dxResultBtn = $(".dx-box #step-result");
+
     let dxSwiper = new Swiper(".dx-box .swiper-container", {
+        spaceBetween: 5, // 다음 slide의 before가 삐져나와서
         pagination: {
             el: '.dx-box .swiper-pagination',
             type: 'custom',
@@ -714,19 +719,25 @@ $(function () {
             renderCustom: function (swiper, current, total) {
                 return '<span class="fs-tab fw-bold">' + current + ' / ' + total + ' 페이지</span>';
             },
-            // bulletClass: 'review-bullet',// 적용될 bullet css class명 지정하기
-            // bulletActiveClass: 'review-bullet-active',
-            // renderBullet: function (index, className) {
-            //     return '<span class="' + className + ' fs-tab">' + (index + 1) + '</span>';
-            // },
         },
+        on: {
+            slideChangeTransitionStart: function () {
+                if (this.isEnd) {
+                    $dxNextBtn.css('display', 'none');
+                    $dxResultBtn.css('display', 'block');
+                } else {
+                    $dxNextBtn.css('display', 'block');
+                    $dxResultBtn.css('display', 'none');
+                }
+            }
+        }
     });
 
-    $('.dx-box #step-first').on('click', function() {
+    $dxFirstBtn.on('click', function() {
         dxSwiper.slideTo(0);
     });
 
-    $(".dx-box #step-next").on('click', function (e) {
+    $dxNextBtn.on('click', function (e) {
         dxSwiper.slideNext();
     })
 

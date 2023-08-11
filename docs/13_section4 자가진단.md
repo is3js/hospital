@@ -441,10 +441,15 @@
 
 3. tab내부 여러 swiper가 아닌 단독 swiper 초기화인 section2-bottom의 상품 swiper를 참고한다
 ```js
- let section5Swiper = new Swiper(".dx-box .swiper-container", {
+ let dxSwiper = new Swiper(".dx-box .swiper-container", {
  });
 ```
-
+- **다음 slide의 before가 보여서 spacebetween을 준다.**
+```js
+let dxSwiper = new Swiper(".dx-box .swiper-container", {
+    spaceBetween: 5, // 다음 slide의 before가 삐져나와서
+});
+```
 4. 진행도를 위한 pagination / 처음 + 다음 + 진단의 3가지 버튼을 나타내기 위해 prev/next 를 만들어준다.
    - container 바깥에 배치할 것이므로, 치료후기를 참고 한다. 
    - **페이지네이션을 container로 뺄 땐, 기본absolute -> relative 변경이 필수다.**
@@ -465,7 +470,7 @@
 5. pagination 설정시 type을 custom으로 하면, 전체 중 몇번째인지 처리할 수 있다.
 - https://www.swiper.com.cn/api/pagination/302.html
 ```js
- let section5Swiper = new Swiper(".dx-box .swiper-container", {
+ let dxSwiper = new Swiper(".dx-box .swiper-container", {
      pagination: {
          el: '.dx-box .swiper-pagination',
          type: 'custom',
@@ -548,7 +553,11 @@
 ```
 ![img.png](../ui/293.png)
 
-7. navigation옵션을 따로 swiper에서 주지 않고, 각 button의 id로 jquery로 찾아서 `dxSwiper`객체를 활용하여, slide를 넘긴다.
+7. 버튼lay도 d-flex로 잡고, gap으로 간격을 준다.
+```html
+<div class="swiper-custom-btn-layer d-flex gap-2 gap-lg-3">
+```
+8. navigation옵션을 따로 swiper에서 주지 않고, 각 button의 id로 jquery로 찾아서 `dxSwiper`객체를 활용하여, slide를 넘긴다.
    - 처음으로 `.slideTo(0)`, 다음 `.slideNext()`
 ```js
  $('.dx-box #step-first').on('click', function() {
@@ -559,6 +568,36 @@
      dxSwiper.slideNext();
  })
 ```
+
+9. 이제 진단하기 버튼은 swiper on메서드에서 isEnd일 때 나타나게하고, 다음으로는 사라지게 한다. else에서는 반대로 넣는다.
+- 진단하기 버튼은 시작은 display none으로 해준다.
+```html
+
+<button type="button" id="step-result" class="fs-tab fw-bold btn btn-sm btn-danger rounded-pill"
+        style="display: none;"
+>
+    진단하기
+</button>
+```
+```js
+    let dxSwiper = new Swiper(".dx-box .swiper-container", {
+    // ... ,
+    on: {
+        slideChangeTransitionStart: function () {
+            if (this.isEnd) {
+                $dxNextBtn.css('display', 'none');
+                $dxResultBtn.css('display', 'block');
+            } else {
+                $dxNextBtn.css('display', 'block');
+                $dxResultBtn.css('display', 'none');
+            }
+        }
+    }
+});
+```
+
+![img.png](../ui/294.png)
+![img.png](../ui/295.png)
 ### group check 답변 for count
 - slide는 넘어가지만, count를 같이 세야 하는 경우, slide가 넘어가더라도 `같은 name[]`을 사용해야하며, jquery로 length만 check된 것으로 셀 것이기 때문에, value는 아무값이나 똑같이 준다.
 - 같은 질문(같은name)이지만, count는 세분화될 수 있기 때문에, **`name="질환_a[]"`, `질환_b[]`의 count용 그룹을 따로 name으로 뺀다**
