@@ -326,7 +326,7 @@
 </div>
 ```
 
-![img.png](291.png)
+![img.png](../ui/291.png)
 
 
 
@@ -411,8 +411,91 @@
     display: block;
 }
 ```
+### swiper 적용
+1. swiper-container/wrapper/slide를 form태그 안쪽에 배치한다. 각 dx-slide 마다 swiper-slide를 넣어준다.
+```html
+<div class="col-12 col-md-7 g-3">
+    <form action="">
+        <div class="swiper-container ">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <!-- (개별) radio 택1 답변 -->
+                    <!-- 1) 성별 2) 연령대 -->
+                    <div class="dx-slide">
+```
 
-#### group check 답변 for count
+2. 해당 구역의 container / slide 기본 css를 적용한다.
+```css
+/* dx swiper */
+.dx-box .swiper-container {
+    width: 100%;
+
+    /* 임시 */
+    /*background: red;*/
+}
+
+.dx-box .swiper-container .swiper-slide {
+    position: relative;
+}
+```
+
+3. tab내부 여러 swiper가 아닌 단독 swiper 초기화인 section2-bottom의 상품 swiper를 참고한다
+```js
+ let section5Swiper = new Swiper(".dx-box .swiper-container", {
+ });
+```
+
+4. 진행도를 위한 pagination / 처음 + 다음 + 진단의 3가지 버튼을 나타내기 위해 prev/next 를 만들어준다.
+   - container 바깥에 배치할 것이므로, 치료후기를 참고 한다. 
+   - **페이지네이션을 container로 뺄 땐, 기본absolute -> relative 변경이 필수다.**
+```html
+<!-- 대표 검사 form with swiper  -->
+<div class="col-12 col-md-7 g-3">
+    <form action="">
+        <!-- 페이지네이션 -->
+        <div class="swiper-pagination"></div>
+
+        <div class="swiper-container ">
+```
+```css
+.dx-box .swiper-pagination {
+    position: relative;
+}
+```
+5. pagination 설정시 type을 custom으로 하면, 전체 중 몇번째인지 처리할 수 있다.
+- https://www.swiper.com.cn/api/pagination/302.html
+```js
+ let section5Swiper = new Swiper(".dx-box .swiper-container", {
+     pagination: {
+         el: '.dx-box .swiper-pagination',
+         type: 'custom',
+         clickable: true,
+         renderCustom: function (swiper, current, total) {
+             return '<span class="fs-tab fw-bold">' + current + ' / ' + total + ' 페이지</span>';
+         },
+ });
+```
+
+![img.png](../ui/292.png)
+
+6. prev/next버튼을 container 추가해야하는데, slide높이가 다르므로, slide보다 위에, pagination과 같이 줄 것이다.
+- **paginatino**
+```html
+            <!-- 대표 검사 form with swiper  -->
+<div class="col-12 col-md-7 g-3 position-relative">
+    <form action="">
+        <!-- 페이지네이션 -->
+        <div class="swiper-pagination"></div>
+
+        <div class="swiper-container ">
+        </div>
+        <!-- 탐색 버튼 -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </form>
+</div>
+```
+### group check 답변 for count
 - slide는 넘어가지만, count를 같이 세야 하는 경우, slide가 넘어가더라도 `같은 name[]`을 사용해야하며, jquery로 length만 check된 것으로 셀 것이기 때문에, value는 아무값이나 똑같이 준다.
 - 같은 질문(같은name)이지만, count는 세분화될 수 있기 때문에, **`name="질환_a[]"`, `질환_b[]`의 count용 그룹을 따로 name으로 뺀다**
 - 아래는 같은 질문이면서, 같은 그룹

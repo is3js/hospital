@@ -2743,3 +2743,19 @@ span.category.category-naver {
 .dx-question.dx-question-checkbox > i {
     display: inline-block!important;
 }
+
+/* dx swiper */
+.dx-box .swiper-container {
+    width: 100%;
+
+    /* 임시 */
+    /*background: red;*/
+}
+
+.dx-box .swiper-container .swiper-slide {
+    position: relative;
+}
+
+.dx-box .swiper-pagination {
+    position: static;
+}

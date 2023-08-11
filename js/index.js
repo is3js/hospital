@@ -703,5 +703,47 @@ $(function () {
         duration: "300",
     });
     controller.addScene(scene7);
+
+
+    /* dx 진단 swiper */
+    let dxSwiper = new Swiper(".dx-box .swiper-container", {
+        pagination: {
+            el: '.dx-box .swiper-pagination',
+            type: 'custom',
+            clickable: true,
+            renderCustom: function (swiper, current, total) {
+                return '<span class="fs-tab fw-bold">' + current + ' / ' + total + ' 페이지</span>';
+            },
+            // bulletClass: 'review-bullet',// 적용될 bullet css class명 지정하기
+            // bulletActiveClass: 'review-bullet-active',
+            // renderBullet: function (index, className) {
+            //     return '<span class="' + className + ' fs-tab">' + (index + 1) + '</span>';
+            // },
+        },
+    });
+
+    $('.dx-box #step-first').on('click', function() {
+        dxSwiper.slideTo(0);
+    });
+
+    // $("#step_next").on('click', function (e) {
+    //     console.log("다음")
+    //     e.preventDefault()
+    //     dxSwiper.slideNext();
+    // })
+
+    // 버튼을 클릭하면 슬라이더를 제어합니다.
+    // document.getElementById('step-first').addEventListener('click', function() {
+    //     dxSwiper.slideTo(0);
+    // });
+
+    document.getElementById('step-next').addEventListener('click', function() {
+        dxSwiper.slideNext();
+    });
+
+    document.getElementById('step-result').addEventListener('click', function() {
+        dxSwiper.slideTo(2);
+    });
+
 })
 
