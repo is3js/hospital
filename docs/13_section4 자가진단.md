@@ -580,7 +580,12 @@ let dxSwiper = new Swiper(".dx-box .swiper-container", {
 </button>
 ```
 ```js
-    let dxSwiper = new Swiper(".dx-box .swiper-container", {
+/* dx 진단 swiper */
+let $dxFirstBtn = $('.dx-box #step-first');
+let $dxNextBtn = $(".dx-box #step-next");
+let $dxResultBtn = $(".dx-box #step-result");
+
+let dxSwiper = new Swiper(".dx-box .swiper-container", {
     // ... ,
     on: {
         slideChangeTransitionStart: function () {
