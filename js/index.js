@@ -726,24 +726,9 @@ $(function () {
         dxSwiper.slideTo(0);
     });
 
-    // $("#step_next").on('click', function (e) {
-    //     console.log("다음")
-    //     e.preventDefault()
-    //     dxSwiper.slideNext();
-    // })
-
-    // 버튼을 클릭하면 슬라이더를 제어합니다.
-    // document.getElementById('step-first').addEventListener('click', function() {
-    //     dxSwiper.slideTo(0);
-    // });
-
-    document.getElementById('step-next').addEventListener('click', function() {
+    $(".dx-box #step-next").on('click', function (e) {
         dxSwiper.slideNext();
-    });
-
-    document.getElementById('step-result').addEventListener('click', function() {
-        dxSwiper.slideTo(2);
-    });
+    })
 
 })
 

@@ -479,21 +479,85 @@
 ![img.png](../ui/292.png)
 
 6. prev/next버튼을 container 추가해야하는데, slide높이가 다르므로, slide보다 위에, pagination과 같이 줄 것이다.
-- **paginatino**
-```html
-            <!-- 대표 검사 form with swiper  -->
-<div class="col-12 col-md-7 g-3 position-relative">
-    <form action="">
-        <!-- 페이지네이션 -->
-        <div class="swiper-pagination"></div>
+- **pagination <-> 버튼들을 d-flex, between으로 넓혀서 배치한다.**
+- form내부이므로 button들은 submit안되도록 type="button"을 명시한다.
+- 해당버튼들에는 id들 step-first, next, result로 반영한다
+- button은 btn btn-sm에  커스텀 btn테마 btn-green, pink를 생성해서 적용한다.
 
-        <div class="swiper-container ">
-        </div>
-        <!-- 탐색 버튼 -->
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-    </form>
-</div>
+```html
+<form action="">
+   <div class="dx-btn-layer mb-2 mb-lg-4 d-flex justify-content-between align-items-center">
+      <!-- 페이지네이션 -->
+      <div class="swiper-pagination w-auto fs-tab fw-bold btn btn-sm btn-main rounded-pill"></div>
+      <!-- custom prev/next/진단 -->
+      <div class="swiper-custom-btn-layer">
+         <button type="button" id="step-first" class="fs-tab fw-bold btn btn-sm btn-pink rounded-pill">
+            첫 페이지
+         </button>
+         <button type="button" id="step-next" class="fs-tab fw-bold btn btn-sm btn-pink rounded-pill">
+            다음 ▶
+         </button>
+         <button type="button" id="step-result" class="fs-tab fw-bold btn btn-sm btn-danger rounded-pill">
+            진단하기
+         </button>
+      </div>
+   </div>
+   <!-- slides -->
+   <div class="swiper-container ">
+   </div>
+</form>
+```
+```css
+.btn-green {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #80BA96;
+    --bs-btn-border-color: #80BA96;
+
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #00b5b2;
+    --bs-btn-hover-border-color: #00b5b2;
+    --bs-btn-focus-shadow-rgb: #00b5b2;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #00b5b2;
+    --bs-btn-active-border-color: #00b5b2;
+    --bs-btn-active-shadow: inset 0 3px 5px #00b5b2;
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #00b5b2;
+    --bs-btn-disabled-border-color: #00b5b2;
+}
+
+.btn-pink {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #F07F7F;
+    --bs-btn-border-color: #F07F7F;
+
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #FC5230;
+    --bs-btn-hover-border-color:#FC5230;
+    --bs-btn-focus-shadow-rgb: #FC5230;
+
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #FC5230;
+    --bs-btn-active-border-color: #FC5230;
+    --bs-btn-active-shadow: inset 0 3px 5px #FC5230;
+
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #FC5230;
+    --bs-btn-disabled-border-color: #FC5230;
+}
+```
+![img.png](../ui/293.png)
+
+7. navigation옵션을 따로 swiper에서 주지 않고, 각 button의 id로 jquery로 찾아서 `dxSwiper`객체를 활용하여, slide를 넘긴다.
+   - 처음으로 `.slideTo(0)`, 다음 `.slideNext()`
+```js
+ $('.dx-box #step-first').on('click', function() {
+     dxSwiper.slideTo(0);
+ });
+
+ $(".dx-box #step-next").on('click', function (e) {
+     dxSwiper.slideNext();
+ })
 ```
 ### group check 답변 for count
 - slide는 넘어가지만, count를 같이 세야 하는 경우, slide가 넘어가더라도 `같은 name[]`을 사용해야하며, jquery로 length만 check된 것으로 셀 것이기 때문에, value는 아무값이나 똑같이 준다.

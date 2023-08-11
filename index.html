@@ -2661,7 +2661,7 @@
 </div>
 
 <!-- 자가진단 -->
-<div class="section4">
+<div class="section4 mt-3">
     <div class="section-title">
         <div>
             <p>우아 자가진단</p>
@@ -2720,22 +2720,24 @@
             <!-- 대표 검사 form with swiper  -->
             <div class="col-12 col-md-7 g-3 position-relative">
                 <form action="">
-                    <div class="dx-btn-layer mb-2 mb-lg-4 d-flex justify-content-between align-items-center">
+                    <!-- pagination + 버튼들 -->
+                    <div class="dx-btn-layer mb-3 d-flex justify-content-between align-items-center">
                         <!-- 페이지네이션 -->
                         <div class="swiper-pagination w-auto fs-tab fw-bold btn btn-sm btn-main rounded-pill"></div>
                         <!-- custom prev/next/진단 -->
-                        <div class="swiper-custom-btn-layer">
+                        <div class="swiper-custom-btn-layer d-flex gap-2 gap-lg-3">
                             <button type="button" id="step-first" class="fs-tab fw-bold btn btn-sm btn-pink rounded-pill">
                                 첫 페이지
                             </button>
                             <button type="button" id="step-next" class="fs-tab fw-bold btn btn-sm btn-pink rounded-pill">
-                                다음 ▶
+                                다음 페이지 ▶
                             </button>
                             <button type="button" id="step-result" class="fs-tab fw-bold btn btn-sm btn-danger rounded-pill">
                                 진단하기
                             </button>
                         </div>
                     </div>
+                    <!-- slides -->
                     <div class="swiper-container ">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
