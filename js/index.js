@@ -741,5 +741,44 @@ $(function () {
         dxSwiper.slideNext();
     })
 
+    function isInputChecked(oField) {
+        var checked = false;
+
+        if (typeof(oField.length) != 'undefined') {
+            for (var i=0; i<oField.length; i++)
+                if (oField[i].checked)
+                    checked = true;
+        } else {
+            checked = oField.checked;
+        }
+        return checked;
+    }
+
+    $dxResultBtn.on('click', function (e) {
+        // 성별/연령대
+        var dx = document.dx;
+        // console.log(eval("document.dx.kodi1"));
+        // input#kodi1-1.blind
+        // input#kodi1-2.blind
+        // input#kodi1-3.blind
+        // input#kodi1-4.blind
+        // input#kodi1-5.blind
+        // input#kodi1-6.blind
+        // length : 6
+        // value : ""
+
+        if (!isInputChecked(eval("document.dx.kodi2"))) {
+            alert('2번 문항이 체크되지 않았습니다.')
+            console.log($(eval("document.dx.kodi2")[0]));
+            console.log($("input[name='kodi2']"));
+            // $(eval("document.dx.kodi1")[0]).parent().focus();
+
+            var swiperSlideIndex = $(eval("document.dx.kodi2")[0]).closest('.swiper-slide').index();
+            console.log(swiperSlideIndex);
+            // swiper slide로 이동
+            dxSwiper.slideTo(swiperSlideIndex);
+        }
+    })
+
 })
 

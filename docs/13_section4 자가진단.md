@@ -607,3 +607,10 @@ let dxSwiper = new Swiper(".dx-box .swiper-container", {
 - slide는 넘어가지만, count를 같이 세야 하는 경우, slide가 넘어가더라도 `같은 name[]`을 사용해야하며, jquery로 length만 check된 것으로 셀 것이기 때문에, value는 아무값이나 똑같이 준다.
 - 같은 질문(같은name)이지만, count는 세분화될 수 있기 때문에, **`name="질환_a[]"`, `질환_b[]`의 count용 그룹을 따로 name으로 뺀다**
 - 아래는 같은 질문이면서, 같은 그룹
+
+
+### 진단하기 버튼에 검증 및 처리
+1. 무조건 택1의 질문만 있는 상황 -> 소잠검증 활용
+   - cf) 중복체크는 `.dx-question.dx-question-checkbox`를 달고 있다.
+   - **div.dx-question의 수를 센 뒤, 갯수만큼 반복문을 돌면서, `index가 포함된 class or id`로 해당 input태그를 찾아 focus**
+   - 
