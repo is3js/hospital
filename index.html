@@ -2721,26 +2721,29 @@
             <div class="col-12 col-md-7 g-3 position-relative">
                 <form action="" name="dx">
                     <!-- pagination + 버튼들 -->
-                        <div class="dx-btn-layer mb-3 d-flex justify-content-between align-items-center">
+                    <div class="dx-btn-layer mb-3 d-flex justify-content-between align-items-center">
                         <!-- 페이지네이션 -->
                         <div class="swiper-pagination w-auto fs-tab fw-bold"></div>
                         <!-- custom prev/next/진단 -->
                         <div class="swiper-custom-btn-layer d-flex gap-2 gap-lg-3">
-                            <button type="button" id="step-first" class="fs-tab fw-bold btn btn-sm btn-main rounded-pill">
-                                처음으로
-                            </button>
-                            <button type="button" id="step-next" class="fs-tab fw-bold btn btn-sm btn-main rounded-pill">
+                            <button type="button" id="step-next"
+                                    class="fs-tab fw-bold btn btn-sm btn-main rounded-pill">
                                 다음 페이지 ▶
                             </button>
-                            <button type="button" id="step-result" class="fs-tab fw-bold btn btn-sm btn-submain rounded-pill"
+                            <button type="button" id="step-result"
+                                    class="fs-tab fw-bold btn btn-sm btn-green rounded-pill"
                                     style="display: none;"
                             >
                                 진단하기
                             </button>
+                            <button type="button" id="step-first"
+                                    class="fs-tab fw-bold btn btn-sm btn-pink rounded-pill">
+                                처음으로 (리셋)
+                            </button>
                         </div>
                     </div>
                     <!-- slides -->
-                    <div class="swiper-container ">
+                    <div class="swiper-container" style="z-index:7777;">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
                                 <!-- (개별) radio 택1 답변 -->

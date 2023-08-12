@@ -610,7 +610,203 @@ let dxSwiper = new Swiper(".dx-box .swiper-container", {
 
 
 ### 진단하기 버튼에 검증 및 처리
-1. 무조건 택1의 질문만 있는 상황 -> 소잠검증 활용
-   - cf) 중복체크는 `.dx-question.dx-question-checkbox`를 달고 있다.
-   - **div.dx-question의 수를 센 뒤, 갯수만큼 반복문을 돌면서, `index가 포함된 class or id`로 해당 input태그를 찾아 focus**
-   - 
+1. 현재는 모든 slide의 질문에 대해서, 1개는 무조건 답하는 택1 radio에 대해서이다.
+   - **일단 `document.formName`을 쓰기 위해 form태그에 name을 단다.**
+```html
+<!-- 대표 검사 form with swiper  -->
+<div class="col-12 col-md-7 g-3 position-relative">
+    <form action="" name="dx">
+```
+
+2. kodi와 별개로 `성별/연령대`에 대한 질문은 따로 검사한다.
+   - `kodi1,2,3,`으로 이어지는 것은 따로 반복문으로 한번에 처리할 예정이므로, `sex, age`만 먼저 검사
+   - 1개의 name에 대해 여러개의 input을 가지는 상황에서는 `document.dx.inputName`으로 여러요소를 선택할 수 있다.
+   - 이것으로 체크되었는지 검사하는 `isFormInputChecked`를 작성한다.
+   - 내부에서는 **`$( ).is(":checked")`를 활용하면, 여러 radio input 중 1개라도 체크될 때 true가 된다.**
+```js
+function isFormInputChecked(checkInput) {
+    return $(checkInput).is(":checked");
+}
+```
+
+3. check가 안됬으면, alert로 띄우고, 해당 slide로 보내는데 `swiper객체` + `checkInput`을 받아서
+   - **가장 가까운 `.swiper-slide`를 `.closest()`로 찾은 뒤, 그 index를 추출하여, `swiper.slideTo()`로 보낸다.**
+```js
+function toClosestSlideOfFormInput(swiperObject, checkInput) {
+    var targetEl = null;
+    if (checkInput.length > 1) {
+        targetEl = checkInput[0]
+    } else {
+        targetEl = checkInput
+    }
+    swiperObject.slideTo($(targetEl).closest('.swiper-slide').index())
+}
+```
+
+4. 만약 성별이나 연령대가 체크 안되어있으면 `alert` -> `slideTo` -> `return false로 종료`시키니다.
+```js
+ $dxResultBtn.on('click', function (e) {
+    // 성별 체크 검증
+    if (!isFormInputChecked(document.dx.sex)) {
+        alert('성별이 체크 안되어있어요');
+        toClosestSlideOfFormInput(dxSwiper, document.dx.sex)
+        return false;
+    }
+
+    // 연령대 체크 검증
+    if (!isFormInputChecked(document.dx.age)) {
+        alert('연령대가 체크 안되어있어요');
+        // dxSwiper.slideTo($(document.dx.sex[0]).closest('.swiper-slide').index())
+        toClosestSlideOfFormInput(dxSwiper, document.dx.age)
+        return false;
+    }
+}
+```
+
+5. 이제 `name="kodi1"`부터 시작해서 2,3,4에 대한 검증을 일괄처리하기 위해 **`name이 kodi로 시작하는 input들`을 다 찾고, 그 `name들의 unique한 것의 갯수`를 찾아, `전체 질문의 갯수`를 파악한다.**
+   - kodi라는 name을 받고
+   - jquery객체로 해당name으로 시작하는 input들을 모두 찾은 뒤, 순회하면서, set에 add하여 유니크한 갯수를 구한다.
+```js
+const getUniqueQuestionCountByName = (name) => {
+   const inputs = $("input[name^='" + name + "']");
+   let count = 0;
+   let uniqueNames = new Set();
+   for (const input of inputs) {
+      uniqueNames.add(input.name);
+   }
+   return uniqueNames.size;
+};
+```
+6. 이제 질문갯수만큼을 `1부터 n`까지를 순회하면서, document.dx. `kodi` + `n`의 form input을 `eval()` + `$()`로 찾은 뒤
+   - `여러개input jquery` + `.is(':checked')`로, 체크가 안된 number를 찾아낸다. 만약, 다 체크됫으면 -1이 반환된다.
+```js
+// 체크 안된 질문 숫자 반환(올 체크시 -1 반환)
+const getUncheckedQuestionNumber = (name) => {
+   let questionCount = getUniqueQuestionCountByName(name);
+   for (let i = 1; i < questionCount + 1; i++) {
+      // if (!nameInputs[i].checked) {
+      if (!$(eval('document.dx.' + name + i)).is(':checked')) {
+         return i;
+      }
+   }
+   return -1;
+};
+```
+
+7. 이제 체크안된 숫자 발견시 alert를 띄우는 validate함수를 만든다.
+   - a만약 체크안된 number가 -1대신넘어올 경우, `document.formName` + `.name` + 숫자를 더한 string을 eval()로 요소로 만든 뒤
+   - **eval()의 결과나오는 여러 input들에 대해, `[0]으로 첫번째 input`을 찝고, .dx-question을 찾은 뒤, text() + $.trim()으로 씌워 질문 text를 띄워준다.**
+   - 백틱안에 ${}를 쓰면 변수를 쓸 수 있는데, 
+```js
+// 해당 name으로 시작하는 질문들이 체크안될시 alert 
+function validateAllQuestionCheckedByName(name) {
+    const uncheckedInputNumber = getUncheckedQuestionNumber(name);
+
+    if (uncheckedInputNumber === -1) {
+        alert("모든 답변에 체크했습니다.");
+        return true;
+    } else {
+        let checkInput = eval("document.dx." + name + (uncheckedInputNumber)); // document.dx.kodi1
+        // 성별+연령을 질문숫자에 더해서, 페이지를 확정한다.
+        alert(`[${uncheckedInputNumber + 2} 페이지] ${$.trim($(checkInput[0]).parent().parent().parent().find('.dx-question').text())}에 답해주세요`)
+        // toClosestSlideOfFormInput(dxSwiper, checkInput)
+        return false;
+    }
+}
+
+validateAllQuestionCheckedByName("kodi");
+```
+![img.png](../ui/296.png)
+
+
+8. 이제 `alert`이후, 해당 slide로 넘어가도록 `eval()`된 form  input을 `toClosestSlideOf()`에 swiper객체, 해당 input을 넘겨준다.
+   - 만약 여러개의 input을 가진 name의 input이라면, [0]으로 첫번째것만 택한 뒤
+   - jquery객체로 만들고
+   - `.closest()`로 .swiper-slide를 찾아서, 그것의 index를 slideTo에 넣는다.
+```js
+// 해당 swiper객체에, 해당input의 가장 가까운 .swiper-slide의 .index()를 찾아서 넘겨 slideTo로 이동
+function toClosestSlideOf(swiperObject, checkInput) {
+    var targetEl = null;
+    if (checkInput.length > 1) {
+        targetEl = checkInput[0]
+    } else {
+        targetEl = checkInput
+    }
+    swiperObject.slideTo($(targetEl).closest('.swiper-slide').index())
+}
+```
+```js
+// 해당 name으로 시작하는 질문들이 체크안될시 alert
+function validateAllQuestionCheckedByName(name) {
+    const uncheckedInputNumber = getUncheckedQuestionNumber(name);
+
+    if (uncheckedInputNumber === -1) {
+        alert("모든 답변에 체크했습니다.");
+        return true;
+    } else {
+        let checkInput = eval("document.dx." + name + (uncheckedInputNumber)); // document.dx.kodi1
+        // 성별+연령을 질문숫자에 더해서, 페이지를 확정 -> alert
+        alert(`[${uncheckedInputNumber + 2} 페이지] ${$.trim($(checkInput[0]).parent().parent().parent().find('.dx-question').text())}에 답해주세요`)
+        // 해당 slider로 이동
+        toClosestSlideOf(dxSwiper, checkInput)
+        return false;
+    }
+}
+```
+
+9. 이제 모든 검증이 통과할 경우, alert를 띄우는 대신 true를 반환하고, 외부에서 결과modal을 띄워야한다.
+```js
+ function validateAllQuestionCheckedByName(name) {
+    const uncheckedInputNumber = getUncheckedQuestionNumber(name);
+    if (uncheckedInputNumber === -1) {
+
+        // alert("모든 답변에 체크했습니다.");
+        return true;
+
+    } else ...
+}
+```
+```js
+// name1,2,3... 질문들 검증 -> 체크 안된 번호 발견시, alert + slide To
+if (!validateAllQuestionCheckedByName("kodi")) {
+   return false;
+}
+// -> 여기 이후로 검증 다 통과
+alert('모든 검증 통과')
+```
+
+10. 그 전에, `처음으로`버튼 클릭시, form도 reset시켜준다. document.formName.reset()을 활용한다
+```html
+<button type="button" id="step-first"
+        class="fs-tab fw-bold btn btn-sm btn-main rounded-pill">
+    처음으로(리셋)
+</button>
+```
+```js
+ $dxFirstBtn.on('click', function () {
+    dxSwiper.slideTo(0);
+    document.dx.reset()
+});
+```
+#### 버그해결, slideTo이후 클릭이 안먹힐 때
+- slideTo를 처리하는 메서드(`toClosestSlideOf`) 내부에서 `swiper객체.preventClicks = false`를 직접 한번 더 먹여준다.
+```js
+let dxSwiper = new Swiper(".dx-box .swiper-container", {
+    preventClicks: false,
+}
+```
+```js
+    function toClosestSlideOf(swiperObject, checkInput) {
+        var targetEl = null;
+        if (checkInput.length > 1) {
+            targetEl = checkInput[0]
+        } else {
+            targetEl = checkInput
+        }
+        let targetSlideIndex = $(targetEl).closest('.swiper-slide').index();
+        swiperObject.slideTo(targetSlideIndex);
+        // slideTo 이후, 해당 slide에 클릭이 바로 안먹히는 현상(preventClicks true가 설정되는 버그)를 해결
+        swiperObject.preventClicks = false; 
+    }
+
+```

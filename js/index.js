@@ -663,7 +663,6 @@ $(function () {
         });
 
 
-
         // - 4) tab에서 클릭되는 a들을 find로 찾은 뒤. click 리스너를 걸어서, 중간/우측가장자리에 있을 때 이동시켜준다.
         var scrollInnerWidth = $tabScroll.width();
         var targetOuterWidth = $tabTarget.outerWidth();
@@ -688,7 +687,6 @@ $(function () {
     })
 
 
-
     // section4 건강채널 - title with Velocity
     let scene7 = new ScrollMagic.Scene({
         triggerElement: ".section4",
@@ -711,6 +709,8 @@ $(function () {
     let $dxResultBtn = $(".dx-box #step-result");
 
     let dxSwiper = new Swiper(".dx-box .swiper-container", {
+        preventClicks: false, // slideTo 이후 발생하는 문제지만 일단 기본옵션으로 주기
+
         spaceBetween: 5, // 다음 slide의 before가 삐져나와서
         pagination: {
             el: '.dx-box .swiper-pagination',
@@ -729,55 +729,106 @@ $(function () {
                     $dxNextBtn.css('display', 'block');
                     $dxResultBtn.css('display', 'none');
                 }
-            }
+            },
         }
     });
 
-    $dxFirstBtn.on('click', function() {
+    $dxFirstBtn.on('click', function () {
         dxSwiper.slideTo(0);
+        // 처음으로 갈 시, form도 초기화
+        document.dx.reset();
     });
 
     $dxNextBtn.on('click', function (e) {
         dxSwiper.slideNext();
     })
 
-    function isInputChecked(oField) {
-        var checked = false;
 
-        if (typeof(oField.length) != 'undefined') {
-            for (var i=0; i<oField.length; i++)
-                if (oField[i].checked)
-                    checked = true;
-        } else {
-            checked = oField.checked;
+    // 해당name의 input들에 대해, 1개라도 체크되었는지
+    function isFormInputChecked(checkInput) {
+        return $(checkInput).is(":checked");
+    }
+
+    // 전체 질문 갯수
+    // - "kodi"로 시작하는 input들을 다 찾은 뒤, unique한 name만 모으면, kodi1 ~ kodi n까지 그 갯수가 나옴
+    const getUniqueQuestionCountByName = (name) => {
+        const inputs = $("input[name^='" + name + "']");
+        let count = 0;
+        let uniqueNames = new Set();
+        for (const input of inputs) {
+            uniqueNames.add(input.name);
         }
-        return checked;
+        return uniqueNames.size;
+    };
+
+    // 체크 안된 질문 번호 반환(올 체크시 -1 반환)
+    const getUncheckedQuestionNumber = (name) => {
+        let questionCount = getUniqueQuestionCountByName(name);
+        for (let i = 1; i < questionCount + 1; i++) {
+            // if (!nameInputs[i].checked) {
+            if (!$(eval('document.dx.' + name + i)).is(':checked')) {
+                return i;
+            }
+        }
+        return -1;
+    };
+
+
+    // 해당 swiper객체에, 해당input의 가장 가까운 .swiper-slide의 .index()를 찾아서 넘겨 slideTo로 이동
+    function toClosestSlideOf(swiperObject, checkInput) {
+        var targetEl = null;
+        if (checkInput.length > 1) {
+            targetEl = checkInput[0]
+        } else {
+            targetEl = checkInput
+        }
+        let targetSlideIndex = $(targetEl).closest('.swiper-slide').index();
+        swiperObject.slideTo(targetSlideIndex);
+        // slideTo 이후, 해당 slide에 클릭이 바로 안먹히는 현상(preventClicks true가 설정되는 버그)를 해결
+        swiperObject.preventClicks = false;
+    }
+
+    // 해당 name으로 시작하는 질문들이 체크안될시 alert
+    function validateAllQuestionCheckedByName(name) {
+        const uncheckedInputNumber = getUncheckedQuestionNumber(name);
+        if (uncheckedInputNumber === -1) {
+
+            // alert("모든 답변에 체크했습니다.");
+            return true;
+
+        } else {
+            let checkInput = eval("document.dx." + name + (uncheckedInputNumber)); // document.dx.kodi1
+            // 성별+연령을 질문숫자에 더해서, 페이지를 확정 -> alert
+            alert(`[${uncheckedInputNumber + 2} 페이지] ${$.trim($(checkInput[0]).parent().parent().parent().find('.dx-question').text())}에 답해주세요`)
+            // 해당 slider로 이동
+            toClosestSlideOf(dxSwiper, checkInput)
+            return false;
+        }
     }
 
     $dxResultBtn.on('click', function (e) {
-        // 성별/연령대
-        var dx = document.dx;
-        // console.log(eval("document.dx.kodi1"));
-        // input#kodi1-1.blind
-        // input#kodi1-2.blind
-        // input#kodi1-3.blind
-        // input#kodi1-4.blind
-        // input#kodi1-5.blind
-        // input#kodi1-6.blind
-        // length : 6
-        // value : ""
-
-        if (!isInputChecked(eval("document.dx.kodi2"))) {
-            alert('2번 문항이 체크되지 않았습니다.')
-            console.log($(eval("document.dx.kodi2")[0]));
-            console.log($("input[name='kodi2']"));
-            // $(eval("document.dx.kodi1")[0]).parent().focus();
-
-            var swiperSlideIndex = $(eval("document.dx.kodi2")[0]).closest('.swiper-slide').index();
-            console.log(swiperSlideIndex);
-            // swiper slide로 이동
-            dxSwiper.slideTo(swiperSlideIndex);
+        // 성별 체크 검증
+        if (!isFormInputChecked(document.dx.sex)) {
+            alert('성별이 체크 안되어있어요');
+            toClosestSlideOf(dxSwiper, document.dx.sex)
+            return false;
         }
+
+        // 연령대 체크 검증
+        if (!isFormInputChecked(document.dx.age)) {
+            alert('연령대가 체크 안되어있어요');
+            // dxSwiper.slideTo($(document.dx.sex[0]).closest('.swiper-slide').index())
+            toClosestSlideOf(dxSwiper, document.dx.age)
+            return false;
+        }
+
+        // name1,2,3... 질문들 검증 -> 체크 안된 번호 발견시, alert + slide To
+        if (!validateAllQuestionCheckedByName("kodi")) {
+            return false;
+        }
+        // -> 여기 이후로 검증 다 통과
+        //alert('모든 검증 통과');
+
     })
 
 })
