@@ -829,7 +829,24 @@ $(function () {
         // -> 여기 이후로 검증 다 통과
         //alert('모든 검증 통과');
 
+        // 자가진단 버튼에 popup 설정 걸기
+        $.magnificPopup.open({
+            items: {
+                src: "#dx-result", // popup에 보여줄 내용의 id
+                type: 'inline' // popup의 타입
+            },
+            mainClass: 'mfp-fade',
+            showCloseBtn: true,
+            preloader: true,
+            callbacks: {
+                open: function () {
+                },
+                close: function () {
+                }
+            }
+        });
     })
+
 
 })
 

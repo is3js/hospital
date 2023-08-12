@@ -796,17 +796,80 @@ let dxSwiper = new Swiper(".dx-box .swiper-container", {
 }
 ```
 ```js
-    function toClosestSlideOf(swiperObject, checkInput) {
-        var targetEl = null;
-        if (checkInput.length > 1) {
-            targetEl = checkInput[0]
-        } else {
-            targetEl = checkInput
-        }
-        let targetSlideIndex = $(targetEl).closest('.swiper-slide').index();
-        swiperObject.slideTo(targetSlideIndex);
-        // slideTo 이후, 해당 slide에 클릭이 바로 안먹히는 현상(preventClicks true가 설정되는 버그)를 해결
-        swiperObject.preventClicks = false; 
-    }
-
+ function toClosestSlideOf(swiperObject, checkInput) {
+     var targetEl = null;
+     if (checkInput.length > 1) {
+         targetEl = checkInput[0]
+     } else {
+         targetEl = checkInput
+     }
+     let targetSlideIndex = $(targetEl).closest('.swiper-slide').index();
+     swiperObject.slideTo(targetSlideIndex);
+     // slideTo 이후, 해당 slide에 클릭이 바로 안먹히는 현상(preventClicks true가 설정되는 버그)를 해결
+     swiperObject.preventClicks = false; 
+ }
 ```
+
+
+### magnificPopup 으로 결과 callback받아서 띄우기
+1. css/magnific-popup.css 및 js/magnific-popup.min.js 를 추가
+```html
+<!-- magnific-popup css for 자가진단 결과-->
+<link rel="stylesheet" href="css/magnific-popup.css">
+```
+```html
+<!-- magnific-popup js for 자가진단 결과-->
+<script src="js/magnific-popup.min.js"></script>
+```
+
+
+2. magnificpop 설정은 .section4 내부에 `div#dx-result.dx-result`로 id를 부여하여 팝업창을 만들고 `.mfp-hide` 클래스를 추가해놓고, title과 content div를 만들어놓는다.
+```html
+ <!-- 진단 결과 popup -->
+ <div id="dx-result" class="dx-result mfp-hide">
+     <div class="dx-result-title">
+         자가진단 결과
+     </div>
+     <div class="dx-result-content">
+         이미지
+
+         예약 / 상담
+     </div>
+ </div>
+```
+3. css에 미리 지정된 bg로 만드는 close버튼을 아래 경로에 넣어준다.
+```css
+button.mfp-close {
+   background: url("../images/dx/mfp-close.png") no-repeat center;
+}
+```
+
+4. 진단하기 버튼에 `href`를 결과element의 id인 `#dx-result`를 추가한다
+```html
+
+<button type="button" id="step-result"
+        href="#dx-result"
+        class="fs-tab fw-bold btn btn-sm btn-green rounded-pill"
+        style="display: none;"
+>
+    진단하기
+```
+5. css에서 `진단하기` 결과를 띄울 버튼을 찾아놓고, mainClass로 `.mfp-hide`를 지정한다
+```js
+ // 자가진단 버튼에 popup 설정 걸기
+ $("#step-result").magnificPopup({
+     mainClass: 'mfp-fade',
+     showCloseBtn : true,
+     preloader: true,
+     callbacks:{
+         open: function(){
+         },
+         close: function(){
+         }
+     }
+ });
+```
+
+![img.png](../ui/297.png)
+
+6. 이 때, **검증을 통과하지 못할때도 열리게 되니, `초기화`**

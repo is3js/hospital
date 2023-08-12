@@ -19,6 +19,10 @@
     <link rel="stylesheet" href="css/swiper.animate.min.css">
     <!-- select2 for 예약 시간선택 -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
+    <!-- magnific-popup css for 자가진단 결과-->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+
 </head>
 <body>
 <!-- 헤더 -->
@@ -2731,6 +2735,7 @@
                                 다음 페이지 ▶
                             </button>
                             <button type="button" id="step-result"
+                                    href="#dx-result"
                                     class="fs-tab fw-bold btn btn-sm btn-green rounded-pill"
                                     style="display: none;"
                             >
@@ -3093,6 +3098,17 @@
             <p>123</p>
         </div>
     </div>
+    <!-- 진단 결과 popup -->
+    <div id="dx-result" class="dx-result mfp-hide">
+        <div class="dx-result-title">
+            자가진단 결과
+        </div>
+        <div class="dx-result-content">
+            이미지
+
+            예약 / 상담
+        </div>
+    </div>
 </div>
 
 <!-- header modal(login) -->
@@ -3171,6 +3187,9 @@
 
 <!-- draggable js for tab -->
 <script src="js/Draggable.min.js"></script>
+
+<!-- magnific-popup js for 자가진단 결과-->
+<script src="js/magnific-popup.min.js"></script>
 
 <script src="js/index.js"></script>
 
