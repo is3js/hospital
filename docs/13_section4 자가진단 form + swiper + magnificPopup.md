@@ -905,8 +905,8 @@ button.mfp-close {
 
 7. 이제 dx-result, title과 content를 꾸민다.
    - 전체 배경이 검은색이 되니, popup구역은 흰색으로 변경한다.
-   - 배경은 max-w를 줘서, 큰화면에 무작정 안늘어나게 한다.
-   - h는 min-h를 줘서, 가운데 쏠린 상태에서 너무 안작게 한다.
+   - 배경은 max-w를 줘서, 큰화면에 무작정 안늘어나게 한다. w-90%만 줘서, 좌우에 10% 약간의 여백을 만든다.
+   - h는 min-h를 줘서, 가운데 쏠린 상태에서 너무 안작게 한다. h-95%를 줘서 아래쪽에 5%만 여백을 만든다.
    - margin을 위아래 30px정도 준다.
    - 내용물이 넘치면 숨긴다.
 ```css
@@ -916,7 +916,10 @@ button.mfp-close {
 
     background: #fff;
     max-width: 600px;
+    width: 90%;
     min-height: 350px;
+    height: 95%;
+   
 
     margin: 30px auto;
     border-radius: 15px;
@@ -940,7 +943,7 @@ button.mfp-close {
 
     font-size: 30px;
     font-weight: 500;
-    text-indent: 20px;
+    /*text-indent: 20px;*/
 }
 ```
 ![img.png](../ui/299.png)
@@ -949,7 +952,176 @@ button.mfp-close {
    - **나중에 내용물을 `.dx-result-content`에서 `.load()`할 것이기 때문에, 내부내용은 백엔드에서 받을 것이라 생각하고, 미리 작성해둔다 생각한다.**
 ```css
 .dx-result .dx-result-content {
-    padding: 30px;
+   padding: 5% 15%;
 }
 ```
 
+10. 이제 내용물을 채우돼 구성은 아래와 같이 한다.
+   - p.title / p.sut-title / div.img / div.footer
+   - 일단 title과 subtitle의 글자크기를 css로 지정해준다.
+
+```css
+.fs-dx-result {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.fs-dx-result-sub {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+@media screen and (min-width: 992px) and (max-width: 1399px) {
+    .fs-dx-result {
+        font-size: 20px;
+        letter-spacing: -.01rem;
+    }
+    .fs-dx-result-sub {
+        font-size: 16px;
+        letter-spacing: -.01rem;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .fs-dx-result {
+        font-size: 17px;
+        letter-spacing: -.01rem;
+    }
+    .fs-dx-result-sub {
+        font-size: 13px;
+        letter-spacing: -.01rem;
+    }
+}
+```
+```html
+
+<div id="dx-result" class="dx-result mfp-hide">
+    <div class="dx-result-title">
+        자가진단 결과
+    </div>
+    <div class="dx-result-content">
+        <p class="dx-result-content-title text-center fs-dx-result">
+            경미한 장애(0~20%)입니다.
+        </p>
+        <!-- 2) 부연 설명 -->
+        <p class="dx-result-content-subtitle text-center fs-dx-result-sub">
+            들고 앉을 때, 운동시에 조언이 필요해요. 내원하셔서 티칭 및 중증에 대한 예방해보시는 것은 어떨까요?
+        </p>
+    </div>
+</div>
+```
+- font 색은 css로 지정해준다.
+```css
+.dx-result .dx-result-content .dx-result-content-title {
+    color: var(--color-submain);
+    margin-bottom: 5px;
+}
+```
+
+11. 가운데 이미지는 .img-fluid로 w-100을 준 뒤, css로 max-width를 걸어서, 너무 커지지 않게 한다.
+   - 이 때, 가운데 정렬되게 하기 위해 한번 더 감싼다
+```html
+<div class="dx-result-content">
+    <!-- .load() 내용들 -->
+    <!-- 1) 중요 결과 -->
+    <p class="dx-result-content-title text-center fs-dx-result">
+        경미한 장애(0~20%)입니다.
+    </p>
+    <!-- 2) 부연 설명 -->
+    <p class="dx-result-content-subtitle text-center fs-dx-result-sub">
+        들고 앉을 때, 운동시에 조언이 필요해요. 내원하셔서 티칭 및 중증에 대한 예방해보시는 것은 어떨까요?
+    </p>
+    <!-- 3) 가운데 이미지 -->
+    <div class="dx-result-content-img my-4 my-lg-5">
+        <img class="img-fluid" src="images/dx/phase2.png" alt="">
+    </div>
+</div>
+```
+```css
+.dx-result .dx-result-content .dx-result-content-img{
+    text-align: center;
+}
+
+.dx-result .dx-result-content .dx-result-content-img > img{
+    max-width: 300px;
+}
+```
+
+
+12. 이제 footer를 만들고, 문의하기  + 버튼 2개를 세로배치하는데, 가운데 정렬까지 하기 위해 `d-flex, flex-column`을 css로 적용한다
+```html
+<div class="dx-result-footer mt-3 mt-md-4 mt-lg-5">
+    <p class="fs-dx-result-sub">
+        <span></span>
+        문의하기
+        <span></span>
+    </p>
+    <ul class="list-unstyled w-100 d-flex justify-content-evenly mt-1 ">
+        <li class=""><a href="#" class="btn btn-sm btn-main rounded-pill px-3 fs-dx-result-sub">실시간 예약</a></li>
+        <li class=""><a href="#" class="btn btn-sm btn-main rounded-pill px-3 fs-dx-result-sub">온라인 상담</a></li>
+    </ul>
+</div>
+```
+```css
+.dx-result .dx-result-footer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+```
+13. 문의하기란은 p태그로 작성하되, 글자크기는 result-sub와 동일하게 주고
+   - **`relative`를 줘서 span을 absolute 양쪽으로 만들고**
+   - **`w70%`를 줘서, 부모에 대해 최대 70%까지만 차지하게 둔다.**
+   - 글자를 회색으로 주고, span으로 만든 가로선도 회색으로 준다.
+```css
+.dx-result .dx-result-footer p {
+    width: 70%;
+    position: relative;
+
+    text-align: center;
+    color: darkgray;
+    font-size: 15px;
+    
+    margin-bottom: 5px;
+}
+```
+- 가로선 span태그를 `width 25%`로 줘서, 70%만땅에 대한 25%씩을 가져가고, 가운데 50%를 글자가 안넘치게 한다.
+```css
+.dx-result .dx-result-footer p > span {
+    position: absolute;
+
+    display: inline-block;
+    width: 25%;
+    height: 1px;
+    background: #ddd;
+
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.dx-result .dx-result-footer p > span:nth-of-type(1) {
+    left: 0;
+}
+
+.dx-result .dx-result-footer p > span:nth-of-type(2) {
+    right: 0;
+}
+```
+
+- 아래쪽 버튼들은 d-flex, `evenly`로 줘서, 양끝으로 밀착시키돼, 양끝에 약간의 간격을 가지게 만들어준다.
+```html
+<div class="dx-result-footer mt-3 mt-md-4 mt-lg-5">
+   <p class="fs-dx-result-sub">
+      <span></span>
+      문의하기
+      <span></span>
+   </p>
+   <ul class="list-unstyled w-100 d-flex justify-content-evenly mt-1 ">
+      <li class=""><a href="#" class="btn btn-sm btn-main rounded-pill px-3 fs-dx-result-sub">실시간 예약</a></li>
+      <li class=""><a href="#" class="btn btn-sm btn-main rounded-pill px-3 fs-dx-result-sub">온라인 상담</a></li>
+   </ul>
+</div>
+```
