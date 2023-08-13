@@ -840,6 +840,70 @@ $(function () {
             preloader: true,
             callbacks: {
                 open: function () {
+                    var payload = {};
+                    // document.dx으로 jquery객체가 아니라면, checked된 value는 .value로 나오지만 name은 못뽑아낸다.
+                    // but jquery는 .attr('name')하면, 1개의 name이 나오고 / .val()도 나온다.
+                    var sex = $(document.dx.sex);
+                    payload[sex.attr('name')] = sex.val();
+                    var age = $(document.dx.age);
+                    payload[age.attr('name')] = age.val();
+                    // console.log(payload) // {sex: '1', age: '1'}
+
+                    // 임시 계산
+                    payload['score'] = 0;
+                    var numQuestions = 0;  // 문항 수를 세기 위한 변수
+                    var maxScorePerQuestion = 5;  // 문항당 최대 점수
+
+                    var form = $(document.dx);
+
+                    form.find("input[name^='" + 'kodi' + "']:checked").each(function () {
+                        var name = $(this).attr("name");
+                        var value = parseInt($(this).val());
+                        payload[name] = value;
+                        // 임시 계산
+                        payload['score'] += value;
+                        // 임시 문항 수 계산
+                        numQuestions++;
+                    });
+
+                    // console.log(payload) // {sex: '1', age: '1', score: 19, kodi1: 0, kodi2: 3 …}
+                    // 임시계산  계산score
+                    var calculatedScore = (payload['score'] / (numQuestions * maxScorePerQuestion)) * 100;
+                    calculatedScore = Math.round(calculatedScore * 10) / 10;  // 소수점 1번째까지 반올림
+
+                    // 멘트를 저장할 변수
+                    var resultTitle = "";
+                    var resultSubtitle = "";
+                    var imageSrc = "";
+
+                    // calculatedScore의 범위에 따른 멘트 설정
+                    if (calculatedScore >= 0 && calculatedScore <= 20) {
+                        resultTitle = "경미한 장애(" + calculatedScore + "%)입니다.";
+                        resultSubtitle = "들고 앉을 때, 운동시에 조언이 필요해요. 내원하셔서 티칭 및 증상을 예방해보시는 것은 어떨까요?";
+                        imageSrc = "images/dx/phase1.png";
+                    } else if (calculatedScore > 20 && calculatedScore <= 40) {
+                        resultTitle = "중증도 장애(" + calculatedScore + "%)입니다.";
+                        resultSubtitle = "여행과 사회생활이 불편할 수 있어요. 내원하셔서 티칭 및 중증에 대한 보존치료를 받아보시는 게 어떨까요?";
+                        imageSrc = "images/dx/phase2.png";
+                    } else if (calculatedScore > 40 && calculatedScore <= 60) {
+                        resultTitle = "심각한 장애(" + calculatedScore + "%)입니다.";
+                        resultSubtitle = "지속적인 통증이 발생할 수 있습니다. 내원하셔서 티칭 및 증상에 대한 자세한 진찰 및 치료를 받아보시는 게 어떨까요?";
+                        imageSrc = "images/dx/phase3.png";
+                    } else if (calculatedScore > 60 && calculatedScore <= 80) {
+                        resultTitle = "위중한 상태(" + calculatedScore + "%)입니다.";
+                        resultSubtitle = "통증으로 인해 삶의 모든 측면에 영향을 받고있어요. 내원하셔서 티칭 및 증상에 대한 적극적인 치료를 받아보시는 게 어떨까요?";
+                        imageSrc = "images/dx/phase4.png";
+                    } else {
+                        resultTitle = "극도로 위중한 상태(" + calculatedScore + "%)입니다.";
+                        resultSubtitle = "본인의 증상을 지나치게 과소평가 하고 있어요. 내원하셔서 티칭 및 적극적인 치료을 받을 뿐 아니라 큰 병원에 내원하시기를 권해드려요";
+                        imageSrc = "images/dx/phase5.png";
+                    }
+
+                    // 결과 멘트를 HTML에 삽입
+                    $(".dx-result-content-title").text(resultTitle);
+                    $(".dx-result-content-subtitle").text(resultSubtitle);
+                    // 이미지를 업데이트
+                    $(".dx-result-content-img img").attr("src", imageSrc);
                 },
                 close: function () {
                 }
