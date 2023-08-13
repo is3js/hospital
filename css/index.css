@@ -2802,7 +2802,7 @@ span.category.category-naver {
 }
 
 .dx-result .dx-result-content {
-    padding: 10% 15%;
+    padding: 5% 15%;
 }
 .dx-result .dx-result-content .dx-result-content-title {
     color: var(--color-submain);
@@ -2830,7 +2830,7 @@ span.category.category-naver {
     text-align: center;
     color: var(--color-main);
     font-size: 15px;
-    font-weight: bold;
+    /*font-weight: bold;*/
 }
 
 .dx-result .dx-result-footer p span {
