@@ -2777,7 +2777,9 @@ span.category.category-naver {
     position: relative;
 
     background: #fff;
+    width: 90%;
     max-width: 600px;
+    height: 95%;
     min-height: 350px;
 
     margin: 30px auto;
