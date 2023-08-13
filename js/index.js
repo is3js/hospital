@@ -690,8 +690,8 @@ $(function () {
     // section4 건강채널 - title with Velocity
     let scene7 = new ScrollMagic.Scene({
         triggerElement: ".section4",
-        // triggerHook: "onCenter",
-        triggerHook: "onEnter",
+        triggerHook: "onCenter",
+        // triggerHook: "onEnter",
         offset: -80,
     });
     scene7.setVelocity([".section4 > .section-title > div"], {
