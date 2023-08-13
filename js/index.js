@@ -898,6 +898,27 @@ $(function () {
                         resultSubtitle = "본인의 증상을 지나치게 과소평가 하고 있어요. 내원하셔서 티칭 및 적극적인 치료을 받을 뿐 아니라 큰 병원에 내원하시기를 권해드려요";
                         imageSrc = "images/dx/phase5.png";
                     }
+                    // 나중에는 jquery로 payload를 넘겨서 load
+                    // AJAX POST 요청으로 payload 전송
+                    // $.ajax({
+                    //     type: "POST",
+                    //     url: "your-server-endpoint-url", // 서버의 엔드포인트 URL 입력
+                    //     data: JSON.stringify(payload),
+                    //     contentType: "application/json",
+                    //     success: function(data) {
+                    //         // 받은 데이터로 결과 정보 업데이트
+                    //         var resultTitle = data.resultTitle;
+                    //         var resultSubtitle = data.resultSubtitle;
+                    //         var imageSrc = data.imageSrc;
+                    //
+                    //         $(".dx-result-content-title").text(resultTitle);
+                    //         $(".dx-result-content-subtitle").text(resultSubtitle);
+                    //         $(".dx-result-content-img img").attr("src", imageSrc);
+                    //     },
+                    //     error: function() {
+                    //         console.log("Error sending payload or receiving result data from the server.");
+                    //     }
+                    // });
 
                     // 결과 멘트를 HTML에 삽입
                     $(".dx-result-content-title").text(resultTitle);

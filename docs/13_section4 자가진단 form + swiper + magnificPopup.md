@@ -1366,3 +1366,26 @@ $.magnificPopup.open({
     }
 })
 ```
+
+4. 나중에는 $.ajax로 payload를 넘기는 방식으로 처리한다.
+```js
+$.ajax({
+   type: "POST",
+   url: "your-server-endpoint-url", // 서버의 엔드포인트 URL 입력
+   data: JSON.stringify(payload),
+   contentType: "application/json",
+   success: function(data) {
+       // 받은 데이터로 결과 정보 업데이트
+       var resultTitle = data.resultTitle;
+       var resultSubtitle = data.resultSubtitle;
+       var imageSrc = data.imageSrc;
+
+       $(".dx-result-content-title").text(resultTitle);
+       $(".dx-result-content-subtitle").text(resultSubtitle);
+       $(".dx-result-content-img img").attr("src", imageSrc);
+   },
+   error: function() {
+       console.log("Error sending payload or receiving result data from the server.");
+   }
+});
+```
