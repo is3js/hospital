@@ -717,7 +717,7 @@ $(function () {
             type: 'custom',
             clickable: true,
             renderCustom: function (swiper, current, total) {
-                return '<span class="fs-tab fw-bold">' + current + ' / ' + total + ' 페이지</span>';
+                return '<p class="m-0 p-0 fs-tab fw-bold"> <span class="text-main">' + current + '</span> / ' + total + ' 페이지</p>';
             },
         },
         on: {
