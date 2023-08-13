@@ -944,3 +944,12 @@ button.mfp-close {
 }
 ```
 ![img.png](../ui/299.png)
+
+9. content는 padding만 넣어놓고, 내부 div를 만들어서 이미지 + 버튼2개를 만든다.
+   - **나중에 내용물을 `.dx-result-content`에서 `.load()`할 것이기 때문에, 내부내용은 백엔드에서 받을 것이라 생각하고, 미리 작성해둔다 생각한다.**
+```css
+.dx-result .dx-result-content {
+    padding: 30px;
+}
+```
+

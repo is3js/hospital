@@ -2801,3 +2801,20 @@ span.category.category-naver {
     text-indent: 20px;
 }
 
+.dx-result .dx-result-content {
+    padding: 30px;
+}
+.dx-result .dx-result-content .dx-result-content-title {
+    color: var(--color-submain);
+    margin-bottom: 5px;
+}
+.dx-result .dx-result-content .dx-result-content-subtitle {
+}
+
+.dx-result .dx-result-content .dx-result-content-img{
+    text-align: center;
+}
+
+.dx-result .dx-result-content .dx-result-content-img > img{
+    max-width: 300px;
+}
