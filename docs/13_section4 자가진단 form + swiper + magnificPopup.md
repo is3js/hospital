@@ -857,7 +857,7 @@ button.mfp-close {
 5. css에서 `진단하기` 결과를 띄울 버튼을 찾아놓고, mainClass로 `.mfp-hide`를 지정한다
 ```js
  // 자가진단 버튼에 popup 설정 걸기
- $("#step-result").magnificPopup({
+ $(".dx-box #step-result").magnificPopup({
      mainClass: 'mfp-fade',
      showCloseBtn : true,
      preloader: true,
@@ -872,4 +872,75 @@ button.mfp-close {
 
 ![img.png](../ui/297.png)
 
-6. 이 때, **검증을 통과하지 못할때도 열리게 되니, `초기화`**
+6. 이 때, **검증 통과후에만 열려야하는데, 항상 클릭시 결과버튼이 열리므로 `검증통과 후, items에 #dx-result 지정`후 `open`되도록 변경**한다
+```js
+ $dxResultBtn.on('click', function (e) {
+     // ...
+   
+     // name1,2,3... 질문들 검증 -> 체크 안된 번호 발견시, alert + slide To
+     if (!validateAllQuestionCheckedByName("kodi")) {
+         return false;
+     }
+     // -> 여기 이후로 검증 다 통과
+     //alert('모든 검증 통과');
+
+     // 자가진단 버튼에 popup 설정 걸기
+     $.magnificPopup.open({
+         items: {
+             src: "#dx-result", // popup에 보여줄 내용의 id
+             type: 'inline' // popup의 타입
+         },
+         mainClass: 'mfp-fade',
+         showCloseBtn: true,
+         preloader: true,
+         callbacks: {
+             open: function () {
+             },
+             close: function () {
+             }
+         }
+     });
+ })
+```
+
+7. 이제 dx-result, title과 content를 꾸민다.
+   - 전체 배경이 검은색이 되니, popup구역은 흰색으로 변경한다.
+   - 배경은 max-w를 줘서, 큰화면에 무작정 안늘어나게 한다.
+   - h는 min-h를 줘서, 가운데 쏠린 상태에서 너무 안작게 한다.
+   - margin을 위아래 30px정도 준다.
+   - 내용물이 넘치면 숨긴다.
+```css
+/* dx 결과 popup */
+.dx-result {
+    position: relative;
+
+    background: #fff;
+    max-width: 600px;
+    min-height: 350px;
+
+    margin: 30px auto;
+    border-radius: 15px;
+
+    overflow: hidden;
+}
+```
+![img.png](../ui/298.png)
+
+8. title은 w100%에 height/lh를 close버튼 크기인 60px로 정해주고, 배경은 밝은색 + 텍스트 가운데정렬에 + fz는 lh의 절반정도로 정한다.
+```css
+.dx-result .dx-result-title {
+    width: 100%;
+    height: 60px;
+    line-height: 60px !important;
+
+    background: var(--color-main);
+
+    text-align: center;
+    color: #fff;
+
+    font-size: 30px;
+    font-weight: 500;
+    text-indent: 20px;
+}
+```
+![img.png](../ui/299.png)
