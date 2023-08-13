@@ -878,23 +878,23 @@ $(function () {
 
                     // calculatedScore의 범위에 따른 멘트 설정
                     if (calculatedScore >= 0 && calculatedScore <= 20) {
-                        resultTitle = "경미한 장애(" + calculatedScore + "%)입니다.";
+                        resultTitle = "1/5단계 경미한 상태(" + calculatedScore + "%)";
                         resultSubtitle = "들고 앉을 때, 운동시에 조언이 필요해요. 내원하셔서 티칭 및 증상을 예방해보시는 것은 어떨까요?";
                         imageSrc = "images/dx/phase1.png";
                     } else if (calculatedScore > 20 && calculatedScore <= 40) {
-                        resultTitle = "중증도 장애(" + calculatedScore + "%)입니다.";
+                        resultTitle = "2/5단계 중증 상태(" + calculatedScore + "%)";
                         resultSubtitle = "여행과 사회생활이 불편할 수 있어요. 내원하셔서 티칭 및 중증에 대한 보존치료를 받아보시는 게 어떨까요?";
                         imageSrc = "images/dx/phase2.png";
                     } else if (calculatedScore > 40 && calculatedScore <= 60) {
-                        resultTitle = "심각한 장애(" + calculatedScore + "%)입니다.";
+                        resultTitle = "3/5단계 심각한 상태(" + calculatedScore + "%)";
                         resultSubtitle = "지속적인 통증이 발생할 수 있습니다. 내원하셔서 티칭 및 증상에 대한 자세한 진찰 및 치료를 받아보시는 게 어떨까요?";
                         imageSrc = "images/dx/phase3.png";
                     } else if (calculatedScore > 60 && calculatedScore <= 80) {
-                        resultTitle = "위중한 상태(" + calculatedScore + "%)입니다.";
+                        resultTitle = "4/5단계 위중한 상태(" + calculatedScore + "%)";
                         resultSubtitle = "통증으로 인해 삶의 모든 측면에 영향을 받고있어요. 내원하셔서 티칭 및 증상에 대한 적극적인 치료를 받아보시는 게 어떨까요?";
                         imageSrc = "images/dx/phase4.png";
                     } else {
-                        resultTitle = "극도로 위중한 상태(" + calculatedScore + "%)입니다.";
+                        resultTitle = "5/5단계 극도위중 상태(" + calculatedScore + "%)";
                         resultSubtitle = "본인의 증상을 지나치게 과소평가 하고 있어요. 내원하셔서 티칭 및 적극적인 치료을 받을 뿐 아니라 큰 병원에 내원하시기를 권해드려요";
                         imageSrc = "images/dx/phase5.png";
                     }
