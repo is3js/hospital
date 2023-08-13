@@ -2828,9 +2828,10 @@ span.category.category-naver {
     position: relative;
 
     text-align: center;
-    color: var(--color-main);
+    color: darkgray;
     font-size: 15px;
     /*font-weight: bold;*/
+    margin-bottom: 5px;
 }
 
 .dx-result .dx-result-footer p span {
@@ -2838,8 +2839,8 @@ span.category.category-naver {
 
     display: inline-block;
     width: 25%;
-    height: 2px;
-    background: var(--color-main);
+    height: 1px;
+    background: #ddd;
 
     top: 50%;
     transform: translateY(-50%);
