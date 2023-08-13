@@ -2726,10 +2726,9 @@
                 <form action="" name="dx">
                     <!-- pagination + 버튼들 -->
                     <div class="dx-btn-layer mb-3 d-flex justify-content-between align-items-center">
-                        <!-- 페이지네이션 -->
-                        <div class="swiper-pagination w-auto fs-tab fw-bold"></div>
-                        <!-- custom prev/next/진단 -->
-                        <div class="swiper-custom-btn-layer d-flex gap-2 gap-lg-3">
+                        <!-- 페이지네이션 + 다음페이지 or 진단하기 -->
+                        <div class="d-flex gap-3 align-items-center">
+                            <div class="swiper-pagination w-auto fs-tab fw-bold"></div>
                             <button type="button" id="step-next"
                                     class="fs-tab fw-bold btn btn-sm btn-main rounded-pill">
                                 다음 페이지 ▶
@@ -2739,8 +2738,11 @@
                                     class="fs-tab fw-bold btn btn-sm btn-green rounded-pill"
                                     style="display: none;"
                             >
-                                진단하기
+                                결과 확인
                             </button>
+                        </div>
+                        <!-- 처음으로(reset) -->
+                        <div class="">
                             <button type="button" id="step-first"
                                     class="fs-tab fw-bold btn btn-sm btn-pink rounded-pill">
                                 처음으로 (리셋)
@@ -3115,12 +3117,12 @@
                 <img class="img-fluid" src="images/dx/phase2.png" alt="">
             </div>
             <div class="dx-result-footer d-flex flex-column align-items-center justify-content-center mt-3 mt-md-4 mt-lg-5">
-                <p class="fs-dx-result-sub mb-2">
+                <p class="fs-dx-result-sub">
                     <span></span>
                     문의하기
                     <span></span>
                 </p>
-                <ul class="list-unstyled d-flex justify-content-center ">
+                <ul class="list-unstyled d-flex justify-content-center mt-2">
                     <li class="pe-3"><a href="#" class="fs-dx-result-sub">실시간 예약</a></li>
                     <li class="border-start ps-3"><a href="#" class="fs-dx-result-sub">온라인 상담</a></li>
                 </ul>
