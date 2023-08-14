@@ -2877,6 +2877,32 @@ span.category.category-naver {
     width: 100%;
 }
 
+.facility-box .swiper-pagination {
+    position: relative;
+    top: -3px;
+}
+
+.facility-box .swiper-pagination-bullet {
+    /*background-color: var(--color-main);*/
+    margin-right: 4px!important;
+
+    background: transparent;
+    border: 1px solid var(--color-main);
+    width: 10px;
+    height: 10px;
+
+    opacity: 1;
+}
+.facility-box .swiper-pagination-bullet-active {
+    width: 40px;
+    background-color: var(--color-main);
+
+    transition: width .5s;
+    border-radius: 5px;
+    border: 1px solid transparent;
+}
+
+
 .facility-box .swiper-container .swiper-slide {
     position: relative;
     /* - 기본 .8 active 1배로 */
@@ -2887,3 +2913,5 @@ span.category.category-naver {
 .facility-box .swiper-container .swiper-slide.swiper-slide-active {
     transform: scale(1);
 }
+
+

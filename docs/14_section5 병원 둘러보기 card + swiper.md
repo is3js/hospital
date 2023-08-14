@@ -241,7 +241,7 @@ centeredSlides: true,
 spaceBetween: 15,
 breakpoints: {
    991: {
-       slidesPerView: 1.4,
+       slidesPerView: 1.3,
        spaceBetween: 0,
        loopAdditionalSlides: 2, // 없으면 렉걸려서, 1바퀴 밖에 안돈다
    },
@@ -252,4 +252,9 @@ breakpoints: {
 
 
 6. 이제 페이지네이션의 위치가 스타일을 변경해준다.
+```html
+<div class="col position-relative">
+    <div class="swiper-pagination"></div>
+    <div class="swiper-container">
+```
 7. 
