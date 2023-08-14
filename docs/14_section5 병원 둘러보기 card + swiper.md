@@ -251,10 +251,43 @@ breakpoints: {
 ![img.png](303.png)
 
 
-6. 이제 페이지네이션의 위치가 스타일을 변경해준다.
-```html
-<div class="col position-relative">
-    <div class="swiper-pagination"></div>
-    <div class="swiper-container">
+6. 이제 페이지네이션을 위한 스타일을 변경해준다.
+- container에 pb 3rem을 넣어서, wrapper아래 pagination이 들어갈 위치를 만듦
+```css
+.facility-box .swiper-container {
+    width: 100%;
+    /* pagination을 내리기 위한 pb */
+    padding-bottom: 3rem;
+}
 ```
-7. 
+- pagination은 bottom 0을 넣음
+```css
+.facility-box .swiper-pagination {
+    bottom: 0;
+}
+```
+7. radius가 걸려있는 bullet에 배경을 투명색으로 주고, border를 색깔을 넣음. opacity가 흐려져있는데 1로 투명도 없앰
+```css
+.facility-box .swiper-pagination-bullet {
+    background: transparent;
+
+    border: 1px solid var(--color-main);
+    width: 10px;
+    height: 10px;
+
+    opacity: 1;
+}
+```
+- **active bullet에는 width를 늘리고, radius를 10%에서 5px로 줄인다. 배경색을 넣어준다. 이 때, 변화를 자연스럽게 transition을 .5s로 넣어준다.**
+```css
+.facility-box .swiper-pagination-bullet-active {
+    width: 20px;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    
+    background-color: var(--color-main);
+
+    transition: width .5s;
+}
+```
+![img.png](../ui/304.png)
