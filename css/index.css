@@ -2875,16 +2875,18 @@ span.category.category-naver {
 /* 둘러보기 swiper */
 .facility-box .swiper-container {
     width: 100%;
+    padding-bottom: 3rem;
 }
 
 .facility-box .swiper-pagination {
-    position: relative;
-    top: -3px;
+    /*position: relative;*/
+    /*top: -3px;*/
+    bottom: 0;
 }
 
 .facility-box .swiper-pagination-bullet {
     /*background-color: var(--color-main);*/
-    margin-right: 4px!important;
+    margin-right: 6px!important;
 
     background: transparent;
     border: 1px solid var(--color-main);
@@ -2894,7 +2896,7 @@ span.category.category-naver {
     opacity: 1;
 }
 .facility-box .swiper-pagination-bullet-active {
-    width: 40px;
+    width: 20px;
     background-color: var(--color-main);
 
     transition: width .5s;
