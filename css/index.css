@@ -2870,3 +2870,20 @@ span.category.category-naver {
 .dx-result .dx-result-footer p > span:nth-of-type(2) {
     right: 0;
 }
+
+
+/* 둘러보기 swiper */
+.facility-box .swiper-container {
+    width: 100%;
+}
+
+.facility-box .swiper-container .swiper-slide {
+    position: relative;
+    /* - 기본 .8 active 1배로 */
+    transition:all 200ms linear;
+    transform: scale(0.85);
+}
+
+.facility-box .swiper-container .swiper-slide.swiper-slide-active {
+    transform: scale(1);
+}

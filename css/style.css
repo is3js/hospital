@@ -253,12 +253,8 @@
     background: #00b5b2;
 }
 
-.bg-main-light {
-    background: #5bd2cc;
-}
-
 .bg-main-bolder {
-    background-color: rgb(45, 82, 181);
+    background: #5ab0af;
 }
 
 .bg-submain {

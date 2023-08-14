@@ -489,7 +489,6 @@ $(function () {
                     slidesPerGroup: 2.5,
                     spaceBetween: '20%',
                 }
-
             },
 
             on: {
@@ -933,7 +932,6 @@ $(function () {
     })
 
 
-
     // section5 둘러보기 - title with Velocity
     let scene8 = new ScrollMagic.Scene({
         triggerElement: ".section5",
@@ -948,6 +946,27 @@ $(function () {
         duration: "300",
     });
     controller.addScene(scene8);
+
+    // section5 병원둘러보기
+    var facilitySwiper = new Swiper(".facility-box .swiper-container", {
+        // slidesPerView: 1,
+        slidesPerView: 2,
+        centeredSlides: true,
+        spaceBetween: 15,
+        breakpoints: {
+            991: {
+                slidesPerView: 1.4,
+                spaceBetween: 0,
+                loopAdditionalSlides: 2, // 없으면 렉걸려서, 1바퀴 밖에 안돈다
+            },
+        },
+        grapCursor: true,
+        loop: true,
+        pagination: {
+            el: ".facility-box .swiper-pagination",
+            clickable: true,
+        },
+    });
 
 })
 
