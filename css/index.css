@@ -2237,7 +2237,7 @@ a {
 }
 
 
-.section3, .section4 {
+.section3, .section4, .section5 {
     width: 100%;
     position: relative; /* */
     z-index: 666;
@@ -2245,14 +2245,17 @@ a {
 }
 
 .section3 > div,
-.section4 > div {
+.section4 > div,
+.section5 > div
+{
     width: 70%;
     margin: 0 auto;
 }
 
 @media screen and (max-width: 991px) {
     .section3 > div,
-    .section4 > div {
+    .section4 > div,
+    .section5 > div {
         width: 85%;
     }
 }

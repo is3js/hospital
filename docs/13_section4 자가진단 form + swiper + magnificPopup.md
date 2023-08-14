@@ -1389,3 +1389,17 @@ $.ajax({
    }
 });
 ```
+
+
+5. **각 답변의 부모인 `.dx-answer-detail`을 d-flex로 만들어서 위아래 간격조절이 가능한 상태로 만든 뒤, mb 5px만 줘서 조금만 벌린다.**
+   - 하위 label은 w100%로 줘서 클릭이 빈공간에서도 쉽게 되게 한다.
+```css
+.dx-answer-detail {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.dx-answer-detail label{
+    width: 100%;
+}
+```

@@ -96,6 +96,39 @@
 }
 
 
+.fs-facility-title {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.fs-facility-text {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+@media screen and (min-width: 992px) and (max-width: 1399px) {
+    .fs-facility-title {
+        font-size: 20px;
+        letter-spacing: -.01rem;
+    }
+    .fs-facility-text {
+        font-size: 16px;
+        letter-spacing: -.01rem;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .fs-facility-title {
+        font-size: 17px;
+        letter-spacing: -.01rem;
+    }
+    .fs-facility-text {
+        font-size: 13px;
+        letter-spacing: -.01rem;
+    }
+}
+
 
 /* 글자색 */
 .text-yellow {
@@ -123,7 +156,6 @@
     color: #FC5230;
 }
 
-
 .text-purple {
     color:  var(--color-purple);
 }
@@ -138,6 +170,12 @@
 
 .text-shadow {
     text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* 글자 투명도 */
+.text-white-70 {
+    --bs-text-opacity: 1;
+    color: rgba(255, 255, 255, 0.7) !important;
 }
 
 /* 글자 그림자 */
@@ -213,6 +251,10 @@
 
 .bg-main {
     background: #00b5b2;
+}
+
+.bg-main-light {
+    background: #5bd2cc;
 }
 
 .bg-main-bolder {

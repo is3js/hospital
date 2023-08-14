@@ -932,5 +932,22 @@ $(function () {
         });
     })
 
+
+
+    // section5 둘러보기 - title with Velocity
+    let scene8 = new ScrollMagic.Scene({
+        triggerElement: ".section5",
+        triggerHook: "onCenter",
+        // triggerHook: "onEnter",
+        offset: -80,
+    });
+    scene8.setVelocity([".section5 > .section-title > div"], {
+        top: "0px",
+        opacity: "1"
+    }, {
+        duration: "300",
+    });
+    controller.addScene(scene8);
+
 })
 
