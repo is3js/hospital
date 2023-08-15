@@ -144,6 +144,7 @@ controller.addScene(scene9);
 
 
 6. a안에 클리닉 기본 예시를 집어넣어 조절한다.
-   - 이 때, `ul.nav`가 `flex`를 설정되어있어서, `li.nav-item`들이 flex-item이므로, **flex row의 `col-x`를 넣어줄 수 있다.**
-   - 배경을 차지하는 div의 부모는 `a.nav-link`가 되므로 a태그에 height를 지정해준다.
-   - 
+   - **이 때, `ul.nav`가 `flex`를 설정되어 있지만, `.row`를 직접 줘야 `.g-x`로 col-x를 채우면서 간격을 줄 수 있다.**
+   - **`li.nav-item`들이 flex-item 이자 row의 `col-x`들로서 간격을 조절한다.**
+   - 카드형태의 `div.w-100.h-100`의 부모는 `a태그`이므로, 배경을 차지하는 div의 부모는 `a.nav-link`가 되므로 a태그에 `height를 동적으로 지정`해준다.
+

@@ -2956,5 +2956,7 @@ span.category.category-naver {
 
 .section6 .clinic-box .nav-tabs > li > a.active > div{
     background-color: var(--color-main-light)!important;
+    color: #ddd !important;
+    transition: all .5s;
     /*color: var(--color-submain)!important;*/
 }
