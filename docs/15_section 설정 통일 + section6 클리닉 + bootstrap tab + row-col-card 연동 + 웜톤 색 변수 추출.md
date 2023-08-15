@@ -170,13 +170,13 @@ controller.addScene(scene9);
 ```css
 /* - tab col들의 높이를 담당하는 a가 동적으로 */
 .section6 .clinic-box .nav-tabs > li > a {
-   height: 100px;
+    height: 100px;
 }
 
 @media screen and (max-width: 991px) {
-   .section6 .clinic-box .nav-tabs > li > a {
-      height: 80px;
-   }
+    .section6 .clinic-box .nav-tabs > li > a {
+        height: 80px;
+    }
 }
 ```
 
@@ -224,7 +224,7 @@ controller.addScene(scene9);
                href="#contents-clinic-1"
                role="tab"
             >
-                <div class="text-start ps-2 pt-1 ps-sm-3 pt-md-2 text-lg-center ps-lg-0 pt-lg-3  w-100 h-100 rounded text-white shadow"
+                <div class="text-start ps-2 pt-1 ps-sm-3 text-lg-center ps-lg-0 pt-lg-3  w-100 h-100 rounded text-white shadow"
                      style="background-image: url('images/clinic/001_AB90CD.png');
                             background-repeat: no-repeat;
                             background-position: bottom right;
@@ -253,13 +253,16 @@ controller.addScene(scene9);
 ```
 
 - 이제 탭4개를 복사해서 색깔을 지정해주기
-![img.png](../ui/309.png)
+  ![img.png](../ui/309.png)
 
 
 6. **div의 배경 지정 중에, `공통되면서 css`로 되는 부분은 css로 넘기기**
+
 - 기존
+
 ```html
-<div class="text-start ps-2 pt-1 ps-sm-3 pt-md-2 text-lg-center ps-lg-0 pt-lg-3  w-100 h-100 rounded text-white shadow"
+
+<div class="text-start ps-2 pt-1 ps-sm-3 text-lg-center ps-lg-0 pt-lg-3  w-100 h-100 rounded text-white shadow"
      style="background-image: url('images/clinic/001_AB90CD.png');
                             background-repeat: no-repeat;
                             background-position: bottom right;
@@ -273,18 +276,21 @@ controller.addScene(scene9);
     </small>
 </div>
 ```
+
 - 변경
+
 ```css
 /* - tab a>div의 공통 성질만 정리 */
 .section6 .clinic-box .nav-tabs > li > a > div {
-background-repeat: no-repeat;
-background-position: bottom right;
-background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-size: contain;
 }
 ```
+
 ```html
 
-<div class="text-start ps-2 pt-1 ps-sm-3 pt-md-2 text-lg-center ps-lg-0 pt-lg-3  w-100 h-100 rounded text-white shadow"
+<div class="text-start ps-2 pt-1 ps-sm-3 text-lg-center ps-lg-0 pt-lg-3  w-100 h-100 rounded text-white shadow"
      style="background-image: url('images/clinic/001_AB90CD.png');
             background-color: #AB90CD;
             "
@@ -296,4 +302,52 @@ background-size: contain;
 </div>
 ```
 
-- **색은 변수로 지정해놓고, 한약carousel과 clinic**
+7. **색은 변수로 지정해놓고, 한약carousel색을 활용하여 clinic까지 처리되게 하기**
+   - carousel이랑 clinic이랑 따로 관리한다.
+   - **clinic은 `li의 순서를 기준`으로 div에 색을 부여한다.**
+
+```css
+:root {
+    /* 한약 carousel 및 clinic 색*/
+    --color-carousel-1: #ffdbc6;
+    --color-carousel-1-bolder: #ff6b29;
+
+    --color-clinic-1: #AB90CD;
+
+}
+```
+
+```css
+.section2-bottom .swiper-container .swiper-slide:nth-child(1) {
+    background: var(--color-carousel-1);
+}
+
+/* - 1번째 bullet */
+.section2-bottom .swiper-container .swiper-pagination .my-bullet:nth-child(1) {
+    color: var(--color-carousel-1-bolder); /* 글자색(표기안됨) or box-shadow 색 */
+    background: var(--color-carousel-1-bolder); /* 배경색 */
+}
+```
+
+```css
+/* - div의 li 순서대로 div 색 배정 */
+.section6 .clinic-box .nav-tabs > li:nth-child(1) > a > div {
+   background-color: var(--color-clinic-1);
+}
+
+.section6 .clinic-box .nav-tabs > li:nth-child(2) > a > div {
+   background-color: var(--color-clinic-2);
+}
+```
+```html
+
+<div class="text-start ps-2 pt-1 ps-sm-3 text-lg-center ps-lg-0 pt-lg-3  w-100 h-100 rounded text-white shadow"
+     style="background-image: url('images/clinic/001_AB90CD.png');"
+>
+    <small class="fs-clinic text-shadow">
+        통증
+        <span class="d-none d-md-inline-block">&nbsp;클리닉</span>
+    </small>
+</div>
+```
+![img.png](../ui/310.png)

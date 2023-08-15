@@ -62,6 +62,33 @@
 
     /* 자가진단 */
     --dx-question-font-size: 16px; /* 앞에 before의 height도 결정되므로 변수로 정해줌*/
+
+    /* 한약 carousel 및 clinic 색*/
+    --color-carousel-1: #ffdbc6; /* 연주황 */
+    --color-carousel-1-bolder: #ff6b29;
+    --color-carousel-2: #ace3e5; /* 연초록 */
+    --color-carousel-2-bolder: #16c196;
+    --color-carousel-3: #e0daf5; /* 연보라 */
+    --color-carousel-3-bolder: #9676ff;
+    --color-carousel-4: #dbdbdb; /* 연검은 */
+    --color-carousel-4-bolder: #434040;
+
+
+    --color-clinic-1: #AB90CD;
+    --color-clinic-1-bolder: #9676ff;
+    --color-clinic-2: #80BA96;
+    --color-clinic-2-bolder: #16c196;
+    --color-clinic-3: #F07F7F;
+    --color-clinic-3-bolder: #ef5252;
+    --color-clinic-4: #C6BC63;
+    --color-clinic-4-bolder: #efde43;
+    --color-clinic-5: #E59D68;
+    --color-clinic-5-bolder: #fc9448;
+    --color-clinic-6: #E7B277;
+    --color-clinic-6-bolder: #f6822e;
+    --color-clinic-7: #c2c2c2;
+    --color-clinic-7-bolder: #434040;
+
 }
 
 @media screen and (max-width: 991px) {
@@ -1401,7 +1428,7 @@ a {
 /* 3) 개별 slide의 img 설정 */
 /* - slide 1 */
 .section2-bottom .swiper-container .swiper-slide:nth-child(1) {
-    background: #ffdbc6;
+    background: var(--color-carousel-1);
 }
 
 .section2-bottom .swiper-container .swiper-slide:nth-child(1) img:nth-child(1) {
@@ -1421,7 +1448,7 @@ a {
 
 /* - slide 2 */
 .section2-bottom .swiper-container .swiper-slide:nth-child(2) {
-    background: #ace3e5;
+    background: var(--color-carousel-2);
 }
 
 .section2-bottom .swiper-container .swiper-slide:nth-child(2) img:nth-child(1) {
@@ -1439,7 +1466,7 @@ a {
 
 /* - slide 3 */
 .section2-bottom .swiper-container .swiper-slide:nth-child(3) {
-    background: #e0daf5;
+    background: var(--color-carousel-3);
 }
 
 .section2-bottom .swiper-container .swiper-slide:nth-child(3) img:nth-child(1) {
@@ -1535,31 +1562,31 @@ a {
 
 /* - 1번째 bullet */
 .section2-bottom .swiper-container .swiper-pagination .my-bullet:nth-child(1) {
-    color: #ff6b29; /* 글자색(표기안됨) or box-shadow 색 */
-    background: #ff6b29; /* 배경색 */
+    color: var(--color-carousel-1-bolder); /* 글자색(표기안됨) or box-shadow 색 */
+    background: var(--color-carousel-1-bolder); /* 배경색 */
 }
 
 /* - 2번째 bullet */
 .section2-bottom .swiper-container .swiper-pagination .my-bullet:nth-child(2) {
-    color: #16c196; /* 글자색(표기안됨) or box-shadow 색 */
-    background: #16c196; /* 배경색 */
+    color: var(--color-carousel-2-bolder); /* 글자색(표기안됨) or box-shadow 색 */
+    background: var(--color-carousel-2-bolder); /* 배경색 */
 }
 
 /* - 3번째 bullet */
 .section2-bottom .swiper-container .swiper-pagination .my-bullet:nth-child(3) {
-    color: #9676ff; /* 글자색(표기안됨) or box-shadow 색 */
-    background: #9676ff; /* 배경색 */
+    color: var(--color-carousel-3-bolder); /* 글자색(표기안됨) or box-shadow 색 */
+    background: var(--color-carousel-3-bolder); /* 배경색 */
 }
 
 /* - 4번째 bullet */
 .section2-bottom .swiper-container .swiper-pagination .my-bullet:nth-child(4) {
-    color: #434040; /* 글자색(표기안됨) or box-shadow 색 */
-    background: #434040; /* 배경색 */
+    color: var(--color-carousel-4-bolder); /* 글자색(표기안됨) or box-shadow 색 */
+    background: var(--color-carousel-4-bolder); /* 배경색 */
 }
 
 /* - active bullet (border) */
 .section2-bottom .swiper-container .swiper-pagination .my-bullet-active {
-    border: .27vw solid #fff;
+    border: .23vw solid #fff;
 
     box-sizing: border-box;
     box-shadow: 0 0 10px; /* 색은 color로 지정한 색이 나오게 된다.*/
@@ -2939,12 +2966,12 @@ span.category.category-naver {
 
 /* - tab col들의 높이를 담당하는 a가 동적으로 */
 .section6 .clinic-box .nav-tabs > li > a {
-    height: 100px;
+    height: 85px;
 }
 
 @media screen and (max-width: 991px) {
     .section6 .clinic-box .nav-tabs > li > a {
-        height: 45px;
+        height: 50px;
     }
 }
 
@@ -2955,11 +2982,38 @@ span.category.category-naver {
     background-size: contain;
 }
 
+/* - div의 li 순서대로 div 색 배정 */
+.section6 .clinic-box .nav-tabs > li:nth-child(1) > a > div {
+    background-color: var(--color-clinic-1);
+}
+
+.section6 .clinic-box .nav-tabs > li:nth-child(2) > a > div {
+    background-color: var(--color-clinic-2);
+}
+
+.section6 .clinic-box .nav-tabs > li:nth-child(3) > a > div {
+    background-color: var(--color-clinic-3);
+}
+
+.section6 .clinic-box .nav-tabs > li:nth-child(4) > a > div {
+    background-color: var(--color-clinic-4);
+}
+.section6 .clinic-box .nav-tabs > li:nth-child(5) > a > div {
+    background-color: var(--color-clinic-5);
+}
+.section6 .clinic-box .nav-tabs > li:nth-child(6) > a > div {
+    background-color: var(--color-clinic-6);
+}
+.section6 .clinic-box .nav-tabs > li:nth-child(7) > a > div {
+    background-color: var(--color-clinic-7);
+}
+
 /* - tab active일시, 자식div의 배경과 글자색 변경하기 */
 .section6 .clinic-box .nav-tabs > li > a.active > div {
     background-color: var(--color-main-light) !important;
     /*color: #ddd !important;*/
-    filter: brightness(.75)!important;
+    filter: brightness(.75) !important;
     /*border: 1px solid #222;*/
     transition: all .5s !important;
 }
+
