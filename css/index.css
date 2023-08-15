@@ -2984,28 +2984,28 @@ span.category.category-naver {
 
 /* - div의 li 순서대로 div 색 배정 */
 .section6 .clinic-box .nav-tabs > li:nth-child(1) > a > div {
-    background-color: var(--color-clinic-1);
+    background-color: var(--color-clinic-1)!important;
 }
 
 .section6 .clinic-box .nav-tabs > li:nth-child(2) > a > div {
-    background-color: var(--color-clinic-2);
+    background-color: var(--color-clinic-2)!important;
 }
 
 .section6 .clinic-box .nav-tabs > li:nth-child(3) > a > div {
-    background-color: var(--color-clinic-3);
+    background-color: var(--color-clinic-3)!important;
 }
 
 .section6 .clinic-box .nav-tabs > li:nth-child(4) > a > div {
-    background-color: var(--color-clinic-4);
+    background-color: var(--color-clinic-4)!important;
 }
 .section6 .clinic-box .nav-tabs > li:nth-child(5) > a > div {
-    background-color: var(--color-clinic-5);
+    background-color: var(--color-clinic-5)!important;
 }
 .section6 .clinic-box .nav-tabs > li:nth-child(6) > a > div {
-    background-color: var(--color-clinic-6);
+    background-color: var(--color-clinic-6)!important;
 }
 .section6 .clinic-box .nav-tabs > li:nth-child(7) > a > div {
-    background-color: var(--color-clinic-7);
+    background-color: var(--color-clinic-7)!important;
 }
 
 /* - tab active일시, 자식div의 배경과 글자색 변경하기 */
