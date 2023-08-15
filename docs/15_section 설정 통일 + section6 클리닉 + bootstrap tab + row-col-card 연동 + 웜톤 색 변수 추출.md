@@ -351,3 +351,61 @@ controller.addScene(scene9);
 </div>
 ```
 ![img.png](../ui/310.png)
+
+#### 색깔 돌려쓰기
+1. carousel과 clinic의 총 갯수를 `총갯수n + 현재숫자`로 변경한다. 마지막만 `총갯수n`으로 바꾼다.
+```css
+/* - slide 1 */
+.section2-bottom .swiper-container .swiper-slide:nth-child(4n+1) {
+    background: var(--color-carousel-1);
+}
+/* - slide 2 */
+.section2-bottom .swiper-container .swiper-slide:nth-child(4n+2) {
+    background: var(--color-carousel-2);
+}
+/* - slide 3 */
+.section2-bottom .swiper-container .swiper-slide:nth-child(4n+3) {
+    background: var(--color-carousel-3);
+}
+/* - slide 4 */
+.section2-bottom .swiper-container .swiper-slide:nth-child(4n) {
+    background: #dbdbdb;
+}
+```
+```css
+/* - div의 li 순서대로 div 색 배정 */
+.section6 .clinic-box .nav-tabs > li:nth-child(7n+1) > a > div {
+    background-color: var(--color-clinic-1)!important;
+}
+
+.section6 .clinic-box .nav-tabs > li:nth-child(7n+2) > a > div {
+    background-color: var(--color-clinic-2)!important;
+}
+
+.section6 .clinic-box .nav-tabs > li:nth-child(7n+3) > a > div {
+    background-color: var(--color-clinic-3)!important;
+}
+
+.section6 .clinic-box .nav-tabs > li:nth-child(7n+4) > a > div {
+    background-color: var(--color-clinic-4)!important;
+}
+.section6 .clinic-box .nav-tabs > li:nth-child(7n+5) > a > div {
+    background-color: var(--color-clinic-5)!important;
+}
+.section6 .clinic-box .nav-tabs > li:nth-child(7n+6) > a > div {
+    background-color: var(--color-clinic-6)!important;
+}
+.section6 .clinic-box .nav-tabs > li:nth-child(7n) > a > div {
+    background-color: var(--color-clinic-7)!important;
+}
+
+```
+![img.png](../ui/311.png)
+
+
+2. 이제 box에 좌우패딩을 2%로 추가한다.
+```css
+.section6 .clinic-box {
+    padding: 10px 2%;
+}
+```

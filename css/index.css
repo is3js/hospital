@@ -1427,7 +1427,7 @@ a {
 
 /* 3) 개별 slide의 img 설정 */
 /* - slide 1 */
-.section2-bottom .swiper-container .swiper-slide:nth-child(1) {
+.section2-bottom .swiper-container .swiper-slide:nth-child(4n+1) {
     background: var(--color-carousel-1);
 }
 
@@ -1447,7 +1447,7 @@ a {
 }
 
 /* - slide 2 */
-.section2-bottom .swiper-container .swiper-slide:nth-child(2) {
+.section2-bottom .swiper-container .swiper-slide:nth-child(4n+2) {
     background: var(--color-carousel-2);
 }
 
@@ -1465,7 +1465,7 @@ a {
 }
 
 /* - slide 3 */
-.section2-bottom .swiper-container .swiper-slide:nth-child(3) {
+.section2-bottom .swiper-container .swiper-slide:nth-child(4n+3) {
     background: var(--color-carousel-3);
 }
 
@@ -1483,7 +1483,7 @@ a {
 }
 
 /* - slide 4 */
-.section2-bottom .swiper-container .swiper-slide:nth-child(4) {
+.section2-bottom .swiper-container .swiper-slide:nth-child(4n) {
     background: #dbdbdb;
 }
 
@@ -2949,7 +2949,7 @@ span.category.category-naver {
 /* 클리닉별 치료과정 (tab) */
 /* - tab부모 상하패딩 */
 .section6 .clinic-box {
-    padding: 10px 0;
+    padding: 10px 2%;
 }
 
 /* - tab 기본 border 2개 제거 */
@@ -2983,28 +2983,28 @@ span.category.category-naver {
 }
 
 /* - div의 li 순서대로 div 색 배정 */
-.section6 .clinic-box .nav-tabs > li:nth-child(1) > a > div {
+.section6 .clinic-box .nav-tabs > li:nth-child(7n+1) > a > div {
     background-color: var(--color-clinic-1)!important;
 }
 
-.section6 .clinic-box .nav-tabs > li:nth-child(2) > a > div {
+.section6 .clinic-box .nav-tabs > li:nth-child(7n+2) > a > div {
     background-color: var(--color-clinic-2)!important;
 }
 
-.section6 .clinic-box .nav-tabs > li:nth-child(3) > a > div {
+.section6 .clinic-box .nav-tabs > li:nth-child(7n+3) > a > div {
     background-color: var(--color-clinic-3)!important;
 }
 
-.section6 .clinic-box .nav-tabs > li:nth-child(4) > a > div {
+.section6 .clinic-box .nav-tabs > li:nth-child(7n+4) > a > div {
     background-color: var(--color-clinic-4)!important;
 }
-.section6 .clinic-box .nav-tabs > li:nth-child(5) > a > div {
+.section6 .clinic-box .nav-tabs > li:nth-child(7n+5) > a > div {
     background-color: var(--color-clinic-5)!important;
 }
-.section6 .clinic-box .nav-tabs > li:nth-child(6) > a > div {
+.section6 .clinic-box .nav-tabs > li:nth-child(7n+6) > a > div {
     background-color: var(--color-clinic-6)!important;
 }
-.section6 .clinic-box .nav-tabs > li:nth-child(7) > a > div {
+.section6 .clinic-box .nav-tabs > li:nth-child(7n) > a > div {
     background-color: var(--color-clinic-7)!important;
 }
 
