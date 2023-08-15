@@ -183,7 +183,7 @@ controller.addScene(scene8);
         },
     });
 ```
-![img.png](301.png)
+![img.png](../ui/301.png)
 
 
 
@@ -247,7 +247,7 @@ breakpoints: {
 },
 ```
 
-![img.png](303.png)
+![img.png](../ui/303.png)
 
 
 6. 이제 페이지네이션을 위한 스타일을 변경해준다.

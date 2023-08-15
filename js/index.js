@@ -968,5 +968,20 @@ $(function () {
         },
     });
 
+
+    // section6 클리닉
+    let scene9 = new ScrollMagic.Scene({
+        triggerElement: ".section6",
+        triggerHook: "onCenter",
+        // triggerHook: "onEnter",
+        offset: -80,
+    });
+    scene9.setVelocity([".section6 > .section-title > div"], {
+        top: "0px",
+        opacity: "1"
+    }, {
+        duration: "300",
+    });
+    controller.addScene(scene9);
 })
 

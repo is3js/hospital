@@ -2237,25 +2237,27 @@ a {
 }
 
 
-.section3, .section5, .section4 {
+/*.section3, .section5, .section4 {*/
+.section {
     width: 100%;
     position: relative; /* */
     z-index: 666;
     background: #fff;
 }
 
-.section3 > div,
-.section5 > div,
-.section4 > div
-{
+/*.section3 > div,*/
+/*.section5 > div,*/
+/*.section4 > div*/
+.section > div {
     width: 70%;
     margin: 0 auto;
 }
 
 @media screen and (max-width: 991px) {
-    .section3 > div,
-    .section5 > div,
-    .section4 > div {
+    /*.section3 > div,*/
+    /*.section5 > div,*/
+    /*.section4 > div {*/
+    .section > div {
         width: 85%;
     }
 }
@@ -2273,6 +2275,7 @@ a {
     white-space: nowrap; /* 더보기의 글자가 다음줄 안넘어가게 함.*/
 }
 
+/* 스크롤이 들어가는 tab들 설정 (치료후기/유튜브/블로그) */
 .tab-wrapper > .tab-scroll {
     flex-grow: 1; /* flex-item으로서 w-100% */
     /* ms-auto로 우측에 몰린 더보기에 대해, 간격을 유지하기 위해 */
@@ -2641,7 +2644,7 @@ span.category.category-naver {
     margin-bottom: 5px;
 }
 
-.dx-answer-detail label{
+.dx-answer-detail label {
     width: 100%;
 }
 
@@ -2752,7 +2755,7 @@ span.category.category-naver {
 
 
 .dx-question.dx-question-checkbox > i {
-    display: inline-block!important;
+    display: inline-block !important;
 }
 
 /* dx swiper */
@@ -2823,11 +2826,11 @@ span.category.category-naver {
     margin-bottom: 5px;
 }
 
-.dx-result .dx-result-content .dx-result-content-img{
+.dx-result .dx-result-content .dx-result-content-img {
     text-align: center;
 }
 
-.dx-result .dx-result-content .dx-result-content-img > img{
+.dx-result .dx-result-content .dx-result-content-img > img {
     max-width: 300px;
 }
 
@@ -2906,7 +2909,7 @@ span.category.category-naver {
 .facility-box .swiper-container .swiper-slide {
     position: relative;
     /* - 기본 .8 active 1배로 */
-    transition:all 200ms linear;
+    transition: all 200ms linear;
     transform: scale(0.85);
 }
 
@@ -2915,3 +2918,31 @@ span.category.category-naver {
 }
 
 
+/* 클리닉별 치료과정 (tab) */
+/* - tab부모 상하패딩 */
+.section6 .clinic-box {
+    padding: 10px 0;
+}
+
+/* - tab 기본 border 2개 제거 */
+.section6 .clinic-box .nav-tabs,
+.section6 .clinic-box .nav-tabs > li > a {
+    border: none;
+}
+
+/* col들의 높이를 담당하는 a가 동적으로 */
+.section6 .clinic-box .nav-tabs > li > a {
+    height: 120px;
+}
+
+@media screen and (min-width: 992px) and (max-width: 1399px) {
+    .section6 .clinic-box .nav-tabs > li > a {
+        height: 100px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .section6 .clinic-box .nav-tabs > li > a {
+        height: 80px;
+    }
+}
