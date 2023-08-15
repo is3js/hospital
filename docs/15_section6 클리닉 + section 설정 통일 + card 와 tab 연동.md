@@ -137,7 +137,7 @@ controller.addScene(scene9);
 /* - tab 기본 border 2개 제거 */
 .section6 .clinic-box .nav-tabs,
 .section6 .clinic-box .nav-tabs > li > a {
-    border: none;
+    border: none !important;
 }
 ```
 ![img.png](../ui/308.png)

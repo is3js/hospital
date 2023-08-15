@@ -7,6 +7,7 @@
     --third-font-family: 'NanumSquare', sans-serif;
 
     --color-main: #00b5b2;
+    --color-main-light: #5bd2cc;
     --color-submain: #FC5230;
 
     /* header-bottom(가운데) 설정 */
@@ -2935,7 +2936,8 @@ span.category.category-naver {
     padding: 0;
 
 }
-/* col들의 높이를 담당하는 a가 동적으로 */
+
+/* - tab col들의 높이를 담당하는 a가 동적으로 */
 .section6 .clinic-box .nav-tabs > li > a {
     height: 120px;
 }
@@ -2950,4 +2952,9 @@ span.category.category-naver {
     .section6 .clinic-box .nav-tabs > li > a {
         height: 80px;
     }
+}
+
+.section6 .clinic-box .nav-tabs > li > a.active > div{
+    background-color: var(--color-main-light)!important;
+    /*color: var(--color-submain)!important;*/
 }
