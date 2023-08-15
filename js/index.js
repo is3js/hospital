@@ -255,7 +255,7 @@ $(function () {
 
     controller.addScene(scene3);
 
-    // section4 - bottom swiper
+    // scene4 - bottom swiper
     let scene4 = new ScrollMagic.Scene({
         triggerElement: ".section2-bottom",
         triggerHook: "onCenter",
@@ -687,19 +687,19 @@ $(function () {
 
 
     // section4 건강채널 - title with Velocity
-    let scene7 = new ScrollMagic.Scene({
-        triggerElement: ".section4",
+    let scene8 = new ScrollMagic.Scene({
+        triggerElement: ".section5",
         triggerHook: "onCenter",
         // triggerHook: "onEnter",
         offset: -80,
     });
-    scene7.setVelocity([".section4 > .section-title > div"], {
+    scene8.setVelocity([".section5 > .section-title > div"], {
         top: "0px",
         opacity: "1"
     }, {
         duration: "300",
     });
-    controller.addScene(scene7);
+    controller.addScene(scene8);
 
 
     /* dx 진단 swiper */
@@ -933,19 +933,19 @@ $(function () {
 
 
     // section5 둘러보기 - title with Velocity
-    let scene8 = new ScrollMagic.Scene({
-        triggerElement: ".section5",
+    let scene7 = new ScrollMagic.Scene({
+        triggerElement: ".section4",
         triggerHook: "onCenter",
         // triggerHook: "onEnter",
         offset: -80,
     });
-    scene8.setVelocity([".section5 > .section-title > div"], {
+    scene7.setVelocity([".section4 > .section-title > div"], {
         top: "0px",
         opacity: "1"
     }, {
         duration: "300",
     });
-    controller.addScene(scene8);
+    controller.addScene(scene7);
 
     // section5 병원둘러보기
     var facilitySwiper = new Swiper(".facility-box .swiper-container", {

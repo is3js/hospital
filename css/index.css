@@ -2237,7 +2237,7 @@ a {
 }
 
 
-.section3, .section4, .section5 {
+.section3, .section5, .section4 {
     width: 100%;
     position: relative; /* */
     z-index: 666;
@@ -2245,8 +2245,8 @@ a {
 }
 
 .section3 > div,
-.section4 > div,
-.section5 > div
+.section5 > div,
+.section4 > div
 {
     width: 70%;
     margin: 0 auto;
@@ -2254,15 +2254,14 @@ a {
 
 @media screen and (max-width: 991px) {
     .section3 > div,
-    .section4 > div,
-    .section5 > div {
+    .section5 > div,
+    .section4 > div {
         width: 85%;
     }
 }
 
 
 /* sectino3 media tab */
-
 /* tab 스크롤을 위한 설정 */
 .tab-wrapper {
     display: flex;
@@ -2772,7 +2771,7 @@ span.category.category-naver {
 }
 
 /* dx 결과 popup */
-.section4 .dx-result {
+.section5 .dx-result {
     position: relative;
 
     background: #fff;
