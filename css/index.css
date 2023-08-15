@@ -2928,7 +2928,7 @@ span.category.category-naver {
 /* - tab 기본 border 2개 제거 */
 .section6 .clinic-box .nav-tabs,
 .section6 .clinic-box .nav-tabs > li > a {
-    border: none!important;
+    border: none !important;
 }
 
 /* - tab 고정 padding 제거 */
@@ -2939,13 +2939,7 @@ span.category.category-naver {
 
 /* - tab col들의 높이를 담당하는 a가 동적으로 */
 .section6 .clinic-box .nav-tabs > li > a {
-    height: 120px;
-}
-
-@media screen and (min-width: 992px) and (max-width: 1399px) {
-    .section6 .clinic-box .nav-tabs > li > a {
-        height: 100px;
-    }
+    height: 100px;
 }
 
 @media screen and (max-width: 991px) {
@@ -2954,9 +2948,18 @@ span.category.category-naver {
     }
 }
 
-.section6 .clinic-box .nav-tabs > li > a.active > div{
-    background-color: var(--color-main-light)!important;
-    color: #ddd !important;
-    transition: all .5s;
-    /*color: var(--color-submain)!important;*/
+/* - tab a>div의 공통 성질만 정리 */
+.section6 .clinic-box .nav-tabs > li > a > div {
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-size: contain;
+}
+
+/* - tab active일시, 자식div의 배경과 글자색 변경하기 */
+.section6 .clinic-box .nav-tabs > li > a.active > div {
+    background-color: var(--color-main-light) !important;
+    /*color: #ddd !important;*/
+    filter: brightness(.75)!important;
+    /*border: 1px solid #222;*/
+    transition: all .5s !important;
 }
