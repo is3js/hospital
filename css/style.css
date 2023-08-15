@@ -130,6 +130,32 @@
 }
 
 
+
+.fs-clinic {
+    font-size: 18px;
+}
+
+@media screen and (min-width: 992px) and (max-width: 1399px) {
+    .fs-clinic {
+        font-size: 15px;
+        letter-spacing: -.005rem;
+    }
+}
+
+@media screen and (min-width: 576px) and (max-width: 991px) {
+    .fs-clinic {
+        font-size: 13px;
+        letter-spacing: -.01rem;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .fs-clinic {
+        font-size: 11px;
+        letter-spacing: -.01rem;
+    }
+}
+
 /* 글자색 */
 .text-yellow {
     color: rgb(252, 255, 0);
