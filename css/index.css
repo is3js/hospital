@@ -2927,9 +2927,14 @@ span.category.category-naver {
 /* - tab 기본 border 2개 제거 */
 .section6 .clinic-box .nav-tabs,
 .section6 .clinic-box .nav-tabs > li > a {
-    border: none;
+    border: none!important;
 }
 
+/* - tab 고정 padding 제거 */
+.section6 .clinic-box .nav-link {
+    padding: 0;
+
+}
 /* col들의 높이를 담당하는 a가 동적으로 */
 .section6 .clinic-box .nav-tabs > li > a {
     height: 120px;
