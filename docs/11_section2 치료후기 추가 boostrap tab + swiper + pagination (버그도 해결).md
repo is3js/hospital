@@ -337,7 +337,7 @@
 ```
 
 ```css
-.text-gray-bolder {
+.text-gray-dark {
     color: #adadad !important;
     font-weight: bold;
 }
@@ -358,7 +358,7 @@
             <!--클리닉 명-->
             <p class="d-inline-block rounded-pill shadow-sm px-2  bg-submain m-0">
                 <a href="#"
-                   class="font-gs text-decoration-none fs-13 text-truncate text-white text-shadow-sm ">
+                   class="font-serif text-decoration-none fs-13 text-truncate text-white text-shadow-sm ">
                     디스크 클리닉
                 </a>
                 <span class="fs-13 text-white-50"> | 20대/남성</span>
@@ -366,7 +366,7 @@
 
             <!--날짜와 평가점수-->
             <div class="d-flex flex-row justify-content-between fs-13 py-1 px-1">
-                <div class="small text-gray-bolder">2023-07-05 | 자필스캔</div>
+                <div class="small text-gray-dark">2023-07-05 | 자필스캔</div>
                 <div class="small text-danger ">❤❤❤❤❤</div>
             </div>
 
@@ -483,7 +483,7 @@
     <!--클리닉 명-->
 <p class="d-inline-block rounded-pill shadow-sm px-2  bg-submain m-0">
     <a href="#"
-       class="font-gs text-decoration-none fs-tab text-truncate text-white text-shadow-sm ">
+       class="font-serif text-decoration-none fs-tab text-truncate text-white text-shadow-sm ">
         디스크 클리닉
     </a>
     <span class="fs-tab text-white-50"> | 20대/남성</span>
@@ -491,7 +491,7 @@
 
 <!--날짜와 평가점수-->
 <div class="d-flex flex-row justify-content-between fs-tab py-1 px-1">
-    <div class="small text-gray-bolder">2023-07-05 | 자필스캔</div>
+    <div class="small text-gray-dark">2023-07-05 | 자필스캔</div>
     <div class="small text-danger ">❤❤❤❤❤</div>
 </div>
 

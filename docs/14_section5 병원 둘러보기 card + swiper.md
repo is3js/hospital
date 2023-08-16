@@ -68,25 +68,27 @@ controller.addScene(scene8);
     color: rgba(255, 255, 255, 0.7) !important;
 }
 ```
+
 ```css
-.bg-main-bolder {
-    background: #4f8c8b;
+.bg-main-dark {
+   background: #4f8c8b;
 }
 ```
+
 ```html
 
 <div class="facility-box">
-    <div class="row">
-        <div class="col">
-            <div class="card border-0 bg-main-bolder rounded-5">
-                <img src="images/facility/main-fac1.jpg" class="card-img-top rounded-top-5 " alt="...">
-                <div class="card-body text-start ps-3 ps-md-4 ps-lg-5">
-                    <h5 class="card-title text-white ">접수실</h5>
-                    <p class="card-text text-truncate text-white-70">접수와 대기를 하는 공간</p>
-                </div>
+   <div class="row">
+      <div class="col">
+         <div class="card border-0 bg-main-dark rounded-5">
+            <img src="images/facility/main-fac1.jpg" class="card-img-top rounded-top-5 " alt="...">
+            <div class="card-body text-start ps-3 ps-md-4 ps-lg-5">
+               <h5 class="card-title text-white ">접수실</h5>
+               <p class="card-text text-truncate text-white-70">접수와 대기를 하는 공간</p>
             </div>
-        </div>
-    </div>
+         </div>
+      </div>
+   </div>
 </div>
 ```
 2. font를 정해준다.
@@ -143,22 +145,24 @@ controller.addScene(scene8);
 
 1. col <-> .card 사이 container/wrapper/slide 요소를 작성해주고, css로 `container w100%, slide relative` 설정 후, js 초기화한다.
    - container안에 wrapper의 형제로서 pagination까지 추가해준다.
+
 ```html
+
 <div class="facility-box">
-    <div class="row">
-        <div class="col">
-            <div class="swiper-container ">
-                <div class="swiper-wrapper">
-                    <!-- slide 1 -->
-                    <div class="swiper-slide">
-                        <div class="card border-0 bg-main-bolder rounded-5">
-                        </div>
-                    </div>
-                </div>
-               <div class="swiper-pagination"></div>
+   <div class="row">
+      <div class="col">
+         <div class="swiper-container ">
+            <div class="swiper-wrapper">
+               <!-- slide 1 -->
+               <div class="swiper-slide">
+                  <div class="card border-0 bg-main-dark rounded-5">
+                  </div>
+               </div>
             </div>
-        </div>
-    </div>
+            <div class="swiper-pagination"></div>
+         </div>
+      </div>
+   </div>
 </div>
 ```
 ```css

@@ -1,15 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&family=Noto+Serif+KR:wght@500&display=swap');
-@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css);
 
 :root {
-    --primary-font-family: 'Noto Sans KR', sans-serif;
-    --secondary-font-family: 'Noto Serif KR', sans-serif;
-    --third-font-family: 'NanumSquare', sans-serif;
-
-    --color-main: #00b5b2;
-    --color-main-light: #5bd2cc;
-    --color-submain: #FC5230;
-
     /* header-bottom(가운데) 설정 */
     --header-top-height: 30px;
 
@@ -76,7 +66,7 @@
 
     --color-clinic-1: #AB90CD;
     /*--color-clinic-1-bolder: #8a6af6;*/
-    --color-clinic-1-bolder: #8c65be;
+    --color-clinic-1-bolder: #9277b4;
     --color-clinic-2: #80BA96;
     /*--color-clinic-2-bolder: #16c196;*/
     --color-clinic-2-bolder: #5da278;
@@ -91,7 +81,6 @@
     --color-clinic-6-bolder: #f6822e;
     --color-clinic-7: #c2c2c2;
     --color-clinic-7-bolder: #434040;
-
 }
 
 @media screen and (max-width: 991px) {
@@ -113,7 +102,7 @@
 }
 
 body {
-    font-family: 'NanumSquare', 'Noto Sans KR', 'Malgun Gothic', 'Nanum Gothic', 'Noto Sans', 'sans-serif';
+    /*font-family: 'NanumSquare', 'Noto Sans KR', 'Malgun Gothic', 'Nanum Gothic', 'Noto Sans', 'sans-serif';*/
     color: #252525;
     font-size: 18px;
     line-height: 1.6;
@@ -2987,28 +2976,31 @@ span.category.category-naver {
 
 /* - div의 li 순서대로 div 색 배정 */
 .section6 .clinic-box .nav-tabs > li:nth-child(7n+1) > a > div {
-    background-color: var(--color-clinic-1)!important;
+    background-color: var(--color-clinic-1) !important;
 }
 
 .section6 .clinic-box .nav-tabs > li:nth-child(7n+2) > a > div {
-    background-color: var(--color-clinic-2)!important;
+    background-color: var(--color-clinic-2) !important;
 }
 
 .section6 .clinic-box .nav-tabs > li:nth-child(7n+3) > a > div {
-    background-color: var(--color-clinic-3)!important;
+    background-color: var(--color-clinic-3) !important;
 }
 
 .section6 .clinic-box .nav-tabs > li:nth-child(7n+4) > a > div {
-    background-color: var(--color-clinic-4)!important;
+    background-color: var(--color-clinic-4) !important;
 }
+
 .section6 .clinic-box .nav-tabs > li:nth-child(7n+5) > a > div {
-    background-color: var(--color-clinic-5)!important;
+    background-color: var(--color-clinic-5) !important;
 }
+
 .section6 .clinic-box .nav-tabs > li:nth-child(7n+6) > a > div {
-    background-color: var(--color-clinic-6)!important;
+    background-color: var(--color-clinic-6) !important;
 }
+
 .section6 .clinic-box .nav-tabs > li:nth-child(7n) > a > div {
-    background-color: var(--color-clinic-7)!important;
+    background-color: var(--color-clinic-7) !important;
 }
 
 /* - tab active일시, 자식div의 배경과 글자색 변경하기 */
@@ -3020,20 +3012,44 @@ span.category.category-naver {
     transition: all .5s !important;
 }
 
+
+/*.section6 .clinic-box .tab-content > .tab-pane > div > div:nth-child(1) small {*/
+/*    font-style: italic;*/
+/*}*/
+
+
+/*.section6 .clinic-box .tab-content > .tab-pane> div > div:nth-child(1) small:after {*/
+/*    position: absolute;*/
+/*    content: '';*/
+
+/*    left: 0;*/
+/*    bottom: -3px;*/
+/*    width: 100%;*/
+
+/*    !*height: 4em;*!*/
+/*    border-bottom: 7px solid #bfffba;*/
+/*    opacity: .4;*/
+/*}*/
+
 /* - tab conntent의 tab-pane 순서대로 div 색 배정 */
 .section6 .clinic-box .tab-content > .tab-pane:nth-child(7n+1) > div > div:nth-child(1) {
-    /*background-color: var(--color-main-light)!important;*/
-    background-color: var(--color-clinic-1)!important;
-}
-.section6 .clinic-box .tab-content > .tab-pane:nth-child(7n+1) > div > div:nth-child(2) {
-    /*background-color: var(--color-clinic-1-bolder)!important;*/
-    background-color: var(--color-clinic-1-bolder)!important;
-    /*background-color: lightyellow!important;*/
+    background-color: var(--color-main-light) !important;
+    /*background-color: var(--color-clinic-1)!important;*/
 }
 
-.section6 .clinic-box .tab-content > .tab-pane:nth-child(7n+2) > div > div:nth-child(1) {
-    background-color: var(--color-clinic-2)!important;
+.section6 .clinic-box .tab-content > .tab-pane:nth-child(7n+1) > div > div:nth-child(2) {
+    background-color: #f6f7f9 !important;
+    /*background-color: var(--color-clinic-1-bolder)!important;*/
+    /*background-color: var(--color-main-dark) !important;*/
+    /*background: #364444 url(../images/doctors/doctor001.png) no-repeat 100% 100%!important;*/
+    /*background-size: cover;*/
 }
+
+
+.section6 .clinic-box .tab-content > .tab-pane:nth-child(7n+2) > div > div:nth-child(1) {
+    background-color: var(--color-clinic-2) !important;
+}
+
 .section6 .clinic-box .tab-content > .tab-pane:nth-child(7n+2) > div > div:nth-child(2) {
-    background-color: var(--color-clinic-2-bolder)!important;
+    background-color: var(--color-clinic-2-bolder) !important;
 }

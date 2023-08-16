@@ -409,3 +409,42 @@ controller.addScene(scene9);
     padding: 10px 2%;
 }
 ```
+
+3. 들어갈 텍스트 미리 정의
+```css
+:root {
+   --color-gold: #fabc57;
+}
+
+.text-gold {
+    color: var(--color-gold);
+}
+```
+
+4. style.css에 main bg에 대한 underline 정의
+
+```css
+/*  underline */
+.underline {
+   position: relative;
+   font-style: italic;
+}
+
+
+.underline:after {
+   position: absolute;
+   content: '';
+
+   left: 0;
+   bottom: -3px;
+   width: 100%;
+
+   /*height: 4em;*/
+   border-bottom: 7px solid #ddd;
+   opacity: .4;
+}
+
+.underline-white:after {
+   border-color: #bfffba;
+}
+```

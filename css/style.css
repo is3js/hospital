@@ -1,9 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&family=Noto+Serif+KR:wght@500&display=swap');
+@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css);
+
 :root {
+    --primary-font-family: 'Noto Sans KR', sans-serif;
+    --secondary-font-family: 'Noto Serif KR', sans-serif;
+    --third-font-family: 'NanumSquare', sans-serif;
+
+    --color-main: #00b5b2;
+    --color-main-light: #5bd2cc;
+    --color-main-dark: #7fbbba;
+    --color-submain: #FC5230;
+
     --color-pink: #F07F7F;
     --color-purple: #ab8dca;
     --color-green: #80BA96;
     --color-youtube: #f63232;
     --color-naver: #0eca8b;
+    --color-gold: #eaab44;
+}
+
+body {
+    font-family: 'NanumSquare', 'Noto Sans KR', 'Malgun Gothic', 'Nanum Gothic', 'Noto Sans', 'sans-serif';
+}
+
+/* 글자체 */
+.font-serif {
+    font-family: var(--secondary-font-family) !important;
+}
+.font-sans {
+    font-family: var(--primary-font-family) !important;
+}
+.font-nanum {
+    font-family: var(--third-font-family) !important;
 }
 
 /* 글자크기 */
@@ -165,21 +193,33 @@
     color: rgb(255, 243, 167);
 }
 
+.text-gray-light {
+    color: #e8e8e8 !important;
+}
 .text-gray {
     color: #ddd !important;
 }
 
-.text-gray-bolder {
+.text-gray-dark {
     color: #adadad !important;
     font-weight: bold;
 }
 
 .text-main {
-    color: #00b5b2;
+    color: var(--color-main)!important;
 }
+
+.text-main-dark {
+    color: var(--color-main-dark);
+}
+
 
 .text-submain {
     color: #FC5230;
+}
+
+.text-submain-light {
+    color: #ff7c37;
 }
 
 .text-purple {
@@ -193,10 +233,11 @@
 .text-green {
     color: var(--color-green);
 }
-
-.text-shadow {
-    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+.text-gold {
+    color: var(--color-gold);
 }
+
+
 
 /* 글자 투명도 */
 .text-white-70 {
@@ -206,11 +247,15 @@
 
 /* 글자 그림자 */
 /* - 배경 어두울 때 */
+
 .text-shadow {
     text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
 }
 
 /* - 하얀바탕일 때 */
+.text-shadow-none {
+    text-shadow: none !important;
+}
 .text-shadow-sm {
     text-shadow: .5px .5px 3px rgba(0, 0, 0, 0.3);
 }
@@ -276,11 +321,11 @@
 }
 
 .bg-main {
-    background: #00b5b2;
+    background: var(--color-main);
 }
 
-.bg-main-bolder {
-    background: #5ab0af;
+.bg-main-dark {
+    background: var(--color-main-dark);
 }
 
 .bg-submain {
@@ -425,3 +470,42 @@
     opacity: 0.10 !important;
 }
 
+
+
+/* border */
+.border-main {
+    --bs-border-opacity: 1;
+    border-color: var(--color-main-dark) !important;
+}
+
+
+/*  underline */
+.underline {
+    position: relative;
+}
+
+
+.underline:after{
+    position: absolute;
+    content: '';
+
+    left: 0;
+    bottom: 0;
+    width: 100%;
+
+    /*height: 4em;*/
+    border-bottom: 4px solid #ddd;
+    opacity: .3;
+}
+
+.underline-white:after{
+    bottom: -3px;
+    border-width: 7px;
+    border-color: #bfffba;
+}
+
+
+.underline-main:after{
+    bottom: 3px;
+    border-color: cadetblue;
+}
