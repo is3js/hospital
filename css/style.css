@@ -18,6 +18,7 @@
     --color-naver: #0eca8b;
     --color-yellow-gold: #cc820b;
     --color-gold: #CEA869;
+    --color-gray-darker: #212529BF;
 }
 
 body {
@@ -244,6 +245,10 @@ body {
 
 .text-yellow-gold {
     color: var(--color-yellow-gold);
+}
+
+.text-clinic-desc {
+    color: var(--color-gray-darker)!important;
 }
 
 
@@ -494,7 +499,7 @@ body {
 }
 
 
-.underline:after{
+.underline:before{
     position: absolute;
     content: '';
 
@@ -507,20 +512,20 @@ body {
     opacity: .2;
 }
 
-.underline-white:after{
+.underline-white:before{
     bottom: -3px;
     border-width: 7px;
     border-color: #bfffba;
 }
 
 
-.underline-dark:after{
+.underline-dark:before{
     bottom: 0;
     border-color: cadetblue;
 }
 
-.underline-clinic:after{
+.underline-clinic:before{
     bottom: -2px;
-    border-color: var(--color-gold);
+    border-color: cadetblue;
     opacity: .3;
 }
