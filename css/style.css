@@ -186,6 +186,48 @@ body {
     }
 }
 
+.fs-clinic-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+.fs-clinic-text {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+@media screen and (min-width: 992px) and (max-width: 1399px) {
+    .fs-clinic-title {
+        font-size: 18px;
+        letter-spacing: -.005rem;
+    }
+    .fs-clinic-text {
+        font-size: 14px;
+        letter-spacing: -.005rem;
+    }
+}
+
+@media screen and (min-width: 576px) and (max-width: 991px) {
+    .fs-clinic-title {
+        font-size: 16px;
+        letter-spacing: -.01rem;
+    }
+    .fs-clinic-text {
+        font-size: 13px;
+        letter-spacing: -.01rem;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .fs-clinic-title {
+        font-size: 14px;
+        letter-spacing: -.01rem;
+    }
+    .fs-clinic-text {
+        font-size: 11px;
+        letter-spacing: -.01rem;
+    }
+}
+
 /* 글자색 */
 .text-yellow {
     color: rgb(252, 255, 0);
