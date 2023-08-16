@@ -2941,7 +2941,7 @@ span.category.category-naver {
 /* 클리닉별 치료과정 (tab) */
 /* - tab부모 상하패딩 */
 .section6 .clinic-box {
-    padding: 10px 2%;
+    padding: 10px 0;
 }
 
 /* - tab 기본 border 2개 제거 */
