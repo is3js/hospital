@@ -3035,6 +3035,8 @@ span.category.category-naver {
 .section6 .clinic-box .tab-content > .tab-pane:nth-child(7n+1) > div > div:nth-child(1) {
     background-color: var(--color-main-light) !important;
     /*background-color: var(--color-clinic-1)!important;*/
+    background: #364444 url(../images/clinic/bg_title.png)  100% 100%!important;
+    background-size: cover;
 }
 
 .section6 .clinic-box .tab-content > .tab-pane:nth-child(7n+1) > div > div:nth-child(2) {
@@ -3042,7 +3044,7 @@ span.category.category-naver {
     /*background-color: var(--color-clinic-1-bolder)!important;*/
     /*background-color: var(--color-main-dark) !important;*/
     background: #364444 url(../images/clinic/bg_clinic.png)  100% 100%!important;
-    /*background-size: cover;*/
+    background-size: cover;
 }
 
 
@@ -3052,4 +3054,32 @@ span.category.category-naver {
 
 .section6 .clinic-box .tab-content > .tab-pane:nth-child(7n+2) > div > div:nth-child(2) {
     background-color: var(--color-clinic-2-bolder) !important;
+}
+
+.clinic-arrow {
+    position: relative;
+}
+
+.clinic-arrow:after {
+    position: absolute;
+    content: '';
+
+    left:50%;
+    bottom:0;
+    width: 27px;
+    height: 19px;
+
+    background: url("../images/clinic/arrow-down2.png") no-repeat 50% 50%;
+    background-size: contain;
+    transform: translate(-50%, 100%) ;
+
+    z-index: 2;
+}
+
+@media screen and (min-width: 992px){
+    .clinic-arrow:after {
+        left:38%;
+        bottom:0;
+        transform: translate(-38%, 100%) scale(1.8);
+    }
 }

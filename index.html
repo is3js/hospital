@@ -2106,6 +2106,7 @@
     </div>
 </div>
 
+
 <!-- 클리닉 -->
 <div class="section section6 mt-5">
     <div class="section-title">
@@ -2253,7 +2254,7 @@
                 <!-- 1. 통증 -->
                 <div class="d-flex flex-column  ">
                     <!-- 상단 제목 -->
-                    <div class="d-flex w-100 text-white rounded-top-3 "
+                    <div class="d-flex w-100 text-white rounded-top-3 shadow"
                          style="
                          background: url('images/main_section/main-bg.jpg') no-repeat 50%;
                          background-size: cover;
@@ -2275,12 +2276,12 @@
                         </div>
                     </div>
                     <!-- 치료과정 content -->
-                    <div class="d-flex w-100 rounded-bottom-3"
+                    <div class="d-flex w-100 rounded-bottom-3 shadow"
                     >
                         <!-- column방향으로 나열될 row flex-item 3개 -->
-                        <!-- row 1. 치료 전/후 -->
+                        <!-- col 1. 치료 전/후 -->
                         <div class="col-5 col-lg-4 d-flex flex-column align-items-center justify-content-center px-3">
-                            <div class="flex-fill d-flex justify-content-center align-items-center border-bottom border-main" >
+                            <div class="flex-fill d-flex justify-content-center align-items-center border-bottom border-main">
                                 <figure class="figure">
                                     <img src="images/clinic/disc/before.png" alt=""
                                          class="img-fluid w-100 shadow"
@@ -2290,7 +2291,7 @@
                                     </figcaption>
                                 </figure>
                             </div>
-                            <div class="flex-fill d-flex justify-content-center align-items-center " >
+                            <div class="flex-fill d-flex justify-content-center align-items-center ">
                                 <figure class="figure">
                                     <img src="images/clinic/disc/after.png" alt=""
                                          class="img-fluid w-100 shadow"
@@ -2301,12 +2302,12 @@
                                 </figure>
                             </div>
                         </div>
-                        <!-- row 2. 치료방법 -->
-                        <div class="col-7 col-lg-8 d-flex flex-column gap-2 gap-lg-5 text-center my-3 my-lg-5 border-start border-main font-serif">
+                        <!-- col 2. 치료방법 -->
+                        <div class="col-7 col-lg-8 d-flex flex-column gap-4 gap-lg-5 text-center my-3 my-lg-5 border-start border-main font-serif">
                             <!-- 치료법 1-->
                             <div class="flex-grow-1 row m-0 p-0">
                                 <!-- gap: flex item간의(col-g) 간격인데, lg전까지 col-12로 row씩 갈렷을 때 적용 간격-->
-                                <div class="row m-0 p-0 gap-1 gap-lg-0">
+                                <div class="row m-0 p-0 gap-1 gap-lg-0 clinic-arrow">
                                     <div class="offset-2 col-8  offset-lg-0 col-lg-3 d-flex justify-content-center align-items-center">
                                         <img src="images/clinic/disc/001.png" class="img-fluid w-100 rounded shadow"
                                              alt="Sample Image"
@@ -2324,9 +2325,9 @@
                                                 </a>
                                             </div>
                                             <div class="col-12 col-lg-8 d-flex justify-content-center align-items-center">
-                                                <span class="fs-clinic-text text-clinic-desc px-2 px-lg-5 py-1 py-lg-0">
+                                                <p class="m-0 fs-clinic-text text-clinic-desc px-2 px-lg-5 py-1 py-lg-0">
                                                     추나를 통한 척추간 사이 공간을 확보하여 염증 반응을 최소화
-                                                </span>
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -2335,7 +2336,7 @@
                             <!-- 치료법 2-->
                             <div class="flex-grow-1 row m-0 p-0">
                                 <!-- gap: flex item간의(col-g) 간격인데, lg전까지 col-12로 row씩 갈렷을 때 적용 간격-->
-                                <div class="row m-0 p-0 gap-1 gap-lg-0">
+                                <div class="row m-0 p-0 gap-1 gap-lg-0 clinic-arrow">
                                     <div class="offset-2 col-8  offset-lg-0 col-lg-3 d-flex justify-content-center align-items-center">
                                         <img src="images/clinic/disc/002.png" class="img-fluid w-100 rounded shadow"
                                              alt="Sample Image"
@@ -2353,7 +2354,7 @@
                                                 </a>
                                             </div>
                                             <div class="col-12 col-lg-8 d-flex justify-content-center align-items-center">
-                                                <p class="fs-clinic-text text-clinic-desc px-2 px-lg-5 py-1 py-lg-0">
+                                                <p class="m-0 fs-clinic-text text-clinic-desc px-2 px-lg-5 py-1 py-lg-0">
                                                     약침을 통해 염증을 완화하고, 도침을 통해 죽은 조직을 제거 및 새조직을 발생
                                                 </p>
                                             </div>
@@ -2364,7 +2365,7 @@
                             <!-- 치료법 3-->
                             <div class="flex-grow-1 row m-0 p-0">
                                 <!-- gap: flex item간의(col-g) 간격인데, lg전까지 col-12로 row씩 갈렷을 때 적용 간격-->
-                                <div class="row m-0 p-0 gap-1 gap-lg-0">
+                                <div class="row m-0 p-0 gap-1 gap-lg-0 clinic-arrow">
                                     <div class="offset-2 col-8  offset-lg-0 col-lg-3 d-flex justify-content-center align-items-center">
                                         <img src="images/clinic/disc/003.png" class="img-fluid w-100 rounded shadow"
                                              alt="Sample Image"
@@ -2392,33 +2393,6 @@
                             </div>
 
                         </div>
-                        <!-- row 3. 치료 설명 -->
-                        <!--                        <div class="flex-fill d-flex d-none d-lg-block flex-column text-center fs-clinic-desc">-->
-                        <!--                            &lt;!&ndash;<div class="p-2 rounded-circle text-white text-shadow" style="width: 80px; background: #6D5F43;">&ndash;&gt;-->
-                        <!--                            <div class="text-center mt-2 py-2">-->
-                        <!--                                <div class="p-2 text-dark fw-bold">-->
-                        <!--                                    추나를 통한 공간 확보-->
-                        <!--                                </div>-->
-                        <!--                            </div>-->
-
-                        <!--                            <img class="img-fluid mx-auto py-1" style="max-width:35px;"-->
-                        <!--                                 src="images/clinic/arrow-down.png" alt="">-->
-
-                        <!--                            <div class="text-center mt-2 py-2">-->
-                        <!--                                <div class="p-2 text-dark fw-bold">-->
-                        <!--                                    약침을 통한 염증 감소 및 통증 안화-->
-                        <!--                                </div>-->
-                        <!--                            </div>-->
-
-                        <!--                            <img class="img-fluid mx-auto py-1" style="max-width:35px;"-->
-                        <!--                                 src="images/clinic/arrow-down.png" alt="">-->
-
-                        <!--                            <div class="text-center mt-2 py-2">-->
-                        <!--                                <div class="p-2 text-dark fw-bold">-->
-                        <!--                                    엄선된 약재를 통해 면역력/순환 강화-->
-                        <!--                                </div>-->
-                        <!--                            </div>-->
-                        <!--                        </div>-->
                     </div>
                 </div>
             </div>

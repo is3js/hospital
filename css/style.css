@@ -257,6 +257,10 @@ body {
     color: var(--color-main)!important;
 }
 
+.text-main-light {
+    color: var(--color-main-light)!important;
+}
+
 .text-main-dark {
     color: var(--color-main-dark);
 }
@@ -568,6 +572,6 @@ body {
 
 .underline-clinic:before{
     bottom: -2px;
-    border-color: cadetblue;
+    border-color: #a0c79c;
     opacity: .3;
 }
