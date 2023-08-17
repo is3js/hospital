@@ -421,7 +421,7 @@ controller.addScene(scene9);
 }
 ```
 
-4. style.css에 main bg에 대한 underline 정의
+4. style.css에 underline 정의
 
 ```css
 /*  underline */
@@ -446,5 +446,47 @@ controller.addScene(scene9);
 
 .underline-white:after {
    border-color: #bfffba;
+}
+```
+
+5. index.css에 치료법 중간마다의 화살표 정의
+```html
+<!-- col 2. 치료방법 -->
+<div class="clinic-with-arrow col-7 col-lg-8 d-flex flex-column gap-4 gap-lg-5 text-center my-3 my-lg-5 border-start border-main font-serif">
+    <!-- 치료법 1-->
+    <div class="flex-grow-1 row m-0 p-0">
+        <div class="clinic-arrow row m-0 p-0 gap-1 gap-lg-0">
+```
+```css
+/* 각 치료법row마다 아래방향 화살표(마지막은 제외) */
+/* - 공통부모 중 젤 빠른 것에 .clinic-with-arrow를 삽입 */
+/* - 화살표를 받을 각 row들에 .clinic-arrow 삽입 */
+.clinic-with-arrow div .clinic-arrow {
+    position: relative;
+}
+
+.clinic-with-arrow div:not(:last-of-type) .clinic-arrow::after {
+    position: absolute;
+    content: '';
+
+    left:50%;
+    bottom:0;
+    width: 27px;
+    height: 19px;
+
+    background: url("../images/clinic/arrow-down2.png") no-repeat 50% 50%;
+    background-size: contain;
+    transform: translate(-50%, 100%) ;
+
+    z-index: 2;
+}
+
+
+@media screen and (min-width: 992px){
+    .clinic-with-arrow div:not(:last-of-type) .clinic-arrow::after {
+        left:38%; /* lg시 치료명의 중점과 일치하는 곳에 화살표 두기 */
+        bottom:0;
+        transform: translate(-38%, 100%) scale(1.8);
+    }
 }
 ```

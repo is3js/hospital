@@ -3056,11 +3056,15 @@ span.category.category-naver {
     background-color: var(--color-clinic-2-bolder) !important;
 }
 
-.clinic-arrow {
+
+/* 각 치료법row마다 아래방향 화살표(마지막은 제외) */
+/* - 공통부모 중 젤 빠른 것에 .clinic-with-arrow를 삽입 */
+/* - 화살표를 받을 각 row들에 .clinic-arrow 삽입 */
+.clinic-with-arrow div .clinic-arrow {
     position: relative;
 }
 
-.clinic-arrow:after {
+.clinic-with-arrow div:not(:last-of-type) .clinic-arrow::after {
     position: absolute;
     content: '';
 
@@ -3076,9 +3080,10 @@ span.category.category-naver {
     z-index: 2;
 }
 
+
 @media screen and (min-width: 992px){
-    .clinic-arrow:after {
-        left:38%;
+    .clinic-with-arrow div:not(:last-of-type) .clinic-arrow::after {
+        left:38%; /* lg시 치료명의 중점과 일치하는 곳에 화살표 두기 */
         bottom:0;
         transform: translate(-38%, 100%) scale(1.8);
     }
