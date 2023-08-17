@@ -187,7 +187,7 @@ body {
 }
 
 .fs-clinic-therapy {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
 }
 .fs-clinic-therapy-desc {
@@ -197,11 +197,11 @@ body {
 
 @media screen and (min-width: 992px) and (max-width: 1399px) {
     .fs-clinic-therapy {
-        font-size: 17px;
-        letter-spacing: -.005rem;
+        font-size: 15px;
+        letter-spacing: -.1rem;
     }
     .fs-clinic-therapy-desc {
-        font-size: 14px;
+        font-size: 13px;
         letter-spacing: -.005rem;
     }
 }
@@ -209,7 +209,7 @@ body {
 @media screen and (min-width: 576px) and (max-width: 991px) {
     .fs-clinic-therapy {
         font-size: 15px;
-        letter-spacing: -.01rem;
+        letter-spacing: -.03rem;
     }
     .fs-clinic-therapy-desc {
         font-size: 13px;
@@ -220,7 +220,7 @@ body {
 @media screen and (max-width: 575px) {
     .fs-clinic-therapy {
         font-size: 14px;
-        letter-spacing: -.02rem;
+        letter-spacing: -.03rem;
     }
 }
 
