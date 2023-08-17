@@ -208,8 +208,8 @@ body {
 
 @media screen and (min-width: 576px) and (max-width: 991px) {
     .fs-clinic-therapy {
-        font-size: 15px;
-        letter-spacing: -.03rem;
+        font-size: 14px;
+        letter-spacing: -.04rem;
     }
     .fs-clinic-therapy-desc {
         font-size: 13px;

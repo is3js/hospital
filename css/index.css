@@ -3034,7 +3034,7 @@ span.category.category-naver {
 /* - tab conntent의 tab-pane 순서대로 div 색 배정 */
 /*.section6 .clinic-box .tab-content > .tab-pane:nth-child(7n+1) > div > div:nth-child(1) {*/
 .section6 .clinic-box .tab-content > .tab-pane > div > div:nth-child(1) {
-    background-color: var(--color-main-light) !important;
+    /*background-color: var(--color-main-light) !important;*/
     /*background-color: var(--color-clinic-1)!important;*/
     background: #364444 url(../images/clinic/bg_title.png)  100% 100%!important;
     background-size: cover;
