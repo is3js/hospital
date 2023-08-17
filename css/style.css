@@ -186,45 +186,41 @@ body {
     }
 }
 
-.fs-clinic-title {
+.fs-clinic-therapy {
     font-size: 20px;
     font-weight: bold;
 }
-.fs-clinic-text {
+.fs-clinic-therapy-desc {
     font-size: 16px;
     font-weight: bold;
 }
 
 @media screen and (min-width: 992px) and (max-width: 1399px) {
-    .fs-clinic-title {
+    .fs-clinic-therapy {
         font-size: 17px;
         letter-spacing: -.005rem;
     }
-    .fs-clinic-text {
+    .fs-clinic-therapy-desc {
         font-size: 14px;
         letter-spacing: -.005rem;
     }
 }
 
 @media screen and (min-width: 576px) and (max-width: 991px) {
-    .fs-clinic-title {
-        font-size: 16px;
+    .fs-clinic-therapy {
+        font-size: 15px;
         letter-spacing: -.01rem;
     }
-    .fs-clinic-text {
+    .fs-clinic-therapy-desc {
         font-size: 13px;
         letter-spacing: -.01rem;
     }
 }
 
 @media screen and (max-width: 575px) {
-    .fs-clinic-title {
-        font-size: 16px;
-        letter-spacing: -.03rem;
-    }
-    .fs-clinic-text {
-        font-size: 10px;
-        letter-spacing: -.03rem;
+    .fs-clinic-therapy {
+        font-size: 14px;
+        letter-spacing: -.02rem;
     }
 }
 
@@ -571,7 +567,7 @@ body {
 }
 
 .underline-clinic:before{
-    bottom: 2px;
+    bottom: 3px;
     border-color: #a0c79c;
-    opacity: .3;
+    opacity: .2;
 }

@@ -3069,8 +3069,8 @@ span.category.category-naver {
     content: '';
 
     left:50%;
-    bottom:-10px;
-    width: 35px;
+    bottom:0;
+    width: 30px;
     height: 20px;
 
     background: url("../images/clinic/arrow-down2.png") no-repeat 50% 50%;
