@@ -187,58 +187,58 @@ controller.addScene(scene9);
     - 글자체는 `.fs-clinic` 구현해서, 11 -> 13-> 15-> 18px로 세세하게 조정해주기
 
 ```css
-.fs-clinic {
-    font-size: 18px;
+.fs-clinic-tab {
+   font-size: 18px;
 }
 
 @media screen and (min-width: 992px) and (max-width: 1399px) {
-    .fs-clinic {
-        font-size: 15px;
-        letter-spacing: -.005rem;
-    }
+   .fs-clinic-tab {
+      font-size: 15px;
+      letter-spacing: -.005rem;
+   }
 }
 
 @media screen and (min-width: 576px) and (max-width: 991px) {
-    .fs-clinic {
-        font-size: 13px;
-        letter-spacing: -.01rem;
-    }
+   .fs-clinic-tab {
+      font-size: 13px;
+      letter-spacing: -.01rem;
+   }
 }
 
 @media screen and (max-width: 575px) {
-    .fs-clinic {
-        font-size: 11px;
-        letter-spacing: -.01rem;
-    }
+   .fs-clinic-tab {
+      font-size: 11px;
+      letter-spacing: -.01rem;
+   }
 }
 ```
 
 ```html
 
 <div class="clinic-box">
-    <ul class="nav nav-tabs mb-3 row g-2 g-lg-3" id="clinic-tab" role="tablist">
-        <li class="nav-item col-3 col-lg-2" role="presentation">
-            <a class="nav-link active"
-               id="clinic-tab-1"
-               data-bs-toggle="tab"
-               href="#contents-clinic-1"
-               role="tab"
-            >
-                <div class="text-start ps-2 pt-1 ps-sm-3 text-lg-center ps-lg-0 pt-lg-3  w-100 h-100 rounded text-white shadow"
-                     style="background-image: url('images/clinic/001_AB90CD.png');
+   <ul class="nav nav-tabs mb-3 row g-2 g-lg-3" id="clinic-tab" role="tablist">
+      <li class="nav-item col-3 col-lg-2" role="presentation">
+         <a class="nav-link active"
+            id="clinic-tab-1"
+            data-bs-toggle="tab"
+            href="#contents-clinic-1"
+            role="tab"
+         >
+            <div class="text-start ps-2 pt-1 ps-sm-3 text-lg-center ps-lg-0 pt-lg-3  w-100 h-100 rounded text-white shadow"
+                 style="background-image: url('images/clinic/001_AB90CD.png');
                             background-repeat: no-repeat;
                             background-position: bottom right;
                             background-size: contain;
                             background-color: #AB90CD;
                             "
-                >
-                    <small class="fs-clinic text-shadow">
-                        통증
-                        <span class="d-none d-md-inline-block">&nbsp;클리닉</span>
-                    </small>
-                </div>
-            </a>
-        </li>
+            >
+               <small class="fs-clinic-tab text-shadow">
+                  통증
+                  <span class="d-none d-md-inline-block">&nbsp;클리닉</span>
+               </small>
+            </div>
+         </a>
+      </li>
 ```
 
 5. tab active == `a.active`일 시, 자식 div의 배경과 글자색 변환 + 애니메이션 .5s 를 !important로
@@ -270,10 +270,10 @@ controller.addScene(scene9);
                             background-color: #AB90CD;
                             "
 >
-    <small class="fs-clinic text-shadow">
-        통증
-        <span class="d-none d-md-inline-block">&nbsp;클리닉</span>
-    </small>
+   <small class="fs-clinic-tab text-shadow">
+      통증
+      <span class="d-none d-md-inline-block">&nbsp;클리닉</span>
+   </small>
 </div>
 ```
 
@@ -295,10 +295,10 @@ controller.addScene(scene9);
             background-color: #AB90CD;
             "
 >
-    <small class="fs-clinic text-shadow">
-        통증
-        <span class="d-none d-md-inline-block">&nbsp;클리닉</span>
-    </small>
+   <small class="fs-clinic-tab text-shadow">
+      통증
+      <span class="d-none d-md-inline-block">&nbsp;클리닉</span>
+   </small>
 </div>
 ```
 
@@ -339,15 +339,16 @@ controller.addScene(scene9);
    background-color: var(--color-clinic-2);
 }
 ```
+
 ```html
 
 <div class="text-start ps-2 pt-1 ps-sm-3 text-lg-center ps-lg-0 pt-lg-3  w-100 h-100 rounded text-white shadow"
      style="background-image: url('images/clinic/001_AB90CD.png');"
 >
-    <small class="fs-clinic text-shadow">
-        통증
-        <span class="d-none d-md-inline-block">&nbsp;클리닉</span>
-    </small>
+   <small class="fs-clinic-tab text-shadow">
+      통증
+      <span class="d-none d-md-inline-block">&nbsp;클리닉</span>
+   </small>
 </div>
 ```
 ![img.png](../ui/310.png)

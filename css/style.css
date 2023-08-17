@@ -8,7 +8,7 @@
 
     --color-main: #00b5b2;
     --color-main-light: #5bd2cc;
-    --color-main-dark: #249892;
+    --color-main-dark: #2fa49e;
     --color-submain: #FC5230;
 
     --color-pink: #F07F7F;
@@ -161,30 +161,55 @@ body {
 
 
 
-.fs-clinic {
+.fs-clinic-tab {
     font-size: 18px;
 }
 
 @media screen and (min-width: 992px) and (max-width: 1399px) {
-    .fs-clinic {
+    .fs-clinic-tab {
         font-size: 15px;
         letter-spacing: -.005rem;
     }
 }
 
 @media screen and (min-width: 576px) and (max-width: 991px) {
-    .fs-clinic {
+    .fs-clinic-tab {
         font-size: 13px;
         letter-spacing: -.01rem;
     }
 }
 
 @media screen and (max-width: 575px) {
-    .fs-clinic {
+    .fs-clinic-tab {
         font-size: 11px;
         letter-spacing: -.01rem;
     }
 }
+
+.fs-clinic-title {
+    font-size: 18px;
+}
+
+@media screen and (min-width: 992px) and (max-width: 1399px) {
+    .fs-clinic-title {
+        font-size: 16px;
+        letter-spacing: -.005rem;
+    }
+}
+
+@media screen and (min-width: 576px) and (max-width: 991px) {
+    .fs-clinic-title {
+        font-size: 15px;
+        letter-spacing: -.01rem;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .fs-clinic-title {
+        font-size: 14px;
+    }
+}
+
 
 .fs-clinic-therapy {
     font-size: 18px;
