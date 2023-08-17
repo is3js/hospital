@@ -191,13 +191,13 @@ body {
     font-weight: bold;
 }
 .fs-clinic-text {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
 }
 
 @media screen and (min-width: 992px) and (max-width: 1399px) {
     .fs-clinic-title {
-        font-size: 18px;
+        font-size: 17px;
         letter-spacing: -.005rem;
     }
     .fs-clinic-text {
@@ -219,12 +219,12 @@ body {
 
 @media screen and (max-width: 575px) {
     .fs-clinic-title {
-        font-size: 14px;
-        letter-spacing: -.01rem;
+        font-size: 16px;
+        letter-spacing: -.03rem;
     }
     .fs-clinic-text {
-        font-size: 11px;
-        letter-spacing: -.01rem;
+        font-size: 10px;
+        letter-spacing: -.03rem;
     }
 }
 
@@ -571,7 +571,7 @@ body {
 }
 
 .underline-clinic:before{
-    bottom: -2px;
+    bottom: 2px;
     border-color: #a0c79c;
     opacity: .3;
 }
