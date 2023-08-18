@@ -404,92 +404,127 @@ controller.addScene(scene9);
 ![img.png](../ui/311.png)
 
 
-2. 이제 box에 좌우패딩을 2%로 추가한다.
+#### tab content 정의
+1. 제목과 content를 나누기 위해 `.d-flex .flex-column` 으로 세로배치하고, 2 row들은 `.w-100`을 맥여준다.
+```html
+
+<div class="d-flex flex-column">
+    <!-- 상단 제목 -->
+    <div class="w-100"></div>
+    <!-- 치료과정 content -->
+    <div class="w-100"></div>
+```
+
+2. 각각의 배경을 img로 css 1번째, 2번째로 매겨준다.
 ```css
-.section6 .clinic-box {
-    padding: 10px 2%;
+.section6 .clinic-box .tab-content > .tab-pane > div > div:nth-child(1) {
+    background: #364444 url(../images/clinic/bg_title.png)  100% 100%!important;
+    background-size: cover;
+}
+.section6 .clinic-box .tab-content > .tab-pane > div > div:nth-child(2) {
+    background: #364444 url(../images/clinic/bg_clinic.png)  100% 100%!important;
+    background-size: cover;
 }
 ```
 
-3. 들어갈 텍스트 미리 정의
-```css
-:root {
-   --color-gold: #fabc57;
-}
+3. 상단 제목은 `.d-flex .align-items-center`로 2개의 칼럼을 수직가운데 정렬되게 하고, px, py로 글자간의 여백을 준다.
+   - 1칼럼은 `.ps-2`로 여백을 좀 더주고, 2칼럼은 `.ms-auto`로 오른쪽에 배치한다.
+   - 제목옆에 부제목은 small태그로 md이후부터 보이게 한다.
+   - 오른쪽배치된 더 알아보기 버튼은 `.btn .btn-sm`으로 버튼형식으로 만든 뒤, **style로 .2 흰색 투명도 배경을 준다.**
+```html
+ <!-- 상단 제목 -->
+<div class="w-100 d-flex align-items-center py-2 px-3 text-white">
+    <div class="ps-2">
+        <h5 class="m-0 fs-clinic-title font-sans fw-light text-white text-shadow">
+            통증 클리닉
+            <small class="d-none d-lg-inline-block ms-3 font-serif text-white text-shadow-none underline underline-white">
+                공간을 확보하고 염증을 잡아 일상 디스크 통증 개선
+            </small>
+        </h5>
+    </div>
+    <div class="ms-auto">
+        <a class="fs-clinic-title btn btn-sm border-white text-white rounded-0" href="#"
+           style="background:rgba(255, 255, 225, 0.2);">
+            더 알아보기
+        </a>
+    </div>
+</div>
+```
 
-.text-gold {
-    color: var(--color-gold);
+4. 치료과정 content 역시 d-flex를 줘서 칼럼을 치료전후 사진 <-> 치료과정으로 나눈다.
+   - 이 때, 나눠지는 칼럼2개는 모바일에선 반반 -> `.col-6`이다가 lg에서는 1:2로서 `.col-4`와 `.col-8`로 준다.
+   - **각각의 칼럼 영역에서는 세로로 + 가운데정렬시키기 위해 `.d-flex.flex-column.align-items-center`를 준다.**
+   - `치료 전후 사진`은 img태그가 다 안붙게 px-를 주고 / `치료과정`은 각 요소들외에 위아래 간격을 my로 준다.
+   - 치료과정은, 여러개의 flex-item들이 세로로 나열되는데, `gap-`을 통해서, 간격을 직접 만든다.
+   - 또한 margin을 제외한 부분에서 왼쪽에 border를 `.border-start`로 긋되, `.border-main`으로 색을 만들어서 긋는다.
+   - **또한, 치료과정의 각 row별로 화살표가 생길 것인데, 자식들의 공통 부모로서 `.clinic-arrow-parent`를 박아놓고, 마지막것을 제외하고 판단할 수잇게 한다.**
+   - 치료과정에 나오는 텍스트들이 모두 가운데 정렬을 기본으로 하도록 `.text-center`도 넣어준다.
+```html
+   <!-- 치료과정 content -->
+<div class="w-100 d-flex">
+    <!-- col 1. 치료 전/후 -->
+    <div class="col-6 col-lg-4 d-flex flex-column align-items-center justify-content-center px-4">
+    </div>
+    <!-- col 2. 치료방법 -->
+   <div class="col-6 col-lg-8 d-flex flex-column align-items-center my-3 my-lg-5 gap-4 gap-lg-5 border-start border-main font-serif clinic-arrow-parent text-center">
+
+    </div>
+</div>
+```
+```css
+/* border */
+.border-main {
+    border-color: var(--color-main-dark) !important;
 }
 ```
 
-4. style.css에 underline 정의
-
-```css
-/*  underline */
-.underline {
-   position: relative;
-   font-style: italic;
-}
-
-
-.underline:after {
-   position: absolute;
-   content: '';
-
-   left: 0;
-   bottom: -3px;
-   width: 100%;
-
-   /*height: 4em;*/
-   border-bottom: 7px solid #ddd;
-   opacity: .4;
-}
-
-.underline-white:after {
-   border-color: #bfffba;
-}
+#### 치료 전후사진 칼럼
+1. 이제 치료전후사진의 세부내용을 볼 때, before/after가 세로로 가득차도록 만들어줘야한다.
+   - **그러기 위해 flex-item마다 `.flex-fill`을 다 넣어줘서, 각각이 최대한 벌리게 만든다.**
+   - **또한, 각각을 가운데/수직가운데 정렬해주기 위해  `.d-flex`를 넣어주고, `위쪽 flex만 .border-bottom`을 넣어준다.**
+```html
+<!-- col 1. 치료 전/후 -->
+<div class="col-6 col-lg-4 d-flex flex-column align-items-center justify-content-center px-4">
+    <div class="flex-fill d-flex justify-content-center align-items-center border-bottom border-main">
+    </div>
+    <div class="flex-fill d-flex justify-content-center align-items-center ">
+    </div>
+</div>
 ```
 
-5. index.css에 치료법 중간마다의 화살표 정의
+6. 치료 전후사진은 figure로 figcaption과 같이 함께 다는데,
+   - **`.img-fluid`(max-width:100%)를 `.w-100`과 함께 쓴 뒤, min/max-widht를 style로 직접 지정해줘서, 모바일에선 너무 작아지지 않게 + lg에선 너무 크지지 않게 한다.**
 
 ```html
-<!-- col 2. 치료방법 -->
-<div class="clinic-arrow-parent col-7 col-lg-8 d-flex flex-column gap-4 gap-lg-5 text-center my-3 my-lg-5 border-start border-main font-serif">
-   <!-- 치료법 1-->
-   <div class="flex-grow-1 row m-0 p-0">
-      <div class="clinic-arrow row m-0 p-0 gap-1 gap-lg-0">
+<!-- col 1. 치료 전/후 -->
+<div class="col-6 col-lg-4 d-flex flex-column align-items-center justify-content-center px-4">
+    <div class="flex-fill d-flex justify-content-center align-items-center border-bottom border-main">
+        <figure class="figure">
+            <img src="images/clinic/disc/before.png" alt=""
+                 class="img-fluid w-100 shadow"
+                 style="min-width:40px; max-width: 180px">
+            <figcaption class="figure-caption text-center mt-3">
+                <span class="font-sans fs-clinic-therapy">치료 전</span>
+            </figcaption>
+        </figure>
+    </div>
+    <div class="flex-fill d-flex justify-content-center align-items-center ">
+        <figure class="figure">
+            <img src="images/clinic/disc/after.png" alt=""
+                 class="img-fluid w-100 shadow"
+                 style="min-width:40px; max-width: 180px">
+            <figcaption class="figure-caption text-center mt-3">
+                <span class="font-sans fs-clinic-therapy">치료 후</span>
+            </figcaption>
+        </figure>
+    </div>
+</div>
 ```
 
-```css
-/* 각 치료법row마다 아래방향 화살표(마지막은 제외) */
-/* - 공통부모 중 젤 빠른 것에 .clinic-with-arrow를 삽입 */
-/* - 화살표를 받을 각 row들에 .clinic-arrow 삽입 */
-.clinic-arrow-parent div .clinic-arrow {
-   position: relative;
-}
-
-.clinic-arrow-parent div:not(:last-of-type) .clinic-arrow::after {
-   position: absolute;
-   content: '';
-
-   left: 50%;
-   bottom: 0;
-   width: 27px;
-   height: 19px;
-
-   background: url("../images/clinic/arrow-down2.png") no-repeat 50% 50%;
-   background-size: contain;
-   transform: translate(-50%, 100%);
-
-   z-index: 2;
-}
-
-
-@media screen and (min-width: 992px) {
-   .clinic-arrow-parent div:not(:last-of-type) .clinic-arrow::after {
-      left: 38%; /* lg시 치료명의 중점과 일치하는 곳에 화살표 두기 */
-      bottom: 0;
-      transform: translate(-38%, 100%) scale(1.8);
-   }
-}
-```
+#### 치료과정 칼럼
+1. .flex-column에 의해 생긴 row들은 모두 동일공간을 차지 하기 위해 각각 `.flex-grow-1`을 명시해준다.
+   - 각 치료법마다 col로 처리하기 위해 `.row`를 붙혀주고 `사진 vs 글세트`를 gap으로 row에서 조정되게 한다. 각 치료법의 부모로서 `.clinic-arrow`를 달아서 화살표가 달리게 한다.
+   - 이 때, 그림/ 치료법 + 치료설명으로 구성되는데, 각 `12` + `12`로 모바일에선 각각 row로 차지하게 하고, `3` + `9`로 lg에서 비율을 가져 가로로 나열되게 한다
+   - 이 때, 그림div는 px-2, px-lg-4로 그림이 칼럼이 꽉 안차게 한다. 가운데/수직가운데 정렬을 위해 `.d-flex`를 설정해준다.
+   - 치료설명은 md부터 나오게 한다.
+   - 
