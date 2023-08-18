@@ -527,4 +527,93 @@ controller.addScene(scene9);
    - 이 때, 그림/ 치료법 + 치료설명으로 구성되는데, 각 `12` + `12`로 모바일에선 각각 row로 차지하게 하고, `3` + `9`로 lg에서 비율을 가져 가로로 나열되게 한다
    - 이 때, 그림div는 px-2, px-lg-4로 그림이 칼럼이 꽉 안차게 한다. 가운데/수직가운데 정렬을 위해 `.d-flex`를 설정해준다.
    - 치료설명은 md부터 나오게 한다.
-   - 
+   - **치료법에는 `.underline .underline-clinic`으로 밑줄이 끄이게 한다.**
+```css
+.underline {
+    position: relative;
+}
+
+.underline:before{
+    position: absolute;
+    content: '';
+
+    left: 0;
+    bottom: 0;
+    width: 100%;
+
+    /*height: 4em;*/
+    border-bottom: 4px solid #ddd;
+    opacity: .2;
+}
+.underline-clinic:before{
+    bottom: 3px;
+    border-color: #a0c79c;
+    opacity: .2;
+}
+```
+- **`.clinic-arrow`는 부모를 기준으로 마지막을 제외하고 나타나게 한다. 이 때, lg부터는 left를 38%정도로 놔서, 치료법 아래 찍히게  잡았다. 그리고 transform으로 크기를 늘린다.**
+```css
+/* 각 치료법row마다 아래방향 화살표(마지막은 제외) */
+/* - 공통부모 중 젤 빠른 것에 .clinic-with-arrow를 삽입 */
+/* - 화살표를 받을 각 row들에 .clinic-arrow 삽입 */
+.clinic-arrow-parent div .clinic-arrow {
+    position: relative;
+}
+
+.clinic-arrow-parent div:not(:last-of-type) .clinic-arrow::after {
+    position: absolute;
+    content: '';
+
+    left:50%;
+    bottom:0;
+    width: 30px;
+    height: 20px;
+
+    background: url("../images/clinic/arrow-down2.png") no-repeat 50% 50%;
+    background-size: contain;
+    transform: translate(-50%, 100%) ;
+
+    z-index: 2;
+}
+
+
+@media screen and (min-width: 992px){
+    .clinic-arrow-parent div:not(:last-of-type) .clinic-arrow::after {
+        left:38%; /* lg시 치료명의 중점과 일치하는 곳에 화살표 두기 */
+        bottom:0;
+        transform: translate(-38%, 100%) scale(1.8);
+    }
+}
+```
+```html
+<!-- 치료법 1: 부/뜸 -->
+<div class="flex-grow-1 row m-0 p-0">
+    <div class="clinic-arrow row m-0 p-0 gap-1 gap-lg-0">
+        <div class="col-12 px-4 col-lg-3 px-lg-2 d-flex justify-content-center align-items-center">
+            <img src="images/clinic/disc/001.png" class="img-fluid w-100 rounded shadow"
+                 alt="Sample Image"
+                 style="min-width: 70px; max-width: 140px"
+            >
+        </div>
+        <div class="col-12 col-lg-9 d-flex justify-content-center align-items-center m-0">
+            <div class="row m-0 p-0 g-1 w-100">
+                <div class="col-12 col-lg-4 d-flex justify-content-center align-items-center">
+                    <a class="text-decoration-none"
+                       href="#">
+                            <span class="font-serif fw-bold underline underline-clinic text-main-dark fs-clinic-therapy">
+                                부항/뜸/전기치료
+                            </span>
+                    </a>
+                </div>
+                <div class="d-none d-md-block col-12 col-lg-8 d-flex justify-content-center align-items-center">
+                    <p class="m-0 fs-clinic-therapy-desc text-clinic-desc px-5 py-1 py-lg-0 text-">
+                        경결된 조직을 이완시키고 혈액순환 도모. 환부에 약한 전기자극으로 면역물질 활성화.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+2. 필요한 갯수만큼 복사한다.
