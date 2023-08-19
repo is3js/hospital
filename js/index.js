@@ -1,13 +1,19 @@
 $(function () {
 
-    /* 햄버거 버튼 토글 */
+    /* 햄버거 버튼 on 토글 + .header-middle (lg hover작동) on 토글 */
     $(".navbar-toggler").click(function () {
-        $(this).toggleClass("on");
-        // 모바일시 클릭하면, lg의 hover처럼 on
-        // $(".header-middle").toggleClass("on");
+        // 토글버튼에 "on" 토글
+        // $(this).toggleClass("on");
+        if (!$(this).hasClass("on")) {
+            $(this).addClass("on");
+        } else {
+            $(this).removeClass("on");
+        }
+        // 토글버튼에 "on" 여부에 따라 -> lg의 hover처럼, header-middle을 "on"
+        $(".header-middle").toggleClass("on");
         let $headerMiddle = $(".header-middle");
         if ($(this).hasClass("on") && !$headerMiddle.hasClass("on")) {
-            $(".header-middle").addClass("on")
+            $(".header-middle").addClass("on");
         } else if (!$(this).hasClass("on") && $headerMiddle.hasClass("on")) {
             $(".header-middle").removeClass("on")
         }
@@ -65,11 +71,11 @@ $(function () {
         }
     });
 
-    // 초기 로드 시, lg에서 fixed인 메뉴를, fixed시키지 않고
+    // 초기 로드 시
     // absolute로 carousel에 자신의 높이만큼 내려와 시작하게 한다.
     function adjustHeaderMiddlePosition() {
         if ($(window).width() <= 991) {
-            $headerMiddle.removeClass("on");
+            // $headerMiddle.removeClass("on");
             // $headerMiddle.css('top', clientHeight + 'px');
         } else {
             // $headerMiddle.addClass("on");

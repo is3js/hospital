@@ -141,8 +141,6 @@ a {
 }
 
 .fixed-lg-top{
-    z-index: 1030;
-
     position: fixed;
     top: 0;
     right: 0;
