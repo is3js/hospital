@@ -2,7 +2,9 @@ $(function () {
 
     /* 햄버거 버튼 토글 */
     $(".navbar-toggler").click(function () {
-        $(this).toggleClass("on")
+        $(this).toggleClass("on");
+        // 모바일시 클릭하면, lg의 hover처럼 on
+        $(".header-middle").toggleClass("on");
     });
 
     /* 로그인 버튼 - PC용 hover */
@@ -60,9 +62,9 @@ $(function () {
     // 초기 로드 시와 윈도우 크기 변경 시에도 실행되도록 함수를 만듭니다.
     function updateHeaderMiddleClass() {
         if ($(window).width() <= 991) {
-            $headerMiddle.addClass("on");
+            $headerMiddle.addClass("");
         } else {
-            $headerMiddle.removeClass("on");
+            $headerMiddle.removeClass("");
         }
     }
 
@@ -126,16 +128,18 @@ $(function () {
             // 필수.. 이게 없어야 mobile 복귀시 작동한다
             $(".mega-dropdown .dropdown-menu").removeAttr('style');
             $(".mega-dropdown a").attr('data-bs-toggle', 'dropdown');
-
-
         }
     });
 
     // header-middle hover시
     $(".header-middle").hover(function () {
-        $(this).addClass("on");
+        if ($(window).width() >= 992) {
+            $(this).addClass("on");
+        }
     }, function () {
-        $(this).removeClass("on");
+        if ($(window).width() >= 992) {
+            $(this).removeClass("on");
+        }
     });
 
     // splidejs for left-banner
