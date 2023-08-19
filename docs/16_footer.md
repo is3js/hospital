@@ -112,7 +112,7 @@
 <div class="footer-top-left w-75 float-start d-flex justify-content-between">
 ```
 
-![img.png](322.png)
+![img.png](../ui/322.png)
 
 7. 이제 dl들의 dt스타일과 dd스타일을 css로 정의해준다.
 

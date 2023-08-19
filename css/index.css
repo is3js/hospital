@@ -140,18 +140,19 @@ a {
     z-index: 999;
 }
 
-.fixed-lg-top{
+.fixed-lg-top {
     position: fixed;
     top: 0;
     right: 0;
     left: 0;
 }
 
-@media screen and (max-width: 991px){
-    .fixed-lg-top{
+@media screen and (max-width: 991px) {
+    .fixed-lg-top {
         position: absolute;
     }
 }
+
 /*.header div {
   padding: 0 5%;
 }*/
@@ -209,7 +210,6 @@ a {
 @media screen and (min-width: 992px) {
     .header .header-middle .navbar > div {
         border-top: 1px solid rgba(255, 255, 255, 0.2);
-    "
     }
 }
 
@@ -485,7 +485,6 @@ a {
     background: #1ececb url("../images/bg_dropdown-001.png") no-repeat 100% 100%;
 }
 
-
 /* mobile 시 dropdown 애니메이션 + border bottom */
 @keyframes fade-in {
     from {
@@ -501,11 +500,15 @@ a {
 @media screen and (max-width: 991px) {
     /*.nav-item.mega-dropdown > a {*/
     .nav-item > a {
-        border-bottom: 1px solid #c9c9c9;
+        /* 모바일 시 밑줄 */
+        /*border-bottom: 1px solid #c9c9c9;*/
     }
 
     .nav-item.mega-dropdown .dropdown-menu {
         animation: fade-in 0.6s ease-in-out forwards;
+        /* 배경그림 삭제 */
+        background: #1ececb !important;
+        padding: 15px 5% !important;
     }
 }
 
@@ -517,6 +520,7 @@ a {
     /* 60% 유지 -> 모바일에선 100% */
     width: 60%;
     /*padding: 0 5%;*/
+
 }
 
 @media screen  and (max-width: 991px) {
@@ -588,6 +592,14 @@ a {
     background: #2cf5fb;
 }
 
+/* - 모바일에선 왼위 하얀선 가리기 */
+@media screen and (max-width: 991px) {
+    .header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .body-left.menu-2nd > li:before {
+        display: none;
+    }
+}
+
+
 /* 공통설정3) 각 메뉴(2nd, img) 글자태그 찾아서 li:hover시, 글자태그 글자색 변경 by !important */
 /* - img 메뉴의 글자 p태그 -  hover시  p태그(제목) 글자색 변경 */
 .header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .body-left > li:hover p {
@@ -608,6 +620,12 @@ a {
 /* 개별설정3) - img 메뉴는 img태그의 크기를 padding으로 줄인다.추가 */
 .header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .menu-img > li img {
     padding: 10%;
+}
+
+@media screen and (max-width: 991px){
+    .header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .menu-img > li img {
+        display: none;
+    }
 }
 
 /* 개별설정4) 2nd 메뉴 - 3rd메뉴 글자크기와 hover시 글자설정*/
@@ -643,16 +661,16 @@ a {
 
 
 /* dropdown body-left 마지막 li 더 알아보기 버튼 */
-.header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .body-left > li:last-of-type {
-    width: 100%;
-    text-align: center;
+/*.header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .body-left > li:last-of-type {*/
+/*    width: 100%;*/
+/*    text-align: center;*/
 
-    /*padding: 10px 5%;*/
-    padding: 0 5%;
-    border: 1px solid white;
-    border-radius: 5px;
-    margin-top: 10px;
-}
+/*    !*padding: 10px 5%;*!*/
+/*    padding: 0 5%;*/
+/*    border: 1px solid white;*/
+/*    border-radius: 5px;*/
+/*    margin-top: 10px;*/
+/*}*/
 
 
 /* dropdown body-right div */
@@ -3127,7 +3145,7 @@ span.category.category-naver {
     border-bottom: 1px #ddd solid;
 }
 
-@media screen and (max-width: 991px){
+@media screen and (max-width: 991px) {
     .footer-in > .footer-top {
         padding-bottom: 10px;
     }
@@ -3139,14 +3157,15 @@ span.category.category-naver {
     /*height: 500px;*/
 }
 
-@media screen and (max-width: 991px){
+@media screen and (max-width: 991px) {
     /* - 모바일에선 top-left( float 제거 + wrap) */
     .footer-in > .footer-top > .footer-top-left {
-        float: none!important;
-        width: 100%!important;
+        float: none !important;
+        width: 100% !important;
 
-        flex-wrap: wrap!important;
+        flex-wrap: wrap !important;
     }
+
     /* 상위메뉴 dl을 w-100으로 벌리기 */
     .footer-in > .footer-top > .footer-top-left dl {
         width: 100%;
@@ -3164,7 +3183,7 @@ span.category.category-naver {
     margin-bottom: 40px;
 }
 
-@media screen and (max-width: 991px){
+@media screen and (max-width: 991px) {
     .footer-top > .footer-top-left dt {
         margin: 0; /* lg mb 40px -> mobile 0*/
 
@@ -3190,8 +3209,9 @@ span.category.category-naver {
 
     margin-bottom: 18px;
 }
+
 /* 모바일에선 하위메뉴dd를 일단 안보이게 접기 */
-@media screen and (max-width: 991px){
+@media screen and (max-width: 991px) {
     .footer-top > .footer-top-left dd {
         display: none;
     }
@@ -3203,12 +3223,11 @@ span.category.category-naver {
     /*height: 500px;*/
 }
 
-@media screen and (max-width: 991px){
+@media screen and (max-width: 991px) {
     /* - 모바일에선 top-right float 제거 */
-    .footer-in > .footer-top > .footer-top-right
-    {
-        float: none!important;
-        width: 100%!important;
+    .footer-in > .footer-top > .footer-top-right {
+        float: none !important;
+        width: 100% !important;
     }
 }
 
@@ -3232,15 +3251,17 @@ span.category.category-naver {
 }
 
 
-@media screen and (max-width: 991px){
+@media screen and (max-width: 991px) {
     /* - 모바일에선 1번째 p는 float left */
-    .footer-top > .footer-top-right > p:nth-child(1)  {
-        float: left!important;
+    .footer-top > .footer-top-right > p:nth-child(1) {
+        float: left !important;
     }
+
     /* 나머지 p태그들의 글자를 우측 정렬 */
     .footer-top > .footer-top-right > p {
         text-align: right;
     }
+
     /* 3번째 p태그는 글씨가 작았던 것을 키움 */
     .footer-top > .footer-top-right > p:nth-child(3) {
         font-size: 15px;
