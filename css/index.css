@@ -3036,7 +3036,7 @@ span.category.category-naver {
 .section6 .clinic-box .tab-content > .tab-pane > div > div:nth-child(1) {
     /*background-color: var(--color-main-light) !important;*/
     /*background-color: var(--color-clinic-1)!important;*/
-    background: #364444 url(../images/clinic/bg_title.png)  100% 100%!important;
+    background: #364444 url(../images/clinic/bg_title.png) 100% 100% !important;
     background-size: cover;
 }
 
@@ -3045,11 +3045,9 @@ span.category.category-naver {
     /*background-color: #f6f7f9 !important;*/
     /*background-color: var(--color-clinic-1-bolder)!important;*/
     /*background-color: var(--color-main-dark) !important;*/
-    background: #364444 url(../images/clinic/bg_clinic.png)  100% 100%!important;
+    background: #364444 url(../images/clinic/bg_clinic.png) 100% 100% !important;
     background-size: cover;
 }
-
-
 
 
 /* 각 치료법row마다 아래방향 화살표(마지막은 제외) */
@@ -3063,23 +3061,23 @@ span.category.category-naver {
     position: absolute;
     content: '';
 
-    left:50%;
-    bottom:0;
+    left: 50%;
+    bottom: 0;
     width: 30px;
     height: 20px;
 
     background: url("../images/clinic/arrow-down2.png") no-repeat 50% 50%;
     background-size: contain;
-    transform: translate(-50%, 100%) ;
+    transform: translate(-50%, 100%);
 
     z-index: 2;
 }
 
 
-@media screen and (min-width: 992px){
+@media screen and (min-width: 992px) {
     .clinic-arrow-parent div:not(:last-of-type) .clinic-arrow::after {
-        left:38%; /* lg시 치료명의 중점과 일치하는 곳에 화살표 두기 */
-        bottom:0;
+        left: 38%; /* lg시 치료명의 중점과 일치하는 곳에 화살표 두기 */
+        bottom: 0;
         transform: translate(-38%, 100%) scale(1.8);
     }
 }
@@ -3098,22 +3096,152 @@ span.category.category-naver {
     width: 70%;
     margin: 0 auto;
 
-    height: 1000px;
-    background: red;
+    /*height: 1000px;*/
+    height: auto;
+    /*background: red;*/
 }
 
 @media screen and (max-width: 991px) {
     .footer > .footer-in {
-        width: 85%;
+        /*width: 85%;*/
+        width: 100%;
+        padding: 0 20px;
     }
 }
+
+.footer-in > .footer-top {
+    padding-bottom: 76px;
+    border-bottom: 1px #ddd solid;
+}
+
+@media screen and (max-width: 991px){
+    .footer-in > .footer-top {
+        padding-bottom: 10px;
+    }
+}
+
 /* top-left */
 .footer-in > .footer-top > .footer-top-left {
-    background: skyblue!important;
-    height: 500px;
+    /*background: skyblue;*/
+    /*height: 500px;*/
 }
+
+@media screen and (max-width: 991px){
+    /* - 모바일에선 top-left( float 제거 + wrap) */
+    .footer-in > .footer-top > .footer-top-left {
+        float: none!important;
+        width: 100%!important;
+
+        flex-wrap: wrap!important;
+    }
+    /* 상위메뉴 dl을 w-100으로 벌리기 */
+    .footer-in > .footer-top > .footer-top-left dl {
+        width: 100%;
+    }
+}
+
+/* top-left dt + dd */
+.footer-top > .footer-top-left dt {
+    font-size: 20px;
+    line-height: 17px;
+    color: #fff;
+    font-family: var(--primary-font-family);
+    /*font-weight: bold;*/
+
+    margin-bottom: 40px;
+}
+
+@media screen and (max-width: 991px){
+    .footer-top > .footer-top-left dt {
+        margin: 0; /* lg mb 40px -> mobile 0*/
+
+        line-height: 50px;
+        height: 50px;
+    }
+
+    .footer-top > .footer-top-left dt::after {
+        content: '+';
+
+        float: right;
+        font-size: 20px;
+        font-weight: normal;
+    }
+}
+
+.footer-top > .footer-top-left dd {
+    font-size: 17px;
+    line-height: 17px;
+    color: #ddd;
+    font-family: var(--third-font-family);
+    font-weight: bold;
+
+    margin-bottom: 18px;
+}
+/* 모바일에선 하위메뉴dd를 일단 안보이게 접기 */
+@media screen and (max-width: 991px){
+    .footer-top > .footer-top-left dd {
+        display: none;
+    }
+}
+
 /* top-right */
 .footer-in > .footer-top > .footer-top-right {
-    background: pink;
-    height: 500px;
+    /*background: pink;*/
+    /*height: 500px;*/
+}
+
+@media screen and (max-width: 991px){
+    /* - 모바일에선 top-right float 제거 */
+    .footer-in > .footer-top > .footer-top-right
+    {
+        float: none!important;
+        width: 100%!important;
+    }
+}
+
+.footer-top > .footer-top-right > p:nth-child(1) a {
+    font-size: 18px;
+    color: #fff;
+}
+
+.footer-top > .footer-top-right > p:nth-child(2) {
+    margin-top: 40px;
+    margin-bottom: 0;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: -.05rem;
+    color: var(--color-main-light);
+}
+
+.footer-top > .footer-top-right > p:nth-child(3) {
+    font-size: 12px;
+    color: #ddd;
+}
+
+
+@media screen and (max-width: 991px){
+    /* - 모바일에선 1번째 p는 float left */
+    .footer-top > .footer-top-right > p:nth-child(1)  {
+        float: left!important;
+    }
+    /* 나머지 p태그들의 글자를 우측 정렬 */
+    .footer-top > .footer-top-right > p {
+        text-align: right;
+    }
+    /* 3번째 p태그는 글씨가 작았던 것을 키움 */
+    .footer-top > .footer-top-right > p:nth-child(3) {
+        font-size: 15px;
+    }
+}
+
+/* bottom */
+.footer-in > .footer-bottom {
+    padding: 10px 0;
+    font-size: 12px;
+    color: #ddd;
+}
+
+.footer-in > .footer-bottom a {
+    font-size: 12px;
+    color: #fff;
 }
