@@ -140,13 +140,18 @@ a {
     z-index: 999;
 }
 
-@media screen and (min-width: 992px){
+.fixed-lg-top{
+    z-index: 1030;
+
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+}
+
+@media screen and (max-width: 991px){
     .fixed-lg-top{
-        position: fixed;
-        top: 0;
-        right: 0;
-        left: 0;
-        z-index: 1030;
+        position: absolute;
     }
 }
 /*.header div {

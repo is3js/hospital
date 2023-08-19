@@ -59,23 +59,25 @@ $(function () {
         }
     });
 
-    // 초기 로드 시와 윈도우 크기 변경 시에도 실행되도록 함수를 만듭니다.
-    function updateHeaderMiddleClass() {
+    // 초기 로드 시, lg에서 fixed인 메뉴를, fixed시키지 않고
+    // absolute로 carousel에 자신의 높이만큼 내려와 시작하게 한다.
+    function adjustHeaderMiddlePosition() {
         if ($(window).width() <= 991) {
-            $headerMiddle.addClass("");
+            // $headerMiddle.addClass("");
+            // $headerMiddle.css('top', clientHeight + 'px');
         } else {
-            $headerMiddle.removeClass("");
+            // $headerMiddle.removeClass("");
         }
     }
 
-// 초기 로드 시 함수 실행
+    // 초기 로드 시 함수 실행
     $(document).ready(function () {
-        updateHeaderMiddleClass();
+        adjustHeaderMiddlePosition();
     });
 
-// 윈도우 크기 변경 시 함수 실행
+    // 윈도우 크기 변경 시 함수 실행
     $(window).resize(function () {
-        updateHeaderMiddleClass();
+        adjustHeaderMiddlePosition();
     });
 
 
