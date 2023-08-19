@@ -4,7 +4,13 @@ $(function () {
     $(".navbar-toggler").click(function () {
         $(this).toggleClass("on");
         // 모바일시 클릭하면, lg의 hover처럼 on
-        $(".header-middle").toggleClass("on");
+        // $(".header-middle").toggleClass("on");
+        let $headerMiddle = $(".header-middle");
+        if ($(this).hasClass("on") && !$headerMiddle.hasClass("on")) {
+            $(".header-middle").addClass("on")
+        } else if (!$(this).hasClass("on") && $headerMiddle.hasClass("on")) {
+            $(".header-middle").removeClass("on")
+        }
     });
 
     /* 로그인 버튼 - PC용 hover */
@@ -63,10 +69,10 @@ $(function () {
     // absolute로 carousel에 자신의 높이만큼 내려와 시작하게 한다.
     function adjustHeaderMiddlePosition() {
         if ($(window).width() <= 991) {
-            // $headerMiddle.addClass("");
+            $headerMiddle.removeClass("on");
             // $headerMiddle.css('top', clientHeight + 'px');
         } else {
-            // $headerMiddle.removeClass("");
+            // $headerMiddle.addClass("on");
         }
     }
 
