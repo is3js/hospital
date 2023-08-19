@@ -140,6 +140,15 @@ a {
     z-index: 999;
 }
 
+@media screen and (min-width: 992px){
+    .fixed-lg-top{
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1030;
+    }
+}
 /*.header div {
   padding: 0 5%;
 }*/
@@ -202,9 +211,10 @@ a {
 }
 
 /* 모바일에선 좌우패딩 없애서 전체화면을 만들어야 body 스크롤이 안된다? */
+/* -> 틀린 말. body 스크롤은 이루어짐. */
 @media screen and (max-width: 991px) {
     .header .header-middle .navbar {
-        padding: 0 0;
+        /*padding: 0 0;*/
     }
 }
 

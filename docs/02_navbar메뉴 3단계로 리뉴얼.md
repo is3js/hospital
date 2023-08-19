@@ -225,3 +225,51 @@ $(".login").on("click", function () {
     font-size: var(--header-bottom-font-size)
 }
 ```
+
+
+### 추가 작업
+1. hover시 setTimeout으로 .2초이후 발생하도록 수정하기
+   - 전역변수를 만들고, hover내용을 setTimeout(function()) { , hoverTimeInterval} 로 가져오며, hover작동내용 직전에 clearTimeout( 전역변수 )로 초기화한 뒤, 실행해준다.
+   - 떼는 작업은 작동 직전 clearTimeout()을 시켜준다.
+```js
+    // mega-dropdown hover 이벤트
+    var hoverTimeout;
+    const hoverTimeInterval = 200;
+    $(".mega-dropdown").hover(
+        function () {
+            if ($(window).width() >= 992) {
+                var toggleElement = $('a[data-bs-toggle="dropdown"]', this);
+                var dropdownMenu = $('.dropdown-menu', this);
+
+                toggleElement.attr('data-bs-toggle', '');
+                // dropdownMenu.addClass('show');
+
+                // hoverTimeout)
+                clearTimeout(hoverTimeout);
+
+                hoverTimeout = setTimeout(function () {
+                    // dropdownMenu.addClass('show');
+                    dropdownMenu.stop(true, true).slideDown(222);
+                    dropdownMenu.attr('data-bs-popper', 'static');
+                    dropdownMenu.attr("aria-expanded", "true");
+                }, hoverTimeInterval);
+            }
+        },
+        function () {
+            if ($(window).width() >= 992) {
+                var toggleElement = $('a[data-bs-toggle="dropdown"]', this);
+                var dropdownMenu = $('.dropdown-menu', this);
+
+                // hoverTimeout)
+                clearTimeout(hoverTimeout);
+
+                // dropdownMenu.removeClass('show');
+                dropdownMenu.stop(true, true).slideUp(150);
+                dropdownMenu.attr('data-bs-popper', '');
+                dropdownMenu.attr("aria-expanded", "false");
+
+                toggleElement.attr('data-bs-toggle', 'dropdown');
+            }
+        }
+    );
+```
