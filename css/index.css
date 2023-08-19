@@ -407,10 +407,17 @@ a {
 .header .header-middle .navbar-nav .nav-item > a {
     font-size: var(--header-middle-nav-font-size);
     margin-right: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    /*padding-top: 10px;*/
+    /*padding-bottom: 10px;*/
+    padding: 10px 0;
 
     color: #ddd;
+}
+/* - 모바일에선 상하패딩 제거(html mt-3으로만 세로간격 유지) */
+@media screen and (max-width: 991px){
+    .header .header-middle .navbar-nav .nav-item > a {
+        padding: 0;
+    }
 }
 
 /* 로그인 버튼 a태그 글자크기 */
