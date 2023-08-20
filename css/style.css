@@ -8,7 +8,9 @@
 
     --color-main: #00b5b2;
     --color-main-light: #5bd2cc;
-    --color-main-dark: #2fa49e;
+    --color-main-dark: #50ccc7; /* for 둘러보기 배경색 + 클리닉 치료법 글자색 */
+    --color-main-darker: #05736d; /* for 모바일 2차메뉴 */
+
     --color-submain: #FC5230;
 
     --color-pink: #F07F7F;

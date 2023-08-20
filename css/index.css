@@ -453,7 +453,7 @@ a {
     /* 메뉴 글자크기 */
     .header .header-middle .navbar-nav .nav-item .nav-link {
         font-size: var(--header-middle-nav-1400-font-size);
-        margin-right: 10px;
+        margin-right: 20px;
     }
 
     /* 로그인 버튼 a태그 글자크기 */
@@ -514,9 +514,9 @@ a {
 
 @media screen and (max-width: 991px) {
     /*.nav-item.mega-dropdown > a {*/
-    .nav-item > a {
+    .nav-item:not(:last-child) > a {
         /* 모바일 시 밑줄 */
-        border-bottom: 1px solid rgba(221, 221, 221, 0.2);
+        border-bottom: 1px solid rgba(221, 221, 221, 0.3);
     }
 
     .nav-item.mega-dropdown .dropdown-menu {
@@ -591,7 +591,7 @@ a {
         font-size: var(--header-middle-nav-mobile-font-size);
         font-family: var(--third-font-family);
         font-weight: bold;
-        color: #05736d !important;
+        color: var(--color-main-darker) !important;
     }
 }
 
@@ -688,6 +688,11 @@ a {
     }
 }
 
+.header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .menu-3rd > li:hover > a {
+    color: white !important;
+    font-weight: bold !important;
+}
+
 /* - 3차메뉴 모바일 글자 크기 */
 @media screen and (max-width: 991px) {
     .header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .menu-3rd > li > a {
@@ -697,13 +702,9 @@ a {
         color: #222 !important;
     }
 
-
     .header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .menu-3rd > li:hover > a {
-        /*color: white !important;*/
         color: var(--color-main) !important;
-        font-weight: bold !important;
     }
-
 }
 
 /* 개별설정5) 2nd메뉴 - 3차메뉴를 pl를 줘서 벌려지도록 */
