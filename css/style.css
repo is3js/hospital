@@ -39,13 +39,18 @@ body {
 }
 
 /* 글자크기 */
-.fs-13 {
-    font-size: 13px;
+.fs-9 {
+    font-size: 9px;
 }
 
 .fs-11 {
     font-size: 11px;
 }
+
+.fs-13 {
+    font-size: 13px;
+}
+
 
 .fs-tab {
     font-size: 13px;
