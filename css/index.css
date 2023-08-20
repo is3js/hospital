@@ -376,6 +376,7 @@ a {
 
     border-left: 1px solid rgba(221, 221, 221, 0.3);
 }
+
 .quick-menu li:first-of-type {
     border-left: none;
 }
@@ -422,10 +423,28 @@ a {
 .quick-menu li a span {
     /*color: #a7c5d1;*/
     color: var(--color-main);
-    font-size: 10px!important;
+    font-size: 10px !important;
     line-height: 25px;
 
     display: block; /* 필수*/
+}
+
+/* 모바일 진료시간 (토, 일은 글자색 자동으로 다르게) */
+.quick-schedule li > span {
+    margin-right: 5px;
+}
+
+.quick-schedule li:nth-of-type(6) > span {
+    background-color: rgb(86, 128, 245)!important;
+}
+.quick-schedule li:nth-of-type(6) {
+    color: rgb(45, 82, 181)!important;
+}
+.quick-schedule li:nth-of-type(7) > span {
+    background-color: rgb(255, 85, 85);
+}
+.quick-schedule li:nth-of-type(7) {
+    color: rgb(245, 41, 41) !important;
 }
 
 
@@ -628,7 +647,7 @@ a {
 /* - 2차메뉴 상하간격mb을 모바일에선 제거 */
 @media screen and (max-width: 991px) {
     .header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .body-left.menu-2nd > li {
-        margin-bottom: 20px!important;
+        margin-bottom: 20px !important;
     }
 }
 
@@ -655,7 +674,7 @@ a {
 
 /* 2nd + img 메뉴 공통) 모바일 글자크기 = 1차 모바일과 동일 */
 @media screen and (max-width: 991px) {
-    .header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .body-left > li > a > p{
+    .header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .body-left > li > a > p {
         font-size: var(--header-middle-nav-mobile-font-size);
         font-family: var(--third-font-family);
         font-weight: bold;
@@ -694,8 +713,7 @@ a {
 /* - 모바일에선 왼위 하얀선 가리기 */
 @media screen and (max-width: 991px) {
     .header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .body-left.menu-2nd > li:before,
-    .header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .body-left > li:before
-    {
+    .header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .body-left > li:before {
         /*display: none;*/
 
         content: "";
@@ -739,7 +757,7 @@ a {
 }
 
 /* 개별설정4) 3rd메뉴 글자크기와 hover시 글자설정*/
-.header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .menu-3rd > li > a  {
+.header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .menu-3rd > li > a {
     font-size: var(--3rd-menu-font-size);
     line-height: var(--3rd-menu-font-lh);
 
@@ -766,7 +784,7 @@ a {
     .header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .menu-3rd > li > a {
         font-size: var(--3rd-menu-mobile-font-size);
         line-height: var(--3rd-menu-mobile-font-lh);
-        font-family: var(--primary-font-family)!important;
+        font-family: var(--primary-font-family) !important;
         color: #222 !important;
     }
 
