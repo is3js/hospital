@@ -421,7 +421,7 @@ a {
 
 .quick-menu li a span {
     /*color: #a7c5d1;*/
-    color: var(--color-main-light);
+    color: var(--color-main);
     font-size: 10px!important;
     line-height: 25px;
 
