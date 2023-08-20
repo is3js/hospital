@@ -463,10 +463,15 @@ a {
 }
 
 /* 마지막 nav-item은 mr-0 */
-.header .header-middle .navbar-nav .nav-item:last-child .nav-link {
-    margin-right: 0;
-}
-
+/*.header .header-middle .navbar-nav .nav-item:last-child .nav-link {*/
+/*    margin-right: 0;*/
+/*}*/
+/*!* - 모바일에서는 margin-right 유지되야 좌우여백이 맞음 *!*/
+/*@media screen and (max-width: 991px){*/
+/*    .header .header-middle .navbar-nav .nav-item:last-child .nav-link {*/
+/*        margin-right: 10px;*/
+/*    }*/
+/*}*/
 
 /* 추가1) toggler가 아닌 부모li태그에 커스텀 클래스를 생성 */
 /* - li.nav-item 중 .has-megamenu를 가진 친구들에게 적용 */

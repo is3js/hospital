@@ -450,8 +450,8 @@ body {
     --bs-btn-bg: #00b5b2;
     --bs-btn-border-color: #00b5b2;
     --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: var(--color-green);
-    --bs-btn-hover-border-color: var(--color-green);
+    --bs-btn-hover-bg: var(--color-gray-darker);
+    --bs-btn-hover-border-color: var(--color-gray-darker);
     --bs-btn-focus-shadow-rgb: 225, 83, 97;
     --bs-btn-active-color: #fff;
     --bs-btn-active-bg: #00b5b2;
