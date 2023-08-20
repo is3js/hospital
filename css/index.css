@@ -516,7 +516,7 @@ a {
     /*.nav-item.mega-dropdown > a {*/
     .nav-item > a {
         /* 모바일 시 밑줄 */
-        /*border-bottom: 1px solid #c9c9c9;*/
+        /*border-bottom: 1px solid #ddd;*/
     }
 
     .nav-item.mega-dropdown .dropdown-menu {
@@ -590,8 +590,8 @@ a {
     .header .header-middle .navbar-nav .nav-item .dropdown-menu .dropdown-body .body-left > li > a > p{
         font-size: var(--header-middle-nav-mobile-font-size);
         font-family: var(--third-font-family);
-        /*font-weight: bold;*/
-        color: var(--color-main-dark)!important;
+        font-weight: bold;
+        color: #034945 !important;
     }
 }
 
@@ -634,9 +634,9 @@ a {
         position: absolute;
         left: 0;
         top: -3px;
-        width: 8%;
-        height: 2px;
-        background: var(--color-main-dark);
+        width: 20px;
+        height: 1.3px;
+        background: #034945;
     }
 }
 
