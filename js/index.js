@@ -72,12 +72,12 @@ $(function () {
     function adjustToResize() {
         if ($(window).width() <= 991) {
             // 모바일 화면 크기일 때는 로그인 요소에 click 이벤트 적용 (hover 삭제)
-            $login.off("mouseenter mouseleave").on("click", function() {
+            $login.off("mouseenter mouseleave").on("click focus", function() {
                 $(this).toggleClass("on");
             });
         } else {
             // PC 화면 크기일 때는 로그인 요소에  hover 이벤트 적용 (click이벤트 삭제)
-            $login.off("click").hover(
+            $login.off("click blur").hover(
                 function() {
                     $(this).addClass("on");
                 },
