@@ -578,5 +578,50 @@
       display: none;
    }
 }
-
 ```
+#### footer top left 상위메뉴 스타일 변경
+1. top left의 **`between`이지만, `작아서 넘치면 넘어가도록 자연스럽게  flex-wrap`을 추가한다**
+```html
+<!-- <div class="footer-top-left w-75 float-start d-flex justify-content-between h-auto">-->
+<div class="footer-top-left w-75 float-start d-flex justify-content-between flex-wrap h-auto">
+```
+
+2. dl에 각각의 메뉴의 간격을, class="m-0"을 삭제하고,  `mr 30px`로 벌려, `between이지만 좁혀지더라도 간격을 유지`할 수 있게 한다. **모바일에선 m-0을 직접 준다.**
+```html
+ <!--<dl class="m-0">-->
+<dl class="">
+```
+```css
+.footer-in > .footer-top > .footer-top-left dl {
+    margin-right: 30px;
+}
+
+@media screen and (max-width: 991px) {
+   /* 상위메뉴 dl을 w-100으로 벌리기 */
+   .footer-in > .footer-top > .footer-top-left dl {
+      width: 100%;
+      margin: 0;
+   }
+}
+```
+![img.png](../ui/342.png)
+
+
+3. 기존의 dt의 mb를 border로 잡기 위한, pb로 바꾸고, 일정부분은 mb로 남긴다
+   - dt의 mb 15px -> pb 5 + border-bottom 5px + mb 10 으로 바꿔준다.
+   - **이 때, 제목인 dt의 bottom에 매기지만, 아래쪽 dd와 묶여있는 flex-item으로서, 가장 긴것이 길이가 된다.**
+   - lg에만 적용되도록 바꿔준다.
+```css
+.footer-top > .footer-top-left dt {
+    /*margin-bottom: 15px;*/
+}
+
+@media screen and (min-width: 992px) {
+    .footer-top > .footer-top-left dt {
+        padding-bottom: 5px;
+        border-bottom: 1px solid rgba(228, 228, 228, 0.5);;
+        margin-bottom: 10px;
+    }
+}
+```
+![img.png](../ui/343.png)

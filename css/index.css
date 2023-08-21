@@ -3295,6 +3295,9 @@ span.category.category-naver {
     /*height: 500px;*/
 }
 
+.footer-in > .footer-top > .footer-top-left dl {
+    margin-right: 30px;
+}
 @media screen and (max-width: 991px) {
     /* - 모바일에선 top-left( float 제거 + wrap) */
     .footer-in > .footer-top > .footer-top-left {
@@ -3307,12 +3310,22 @@ span.category.category-naver {
     /* 상위메뉴 dl을 w-100으로 벌리기 */
     .footer-in > .footer-top > .footer-top-left dl {
         width: 100%;
+        margin: 0;
     }
 }
 
 /* top-left dt + dd */
 .footer-top > .footer-top-left dt {
-    margin-bottom: 15px;
+    /*margin-bottom: 15px;*/
+}
+
+/* - lg에서만, 아래쪽에 여백 + 밑줄 + 여백을 만들어준다. */
+@media screen and (min-width: 992px) {
+    .footer-top > .footer-top-left dt {
+        padding-bottom: 5px;
+        border-bottom: 1px solid rgba(228, 228, 228, 0.5);;
+        margin-bottom: 10px;
+    }
 }
 
 .footer-top > .footer-top-left dt a{

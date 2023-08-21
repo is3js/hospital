@@ -65,19 +65,20 @@ $(function () {
     });
 
     // 초기 로드 시
-    /* 로그인 버튼 - PC용 hover */
+    /* 로그인 버튼 - PC용 hover / 모바일 click + focus/blur */
     let $login = $(".login");
-
 
     function adjustToResize() {
         if ($(window).width() <= 991) {
             // 모바일 화면 크기일 때는 로그인 요소에 click 이벤트 적용 (hover 삭제)
             $login.off("mouseenter mouseleave").on("click focus", function() {
                 $(this).toggleClass("on");
-            });
+            }).on("blur", function () {
+                $(this).removeClass("on");
+            })
         } else {
-            // PC 화면 크기일 때는 로그인 요소에  hover 이벤트 적용 (click이벤트 삭제)
-            $login.off("click blur").hover(
+            // PC 화면 크기일 때는 로그인 요소에  hover 이벤트 적용 (click + focus/blur 이벤트 삭제)
+            $login.off("click focus blur").hover(
                 function() {
                     $(this).addClass("on");
                 },
