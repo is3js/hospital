@@ -3249,7 +3249,7 @@ span.category.category-naver {
 /* footer */
 .footer {
     width: 100%;
-    padding-top: 60px;
+    padding-top: 50px;
 
     background: url("../images/main_section/footer_bg.jpg") no-repeat 100% 50%;
     background-size: cover;

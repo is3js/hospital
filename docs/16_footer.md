@@ -625,3 +625,14 @@
 }
 ```
 ![img.png](../ui/343.png)
+
+
+4. 사업자등록번호 span이 mobile에선 아래줄로 내려가게 
+   - d-block 시작, lg시 ms-3 + inline으로 변경하게 해준다.
+   - 또한 이용약관 라인과 아래 2줄이 모바일에서만 생기도록 mt-2, mt-lg-0으로 만들어준다.
+```html
+<div class="footer-bottom-right float-none float-lg-end mt-2 mt-lg-0">
+                <span>대표 및 개인정보관리책임자: 조재성</span>
+                <span class="d-block ms-lg-3 d-lg-inline">사업자등록번호: 000-00-00000</span>
+            </div>
+```
