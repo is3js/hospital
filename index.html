@@ -225,8 +225,8 @@
         </div>
 
         <!-- 메뉴 navbar -->
-        <nav class="navbar navbar-expand-lg ">
-            <div class="container-fluid position-relative">
+        <nav class="navbar navbar-expand-lg position-relative">
+            <div class="container-fluid ">
                 <!-- 햄버거 버튼 -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent">
@@ -276,7 +276,7 @@
                             </a>
                         </div>
                         <!-- 퀵메뉴 -->
-                        <ul class="m-0 quick-menu d-flex flex-wrap row-gap-2 list-unstyled">
+                        <ul class="m-0 quick-menu d-flex list-unstyled">
                             <li><a href="#">
                                 <span>카카오 상담</span>
                             </a></li>
@@ -284,25 +284,10 @@
                                 <span>실시간 예약</span>
                             </a></li>
                             <li><a href="#">
-                                <span>네이버 후기</span>
+                                <span>치료 후기</span>
                             </a></li>
                             <li><a href="#">
                                 <span>자가진단</span>
-                            </a></li>
-                            <li><a href="#">
-                                <span>길찾기</span>
-                            </a></li>
-                            <li><a href="#">
-                                <span>길찾기</span>
-                            </a></li>
-                            <li><a href="#">
-                                <span>길찾기</span>
-                            </a></li>
-                            <li><a href="#">
-                                <span>길찾기</span>
-                            </a></li>
-                            <li><a href="#">
-                                <span>길찾기</span>
                             </a></li>
                             <li><a href="#">
                                 <span>길찾기</span>
@@ -788,6 +773,7 @@
                     </div>-->
                     <!-- 로그인 버튼 -->
                     <div class="ms-0 login">
+                        <!-- PC 로그인 -->
                         <div>
                             <svg stroke="#ddd" width="20" height="20" viewBox="0 0 24 24">
                                 <g>
@@ -797,6 +783,7 @@
                                     </g>
                                 </g>
                             </svg>
+
                         </div>
                         <!-- login hover -->
                         <div class="login-box">
@@ -845,7 +832,7 @@
                             <svg fill="#ddd" width="24" height="24" viewBox="0 0 24 24">
                                 <path d="M19.832 9.113l-8.465 8.475-1.954-1.954 8.469-8.47 1.95 1.95zM20.362 8.582l-1.949-1.949 1.295-1.296c0.294-0.294 0.768-0.291 1.062 0.002l0.885 0.882c0.294 0.293 0.296 0.769 0.004 1.062l-1.297 1.298zM8.928 16.208l1.872 1.872-2.351 0.463 0.48-2.335zM16.5 7.5v0l-4.5-5.25h-8.248c-0.83 0-1.502 0.674-1.502 1.506v17.239c0 0.831 0.668 1.506 1.498 1.506h11.254c0.827 0 1.498-0.674 1.498-1.493v-7.507l5.685-5.685c0.588-0.588 0.59-1.54 0.007-2.123l-0.885-0.885c-0.584-0.584-1.528-0.587-2.123 0.007l-2.685 2.685zM15.75 14.25v6.755c0 0.411-0.336 0.745-0.75 0.745h-11.25c-0.409 0-0.75-0.334-0.75-0.747v-17.257c0-0.405 0.334-0.747 0.747-0.747h7.503v3.746c0 0.84 0.671 1.504 1.498 1.504h3.002l-7.5 7.5-0.75 3.75 3.75-0.75 4.5-4.5zM12 3.375l3.525 4.125h-2.777c-0.41 0-0.748-0.339-0.748-0.757v-3.368z"></path>
                             </svg>
-                            예약
+                            예약하기
                         </a>
                     </div>
                 </div>
@@ -4238,17 +4225,11 @@
                 </dl>
             </div>
             <div class="footer-top-right w-25 float-end text-center">
-                <p>
-                    <a href="#">
-                        <svg width="22px" height="22px" viewBox="0 0 24 24" fill="none">
-                            <path d="M17 3.33782C15.5291 2.48697 13.8214 2 12 2C6.47715 2 2 6.47715 2 12C2 13.5997 2.37562 15.1116 3.04346 16.4525C3.22094 16.8088 3.28001 17.2161 3.17712 17.6006L2.58151 19.8267C2.32295 20.793 3.20701 21.677 4.17335 21.4185L6.39939 20.8229C6.78393 20.72 7.19121 20.7791 7.54753 20.9565C8.88837 21.6244 10.4003 22 12 22C17.5228 22 22 17.5228 22 12C22 10.1786 21.513 8.47087 20.6622 7"
-                                  stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
-                            <path d="M8 12H8.009M11.991 12H12M15.991 12H16" stroke="#fff" stroke-width="2"
-                                  stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                        온라인 상담
-                    </a>
-                </p>
+                <figure class="figure mt-3">
+                    <img src="images/qrcode.png" alt="qrcode" class="figure-img img-thumbnail"
+                         style="max-width: 100px">
+                    <figcaption class="figure-caption text-center text-light"> 예약하기</figcaption>
+                </figure>
                 <p>02-1588-7291</p>
                 <p>7월 29일(금) 09:00~19:00</p>
             </div>

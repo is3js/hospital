@@ -459,3 +459,5 @@
 ![img.png](../ui/332.png)
 ![img_1.png](../ui/333.png)
 
+
+### right를 진료시간으로 변경
