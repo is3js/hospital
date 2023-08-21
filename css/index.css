@@ -3405,7 +3405,7 @@ span.category.category-naver {
     }
     /* 3번째 p태그는 글씨가 작았던 것을 키움 */
     .footer-top > .footer-top-right > p:nth-child(3) {
-        font-size: 15px;
+        /*font-size: 15px;*/
     }
 }
 
