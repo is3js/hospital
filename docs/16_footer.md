@@ -460,4 +460,69 @@
 ![img_1.png](../ui/333.png)
 
 
-### right를 진료시간으로 변경
+### right 온라인 상담 -> qrcode로 변경
+
+```html
+
+<div class="footer-top-right w-25 float-end text-center">
+    <figure class="figure mt-3">
+        <img src="images/qrcode.png" alt="qrcode" class="figure-img img-thumbnail"
+             style="max-width: 100px">
+        <figcaption class="figure-caption text-center text-light"> 예약하기</figcaption>
+    </figure>
+    <p>02-1588-7291</p>
+    <p>7월 29일(금) 09:00~19:00</p>
+</div>
+```
+
+2. 모바일에서 figure를 float:left시키며, right는 위쪽에 위치하게 되는데, 2번재 p태그에서 pt로 간격을 줌
+   - 3번째 p태그의 글자커지는 것을 방지함.
+```css
+@media screen and (max-width: 991px) {
+    /* - 모바일에선 1번째 p는 float left */
+    /*.footer-top > .footer-top-right > p:nth-child(1) {*/
+    .footer-top > .footer-top-right > figure {
+        float: left !important;
+    }
+
+    /* 나머지 p태그들의 글자를 우측 정렬 */
+    .footer-top > .footer-top-right > p {
+        text-align: right;
+    }
+
+    .footer-top > .footer-top-right > p:nth-child(2) {
+        padding-top: 45px;
+    }
+    /* 3번째 p태그는 글씨가 작았던 것을 키움 */
+    .footer-top > .footer-top-right > p:nth-child(3) {
+        /*font-size: 15px;*/
+    }
+}
+```
+![img.png](../ui/340.png)
+
+
+### footer top left의 글자체 및 style 변경
+1. footer 자체의 pt를 60 -> 모바일 30으로 줄인다
+```css
+@media screen and (max-width: 991px) {
+    .footer {
+        padding-top: 30px;
+    }
+}
+```
+
+2. 모바일에서 보이는 dt를 lh==height로 주고, 글자크기는 16px로 줄인다.
+```css
+@media screen and (max-width: 991px) {
+    .footer-top > .footer-top-left dt {
+        margin: 0; /* lg mb 40px -> mobile 0*/
+
+        font-size: 16px;
+        line-height: 35px;
+        height: 35px;
+    }
+}
+```
+
+3. **2-3차메뉴 or 3차가 없는 경우 1차-img메뉴**로 구성된 메뉴들에 대해서, dt와 dd에 모두 a태그로 감싸고, css를 dt dd 대신 dt a , dd a로 줘야한다.

@@ -3255,6 +3255,12 @@ span.category.category-naver {
     background-size: cover;
 }
 
+@media screen and (max-width: 991px) {
+    .footer {
+        padding-top: 30px;
+    }
+}
+
 .footer > .footer-in {
     width: 70%;
     margin: 0 auto;
@@ -3310,7 +3316,7 @@ span.category.category-naver {
     line-height: 17px;
     color: #fff;
     font-family: var(--primary-font-family);
-    /*font-weight: bold;*/
+    font-weight: lighter;
 
     margin-bottom: 40px;
 }
@@ -3319,8 +3325,9 @@ span.category.category-naver {
     .footer-top > .footer-top-left dt {
         margin: 0; /* lg mb 40px -> mobile 0*/
 
-        line-height: 50px;
-        height: 50px;
+        font-size: 16px;
+        line-height: 35px;
+        height: 35px;
     }
 
     .footer-top > .footer-top-left dt::after {
@@ -3328,7 +3335,7 @@ span.category.category-naver {
 
         float: right;
         font-size: 20px;
-        font-weight: normal;
+        font-weight: lighter;
     }
 }
 
