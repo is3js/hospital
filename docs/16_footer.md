@@ -526,3 +526,57 @@
 ```
 
 3. **2-3차메뉴 or 3차가 없는 경우 1차-img메뉴**로 구성된 메뉴들에 대해서, dt와 dd에 모두 a태그로 감싸고, css를 dt dd 대신 dt a , dd a로 줘야한다.
+```html
+
+<dt><a href="#">병원 소개</a></dt>
+<dd><a href="#">드리는 말</a></dd>
+<dd><a href="#">의료진 소개</a></dd>
+<dd><a href="#">치료후기</a></dd>
+<dd><a href="#">연구실적</a></dd>
+<dd><a href="#">길찾기</a></dd>
+<dd><a href="#">공지사항</a></dd>
+```
+```css
+.footer-top > .footer-top-left dt a {
+}
+
+@media screen and (max-width: 991px) {
+    .footer-top > .footer-top-left dt a {
+    }
+
+    .footer-top > .footer-top-left dt a::after {
+    }
+}
+
+.footer-top > .footer-top-left dd a {
+}
+
+@media screen and (max-width: 991px) {
+    .footer-top > .footer-top-left dd a {
+    }
+}
+```
+- 일부 a태그에 안먹히는 태그들은 상위 dt, dd로 빼줘야한다.
+```css
+.footer-top > .footer-top-left dt {
+    margin-bottom: 30px;
+}
+
+@media screen and (max-width: 991px) {
+    .footer-top > .footer-top-left dt {
+        margin: 0; /* lg mb 30px -> mobile 0*/
+    }
+}
+```
+```css
+.footer-top > .footer-top-left dd {
+    margin-bottom: 18px;
+}
+
+@media screen and (max-width: 991px) {
+   .footer-top > .footer-top-left dd {
+      display: none;
+   }
+}
+
+```

@@ -19,7 +19,7 @@
     --header-middle-nav-1200-font-size: 15px;
     --header-middle-nav-1400-font-size: 18px;
 
-    --header-middle-nav-mobile-font-size: 12px;
+    --header-middle-nav-mobile-font-size: 14px;
 
     --3rd-menu-font-size: 16px;
     --3rd-menu-font-lh: 30px;
@@ -3312,25 +3312,29 @@ span.category.category-naver {
 
 /* top-left dt + dd */
 .footer-top > .footer-top-left dt {
-    font-size: 20px;
-    line-height: 17px;
+    margin-bottom: 15px;
+}
+
+.footer-top > .footer-top-left dt a{
+    font-size: 18px;
+    line-height: 18px;
     color: #fff;
     font-family: var(--primary-font-family);
     font-weight: lighter;
-
-    margin-bottom: 40px;
 }
 
 @media screen and (max-width: 991px) {
     .footer-top > .footer-top-left dt {
-        margin: 0; /* lg mb 40px -> mobile 0*/
+        margin: 0; /* lg mb 30px -> mobile 0*/
+    }
 
+    .footer-top > .footer-top-left dt a{
         font-size: 16px;
         line-height: 35px;
         height: 35px;
     }
 
-    .footer-top > .footer-top-left dt::after {
+    .footer-top > .footer-top-left dt a::after {
         content: '+';
 
         float: right;
@@ -3338,15 +3342,16 @@ span.category.category-naver {
         font-weight: lighter;
     }
 }
-
 .footer-top > .footer-top-left dd {
-    font-size: 17px;
-    line-height: 17px;
+    margin-bottom: 2px;
+}
+
+.footer-top > .footer-top-left dd a{
+    font-size: 14px;
+    line-height: 14px;
     color: #ddd;
     font-family: var(--third-font-family);
     font-weight: bold;
-
-    margin-bottom: 18px;
 }
 
 /* 모바일에선 하위메뉴dd를 일단 안보이게 접기 */
