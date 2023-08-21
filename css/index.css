@@ -372,12 +372,14 @@ a {
 }
 
 .quick-menu li {
-    flex: 1 0;
+    /*flex: 1 0;*/
+    width: 20%;
+
 
     border-left: 1px solid rgba(221, 221, 221, 0.3);
 }
 
-.quick-menu li:first-of-type {
+.quick-menu li:nth-of-type(5n+1) {
     border-left: none;
 }
 
