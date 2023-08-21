@@ -23,17 +23,6 @@ $(function () {
         }
     });
 
-    /* 로그인 버튼 - PC용 hover */
-    $(".login").hover(function () {
-        $(this).addClass("on")
-    }, function () {
-        $(this).removeClass("on")
-    });
-    // 로그인 버튼 - 모바일용 click 이벤트
-    $(".login").on("click", function () {
-        $(this).toggleClass("on");
-    });
-
 
     /* header fixed만큼 offsetY scroll */
     /* 2. 숨길 top, middle의 높이를 구함 */
@@ -76,24 +65,37 @@ $(function () {
     });
 
     // 초기 로드 시
-    // absolute로 carousel에 자신의 높이만큼 내려와 시작하게 한다.
-    function adjustHeaderMiddlePosition() {
+    /* 로그인 버튼 - PC용 hover */
+    let $login = $(".login");
+
+
+    function adjustToResize() {
         if ($(window).width() <= 991) {
-            // $headerMiddle.removeClass("on");
-            // $headerMiddle.css('top', clientHeight + 'px');
+            // 모바일 화면 크기일 때는 로그인 요소에 click 이벤트 적용 (hover 삭제)
+            $login.off("mouseenter mouseleave").on("click", function() {
+                $(this).toggleClass("on");
+            });
         } else {
-            // $headerMiddle.addClass("on");
+            // PC 화면 크기일 때는 로그인 요소에  hover 이벤트 적용 (click이벤트 삭제)
+            $login.off("click").hover(
+                function() {
+                    $(this).addClass("on");
+                },
+                function() {
+                    $(this).removeClass("on");
+                }
+            );
         }
     }
 
     // 초기 로드 시 함수 실행
     $(document).ready(function () {
-        adjustHeaderMiddlePosition();
+        adjustToResize();
     });
 
     // 윈도우 크기 변경 시 함수 실행
     $(window).resize(function () {
-        adjustHeaderMiddlePosition();
+        adjustToResize();
     });
 
 

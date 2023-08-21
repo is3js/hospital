@@ -3318,7 +3318,7 @@ span.category.category-naver {
 .footer-top > .footer-top-left dt a{
     font-size: 18px;
     line-height: 18px;
-    color: #fff;
+    color: #fff!important;
     font-family: var(--primary-font-family);
     font-weight: lighter;
 }
