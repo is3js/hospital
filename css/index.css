@@ -368,7 +368,7 @@ a {
 
 /* 모바일 퀵메뉴 */
 .quick-menu {
-    padding: 15px 0;
+    padding: 20px 0;
 }
 
 .quick-menu li {
@@ -523,7 +523,7 @@ a {
     /* 메뉴 글자크기 */
     .header .header-middle .navbar-nav .nav-item > a {
         font-size: var(--header-middle-nav-1200-font-size);
-        margin-right: 12px;
+        margin-right: 15px;
     }
 
     /* 로그인 버튼 a태그 글자크기 */
@@ -537,7 +537,7 @@ a {
     /* 메뉴 글자크기 */
     .header .header-middle .navbar-nav .nav-item .nav-link {
         font-size: var(--header-middle-nav-1400-font-size);
-        margin-right: 20px;
+        margin-right: 25px;
     }
 
     /* 로그인 버튼 a태그 글자크기 */
@@ -3245,6 +3245,29 @@ span.category.category-naver {
     }
 }
 
+/* banner */
+.banner  {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.banner a.banner-kakao {
+    /* a태그를 block으로 한줄 처리 + padding 상하25 = 50px의 높이로 만들고 컨텐트없음 */
+    display: block;
+    padding: 25px 0;
+    font-size: 0;
+
+    background: url("../images/main_section/kakao_channel.png") no-repeat 50% 50%;
+    background-size: auto 35px; /* 상하패딩의 합보다 작게 */
+}
+
+@media screen and (max-width: 991px) {
+    .banner a.banner-kakao {
+        padding: 20px 0;
+        background-size: auto 30px;
+    }
+}
 
 /* footer */
 .footer {
@@ -3365,6 +3388,8 @@ span.category.category-naver {
     color: #ddd;
     font-family: var(--third-font-family);
     font-weight: bold;
+
+    padding-left: 5px;
 }
 
 /* 모바일에선 하위메뉴dd를 일단 안보이게 접기 */

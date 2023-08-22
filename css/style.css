@@ -21,6 +21,8 @@
     --color-yellow-gold: #cc820b;
     --color-gold: #CEA869;
     --color-gray-darker: #212529BF;
+
+    --color-kakao-yellow: #fee500;
 }
 
 body {
@@ -459,6 +461,10 @@ body {
 
 .bg-green {
     background: var(--color-green);
+}
+
+.bg-kakao {
+    background: var(--color-kakao-yellow);
 }
 
 /* 버튼 */

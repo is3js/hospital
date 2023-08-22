@@ -37,7 +37,7 @@
                         특화 질환
                     </a>
                 </div>
-                <span class="text-black-50 fs-13 ms-2 ms-lg-3">아래의 왼쪽 상단 배너에서 <span class="text-black">실시간 진료 여부</span> 및 <span
+                <span class="text-black-50 fs-13 ms-2 ms-lg-3 fw-bold">아래의 왼쪽 상단 배너에서 <span class="text-black">실시간 진료 여부</span> 및 <span
                         class="text-black">의료진별 진료시간</span>을 확인해주세요</span>
             </div>
             <!-- 우측 전화번호 -->
@@ -269,10 +269,10 @@
                         <div class="quick-login d-flex justify-content-end  position-absolute w-75 pe-4"
                              style="top:0;right:0;">
                             <a href="#">
-                                <button class="btn btn-sm btn-main rounded-pill fs-8">3초 로그인</button>
+                                <button class="btn btn-sm btn-main rounded-pill fs-8">3초 카톡 로그인(환자)</button>
                             </a>
                             <a href="#">
-                                <button class="ms-3 btn btn-sm btn-outline-secondary rounded-pill fs-8">회원 가입</button>
+                                <button class="ms-3 btn btn-sm btn-outline-secondary rounded-pill fs-8">로그인(직원)</button>
                             </a>
                         </div>
                         <!-- 퀵메뉴 -->
@@ -709,8 +709,8 @@
                     <!-- 모바일 진료시간-->
                     <div class="d-block d-lg-none my-3">
                         <div class="quick-schedule ">
-                            <p class="fs-11 font-serif mb-2 fw-bold ">진료시간 <span class="text-submain-light fs-8">*실시간 반영</span> </p>
-                            <ul class="list-unstyled d-flex flex-wrap row-gap-1 rounded fs-11 text-main fw-bold px-1">
+                            <p class="fs-13 font-serif mb-2 fw-bold ">진료시간 <span class="text-submain-light fs-8">*실시간 반영</span> </p>
+                            <ul class="list-unstyled d-flex flex-wrap row-gap-2 rounded fs-11 text-main fw-bold px-1">
                                 <li class="w-50">
                                     <span class="d-inline-block rounded-circle bg-main text-white text-center" style="width: 22px;height: 22px;line-height: 22px;">
                                         월
@@ -4151,33 +4151,33 @@
     </div>
 </div>
 
-<!-- footer 전 배너 -->
+<!-- footer 카톡 배너 -->
 <style>
-    .f-sns-bnr {
+    .banner {
         background: #fee500;
     }
 
-    .f-sns-bnr .bnr {
-        display: block;
+    /*.banner .banner-kakao {*/
+    /*    display: block;*/
 
-        padding: 18px 0;
-        /*background: url("images/main_section/footer_kakao-banner.png") no-repeat 50% 50%;*/
-        background: url("images/main_section/kakao_channel.png") no-repeat 50% 50%;
-        background-size: auto 35px;
+    /*    padding: 25px 0;*/
+    /*    !*background: url("images/main_section/footer_kakao-banner.png") no-repeat 50% 50%;*!*/
+    /*    background: url("images/main_section/kakao_channel.png") no-repeat 50% 50%;*/
+    /*    background-size: auto 35px;*/
 
-        font-size: 0;
-    }
+    /*    font-size: 0;*/
+    /*}*/
 
-    @media screen and (max-width: 991px) {
-        .f-sns-bnr .bnr {
-            padding: 15px 0;
-            background-size: auto 30px;
-        }
-    }
+    /*@media screen and (max-width: 991px) {*/
+    /*    .banner .banner-kakao {*/
+    /*        padding: 20px 0;*/
+    /*        background-size: auto 30px;*/
+    /*    }*/
+    /*}*/
 
 </style>
-<div class="f-sns-bnr w-100 py-2 py-lg-3">
-    <a href="https://pf.kakao.com/_upxfKxd" class="bnr"></a>
+<div class="banner bg-kakao">
+    <a class="banner-kakao" href="https://pf.kakao.com/_upxfKxd" ></a>
 </div>
 
 <!-- footer -->
