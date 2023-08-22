@@ -10,7 +10,11 @@ $(function () {
             $('.navbar-other').addClass('blind');
 
             //
+            $(this).parent().parent().addClass('border-bottom border-2').addClass('');
+
+            //
             $("body").css({"overflow": "hidden"});
+            $(".navbar-collapse").css({"overflow-y": "scroll"});
 
         } else {
             $(this).removeClass("on");
@@ -18,7 +22,11 @@ $(function () {
             $('.navbar-other').removeClass('blind');
 
             //
+            $(this).parent().parent().removeClass('border-bottom border-2');
+
+            //
             $("body").css({"overflow": "auto"});
+
         }
         // 토글버튼에 "on" 여부에 따라 -> lg의 hover처럼, header-middle을 "on"
         $(".header-middle").toggleClass("on");
