@@ -1,14 +1,5 @@
 $(function () {
-    $(document).click(function(e) {
-        const navbar = $(".navbar-collapse");
-        const navbarToggler = $(".navbar-toggler");
-        const navbarParnet = $(".navbar")
-        if (!navbarToggler.is(e.target) && !navbar.is(e.target) && navbar.has(e.target).length === 0 ) {
-            navbar.collapse("hide");
-            // navbarToggler.click();
-            // navbar.removeClass('border-bottom border-2');
-        }
-    });
+
     /* 햄버거 버튼 on 토글 + .header-middle (lg hover작동) on 토글 */
     $(".navbar-toggler").click(function () {
         // 토글버튼에 "on" 토글
@@ -19,12 +10,12 @@ $(function () {
             $('.navbar-other').addClass('blind');
 
             //
-            // $(this).parent().parent().addClass('border-bottom border-2').addClass('');
+            $(this).parent().parent().addClass('border-bottom border-2 shadow');
 
 
             //
             $("body").css({"overflow": "hidden"});
-            $(".navbar-collapse").css("height", "100%");
+            // $(".navbar-collapse").css("height", "120%");
             // $(".navbar-collapse").css({"overflow-y": "scroll"});
 
         } else {
@@ -33,7 +24,7 @@ $(function () {
             $('.navbar-other').removeClass('blind');
 
             //
-            // $(this).parent().parent().removeClass('border-bottom border-2');
+            $(this).parent().parent().removeClass('border-bottom border-2 shadow');
 
             //
             $("body").css({"overflow": "auto"});
