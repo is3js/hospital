@@ -8,10 +8,17 @@ $(function () {
             $(this).addClass("on");
             // 추가) 햄버거 우측의 로그인|예약버튼을 감싸는 .navbar-other toggle시 감추기
             $('.navbar-other').addClass('blind');
+
+            //
+            $("body").css({"overflow": "hidden"});
+
         } else {
             $(this).removeClass("on");
             // 추가) 햄버거 우측의 로그인|예약버튼을 감싸는 .navbar-other toggle시 감추기
             $('.navbar-other').removeClass('blind');
+
+            //
+            $("body").css({"overflow": "auto"});
         }
         // 토글버튼에 "on" 여부에 따라 -> lg의 hover처럼, header-middle을 "on"
         $(".header-middle").toggleClass("on");
@@ -21,6 +28,7 @@ $(function () {
         } else if (!$(this).hasClass("on") && $headerMiddle.hasClass("on")) {
             $(".header-middle").removeClass("on")
         }
+
     });
 
 

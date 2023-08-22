@@ -2557,14 +2557,14 @@ a {
 /*.section3 .media-box .nav-tabs > li > a.active[href="#tabs-youtube"] {*/
 .section3 .media-box ul.nav-tabs#youtube-tab > li > a.active {
     background-color: var(--color-pink) !important;
-    background-color: var(--color-youtube) !important;
+    /*background-color: var(--color-youtube) !important;*/
     color: #fff;
 }
 
 /*.section3 .media-box .nav-tabs > li > a.active[href="#tabs-blog"] {*/
 .section3 .media-box ul.nav-tabs#blog-tab > li > a.active {
     background-color: var(--color-green) !important;
-    background-color: var(--color-naver) !important;
+    /*background-color: var(--color-naver) !important;*/
     color: #fff;
 }
 
@@ -2620,12 +2620,14 @@ span.category {
 span.category.category-youtube {
     /*background: #F07F7F !important;*/
     /*box-shadow: 2px 2px 7px rgba(240, 127, 127, 0.4);*/
-    background: var(--color-youtube) !important;
+    background: var(--color-pink) !important;
+    /*background: var(--color-youtube) !important;*/
     box-shadow: 2px 2px 7px rgba(246, 50, 50, 0.4);
 }
 
 span.category.category-naver {
-    background: var(--color-naver) !important;
+    /*background: var(--color-naver) !important;*/
+    background: var(--color-green) !important;
     box-shadow: 2px 2px 7px rgba(128, 186, 150, 0.4);
 }
 
@@ -2753,8 +2755,11 @@ span.category.category-naver {
     transform: scale(1.5);
 }
 
-.section2-middle2 .tab-content .w-75 {
-    padding: 0 5%;
+/* - 치료후기 swiepr바깥 좌우 패딩 only mobile for 좌우 화살표버튼 */
+@media screen and (max-width: 992px) {
+    .section2-middle2 .tab-content .w-75 {
+        padding: 0 5%;
+    }
 }
 
 /* lg ~ xxl까지 공자사항에 붙는 구간에서 pagination이 들어잇는 w-75부분을 약간 올린다. */
