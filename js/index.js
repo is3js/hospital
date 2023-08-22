@@ -14,9 +14,7 @@ $(function () {
 
 
             //
-            // $("body").css({"overflow": "hidden"});
-            // $(".navbar-collapse").css("height", "120%");
-            // $(".navbar-collapse").css({"overflow-y": "scroll"});
+            $("body").css({"overflow": "hidden"});
 
         } else {
             $(this).removeClass("on");
@@ -27,7 +25,7 @@ $(function () {
             $(this).parent().parent().removeClass('border-bottom border-2');
 
             //
-            // $("body").css({"overflow": "auto"});
+            $("body").css({"overflow": "auto"});
 
         }
 
@@ -94,7 +92,17 @@ $(function () {
                 $(this).toggleClass("on");
             }).on("blur", function () {
                 $(this).removeClass("on");
-            })
+            });
+
+            // 높이 조절
+            var navbarCollapse = document.getElementById('navbarSupportedContent');
+            var windowHeight = window.innerHeight;
+            var headerHeight = document.querySelector('.header-bottom').offsetHeight; // You might need to adjust this selector
+            var navbarToggler = document.querySelector('.navbar-toggler').offsetHeight; // You might need to adjust this selector
+            var footerHeight = 0; // You might need to consider the footer height if present
+
+            var navbarCollapseMaxHeight = windowHeight - headerHeight - navbarToggler -  footerHeight;
+            navbarCollapse.style.maxHeight = navbarCollapseMaxHeight + 'px';
         } else {
             // PC 화면 크기일 때는 로그인 요소에  hover 이벤트 적용 (click + focus/blur 이벤트 삭제)
             $login.off("click focus blur").hover(
