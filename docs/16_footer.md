@@ -299,50 +299,56 @@
 
 ```css
 /* - 모바일에선 top-left float 제거 */
-@media screen and (max-width: 991px){
-   .footer-in > .footer-top > .footer-top-left {
-      float: none!important;
-      width: 100%!important;
-   }
+@media screen and (max-width: 991px) {
+    .footer-in > .footer-top > .footer-top-left {
+        float: none !important;
+        width: 100% !important;
+    }
 }
 
 /* - 모바일에선 top-right float 제거 */
-@media screen and (max-width: 991px){
-   .footer-in > .footer-top > .footer-top-right
-   {
-      float: none!important;
-      width: 100%!important;
-   }
+@media screen and (max-width: 991px) {
+    .footer-in > .footer-top > .footer-top-right {
+        float: none !important;
+        width: 100% !important;
+    }
 }
 ```
 
 ![img.png](../ui/329.png)
+
 3. `모바일css`에서 **`하위메뉴인 dd들을 display:none`으로 접는다.**
+
 ```css
 /* 모바일에선 하위메뉴dd를 일단 안보이게 접기 */
-@media screen and (max-width: 991px){
+@media screen and (max-width: 991px) {
     .footer-top > .footer-top-left dd {
         display: none;
     }
 }
 ```
+
 4. 이제 메뉴들의 부모인 top-left를 flex + `between` -> `flex-wrap:wrap`으로 변경해주고 해주고, 상위메뉴인 `dl`들을 각각 `w-100`으로 벌려준다.
+
 ```css
-@media screen and (max-width: 991px){
+@media screen and (max-width: 991px) {
     /* - 모바일에선 top-left( float 제거 + wrap) */
     .footer-in > .footer-top > .footer-top-left {
-        float: none!important;
-        width: 100%!important;
+        float: none !important;
+        width: 100% !important;
 
-        flex-wrap: wrap!important;
+        flex-wrap: wrap !important;
     }
+
     /* 상위메뉴 dl을 w-100으로 벌리기 */
     .footer-in > .footer-top > .footer-top-left dl {
         width: 100%;
     }
 }
 ```
+
 5. **left, right 각각 h500px을 줬던 것을 삭제하고, .footer-in에 h-auto를 준다.**
+
 ```css
 .footer > .footer-in {
     width: 70%;
@@ -352,40 +358,47 @@
     height: auto;
 }
 ```
+
 6. lg에서 dt마다 줬던 mb를 40 -> 0으로 제거후, `height + lh`를 직접 글자2.5배로 지정하여 글자는 가운데 정렬되게 한다.
-```css
-@media screen and (max-width: 991px){
-   .footer-top > .footer-top-left dt {
-      margin: 0; /* lg mb 40px -> mobile 0*/
 
-      line-height: 50px;
-      height: 50px;
-   }
+```css
+@media screen and (max-width: 991px) {
+    .footer-top > .footer-top-left dt {
+        margin: 0; /* lg mb 40px -> mobile 0*/
+
+        line-height: 50px;
+        height: 50px;
+    }
 }
 ```
+
 7. **각 dt(상위메뉴)의 after에 absolute가 아닌 `float:right`로 +버튼을 배정해준다.**
+
 ```css
-@media screen and (max-width: 991px){
-   .footer-top > .footer-top-left dt {
-      margin: 0; /* lg mb 40px -> mobile 0*/
+@media screen and (max-width: 991px) {
+    .footer-top > .footer-top-left dt {
+        margin: 0; /* lg mb 40px -> mobile 0*/
 
-      line-height: 50px;
-      height: 50px;
-   }
+        line-height: 50px;
+        height: 50px;
+    }
 
-   .footer-top > .footer-top-left dt::after {
-      content: '+';
+    .footer-top > .footer-top-left dt::after {
+        content: '+';
 
-      float: right;
-      font-size: 20px;
-      font-weight: normal;
-   }
+        float: right;
+        font-size: 20px;
+        font-weight: normal;
+    }
 }
 ```
+
 ![img.png](../ui/330.png)
 
 8. **dl자체의 margin을 `.m-0`으로 제거해준다. (원래 없어야함)**
+
 ```html
+
 <dl class="m-0">
     <dt>예약 및 상담</dt>
     <dd>실시간 예약</dd>
@@ -396,49 +409,54 @@
 </dl>
 ```
 
-
 9. 이제 right의 p태그들을 정리한다.
+
 - 오히려 float안된 놈들을 **1번째 p만 float:left 처리한다.**
 - 나머지 p들은 text-align을 right로 정렬하여 우측정렬해서 밀어버린다.
 - 3번째 p태그의 글자는 작앗던 것을 모바일에서 조금 키운다.
 
 ```css
-@media screen and (max-width: 991px){
+@media screen and (max-width: 991px) {
     /* - 모바일에선 1번째 p는 float left */
-    .footer-top > .footer-top-right > p:nth-child(1)  {
-        float: left!important;
+    .footer-top > .footer-top-right > p:nth-child(1) {
+        float: left !important;
     }
+
     /* 나머지 p태그들의 글자를 우측 정렬 */
     .footer-top > .footer-top-right > p {
         text-align: right;
     }
-   /* 3번째 p태그는 글씨가 작았던 것을 키움 */
-   .footer-top > .footer-top-right > p:nth-child(3) {
-      font-size: 15px;
-   }
+
+    /* 3번째 p태그는 글씨가 작았던 것을 키움 */
+    .footer-top > .footer-top-right > p:nth-child(3) {
+        font-size: 15px;
+    }
 }
 ```
 
 10. lg에서 있던 footer-top 전체의 pb:76px을 모바일에선 줄인다.
+
 ```css
 .footer-in > .footer-top {
     padding-bottom: 76px;
     border-bottom: 1px #ddd solid;
 }
 
-@media screen and (max-width: 991px){
+@media screen and (max-width: 991px) {
     .footer-in > .footer-top {
         padding-bottom: 10px;
     }
 }
 ```
+
 ![img.png](../ui/331.png)
 
-
 11. footer-bottom에 있던 left/right 를 모바일에선 `float:none으로 제거`하여, `div-block`으로서 자동으로 다음 줄로 내려가게 한다
-   - **부트스트랩으로 해결해보자.**
+
+- **부트스트랩으로 해결해보자.**
 
 ```html
+
 <div class="footer-bottom clearfix">
     <div class="footer-bottom-left float-none float-lg-start">
         Copyrightⓒ 2023 우아한의원 ALL RIGHTS RESERVED
@@ -454,11 +472,11 @@
     </div>
 </div>
 ```
+
 12. 추가로 저작권에 p태그를 씌워, 기본 block이지만, lg부터는 inline-block으로서 이용약관들과 같이 붙게 만들자.
 
 ![img.png](../ui/332.png)
 ![img_1.png](../ui/333.png)
-
 
 ### right 온라인 상담 -> qrcode로 변경
 
@@ -476,7 +494,8 @@
 ```
 
 2. 모바일에서 figure를 float:left시키며, right는 위쪽에 위치하게 되는데, 2번재 p태그에서 pt로 간격을 줌
-   - 3번째 p태그의 글자커지는 것을 방지함.
+    - 3번째 p태그의 글자커지는 것을 방지함.
+
 ```css
 @media screen and (max-width: 991px) {
     /* - 모바일에선 1번째 p는 float left */
@@ -493,17 +512,20 @@
     .footer-top > .footer-top-right > p:nth-child(2) {
         padding-top: 45px;
     }
+
     /* 3번째 p태그는 글씨가 작았던 것을 키움 */
     .footer-top > .footer-top-right > p:nth-child(3) {
         /*font-size: 15px;*/
     }
 }
 ```
+
 ![img.png](../ui/340.png)
 
-
 ### footer top left의 글자체 및 style 변경
+
 1. footer 자체의 pt를 60 -> 모바일 30으로 줄인다
+
 ```css
 @media screen and (max-width: 991px) {
     .footer {
@@ -513,6 +535,7 @@
 ```
 
 2. 모바일에서 보이는 dt를 lh==height로 주고, 글자크기는 16px로 줄인다.
+
 ```css
 @media screen and (max-width: 991px) {
     .footer-top > .footer-top-left dt {
@@ -526,6 +549,7 @@
 ```
 
 3. **2-3차메뉴 or 3차가 없는 경우 1차-img메뉴**로 구성된 메뉴들에 대해서, dt와 dd에 모두 a태그로 감싸고, css를 dt dd 대신 dt a , dd a로 줘야한다.
+
 ```html
 
 <dt><a href="#">병원 소개</a></dt>
@@ -536,6 +560,7 @@
 <dd><a href="#">길찾기</a></dd>
 <dd><a href="#">공지사항</a></dd>
 ```
+
 ```css
 .footer-top > .footer-top-left dt a {
 }
@@ -556,7 +581,9 @@
     }
 }
 ```
+
 - 일부 a태그에 안먹히는 태그들은 상위 dt, dd로 빼줘야한다.
+
 ```css
 .footer-top > .footer-top-left dt {
     margin-bottom: 30px;
@@ -568,49 +595,56 @@
     }
 }
 ```
+
 ```css
 .footer-top > .footer-top-left dd {
     margin-bottom: 18px;
 }
 
 @media screen and (max-width: 991px) {
-   .footer-top > .footer-top-left dd {
-      display: none;
-   }
+    .footer-top > .footer-top-left dd {
+        display: none;
+    }
 }
 ```
+
 #### footer top left 상위메뉴 스타일 변경
+
 1. top left의 **`between`이지만, `작아서 넘치면 넘어가도록 자연스럽게  flex-wrap`을 추가한다**
+
 ```html
 <!-- <div class="footer-top-left w-75 float-start d-flex justify-content-between h-auto">-->
 <div class="footer-top-left w-75 float-start d-flex justify-content-between flex-wrap h-auto">
 ```
 
 2. dl에 각각의 메뉴의 간격을, class="m-0"을 삭제하고,  `mr 30px`로 벌려, `between이지만 좁혀지더라도 간격을 유지`할 수 있게 한다. **모바일에선 m-0을 직접 준다.**
+
 ```html
  <!--<dl class="m-0">-->
 <dl class="">
 ```
+
 ```css
 .footer-in > .footer-top > .footer-top-left dl {
     margin-right: 30px;
 }
 
 @media screen and (max-width: 991px) {
-   /* 상위메뉴 dl을 w-100으로 벌리기 */
-   .footer-in > .footer-top > .footer-top-left dl {
-      width: 100%;
-      margin: 0;
-   }
+    /* 상위메뉴 dl을 w-100으로 벌리기 */
+    .footer-in > .footer-top > .footer-top-left dl {
+        width: 100%;
+        margin: 0;
+    }
 }
 ```
+
 ![img.png](../ui/342.png)
 
-
 3. 기존의 dt의 mb를 border로 잡기 위한, pb로 바꾸고, 일정부분은 mb로 남긴다
-   - dt의 mb 15px -> pb 5 + border-bottom 5px + mb 10 으로 바꿔준다.
-   - **이 때, 제목인 dt의 bottom에 매기지만, 아래쪽 dd와 묶여있는 flex-item으로서, 가장 긴것이 길이가 된다.**
-   - lg에만 적용되도록 바꿔준다.
+    - dt의 mb 15px -> pb 5 + border-bottom 5px + mb 10 으로 바꿔준다.
+    - **이 때, 제목인 dt의 bottom에 매기지만, 아래쪽 dd와 묶여있는 flex-item으로서, 가장 긴것이 길이가 된다.**
+    - lg에만 적용되도록 바꿔준다.
+
 ```css
 .footer-top > .footer-top-left dt {
     /*margin-bottom: 15px;*/
@@ -624,16 +658,30 @@
     }
 }
 ```
+
 ![img.png](../ui/343.png)
 
+4. 사업자등록번호 span이 mobile에선 아래줄로 내려가게
+    - d-block 시작, lg시 ms-3 + inline으로 변경하게 해준다.
+    - 또한 이용약관 라인과 아래 2줄이 모바일에서만 생기도록 mt-2, mt-lg-0으로 만들어준다.
 
-4. 사업자등록번호 span이 mobile에선 아래줄로 내려가게 
-   - d-block 시작, lg시 ms-3 + inline으로 변경하게 해준다.
-   - 또한 이용약관 라인과 아래 2줄이 모바일에서만 생기도록 mt-2, mt-lg-0으로 만들어준다.
 ```html
+
 <div class="footer-bottom-right float-none float-lg-end mt-2 mt-lg-0">
-                <span>대표 및 개인정보관리책임자: 조재성</span>
-                <span class="d-block ms-lg-3 d-lg-inline">사업자등록번호: 000-00-00000</span>
-            </div>
+    <span>대표 및 개인정보관리책임자: 조재성</span>
+    <span class="d-block ms-lg-3 d-lg-inline">사업자등록번호: 000-00-00000</span>
+</div>
 ```
 
+5. 각 부모태그에 text-center를 넣어서 모바일에서 가운데 정렬되도록
+
+```html
+
+<div class="footer-bottom-left float-none float-lg-start text-center">
+```
+
+```html
+
+<div class="footer-bottom-right float-none float-lg-end mt-2 mt-lg-0 text-center">
+```
+![img.png](../ui/350.png)

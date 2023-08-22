@@ -1042,6 +1042,13 @@ $(function () {
         spaceBetween: 15,
         breakpoints: {
             991: {
+                // slidesPerView: 1.3,
+                slidesPerView: 1,
+                spaceBetween: 0,
+                loopAdditionalSlides: 2, // 없으면 렉걸려서, 1바퀴 밖에 안돈다
+            },
+            1439: {
+                // slidesPerView: 1,
                 slidesPerView: 1.3,
                 spaceBetween: 0,
                 loopAdditionalSlides: 2, // 없으면 렉걸려서, 1바퀴 밖에 안돈다
