@@ -445,7 +445,7 @@ a {
 }
 
 .quick-schedule li:nth-of-type(7) > span {
-    background-color: rgb(250, 132, 132);
+    background-color: rgb(250, 132, 132) !important;
 }
 
 .quick-schedule li:nth-of-type(7) {

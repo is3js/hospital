@@ -10,9 +10,9 @@
     --color-main-light: #5bd2cc;
     --color-main-dark: #50ccc7; /* for 둘러보기 배경색 + 클리닉 치료법 글자색 */
     --color-main-darker: #05736d; /* for 모바일 2차메뉴 */
-    --color-schedule: #a9cccb;
+    --color-submain: #FC5230;
 
-    --color-submain: #50ccc7;
+    --color-schedule: #a9cccb;
 
     --color-pink: #F07F7F;
     --color-purple: #ab8dca;
@@ -459,24 +459,24 @@ body {
 }
 
 .bg-purple {
-    background: var(--color-purple);
+    background: var(--color-purple) !important;
 }
 
 
 .bg-pink {
-    background: var(--color-pink);
+    background: var(--color-pink) !important;
 }
 
 .bg-green {
-    background: var(--color-green);
+    background: var(--color-green) !important;
 }
 
 .bg-schedule {
-    background: var(--color-schedule);
+    background: var(--color-schedule) !important;
 }
 
 .bg-kakao {
-    background: var(--color-kakao-yellow);
+    background: var(--color-kakao-yellow) !important;
 }
 
 /* 버튼 */
