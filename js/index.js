@@ -10,11 +10,11 @@ $(function () {
             $('.navbar-other').addClass('blind');
 
             //
-            $(this).parent().parent().addClass('border-bottom border-2 shadow');
+            $(this).parent().parent().addClass('border-bottom border-2');
 
 
             //
-            $("body").css({"overflow": "hidden"});
+            // $("body").css({"overflow": "hidden"});
             // $(".navbar-collapse").css("height", "120%");
             // $(".navbar-collapse").css({"overflow-y": "scroll"});
 
@@ -24,10 +24,10 @@ $(function () {
             $('.navbar-other').removeClass('blind');
 
             //
-            $(this).parent().parent().removeClass('border-bottom border-2 shadow');
+            $(this).parent().parent().removeClass('border-bottom border-2');
 
             //
-            $("body").css({"overflow": "auto"});
+            // $("body").css({"overflow": "auto"});
 
         }
 
