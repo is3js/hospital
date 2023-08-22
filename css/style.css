@@ -10,8 +10,9 @@
     --color-main-light: #5bd2cc;
     --color-main-dark: #50ccc7; /* for 둘러보기 배경색 + 클리닉 치료법 글자색 */
     --color-main-darker: #05736d; /* for 모바일 2차메뉴 */
+    --color-schedule: #a9cccb;
 
-    --color-submain: #FC5230;
+    --color-submain: #50ccc7;
 
     --color-pink: #F07F7F;
     --color-purple: #ab8dca;
@@ -21,6 +22,8 @@
     --color-yellow-gold: #cc820b;
     --color-gold: #CEA869;
     --color-gray-darker: #212529BF;
+
+
 
     --color-kakao-yellow: #fee500;
 }
@@ -466,6 +469,10 @@ body {
 
 .bg-green {
     background: var(--color-green);
+}
+
+.bg-schedule {
+    background: var(--color-schedule);
 }
 
 .bg-kakao {

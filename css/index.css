@@ -431,13 +431,13 @@ a {
     display: block; /* 필수*/
 }
 
-/* 모바일 진료시간 (토, 일은 글자색 자동으로 다르게) */
+/* 퀵 진료시간 (토, 일은 글자색 자동으로 다르게) */
 .quick-schedule li > span {
     margin-right: 5px;
 }
 
 .quick-schedule li:nth-of-type(6) > span {
-    background-color: rgb(86, 128, 245) !important;
+    background-color: rgb(104, 142, 246) !important;
 }
 
 .quick-schedule li:nth-of-type(6) {
@@ -445,11 +445,11 @@ a {
 }
 
 .quick-schedule li:nth-of-type(7) > span {
-    background-color: rgb(255, 85, 85);
+    background-color: rgb(250, 132, 132);
 }
 
 .quick-schedule li:nth-of-type(7) {
-    color: rgb(245, 41, 41) !important;
+    color: rgb(248, 72, 72) !important;
 }
 
 
