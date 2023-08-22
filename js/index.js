@@ -10,7 +10,7 @@ $(function () {
             $('.navbar-other').addClass('blind');
 
             //
-            $(this).parent().parent().addClass('border-bottom border-2');
+            $(this).parent().parent().addClass('border-bottom border-1');
 
 
             //
@@ -22,7 +22,7 @@ $(function () {
             $('.navbar-other').removeClass('blind');
 
             //
-            $(this).parent().parent().removeClass('border-bottom border-2');
+            $(this).parent().parent().removeClass('border-bottom border-1');
 
             //
             $("body").css({"overflow": "auto"});
@@ -87,6 +87,7 @@ $(function () {
 
     function adjustToResize() {
         if ($(window).width() <= 991) {
+
             // 모바일 화면 크기일 때는 로그인 요소에 click 이벤트 적용 (hover 삭제)
             $login.off("mouseenter mouseleave").on("click focus", function() {
                 $(this).toggleClass("on");
@@ -94,15 +95,15 @@ $(function () {
                 $(this).removeClass("on");
             });
 
-            // 높이 조절
-            var navbarCollapse = document.getElementById('navbarSupportedContent');
+            // 토글시 navbar-collapse 높이 동적 계산( 전체 - top헤더(.header-bottom) - 토글버튼 높이 )
             var windowHeight = window.innerHeight;
-            var headerHeight = document.querySelector('.header-bottom').offsetHeight; // You might need to adjust this selector
-            var navbarToggler = document.querySelector('.navbar-toggler').offsetHeight; // You might need to adjust this selector
-            var footerHeight = 0; // You might need to consider the footer height if present
+            var headerBottomHeight = $('.header .header-bottom').outerHeight();
+            var navbarTogglerHeight = $('.header .navbar-toggler').outerHeight();
+            var navbarCollapse = $('.header .header-middle .navbar .navbar-collapse');
 
-            var navbarCollapseMaxHeight = windowHeight - headerHeight - navbarToggler -  footerHeight;
-            navbarCollapse.style.maxHeight = navbarCollapseMaxHeight + 'px';
+            var navbarCollapseHeight = windowHeight - headerBottomHeight - navbarTogglerHeight + 'px';
+            navbarCollapse.css('max-height', navbarCollapseHeight);
+
         } else {
             // PC 화면 크기일 때는 로그인 요소에  hover 이벤트 적용 (click + focus/blur 이벤트 삭제)
             $login.off("click focus blur").hover(
