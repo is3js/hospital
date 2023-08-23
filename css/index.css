@@ -2437,9 +2437,20 @@ a {
 
 /* 공지사항 notice */
 /* - dd  글자간격 */
-/*.section2 .notice dl dd {*/
-/*    line-height: 20px;*/
-/*}*/
+.section2 .notice dl dd {
+    line-height: 40px;
+}
+
+@media screen and (min-width: 992px) and (max-width: 1399px) {
+    .section2 .notice dl dd {
+        line-height: 30px;
+    }
+}
+@media screen and (max-width: 991px) {
+    .section2 .notice dl dd {
+        line-height: 20px;
+    }
+}
 
 /* 첫번째 글dd만 진하게 */
 .section2 .notice dl dd:nth-of-type(1) {
