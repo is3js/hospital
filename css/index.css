@@ -2435,6 +2435,13 @@ a {
     color: #222;
 }
 
+/* 공지사항 notice */
+/* 모바일에서 4번째 dd(글) 부터는 안보이게 */
+@media (max-width: 991px) {
+    .section2 .notice dl dd:nth-of-type(n+4) {
+        display: none; /* 4번째부터 나머지 dd 요소를 숨김 */
+    }
+}
 
 /*.section3, .section5, .section4 {*/
 .section {
@@ -2585,6 +2592,8 @@ a {
         margin-top: 60px;
     }
 }
+
+
 
 
 /* section3 건강채널 */
