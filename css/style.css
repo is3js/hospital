@@ -272,7 +272,9 @@ body {
 }
 
 .fs-notice-text {
-    font-size: 14px;
+    font-size: 16px;
+    line-height: 32px; /* fz 16*/
+
 }
 
 
@@ -282,7 +284,9 @@ body {
     }
     .fs-notice-text {
         font-size: 13px;
+        line-height: 26px;
         letter-spacing: -.01rem;
+
     }
 }
 
@@ -292,6 +296,7 @@ body {
     }
     .fs-notice-text {
         font-size: 11px;
+        line-height: 25px;
         letter-spacing: -.05rem;
     }
 }
