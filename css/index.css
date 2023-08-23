@@ -2436,6 +2436,10 @@ a {
 }
 
 /* 공지사항 notice */
+/* - dd  글자간격 */
+/*.section2 .notice dl dd {*/
+/*    line-height: 20px;*/
+/*}*/
 
 /* 첫번째 글dd만 진하게 */
 .section2 .notice dl dd:nth-of-type(1) {
