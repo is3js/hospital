@@ -2405,9 +2405,12 @@ a {
 .booking-service-box-mobile .btn-bs {
     width: 100%;
     height: var(--booking-service-tab-height);
-    background: #12887a;
+    background: rgba(26, 168, 151, 0.71);
+    /*background: url('../images/main_section/bg_mobile_booking.jpg') no-repeat 50% 50%;*/
+    /*background-size: cover;*/
 
     border: 0;
+    border: 1px solid rgba(26, 168, 151, 0.71);
     border-radius: 8px;
     cursor: pointer;
 
@@ -2425,6 +2428,7 @@ a {
 }
 
 .bs-time-mobile {
+    font-family: var(--primary-font-family);
     font-size: calc(var(--booking-service-tab-font-size) * .9);
     font-weight: bold;
     margin: 10px 0;
@@ -2432,7 +2436,7 @@ a {
 
     text-align: center;
     letter-spacing: 0;
-    color: #222;
+    color: var(--color-main-darker);
 }
 
 /* 공지사항 notice */

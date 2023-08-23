@@ -352,6 +352,10 @@ body {
     color:  var(--color-pink);
 }
 
+.text-danger-light {
+    color: rgb(255, 85, 85)!important;
+}
+
 .text-green {
     color: var(--color-green);
 }
