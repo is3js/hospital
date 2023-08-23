@@ -2438,17 +2438,12 @@ a {
 /* 공지사항 notice */
 /* - dd  글자간격 */
 .section2 .notice dl dd {
-    line-height: 40px;
+    line-height: 35px;
 }
 
-@media screen and (min-width: 992px) and (max-width: 1399px) {
-    .section2 .notice dl dd {
-        line-height: 30px;
-    }
-}
 @media screen and (max-width: 991px) {
     .section2 .notice dl dd {
-        line-height: 20px;
+        line-height: 25px;
     }
 }
 
