@@ -231,8 +231,6 @@ body {
 .fs-clinic-therapy {
     font-size: 16px;
     font-weight: bold;
-    letter-spacing: -.1rem;
-
 }
 .fs-clinic-therapy-desc {
     font-size: 16px;
@@ -250,13 +248,20 @@ body {
     }
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (min-width: 576px) and (max-width: 991px) {
     .fs-clinic-therapy {
         font-size: 14px;
         letter-spacing: -.04rem;
     }
     .fs-clinic-therapy-desc {
         font-size: 13px;
+        letter-spacing: -.01rem;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .fs-clinic-therapy {
+        font-size: 12px;
         letter-spacing: -.01rem;
     }
 }

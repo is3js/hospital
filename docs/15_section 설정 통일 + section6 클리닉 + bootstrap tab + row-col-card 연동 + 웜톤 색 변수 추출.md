@@ -735,7 +735,8 @@ controller.addScene(scene9);
   부항/뜸/전기치료
 </span>
 ```
-- 글자크기도 991이하 통합하기( 그전엔 550이하 11px)
+- 글자크기도 모바일꺼는 조금 키우기
+
 
 
 7. lg에서 치료전후는 좁히고(col-4->3), 치료방법은 더 늘이기(col-8->9)
@@ -745,3 +746,4 @@ controller.addScene(scene9);
 <!-- col 2. 치료방법 -->
 <div class="col-6 col-lg-9 
 ```
+8. 복사해서 다른탭도 수정
