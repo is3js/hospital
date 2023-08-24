@@ -229,8 +229,10 @@ body {
 
 
 .fs-clinic-therapy {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
+    letter-spacing: -.1rem;
+
 }
 .fs-clinic-therapy-desc {
     font-size: 16px;
@@ -239,7 +241,7 @@ body {
 
 @media screen and (min-width: 992px) and (max-width: 1399px) {
     .fs-clinic-therapy {
-        font-size: 15px;
+        font-size: 14px;
         letter-spacing: -.1rem;
     }
     .fs-clinic-therapy-desc {
@@ -248,7 +250,7 @@ body {
     }
 }
 
-@media screen and (min-width: 576px) and (max-width: 991px) {
+@media screen and (max-width: 991px) {
     .fs-clinic-therapy {
         font-size: 14px;
         letter-spacing: -.04rem;
@@ -256,13 +258,6 @@ body {
     .fs-clinic-therapy-desc {
         font-size: 13px;
         letter-spacing: -.01rem;
-    }
-}
-
-@media screen and (max-width: 575px) {
-    .fs-clinic-therapy {
-        font-size: 11px;
-        letter-spacing: -.05rem;
     }
 }
 
@@ -337,6 +332,10 @@ body {
 
 .text-main-dark {
     color: var(--color-main-dark);
+}
+
+.text-main-darker {
+    color: var(--color-main-darker);
 }
 
 

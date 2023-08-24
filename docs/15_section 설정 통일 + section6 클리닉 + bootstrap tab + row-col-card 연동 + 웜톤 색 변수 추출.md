@@ -723,3 +723,25 @@ controller.addScene(scene9);
 ```html
 <div class="flex-fill d-flex justify-content-center align-items-center border-bottom border-clinic">
 ```
+
+6. 치료법 글자색을 좀 더 진하게 변경
+```css
+.text-main-darker {
+    color: var(--color-main-darker);
+}
+```
+```html
+<span class="font-serif fw-bold underline underline-clinic text-main-darker fs-clinic-therapy">
+  부항/뜸/전기치료
+</span>
+```
+- 글자크기도 991이하 통합하기( 그전엔 550이하 11px)
+
+
+7. lg에서 치료전후는 좁히고(col-4->3), 치료방법은 더 늘이기(col-8->9)
+```html
+<!-- col 1. 치료 전/후 -->
+<div class="col-6 col-lg-3
+<!-- col 2. 치료방법 -->
+<div class="col-6 col-lg-9 
+```
