@@ -617,3 +617,58 @@ controller.addScene(scene9);
 ```
 
 2. 필요한 갯수만큼 복사한다.
+
+
+### 제목 없애기
+1. 상단제목 html 주석
+```html
+ <!-- 상단 제목 -->
+<!--                    <div class="w-100 d-flex align-items-center py-2 px-3 text-white">-->
+<!--                        <div class="ps-2 ">-->
+<!--                            <h5 class="m-0 fs-clinic-title font-sans fw-light text-white text-shadow">-->
+<!--                                통증 클리닉-->
+<!--                                <small class="d-none d-lg-inline-block ms-3 font-serif text-white text-shadow-none underline underline-white">-->
+<!--                                    공간을 확보하고 염증을 잡아 일상 디스크 통증 개선-->
+<!--                                </small>-->
+<!--                            </h5>-->
+<!--                        </div>-->
+<!--                        <div class="ms-auto">-->
+<!--                            <a class="fs-clinic-tab btn btn-sm border-white text-white rounded-0" href="#"-->
+<!--                               style="background:rgba(255, 255, 225, 0.2);">-->
+<!--                                더 알아보기-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+```
+2. css에서 배경주는 것 주석 처리
+```css
+/* - tab conntent의 tab-pane 순서대로 div 색 배정 */
+/*.section6 .clinic-box .tab-content > .tab-pane > div > div:nth-child(1) {*/
+/*    !*background-color: var(--color-main-light) !important;*!*/
+/*    !*background-color: var(--color-clinic-1)!important;*!*/
+/*    background: #364444 url(../images/clinic/bg_title.png) 100% 100% !important;*/
+/*    background-size: cover;*/
+/*}*/
+
+/*.section6 .clinic-box .tab-content > .tab-pane:nth-child(7n+1) > div > div:nth-child(2) {*/
+
+/*.section6 .clinic-box .tab-content > .tab-pane > div > div:nth-child(2) {*/
+/*    background: #364444 url(../images/clinic/bg_clinic.png) 100% 100% !important;*/
+/*    background-size: cover;*/
+/*}*/
+```
+3. 치료법 사진을 키우기 위해 px- 5 -> 4로 낮추기
+```html
+<!--<div class="col-12 px-5 col-lg-3 px-lg-2 d-flex justify-content-center align-items-center">-->
+<div class="col-12 px-4 col-lg-3 px-lg-2 d-flex justify-content-center align-items-center">
+```
+
+4. col-gap을 낮추고, 화살표 크기 줄이기 + bottom 조절
+```css
+.clinic-arrow-parent div:not(:last-of-type) .clinic-arrow::after {
+    /*bottom: 0;*/
+    bottom: 4px;
+    /*width: 30px;*/
+    width: 20px;
+}
+```
