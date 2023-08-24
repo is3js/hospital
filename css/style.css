@@ -635,6 +635,9 @@ body {
     border-color: var(--color-main-dark) !important;
 }
 
+.border-clinic {
+    border-color: rgba(228, 228, 228, 0.5)!important;
+}
 
 /*  underline */
 .underline {

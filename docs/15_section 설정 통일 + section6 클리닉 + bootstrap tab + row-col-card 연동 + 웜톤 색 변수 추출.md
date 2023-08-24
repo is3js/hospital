@@ -709,3 +709,17 @@ controller.addScene(scene9);
     width: 20px;
 }
 ```
+5. border색을 연한색으로 변경
+   - 기존 border-main을 border-clinic으로 정의하고, 색을 정의
+```css
+.border-clinic {
+    border-color: rgba(228, 228, 228, 0.5)!important;
+}
+``` 
+```html
+<!--                        <div class="col-6 col-lg-8 d-flex flex-column align-items-center my-3 my-lg-5 gap-4 gap-lg-5 border-start border-main font-serif clinic-arrow-parent text-center">-->
+                        <div class="col-6 col-lg-8 d-flex flex-column align-items-center my-3 my-lg-5 gap-3 gap-lg-5 border-start border-clinic font-serif clinic-arrow-parent text-center">
+```
+```html
+<div class="flex-fill d-flex justify-content-center align-items-center border-bottom border-clinic">
+```
