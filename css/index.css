@@ -2446,12 +2446,12 @@ a {
     color:#ddd;
 }
 
-/* 첫번째 글dd만 진하게 */
+/* - 첫번째 글dd만 진하게 */
 .section2 .notice dl dd:nth-of-type(1) > * {
     font-weight: bold!important;
 }
 
-/* 모바일에서 4번째 dd(글) 부터는 안보이게 */
+/* - 모바일에서 4번째 dd(글) 부터는 안보이게 */
 @media (max-width: 991px) {
     .section2 .notice dl dd:nth-of-type(n+4) {
         display: none; /* 4번째부터 나머지 dd 요소를 숨김 */
