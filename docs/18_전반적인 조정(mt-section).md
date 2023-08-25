@@ -1,16 +1,14 @@
 1. 각 섹션당 최대 mt인 5를 커스텀 css로 더 넓힌다
 ```css
 /* margin 마진 */
-.mt-6 {
-    margin-top: 4.5rem !important;
-}
-
-.mt-7 {
-    margin-top: 6rem !important;
-}
-
 .mt-section {
-    margin-top: 7.5rem !important;
+   margin-top: 7.5rem !important;
+}
+
+@media screen and (max-width: 991px){
+   .mt-section {
+      margin-top: 4rem !important;
+   }
 }
 ```
 
@@ -74,3 +72,27 @@
 .section7 .medicine-box .swiper-container {
 
 ```
+
+6. **section 중 .medicine-box만 모바일 85%가 아닌 100%로 변경 + swiper-container의 border제거**
+```css
+@media screen and (max-width: 991px) {
+    .section > div:not(.medicine-box) {
+        width: 85%!important;
+    }
+    /* 한약소개 배너공간만, 모바일에서 100% */
+    .section > div.medicine-box {
+        width: 100%!important;
+    }
+}
+```
+```css
+@media screen and (max-width: 991px) {
+    .section7 .medicine-box .swiper-container {
+        /*height: 42vw;*/
+        /*border-radius: 8px;*/
+        height: 55vw;
+        border-radius: 0;
+    }
+}
+```
+![img.png](../ui/355.png)
