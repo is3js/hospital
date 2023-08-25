@@ -231,6 +231,16 @@ pagination: {
     padding-left: 2.25rem !important;
 }
 ```
-
 2. text는 좀더 진한 `.text-gold-dark`로 정의하고, underline도 gold쪽으로 정의한다
    - font는 nanum체로 바꾼다.
+
+3. 설명의 글자색도 바꾼다.
+```css
+:root {
+   --color-gray-light: #343A3FBF;
+}
+
+.text-clinic-desc {
+   color: var(--color-gray-light) !important;
+}
+```

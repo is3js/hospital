@@ -22,6 +22,7 @@
     --color-yellow-gold: #cc820b;
     --color-gold: #CEA869;
     --color-gold-dark: #ad8b51;
+    --color-gray-light: #343A3FBF;
     --color-gray-darker: #212529BF;
 
 
@@ -234,7 +235,7 @@ body {
     font-weight: bold;
 }
 .fs-clinic-therapy-desc {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
 }
 
@@ -255,7 +256,7 @@ body {
         letter-spacing: -.04rem;
     }
     .fs-clinic-therapy-desc {
-        font-size: 13px;
+        font-size: 12px;
         letter-spacing: -.01rem;
     }
 }
@@ -381,7 +382,7 @@ body {
 }
 
 .text-clinic-desc {
-    color: var(--color-gray-darker)!important;
+    color: var(--color-gray-light)!important;
 }
 
 
