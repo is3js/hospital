@@ -1539,7 +1539,6 @@ a {
     .section2 .section2-top div:nth-of-type(2) {
         font-size: 13px;
         line-height: 19px;
-        /*letter-spacing: -.08rem;*/
     }
 }
 
@@ -3338,7 +3337,7 @@ span.category.category-naver {
     width: 20px;
     height: 20px;
 
-    background: url("../images/clinic/arrow-down2.png") no-repeat 50% 50%;
+    background: url("../images/clinic/arrow-down3.png") no-repeat 50% 50%;
     background-size: contain;
     transform: translate(-50%, 100%);
 

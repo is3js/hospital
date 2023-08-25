@@ -184,3 +184,41 @@ pagination: {
 
 ### section-title의 글자크기 수정
 1. 이것도 역시 모바일sm(575이하)에서 고정하든지, vw들을  기준으로 준다.
+   - 이 때, **`.section-title`로 분리되지 않은, `.section2 .section2-top`도 같이 적용하며**
+   - p태그의 기본 1rem mb를 줄이는 것도 포함된다.
+   - 글자크기를 고정하고, lh는 약간 높게 주며, letter-spacing을 줄인다. 오른쪽 멘트는 ls를 안줄임.
+```css
+/* 모바일(sm)에서 너무 작아져서 새롭게 기준 잡기 */
+@media screen and (max-width: 575px) {
+    /* p태그 기본 mb(1rem)을 줄임*/
+    .section-title p,
+    .section2 .section2-top p {
+        margin-bottom: .5rem;
+    }
+
+    /* 왼쪽 초록색 첫번째 */
+    .section-title > div:nth-of-type(1) p:nth-of-type(1),
+    .section2 .section2-top div:nth-of-type(1) p:nth-of-type(1) {
+        font-size: 14px;
+        line-height: 30px;
+        letter-spacing: -.05rem;
+    }
+
+    /* 왼쪽 검은색 2번째 */
+    .section-title > div:nth-of-type(1) p:nth-of-type(2),
+    .section-subtitle > div:nth-of-type(1) p:nth-of-type(1),
+    .section2 .section2-top div:nth-of-type(1) p:nth-of-type(2) {
+        font-size: 18px;
+        line-height: 25px;
+        letter-spacing: -.05rem;
+    }
+
+    /* 오른쪽 설명 글 */
+    .section-title > div:nth-of-type(2),
+    .section-subtitle > div:nth-of-type(2),
+    .section2 .section2-top div:nth-of-type(2) {
+        font-size: 13px;
+        line-height: 19px;
+    }
+}
+```

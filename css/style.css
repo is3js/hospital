@@ -21,6 +21,7 @@
     --color-naver: #0eca8b;
     --color-yellow-gold: #cc820b;
     --color-gold: #CEA869;
+    --color-gold-dark: #ad8b51;
     --color-gray-darker: #212529BF;
 
 
@@ -371,6 +372,10 @@ body {
     color: var(--color-gold);
 }
 
+.text-gold-dark {
+    color: var(--color-gold-dark);
+}
+
 .text-yellow-gold {
     color: var(--color-yellow-gold);
 }
@@ -676,8 +681,9 @@ body {
 
 .underline-clinic:before{
     bottom: 3px;
-    border-color: #a0c79c;
-    opacity: .2;
+    /*border-color: #a0c79c;*/
+    border-color: var(--color-yellow-gold);
+    opacity: .1;
 }
 
 
@@ -690,4 +696,9 @@ body {
     .mt-section {
         margin-top: 4rem !important;
     }
+}
+
+.px-4-5 {
+    padding-right: 2.25rem !important;
+    padding-left: 2.25rem !important;
 }
