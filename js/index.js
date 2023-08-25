@@ -790,7 +790,7 @@ $(function () {
     controller.addScene(scene8);
 
 
-    /* dx 진단 swiper */
+    /* dx 자가진단 swiper */
     let $dxFirstBtn = $('.dx-box #step-first');
     let $dxNextBtn = $(".dx-box #step-next");
     let $dxResultBtn = $(".dx-box #step-result");
@@ -810,10 +810,16 @@ $(function () {
         on: {
             slideChangeTransitionStart: function () {
                 if (this.isEnd) {
+                    // 다음페이지 + 리셋 숨김 -> 결과확인 보임
                     $dxNextBtn.css('display', 'none');
+                    $dxFirstBtn.css('display', 'none');
+
                     $dxResultBtn.css('display', 'block');
+
                 } else {
                     $dxNextBtn.css('display', 'block');
+                    $dxFirstBtn.css('display', 'block');
+
                     $dxResultBtn.css('display', 'none');
                 }
             },
@@ -927,6 +933,7 @@ $(function () {
             preloader: true,
             callbacks: {
                 open: function () {
+
                     var payload = {};
                     // document.dx으로 jquery객체가 아니라면, checked된 value는 .value로 나오지만 name은 못뽑아낸다.
                     // but jquery는 .attr('name')하면, 1개의 name이 나오고 / .val()도 나온다.
@@ -1014,6 +1021,9 @@ $(function () {
                     $(".dx-result-content-img img").attr("src", imageSrc);
                 },
                 close: function () {
+                    // 닫을 때, form을 리셋하고, slide를 처음으로 옮긴다.
+                    document.dx.reset();
+                    dxSwiper.slideTo(0);
                 }
             }
         });

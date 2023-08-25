@@ -3115,7 +3115,7 @@ span.category.category-naver {
 .facility-box .swiper-pagination-bullet {
     background: transparent;
 
-    border: 1px solid var(--color-main);
+    border: 1px solid var(--color-main-dark);
     width: 10px;
     height: 10px;
 
@@ -3127,7 +3127,7 @@ span.category.category-naver {
     border-radius: 5px;
     border: 1px solid transparent;
 
-    background-color: var(--color-main);
+    background-color: var(--color-main-dark);
 
     transition: width .5s;
 }

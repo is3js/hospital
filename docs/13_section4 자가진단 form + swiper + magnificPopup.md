@@ -1403,3 +1403,58 @@ $.ajax({
     width: 100%;
 }
 ```
+
+
+### 자가진단 버튼 위치 조정
+1. 결과 확인버튼 옆에 처음으로 버튼을 옮긴다
+```html
+<!-- 처음으로(reset) + 결과확인 -->
+<div class="d-flex gap-3 align-items-center">
+    <button type="button" id="step-first"
+            class="fs-tab fw-bold btn btn-sm btn-pink rounded-pill">
+        처음으로 (리셋)
+    </button>
+
+    <button type="button" id="step-result"
+            href="#dx-result"
+            class="fs-tab fw-bold btn btn-sm btn-danger rounded-pill"
+            style="display: none;"
+    >
+        결과 확인
+    </button>
+</div>
+```
+
+2. 숨김 보임을 조절한다.
+```js
+slideChangeTransitionStart: function () {
+    if (this.isEnd) {
+        // 다음페이지 + 리셋 숨김 -> 결과확인 보임
+        $dxNextBtn.css('display', 'none');
+        $dxFirstBtn.css('display', 'none');
+
+        $dxResultBtn.css('display', 'block');
+
+    } else {
+        $dxNextBtn.css('display', 'block');
+        $dxFirstBtn.css('display', 'block');
+
+        $dxResultBtn.css('display', 'none');
+    }
+}
+,
+```
+3. pop을 닫을 때, form 리셋 및, swiper를 처음으로 옮긴다.
+```js
+  // 자가진단 버튼에 popup 설정 걸기
+  $.magnificPopup.open({
+      //...
+      callbacks: {
+          close: function () {
+              // 닫을 때, form을 리셋하고, slide를 처음으로 옮긴다.
+              document.dx.reset();
+              dxSwiper.slideTo(0);
+          }
+      }
+  })
+```
