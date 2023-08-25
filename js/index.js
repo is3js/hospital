@@ -225,7 +225,7 @@ $(function () {
 
     // });
 
-    // swiper js for section2-bottom
+    // swiper js for section7 한약 소개
     let medicineSwiper = new Swiper(".section7 > .medicine-box > .swiper-container", {
         /* 실행옵션 */
         autoplay: {
@@ -244,10 +244,21 @@ $(function () {
                 // let offsetY = this.activeIndex * 30;
                 // $(".section7 .swiper-name > span").animate({top: -offsetY}, 500);
                 // $(".section7 .swiper-number > span").animate({top: -offsetY}, 500);
-                let fontLineHeightVw = 3.3;
-                let offsetY = this.activeIndex * fontLineHeightVw;
-                $(".section7 .medicine-box .swiper-name > span").animate({top: -offsetY + "vw"}, 500);
-                $(".section7 .medicine-box .swiper-number > span").animate({top: -offsetY + "vw"}, 500);
+
+                // 고정값 넘김
+                // let fontLineHeightVw = 3.3;
+                // let offsetY = this.activeIndex * fontLineHeightVw;
+                // $(".section7 .medicine-box .swiper-name > span").animate({top: -offsetY + "vw"}, 500);
+                // $(".section7 .medicine-box .swiper-number > span").animate({top: -offsetY + "vw"}, 500);
+
+                // 동적으로 lh 각각 추출로 변경
+                let nameLh = $(".section7 .medicine-box .swiper-name").css("line-height");
+                let numberLh = $(".section7 .medicine-box .swiper-number").css("line-height");
+                // console.log(nameLh) // "17.95px"로 추출됨. -> parseFloat() 씌워서 계산 ->  + "px"로 animate
+                let nameOffsetY = this.activeIndex * parseFloat(nameLh);
+                let numberOffsetY = this.activeIndex * parseFloat(numberLh);
+                $(".section7 .medicine-box .swiper-name > span").animate({top: -nameOffsetY + "px"}, 500);
+                $(".section7 .medicine-box .swiper-number > span").animate({top: -numberOffsetY + "px"}, 500);
             }
         },
 

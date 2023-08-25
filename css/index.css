@@ -1811,7 +1811,6 @@ a {
     left: auto;
     right: 5%;
     top: 10%;
-
     /*z-index: 2;*/
 }
 
@@ -1820,6 +1819,21 @@ a {
     position: relative;
     display: block;
     top: 0;
+}
+
+@media screen and (max-width: 575px){
+
+    .section7 .medicine-box .swiper-container .swiper-name,
+    .section7 .medicine-box .swiper-container .swiper-number {
+        /*line-height: 30px;*/
+        /*height: 30px;*/
+        /*font-size: 25px;*/
+        line-height: 20px;
+        height: 20px;
+        font-size: 16px;
+        font-weight: bold;
+        text-shadow: .5px .5px 3px rgba(0, 0, 0, 0.3);
+    }
 }
 
 /* cookie 설정 */

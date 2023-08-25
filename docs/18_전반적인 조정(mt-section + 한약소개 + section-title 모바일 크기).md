@@ -90,9 +90,51 @@
     .section7 .medicine-box .swiper-container {
         /*height: 42vw;*/
         /*border-radius: 8px;*/
-        height: 55vw;
+        height: 50vw;
         border-radius: 0;
     }
 }
 ```
 ![img.png](../ui/355.png)
+
+
+7. 한약 캐러셀 title + number를 수정하기 전에, **동적으로 swiper에서 lh계산후 animate로 넘기는 동작을 jquery동적으로 변경**
+```js
+ // swiper js for section2-bottom
+ let medicineSwiper = new Swiper(".section7 > .medicine-box > .swiper-container", {
+     /* 실행옵션 */
+     autoplay: {
+         delay: 3000,
+     },
+     on: {
+         init: function () { //Swiper2.x的初始化是onFirstInit
+             swiperAnimateCache(this); //隐藏动画元素
+             swiperAnimate(this); //初始化完成开始动画
+         },
+         slideChangeTransitionEnd: function () {
+             swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+             // 고정값 넘김 
+             // let fontLineHeightVw = 3.3;
+             // let offsetY = this.activeIndex * fontLineHeightVw;
+             // $(".section7 .medicine-box .swiper-name > span").animate({top: -offsetY + "vw"}, 500);
+             // $(".section7 .medicine-box .swiper-number > span").animate({top: -offsetY + "vw"}, 500);
+
+             // 동적으로 lh 각각 추출로 변경
+             let nameLh = $(".section7 .medicine-box .swiper-name").css("line-height");
+             let numberLh = $(".section7 .medicine-box .swiper-number").css("line-height");
+             // console.log(nameLh) // "17.95px"로 추출됨. -> parseFloat() 씌워서 계산 ->  + "px"로 animate
+             let nameOffsetY = this.activeIndex * parseFloat(nameLh);
+             let numberOffsetY = this.activeIndex * parseFloat(numberLh);
+             $(".section7 .medicine-box .swiper-name > span").animate({top: -nameOffsetY + "px"}, 500);
+             $(".section7 .medicine-box .swiper-number > span").animate({top: -numberOffsetY + "px"}, 500);
+         }
+     },
+    //...;
+ })
+```
+
+
+8. 모바일 에서는 vw가 아닌, px로 lh/height/fz를 고정해주자
+```css
+
+```
