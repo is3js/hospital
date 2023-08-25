@@ -83,7 +83,7 @@
 <div class="section2">
     <div class="section2-top"></div>
     <div class="section2-middle"></div>
-    <div class="section2-bottom"></div>
+    <div class="section7"></div>
 </div>
 ```
 
@@ -387,7 +387,7 @@
 
 <style>
     /* 원래는 .section2 > div {} 옵션인데, 직접 지정 */
-    .section2-bottom {
+    .section7 {
         width: 70%;
     }
 </style>
@@ -396,7 +396,7 @@
 ```html
 
 <body>
-<div class="section2-bottom">
+<div class="section7">
 </div>
 </body>
 ```
@@ -414,7 +414,7 @@
 
 <style>
     /* 원래는 .section2 > div {} 옵션인데, 직접 지정 */
-    .section2-bottom {
+    .section7 {
         width: 70%;
         margin: 0 auto;
     }
@@ -433,7 +433,7 @@
 
 ```html
 
-<div class="section2-bottom">
+<div class="section7">
     <div class="swiper-container">
         <div class="swiper-wrapper">
             <div class="swiper-slide">Slide 1</div>
@@ -452,7 +452,7 @@
 
 ```css
         /* swiper 설정 */
-.section2-bottom .swiper-container {
+.section7 .swiper-container {
     width: 100%;
     height: 34vw;
     /* 임시 */
@@ -465,7 +465,7 @@
 - 추가로 border-radius를 container에 줘서 둥근모서리를 갖는다.
 
 ```css
-.section2-bottom .swiper-container {
+.section7 .swiper-container {
     width: 100%;
     height: 34vw;
     border-radius: 35px;
@@ -481,13 +481,13 @@
 
 ```css
 /* 원래는 .section2 > div {} 옵션인데, 직접 지정 */
-.section2-bottom {
+.section7 {
     width: 70%;
     margin: 0 auto;
 }
 
 /* 새 옵션은 직접 가져가야함. */
-.section2-bottom {
+.section7 {
     padding: 100px 0;
 }
 ```
@@ -522,11 +522,11 @@
     - div.swiper-slide는 relative로 만든 뒤, **img태그들은 모두 absolute로 만든다.**
 
 ```css
-.section2-bottom .swiper-container .swiper-slide {
+.section7 .swiper-container .swiper-slide {
     position: relative;
 }
 
-.section2-bottom .swiper-container .swiper-slide img {
+.section7 .swiper-container .swiper-slide img {
     position: absolute;
 }
 ```
@@ -536,31 +536,31 @@
 ```css
         /* 3) 개별 slide의 img 설정 */
 /* - slide 1 */
-.section2-bottom .swiper-container .swiper-slide:nth-child(1) img:nth-child(1) {
+.section7 .swiper-container .swiper-slide:nth-child(1) img:nth-child(1) {
 }
 
-.section2-bottom .swiper-container .swiper-slide:nth-child(1) img:nth-child(2) {
+.section7 .swiper-container .swiper-slide:nth-child(1) img:nth-child(2) {
 }
 
 /* - slide 2 */
-.section2-bottom .swiper-container .swiper-slide:nth-child(2) img:nth-child(1) {
+.section7 .swiper-container .swiper-slide:nth-child(2) img:nth-child(1) {
 }
 
-.section2-bottom .swiper-container .swiper-slide:nth-child(2) img:nth-child(2) {
+.section7 .swiper-container .swiper-slide:nth-child(2) img:nth-child(2) {
 }
 
 /* - slide 3 */
-.section2-bottom .swiper-container .swiper-slide:nth-child(3) img:nth-child(1) {
+.section7 .swiper-container .swiper-slide:nth-child(3) img:nth-child(1) {
 }
 
-.section2-bottom .swiper-container .swiper-slide:nth-child(3) img:nth-child(2) {
+.section7 .swiper-container .swiper-slide:nth-child(3) img:nth-child(2) {
 }
 
 /* - slide 4 */
-.section2-bottom .swiper-container .swiper-slide:nth-child(4) img:nth-child(1) {
+.section7 .swiper-container .swiper-slide:nth-child(4) img:nth-child(1) {
 }
 
-.section2-bottom .swiper-container .swiper-slide:nth-child(4) img:nth-child(2) {
+.section7 .swiper-container .swiper-slide:nth-child(4) img:nth-child(2) {
 }
 ```
 
@@ -602,13 +602,14 @@
 </div>
 ```
 - 아니면 **대신,`이미지 파일의 크기를 통일`해놓은 상태라면,  `img태그의 크기를 w36%`로 고정시켜놓고 확인하면 된다.**
+
 ```css
 /* 2) slide 설정*/
-.section2-bottom .swiper-container .swiper-slide {
+.section7 .swiper-container .swiper-slide {
     position: relative;
 }
 
-.section2-bottom .swiper-container .swiper-slide img {
+.section7 .swiper-container .swiper-slide img {
     position: absolute;
 
     width: 36%;
@@ -621,27 +622,29 @@
 12. 이제 absolute상태인 img태그를 css로 `left bottom을 %로 줘서` 위치를 잡아준다.
 - **공통 w36%가 안어울리는 것은 직접 width를 줘야한다.**
 - 겹친다면, 위에 있어야할 이미지에는 `z-index:1`을 준다
+
 ```css
 /* - slide 1 */
-.section2-bottom .swiper-container .swiper-slide:nth-child(1) img:nth-child(1){
-   left: 15%;
-   bottom: 0%;
+.section7 .swiper-container .swiper-slide:nth-child(1) img:nth-child(1) {
+    left: 15%;
+    bottom: 0%;
 
-   width: 55%;
-   z-index: 1;
+    width: 55%;
+    z-index: 1;
 }
-.section2-bottom .swiper-container .swiper-slide:nth-child(1) img:nth-child(2){
-   left: 55%;
-   bottom: -20%;
 
-   width: 50%;
+.section7 .swiper-container .swiper-slide:nth-child(1) img:nth-child(2) {
+    left: 55%;
+    bottom: -20%;
+
+    width: 50%;
 }
 ```
 ![img.png](../ui/138.png)
 
 ```css
 /* - slide 2 */
-.section2-bottom .swiper-container .swiper-slide:nth-child(2) img:nth-child(1) {
+.section7 .swiper-container .swiper-slide:nth-child(2) img:nth-child(1) {
     left: 10%;
     top: 22%;
 
@@ -649,21 +652,22 @@
     z-index: 1;
 }
 
-.section2-bottom .swiper-container .swiper-slide:nth-child(2) img:nth-child(2) {
+.section7 .swiper-container .swiper-slide:nth-child(2) img:nth-child(2) {
     left: 65%;
     top: 25%;
 }
 ```
 ![img.png](../ui/139.png)
+
 ```css
         /* - slide 3 */
-.section2-bottom .swiper-container .swiper-slide:nth-child(3) img:nth-child(1) {
+.section7 .swiper-container .swiper-slide:nth-child(3) img:nth-child(1) {
     left: 45%;
     bottom: 0;
     width: 45%;
 }
 
-.section2-bottom .swiper-container .swiper-slide:nth-child(3) img:nth-child(2) {
+.section7 .swiper-container .swiper-slide:nth-child(3) img:nth-child(2) {
     left: 15%;
     bottom: -10%;
 
@@ -671,9 +675,10 @@
 }
 ```
 ![img.png](../ui/140.png)
+
 ```css
 /* - slide 4 */
-.section2-bottom .swiper-container .swiper-slide:nth-child(4) img:nth-child(1) {
+.section7 .swiper-container .swiper-slide:nth-child(4) img:nth-child(1) {
     left: 25%;
     bottom: 0;
 
@@ -681,7 +686,7 @@
     z-index: 1;
 }
 
-.section2-bottom .swiper-container .swiper-slide:nth-child(4) img:nth-child(2) {
+.section7 .swiper-container .swiper-slide:nth-child(4) img:nth-child(2) {
     right: 0;
     bottom: 0;
 
@@ -861,9 +866,10 @@
 
 
 21. 혹시모르니, container에는 `overflow:hidden`을 추가해준다.
+
 ```css
 /* 1) 컨테이너 설정 */
-.section2-bottom .swiper-container {
+.section7 .swiper-container {
     width: 100%;
     height: 34vw;
     border-radius: 35px;
@@ -901,9 +907,10 @@ pagination: {
 
 
 23. 이제 해당 css를 직접 정의해준다. 일단 기본 bulletClass인 `.my-bullet`부터
+
 ```css
 /* bullet css */
-.section2-bottom .swiper-container .my-bullet {
+.section7 .swiper-container .my-bullet {
     display: inline-block;
     width: 1.3vw;
     height: 1.3vw;
@@ -914,25 +921,25 @@ pagination: {
 }
 
 /* - 1번째 bullet */
-.section2-bottom .swiper-container .my-bullet:nth-child(1) {
+.section7 .swiper-container .my-bullet:nth-child(1) {
     color: #ff6b29; /* 글자색(표기안됨) */
     background: #ff6b29; /* 배경색 */
 }
 
 /* - 2번째 bullet */
-.section2-bottom .swiper-container .my-bullet:nth-child(2) {
+.section7 .swiper-container .my-bullet:nth-child(2) {
     color: #16c196; /* 글자색(표기안됨) */
     background: #16c196; /* 배경색 */
 }
 
 /* - 3번째 bullet */
-.section2-bottom .swiper-container .my-bullet:nth-child(3) {
+.section7 .swiper-container .my-bullet:nth-child(3) {
     color: #9676ff; /* 글자색(표기안됨) */
     background: #9676ff; /* 배경색 */
 }
 
 /* - 4번째 bullet */
-.section2-bottom .swiper-container .my-bullet:nth-child(4) {
+.section7 .swiper-container .my-bullet:nth-child(4) {
     color: #434040; /* 글자색(표기안됨) */
     background: #434040; /* 배경색 */
 }
@@ -944,9 +951,10 @@ pagination: {
     - 예제에서는 3px고정으로 줬는데 모바일고려하면 너무 크다 -> 이것역시 `vw`로 준다.
     - **추가로 `box-sizing`을 border-box까지 포함시킨 뒤, `box-shadow`를 준다.**
       - box-shadow는 표기안되는 글자색 color의 색으로 나오게 된다.
+
 ```css
 /* - active bullet (border) */
-.section2-bottom .swiper-container .my-bullet-active {
+.section7 .swiper-container .my-bullet-active {
     border: .27vw solid #fff;
 
     box-sizing: border-box;
@@ -958,15 +966,16 @@ pagination: {
 
 25. css 작동은, div.swiper-pagination 내에서 발현되므로, 확인후, css의 경로를 수정해준다.
 ![img.png](../ui/144.png)
+
 ```css
-.section2-bottom .swiper-container .swiper-pagination .my-bullet {
+.section7 .swiper-container .swiper-pagination .my-bullet {
 }
 
-.section2-bottom .swiper-container .swiper-pagination .my-bullet:nth-child(1) {
-    
+.section7 .swiper-container .swiper-pagination .my-bullet:nth-child(1) {
+
 }
 
-.section2-bottom .swiper-container .swiper-pagination .my-bullet-active {
+.section7 .swiper-container .swiper-pagination .my-bullet-active {
 }
 ```
 
@@ -976,8 +985,9 @@ pagination: {
 ![img.png](../ui/145.png)
 - **`이미 left:0이 배정된 상태`이므로 right:10%만 주면, left0 + right10%가 되어 제대로 적용안되니**
 - **`left:auto; right:10%`를 동시에 준다.**
+
 ```css
-.section2-bottom .swiper-container .swiper-pagination {
+.section7 .swiper-container .swiper-pagination {
     position: absolute;
 
     width: auto; /* 자식들bullets의 크기만큼 차지 */
@@ -1001,9 +1011,10 @@ pagination: {
 - absolute로 만들기 전이라, wrapper <-> container사이의 p태그 공간이 생겨버린 상태임
 ![img.png](../ui/147.png)
 - p태그로 만든 흰색 라인을 absolute로 만들고 width/height를 줘서 선을 긋는다.
+
 ```css
 /* 4) swiper title(line + name) 설정 */
-.section2-bottom .swiper-container .swiper-line {
+.section7 .swiper-container .swiper-line {
     position: absolute;
 
     width: 4vw;
@@ -1041,7 +1052,7 @@ pagination: {
 - **`height과 lh를 동일`하게 맞춰놓고, `<br>로 넘어간 글자들이 안보이도록 `overflow:hidden;`을 맞춰준다.**
 
 ```css
-.section2-bottom .swiper-container .swiper-name {
+.section7 .swiper-container .swiper-name {
     position: absolute;
     left: 5%;
     top: 10%;
@@ -1057,7 +1068,7 @@ pagination: {
 ![img.png](../ui/149.png)
 
 ```css
-.section2-bottom .swiper-container .swiper-name {
+.section7 .swiper-container .swiper-name {
     /* ... */
     line-height: 40px;
     height: 40px;
@@ -1069,8 +1080,9 @@ pagination: {
 ![img.png](../ui/150.png)
 
 31. 부모에게 overflow:hidden된 `span태그`는 **부모는 absolute지만, 내부에선 `relative + block`으로 바꿔서, 부모안에서는 위치가 잡히도록 변경해준다.**
+
 ```css
-.section2-bottom .swiper-container .swiper-name span {
+.section7 .swiper-container .swiper-name span {
     position: relative;
     display: block;
     top: 0;
@@ -1089,15 +1101,14 @@ pagination: {
 </p>
 ```
 - css는 name과 동일하게, 공통적용 시켜준다.
+
 ```css
-.section2-bottom .swiper-container .swiper-name,
-.section2-bottom .swiper-container .swiper-number
-{
+.section7 .swiper-container .swiper-name,
+.section7 .swiper-container .swiper-number {
 }
 
-.section2-bottom .swiper-container .swiper-name span,
-.section2-bottom .swiper-container .swiper-number span
-{
+.section7 .swiper-container .swiper-name span,
+.section7 .swiper-container .swiper-number span {
 }
 ```
 ![img.png](../ui/151.png)
@@ -1105,8 +1116,9 @@ pagination: {
 
 33. number는 우측에 띄워주기 위해, 추가옵션으로 left, top, right를 덮어쓴다.
 - 이미지(z-index:1)과 겹치는 것을 방지하기 위해 , 앞으로 `z-index:2;`로 만든다.
+
 ```css
-.section2-bottom .swiper-container .swiper-number {
+.section7 .swiper-container .swiper-number {
     left: auto;
     right: 5%;
     top: 5%;
@@ -1162,8 +1174,9 @@ on: {
 
 36. 이제 각 slide별로 배경색을 지정해준다.
     - `ffdbc6`, `ace3e5`, `e0daf5`, `dbdbdb`
+
 ```css
- .section2-bottom .swiper-container .swiper-slide:nth-child(1) {
+ .section7 .swiper-container .swiper-slide:nth-child(1) {
     background: #ffdbc6;
 }
 ```
@@ -1182,13 +1195,14 @@ on: {
 <p class="swiper-name">
 ```
 - **그래도 안나오니.. swiper자체의 `swiper-wrapper 속 z-index`때문에 안보이니, `직접 z-index:666;`을 지정 해준다**
+
 ```css
-.section2-bottom .swiper-container .swiper-line {
+.section7 .swiper-container .swiper-line {
     z-index: 666; /* slide에 배경 넣으면 wrapper형제들은 안보이게 됨.*/
 }
 
-.section2-bottom .swiper-container .swiper-name,
-.section2-bottom .swiper-container .swiper-number {
+.section7 .swiper-container .swiper-name,
+.section7 .swiper-container .swiper-number {
     z-index: 666;
 }
 ```
@@ -1776,17 +1790,19 @@ scene4.on("start", function (event) {
 
 5. 모바일을 위해 글자크기를 vw로 수정하기
     - border-radius는 직접적으로 8px로 줄여주기?
+
 ```css
 /* - 모바일에선 꽉채우는 부모 width가 더 넓어져서 height 좀 더 늘리기 + border-radius 낮추기*/
-@media screen and (max-width: 991px){
-    .section2-bottom .swiper-container {
+@media screen and (max-width: 991px) {
+    .section7 .swiper-container {
         height: 42vw;
         border-radius: 8px;
     }
 }
 ```
+
 ```css
-.section2-bottom .swiper-container .swiper-line {
+.section7 .swiper-container .swiper-line {
     position: absolute;
 
     width: 4vw;
@@ -1794,10 +1810,10 @@ scene4.on("start", function (event) {
     height: 0.5vw;
 }
 ```
+
 ```css
-.section2-bottom .swiper-container .swiper-name,
-.section2-bottom .swiper-container .swiper-number
-{
+.section7 .swiper-container .swiper-name,
+.section7 .swiper-container .swiper-number {
     /*line-height: 30px;*/
     /*height: 30px;*/
     /*font-size: 25px;*/
@@ -1822,9 +1838,10 @@ scene4.on("start", function (event) {
 ```
 
 - carousel있는 section2-bottom의 상하패딩도 vw로 변경
+
 ```css
 /* 섹션2-bottom */
-.section2-bottom {
+.section7 {
     /*padding: 100px 0;*/
     padding: 10vw 0;
 }
@@ -1838,9 +1855,10 @@ scene4.on("start", function (event) {
 }
 ```
 - **모바일에서는 확장된 너비에 따라 swiper-container의 높이를 확장**
+
 ```css
-@media screen and (max-width: 991px){
-    .section2-bottom .swiper-container {
+@media screen and (max-width: 991px) {
+    .section7 .swiper-container {
         height: 42vw;
     }
 }

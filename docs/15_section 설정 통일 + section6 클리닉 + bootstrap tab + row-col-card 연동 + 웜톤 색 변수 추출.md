@@ -318,14 +318,14 @@ controller.addScene(scene9);
 ```
 
 ```css
-.section2-bottom .swiper-container .swiper-slide:nth-child(1) {
-    background: var(--color-carousel-1);
+.section7 .swiper-container .swiper-slide:nth-child(1) {
+   background: var(--color-carousel-1);
 }
 
 /* - 1번째 bullet */
-.section2-bottom .swiper-container .swiper-pagination .my-bullet:nth-child(1) {
-    color: var(--color-carousel-1-bolder); /* 글자색(표기안됨) or box-shadow 색 */
-    background: var(--color-carousel-1-bolder); /* 배경색 */
+.section7 .swiper-container .swiper-pagination .my-bullet:nth-child(1) {
+   color: var(--color-carousel-1-bolder); /* 글자색(표기안됨) or box-shadow 색 */
+   background: var(--color-carousel-1-bolder); /* 배경색 */
 }
 ```
 
@@ -360,23 +360,23 @@ controller.addScene(scene9);
 
 ```css
 /* - slide 1 */
-.section2-bottom .swiper-container .swiper-slide:nth-child(4n+1) {
-    background: var(--color-carousel-1);
+.section7 .swiper-container .swiper-slide:nth-child(4n+1) {
+   background: var(--color-carousel-1);
 }
 
 /* - slide 2 */
-.section2-bottom .swiper-container .swiper-slide:nth-child(4n+2) {
-    background: var(--color-carousel-2);
+.section7 .swiper-container .swiper-slide:nth-child(4n+2) {
+   background: var(--color-carousel-2);
 }
 
 /* - slide 3 */
-.section2-bottom .swiper-container .swiper-slide:nth-child(4n+3) {
-    background: var(--color-carousel-3);
+.section7 .swiper-container .swiper-slide:nth-child(4n+3) {
+   background: var(--color-carousel-3);
 }
 
 /* - slide 4 */
-.section2-bottom .swiper-container .swiper-slide:nth-child(4n) {
-    background: #dbdbdb;
+.section7 .swiper-container .swiper-slide:nth-child(4n) {
+   background: #dbdbdb;
 }
 ```
 

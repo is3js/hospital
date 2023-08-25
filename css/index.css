@@ -1563,9 +1563,9 @@ a {
 }
 
 
-/* 섹션2-bottom */
+/* 섹션7 - 한약소개 */
 /* 새 옵션은 직접 가져가야함. */
-.section2-bottom {
+.section7 {
     /*padding: 100px 0;*/
     padding: 10vw 0;
     /*padding: 0 0;*/
@@ -1573,7 +1573,7 @@ a {
 
 /* swiper 설정 */
 /* 1) 컨테이너 설정 */
-.section2-bottom .swiper-container {
+.section7 .medicine-box .swiper-container {
     width: 100%;
     height: 34vw;
     border-radius: 35px;
@@ -1585,19 +1585,21 @@ a {
 
 /* - 모바일에선 꽉채우는 부모 width가 더 넓어져서 height 좀 더 늘리기 + border-radius 낮추기*/
 @media screen and (max-width: 991px) {
-    .section2-bottom .swiper-container {
-        height: 42vw;
-        border-radius: 8px;
+    .section7 .medicine-box .swiper-container {
+        /*height: 42vw;*/
+        /*border-radius: 8px;*/
+        height: 55vw;
+        border-radius: 0;
     }
 }
 
 
 /* 2) slide 설정*/
-.section2-bottom .swiper-container .swiper-slide {
+.section7 .medicine-box .swiper-container .swiper-slide {
     position: relative;
 }
 
-.section2-bottom .swiper-container .swiper-slide img {
+.section7 .medicine-box .swiper-container .swiper-slide img {
     position: absolute;
 
     width: 36%;
@@ -1605,11 +1607,11 @@ a {
 
 /* 3) 개별 slide의 img 설정 */
 /* - slide 1 */
-.section2-bottom .swiper-container .swiper-slide:nth-child(4n+1) {
+.section7 .medicine-box .swiper-container .swiper-slide:nth-child(4n+1) {
     background: var(--color-carousel-1);
 }
 
-.section2-bottom .swiper-container .swiper-slide:nth-child(1) img:nth-child(1) {
+.section7 .medicine-box .swiper-container .swiper-slide:nth-child(1) img:nth-child(1) {
     left: 7%;
     bottom: 5%;
 
@@ -1617,7 +1619,7 @@ a {
     z-index: 1;
 }
 
-.section2-bottom .swiper-container .swiper-slide:nth-child(1) img:nth-child(2) {
+.section7 .medicine-box .swiper-container .swiper-slide:nth-child(1) img:nth-child(2) {
     left: 60%;
     top: 0%;
 
@@ -1625,11 +1627,11 @@ a {
 }
 
 /* - slide 2 */
-.section2-bottom .swiper-container .swiper-slide:nth-child(4n+2) {
+.section7 .medicine-box .swiper-container .swiper-slide:nth-child(4n+2) {
     background: var(--color-carousel-2);
 }
 
-.section2-bottom .swiper-container .swiper-slide:nth-child(2) img:nth-child(1) {
+.section7 .medicine-box .swiper-container .swiper-slide:nth-child(2) img:nth-child(1) {
     left: 10%;
     top: 25%;
 
@@ -1637,23 +1639,23 @@ a {
     z-index: 1;
 }
 
-.section2-bottom .swiper-container .swiper-slide:nth-child(2) img:nth-child(2) {
+.section7 .medicine-box .swiper-container .swiper-slide:nth-child(2) img:nth-child(2) {
     left: 65%;
     top: 25%;
 }
 
 /* - slide 3 */
-.section2-bottom .swiper-container .swiper-slide:nth-child(4n+3) {
+.section7 .medicine-box .swiper-container .swiper-slide:nth-child(4n+3) {
     background: var(--color-carousel-3);
 }
 
-.section2-bottom .swiper-container .swiper-slide:nth-child(3) img:nth-child(1) {
+.section7 .medicine-box .swiper-container .swiper-slide:nth-child(3) img:nth-child(1) {
     left: 45%;
     bottom: 0;
     width: 45%;
 }
 
-.section2-bottom .swiper-container .swiper-slide:nth-child(3) img:nth-child(2) {
+.section7 .medicine-box .swiper-container .swiper-slide:nth-child(3) img:nth-child(2) {
     left: 15%;
     bottom: -20%;
 
@@ -1661,11 +1663,11 @@ a {
 }
 
 /* - slide 4 */
-.section2-bottom .swiper-container .swiper-slide:nth-child(4n) {
+.section7 .medicine-box .swiper-container .swiper-slide:nth-child(4n) {
     background: #dbdbdb;
 }
 
-.section2-bottom .swiper-container .swiper-slide:nth-child(4) img:nth-child(1) {
+.section7 .medicine-box .swiper-container .swiper-slide:nth-child(4) img:nth-child(1) {
     left: 20%;
     bottom: 0;
 
@@ -1673,7 +1675,7 @@ a {
     z-index: 1;
 }
 
-.section2-bottom .swiper-container .swiper-slide:nth-child(4) img:nth-child(2) {
+.section7 .medicine-box .swiper-container .swiper-slide:nth-child(4) img:nth-child(2) {
     right: 0;
     bottom: 0;
 
@@ -1717,7 +1719,7 @@ a {
 
 /* 3) swiper pagination bullet css */
 /* - bullet css */
-.section2-bottom .swiper-container .swiper-pagination {
+.section7 .medicine-box .swiper-container .swiper-pagination {
     position: absolute;
 
     width: auto; /* 자식들bullets의 크기만큼 차지 */
@@ -1728,7 +1730,7 @@ a {
     bottom: 5%;
 }
 
-.section2-bottom .swiper-container .swiper-pagination .my-bullet {
+.section7 .medicine-box .swiper-container .swiper-pagination .my-bullet {
     display: inline-block;
     width: 1.3vw;
     height: 1.3vw;
@@ -1739,31 +1741,31 @@ a {
 }
 
 /* - 1번째 bullet */
-.section2-bottom .swiper-container .swiper-pagination .my-bullet:nth-child(1) {
+.section7 .medicine-box .swiper-container .swiper-pagination .my-bullet:nth-child(1) {
     color: var(--color-carousel-1-bolder); /* 글자색(표기안됨) or box-shadow 색 */
     background: var(--color-carousel-1-bolder); /* 배경색 */
 }
 
 /* - 2번째 bullet */
-.section2-bottom .swiper-container .swiper-pagination .my-bullet:nth-child(2) {
+.section7 .medicine-box .swiper-container .swiper-pagination .my-bullet:nth-child(2) {
     color: var(--color-carousel-2-bolder); /* 글자색(표기안됨) or box-shadow 색 */
     background: var(--color-carousel-2-bolder); /* 배경색 */
 }
 
 /* - 3번째 bullet */
-.section2-bottom .swiper-container .swiper-pagination .my-bullet:nth-child(3) {
+.section7 .medicine-box .swiper-container .swiper-pagination .my-bullet:nth-child(3) {
     color: var(--color-carousel-3-bolder); /* 글자색(표기안됨) or box-shadow 색 */
     background: var(--color-carousel-3-bolder); /* 배경색 */
 }
 
 /* - 4번째 bullet */
-.section2-bottom .swiper-container .swiper-pagination .my-bullet:nth-child(4) {
+.section7 .medicine-box .swiper-container .swiper-pagination .my-bullet:nth-child(4) {
     color: var(--color-carousel-4-bolder); /* 글자색(표기안됨) or box-shadow 색 */
     background: var(--color-carousel-4-bolder); /* 배경색 */
 }
 
 /* - active bullet (border) */
-.section2-bottom .swiper-container .swiper-pagination .my-bullet-active {
+.section7 .medicine-box .swiper-container .swiper-pagination .my-bullet-active {
     border: .23vw solid #fff;
 
     box-sizing: border-box;
@@ -1771,7 +1773,7 @@ a {
 }
 
 /* 4) swiper title(line + name) 설정 */
-.section2-bottom .swiper-container .swiper-line {
+.section7 .medicine-box .swiper-container .swiper-line {
     position: absolute;
 
     width: 4vw;
@@ -1785,8 +1787,8 @@ a {
     z-index: 666; /* slide에 배경 넣으면 wrapper형제들은 안보이게 됨.*/
 }
 
-.section2-bottom .swiper-container .swiper-name,
-.section2-bottom .swiper-container .swiper-number {
+.section7 .medicine-box .swiper-container .swiper-name,
+.section7 .medicine-box .swiper-container .swiper-number {
     position: absolute;
     left: 5%;
     top: 15%;
@@ -1805,7 +1807,7 @@ a {
     z-index: 666;
 }
 
-.section2-bottom .swiper-container .swiper-number {
+.section7 .medicine-box .swiper-container .swiper-number {
     left: auto;
     right: 5%;
     top: 10%;
@@ -1813,8 +1815,8 @@ a {
     /*z-index: 2;*/
 }
 
-.section2-bottom .swiper-container .swiper-name span,
-.section2-bottom .swiper-container .swiper-number span {
+.section7 .medicine-box .swiper-container .swiper-name span,
+.section7 .medicine-box .swiper-container .swiper-number span {
     position: relative;
     display: block;
     top: 0;
@@ -2479,8 +2481,12 @@ a {
     /*.section3 > div,*/
     /*.section5 > div,*/
     /*.section4 > div {*/
-    .section > div {
+    .section > div:not(.medicine-box) {
         width: 85%;
+    }
+    /* 한약소개 배너공간만, 모바일에서 100% */
+    .section > div.medicine-box {
+        width: 100%;
     }
 }
 

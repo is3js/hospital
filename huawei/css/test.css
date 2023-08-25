@@ -1,15 +1,15 @@
-.section2-bottom {
+.section7 {
   width: 70%;
   margin: 0 auto;
   padding: 100px 0;
 }
-.section2-bottom .swiper {
+.section7 .swiper {
   overflow: hidden;
   width: 100%;
   height: 34vw;
   border-radius: 35px;
 }
-.section2-bottom .swiper .swiper-line {
+.section7 .swiper .swiper-line {
   position: absolute;
   top: 10%;
   left: 5%;
@@ -18,7 +18,7 @@
   background: #fff;
   z-index: 999;
 }
-.section2-bottom .swiper .swiper-name, .section2-bottom .swiper .swiper-num {
+.section7 .swiper .swiper-name, .section7 .swiper .swiper-num {
   font-size: 40px;
   height: 45px;
   line-height: 45px;
@@ -29,82 +29,82 @@
   top: 12%;
   z-index: 999;
 }
-.section2-bottom .swiper .swiper-name span, .section2-bottom .swiper .swiper-num span {
+.section7 .swiper .swiper-name span, .section7 .swiper .swiper-num span {
   position: relative;
   top: 0;
 }
-.section2-bottom .swiper .swiper-num {
+.section7 .swiper .swiper-num {
   left: auto;
   right: 5%;
   top: 5%;
 }
-.section2-bottom .swiper .swiper-slide {
+.section7 .swiper .swiper-slide {
   position: relative;
 }
-.section2-bottom .swiper .swiper-slide img {
+.section7 .swiper .swiper-slide img {
   position: absolute;
 }
-.section2-bottom .swiper .swiper-slide:nth-child(1) {
+.section7 .swiper .swiper-slide:nth-child(1) {
   background: #ffdbc6;
 }
-.section2-bottom .swiper .swiper-slide:nth-child(1) img:nth-child(1) {
+.section7 .swiper .swiper-slide:nth-child(1) img:nth-child(1) {
   bottom: -40%;
   left: 15%;
   z-index: 1;
   width: 36%;
 }
-.section2-bottom .swiper .swiper-slide:nth-child(1) img:nth-child(2) {
+.section7 .swiper .swiper-slide:nth-child(1) img:nth-child(2) {
   bottom: -60%;
   left: 30%;
   width: 36%;
 }
-.section2-bottom .swiper .swiper-slide:nth-child(2) {
+.section7 .swiper .swiper-slide:nth-child(2) {
   background: #ace3e5;
 }
-.section2-bottom .swiper .swiper-slide:nth-child(2) img:nth-child(1) {
+.section7 .swiper .swiper-slide:nth-child(2) img:nth-child(1) {
   bottom: 40%;
   left: 40%;
   width: 48%;
 }
-.section2-bottom .swiper .swiper-slide:nth-child(2) img:nth-child(2) {
+.section7 .swiper .swiper-slide:nth-child(2) img:nth-child(2) {
   top: 40%;
   left: 25%;
   width: 48%;
 }
-.section2-bottom .swiper .swiper-slide:nth-child(3) {
+.section7 .swiper .swiper-slide:nth-child(3) {
   background: #e0daf5;
 }
-.section2-bottom .swiper .swiper-slide:nth-child(3) img:nth-child(1) {
+.section7 .swiper .swiper-slide:nth-child(3) img:nth-child(1) {
   bottom: -40%;
   left: 30%;
   width: 34%;
 }
-.section2-bottom .swiper .swiper-slide:nth-child(3) img:nth-child(2) {
+.section7 .swiper .swiper-slide:nth-child(3) img:nth-child(2) {
   bottom: -30%;
   left: 41%;
   width: 38%;
 }
-.section2-bottom .swiper .swiper-slide:nth-child(4) {
+.section7 .swiper .swiper-slide:nth-child(4) {
   background: #dbdbdb;
 }
-.section2-bottom .swiper .swiper-slide:nth-child(4) img:nth-child(1) {
+.section7 .swiper .swiper-slide:nth-child(4) img:nth-child(1) {
   bottom: -30%;
   left: 27%;
   width: 25%;
 }
-.section2-bottom .swiper .swiper-slide:nth-child(4) img:nth-child(2) {
+.section7 .swiper .swiper-slide:nth-child(4) img:nth-child(2) {
   bottom: -30%;
   left: 45%;
   width: 25%;
 }
-.section2-bottom .swiper .swiper-pagination {
+.section7 .swiper .swiper-pagination {
   position: absolute;
   right: 10%;
   bottom: 10%;
   left: auto;
   width: auto;
 }
-.section2-bottom .swiper .swiper-pagination .my-bullet {
+.section7 .swiper .swiper-pagination .my-bullet {
   display: inline-block;
   width: 1.3vw;
   height: 1.3vw;
@@ -112,23 +112,23 @@
   border-radius: 50%;
   background: #000;
 }
-.section2-bottom .swiper .swiper-pagination .my-bullet:nth-child(1) {
+.section7 .swiper .swiper-pagination .my-bullet:nth-child(1) {
   background: #ff6b29;
   color: #ff6b29;
 }
-.section2-bottom .swiper .swiper-pagination .my-bullet:nth-child(2) {
+.section7 .swiper .swiper-pagination .my-bullet:nth-child(2) {
   background: #16c196;
   color: #16c196;
 }
-.section2-bottom .swiper .swiper-pagination .my-bullet:nth-child(3) {
+.section7 .swiper .swiper-pagination .my-bullet:nth-child(3) {
   background: #9676ff;
   color: #9676ff;
 }
-.section2-bottom .swiper .swiper-pagination .my-bullet:nth-child(4) {
+.section7 .swiper .swiper-pagination .my-bullet:nth-child(4) {
   background: #434040;
   color: #434040;
 }
-.section2-bottom .swiper .swiper-pagination .my-bullet-active {
+.section7 .swiper .swiper-pagination .my-bullet-active {
   position: relative;
   top: 3px;
   margin: 0 12px;

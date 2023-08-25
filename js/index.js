@@ -226,7 +226,7 @@ $(function () {
     // });
 
     // swiper js for section2-bottom
-    let section2Swiper = new Swiper(".section2-bottom > .swiper-container", {
+    let medicineSwiper = new Swiper(".section7 > .medicine-box > .swiper-container", {
         /* 실행옵션 */
         autoplay: {
             delay: 3000,
@@ -242,31 +242,31 @@ $(function () {
                 swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
                 // console.log(this.activeIndex)
                 // let offsetY = this.activeIndex * 30;
-                // $(".section2-bottom .swiper-name > span").animate({top: -offsetY}, 500);
-                // $(".section2-bottom .swiper-number > span").animate({top: -offsetY}, 500);
+                // $(".section7 .swiper-name > span").animate({top: -offsetY}, 500);
+                // $(".section7 .swiper-number > span").animate({top: -offsetY}, 500);
                 let fontLineHeightVw = 3.3;
                 let offsetY = this.activeIndex * fontLineHeightVw;
-                $(".section2-bottom .swiper-name > span").animate({top: -offsetY + "vw"}, 500);
-                $(".section2-bottom .swiper-number > span").animate({top: -offsetY + "vw"}, 500);
+                $(".section7 .medicine-box .swiper-name > span").animate({top: -offsetY + "vw"}, 500);
+                $(".section7 .medicine-box .swiper-number > span").animate({top: -offsetY + "vw"}, 500);
             }
         },
 
         /* 페이지 네이션 */
         pagination: {
-            el: '.section2-bottom .swiper-pagination',
+            el: '.section7 .medicine-box .swiper-pagination',
             bulletClass: 'my-bullet',// custom pagination bullet css
             bulletActiveClass: 'my-bullet-active',
         },
     });
 
     // - 일단 정지(scrollmagic에서 화면에 오면 시작 처리)
-    section2Swiper.autoplay.stop();
+    medicineSwiper.autoplay.stop();
     // - 자동재생 추가옵션: 마우스 올릴 때 일시중지 / 떼면 시작
-    section2Swiper.el.onmouseover = function () {
-        section2Swiper.autoplay.stop();
+    medicineSwiper.el.onmouseover = function () {
+        medicineSwiper.autoplay.stop();
     }
-    section2Swiper.el.onmouseout = function () {
-        section2Swiper.autoplay.start();
+    medicineSwiper.el.onmouseout = function () {
+        medicineSwiper.autoplay.start();
     }
 
     // ScrollMagic
@@ -345,20 +345,20 @@ $(function () {
 
     // scene4 - bottom swiper
     let scene4 = new ScrollMagic.Scene({
-        triggerElement: ".section2-bottom",
+        triggerElement: ".section7",
         triggerHook: "onCenter",
     });
     // scene4가 시작되면, 일시중지된 swiper 시작
     scene4.on("start", function (event) {
         // console.log("swiper 시작")
-        // section2Swiper.autoplay.start();
+        // medicineSwiper.autoplay.start();
         // 추가) 내리는 스크롤("FORWARD")인지 아닌지 판단해서 play/stop
         if (event.scrollDirection === "FORWARD") {
             // console.log("내림")
-            section2Swiper.autoplay.start();
+            medicineSwiper.autoplay.start();
         } else {
             // console.log("올림")
-            section2Swiper.autoplay.stop();
+            medicineSwiper.autoplay.stop();
         }
     });
 
@@ -366,13 +366,13 @@ $(function () {
 
     // section2 - bottom  title with Velocity
     let scene5 = new ScrollMagic.Scene({
-        triggerElement: ".section2-bottom",
+        triggerElement: ".section7",
         // triggerHook: "onEnter",
         offset: 50, // 안주면 너무 빨리 뜬다.
         triggerHook: "onCenter",
         //duration: "100%", // velocity조합에서는 뺀다.
     });
-    scene5.setVelocity([".section2-bottom > .section-title > div"], {
+    scene5.setVelocity([".section7 > .section-title > div"], {
         top: "0px",
         opacity: "1"
     }, {

@@ -1,8 +1,10 @@
 1. carousel이 있는 `.section2-bottom`에도 title을 만들어주기 위해
     - 기존 div.section2-top에 d-flex + justify-content-between를 `부모`로 가지고, 자식 div2개를 순서로 파별했는데
     - `자식`인 2개의 div 안에  `왼div > p(1), p(2)` + `오른div` 조합의 **`새로운 부모 div.section-title`을 추가**해서 모든 section에서 공통으로 사용할 수 있게 한다.
+
 ```html
-<div class="section2-bottom">
+
+<div class="section7">
     <div class="section-title">
         <div>
             <p>우아 한약재 소개</p>
