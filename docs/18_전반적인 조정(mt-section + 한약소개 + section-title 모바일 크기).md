@@ -74,6 +74,7 @@
 ```
 
 6. **section 중 .medicine-box만 모바일 85%가 아닌 100%로 변경 + swiper-container의 border제거**
+- container의 높이도 더 늘인다.
 ```css
 @media screen and (max-width: 991px) {
     .section > div:not(.medicine-box) {
@@ -97,6 +98,13 @@
 ```
 ![img.png](../ui/355.png)
 
+- 2번째의 2번째이미지(아래에서 위로)의 기준을 top이 아닌 bottom으로 변경
+```css
+.section7 .medicine-box .swiper-container .swiper-slide:nth-child(2) img:nth-child(2) {
+    left: 65%;
+    bottom: -10%;
+}
+```
 
 7. 한약 캐러셀 title + number를 수정하기 전에, **동적으로 swiper에서 lh계산후 animate로 넘기는 동작을 jquery동적으로 변경**
 ```js
@@ -134,7 +142,45 @@
 ```
 
 
-8. 모바일 에서는 vw가 아닌, px로 lh/height/fz를 고정해주자
+8. 모바일(sm, max 575px)에서는 vw가 아닌, px로 `lh/height/fz` + `bullet + active bullet border`를 px로 고정해주자
 ```css
+/* 모바일(sm)에선 특정글자크기로 고정 */
+@media screen and (max-width: 575px){
+    /* 글자크기 고정 */
+    .section7 .medicine-box .swiper-container .swiper-name,
+    .section7 .medicine-box .swiper-container .swiper-number {
+        /*line-height: 30px;*/
+        /*height: 30px;*/
+        /*font-size: 25px;*/
+        line-height: 20px;
+        height: 20px;
+        font-size: 16px;
+        font-weight: bold;
+        text-shadow: .5px .5px 3px rgba(0, 0, 0, 0.3);
+    }
 
+    /* bullet 크기 고정 */
+    .section7 .medicine-box .swiper-container .swiper-pagination .my-bullet {
+        width: 11px;
+        height: 11px;
+    }
+
+    /* active bullet border 고정 */
+    .section7 .medicine-box .swiper-container .swiper-pagination .my-bullet-active {
+        border: 2px solid #fff;
+
+        box-sizing: border-box;
+        box-shadow: 0 0 10px; /* 색은 color로 지정한 색이 나오게 된다.*/
+    }
+}
 ```
+9. 페이지네이션에 클릭가능하도록 수정
+```js
+/* 페이지 네이션 */
+pagination: {
+    clickable: true,
+}
+```
+
+### section-title의 글자크기 수정
+1. 이것도 역시 모바일sm(575이하)에서 고정하든지, 새로운 vw를 기준으로 준다.

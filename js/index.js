@@ -267,6 +267,8 @@ $(function () {
             el: '.section7 .medicine-box .swiper-pagination',
             bulletClass: 'my-bullet',// custom pagination bullet css
             bulletActiveClass: 'my-bullet-active',
+
+            clickable: true,
         },
     });
 

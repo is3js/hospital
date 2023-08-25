@@ -1508,6 +1508,33 @@ a {
     padding-top: 2vw;
 }
 
+/* 모바일(sm)에서 너무 작아져서 새롭게 기준 잡기 */
+@media screen and (max-width: 575px){
+    /* 왼쪽 초록색 첫번째 */
+    .section-title > div:nth-of-type(1) p:nth-of-type(1),
+    .section2 .section2-top div:nth-of-type(1) p:nth-of-type(1) {
+        font-size: 14px;
+        line-height: 25px;
+        letter-spacing: -.05rem;
+    }
+
+    /* 왼쪽 검은색 2번째 */
+    .section-title > div:nth-of-type(1) p:nth-of-type(2),
+    .section-subtitle > div:nth-of-type(1) p:nth-of-type(1),
+    .section2 .section2-top div:nth-of-type(1) p:nth-of-type(2) {
+        font-size: 18px;
+        line-height: 25px;
+        letter-spacing: -.05rem;
+    }
+
+    .section-title > div:nth-of-type(2),
+    .section-subtitle > div:nth-of-type(2),
+    .section2 .section2-top div:nth-of-type(2) {
+        font-size: 13px;
+        line-height: 19px;
+        /*letter-spacing: -.08rem;*/
+    }
+}
 /* velocity를 위한 이전 위치 잡기 */
 .section-title > div:nth-of-type(1) {
     position: relative;
@@ -1588,7 +1615,7 @@ a {
     .section7 .medicine-box .swiper-container {
         /*height: 42vw;*/
         /*border-radius: 8px;*/
-        height: 50vw;
+        height: 55vw;
         border-radius: 0;
     }
 }
@@ -1641,7 +1668,7 @@ a {
 
 .section7 .medicine-box .swiper-container .swiper-slide:nth-child(2) img:nth-child(2) {
     left: 65%;
-    top: 25%;
+    bottom: -10%;
 }
 
 /* - slide 3 */
@@ -1823,7 +1850,7 @@ a {
 
 /* 모바일(sm)에선 특정글자크기로 고정 */
 @media screen and (max-width: 575px){
-
+    /* 글자크기 고정 */
     .section7 .medicine-box .swiper-container .swiper-name,
     .section7 .medicine-box .swiper-container .swiper-number {
         /*line-height: 30px;*/
@@ -1836,11 +1863,13 @@ a {
         text-shadow: .5px .5px 3px rgba(0, 0, 0, 0.3);
     }
 
+    /* bullet 크기 고정 */
     .section7 .medicine-box .swiper-container .swiper-pagination .my-bullet {
         width: 11px;
         height: 11px;
     }
 
+    /* active bullet border 고정 */
     .section7 .medicine-box .swiper-container .swiper-pagination .my-bullet-active {
         border: 2px solid #fff;
 
