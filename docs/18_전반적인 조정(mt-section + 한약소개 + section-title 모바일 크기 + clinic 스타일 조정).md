@@ -222,3 +222,15 @@ pagination: {
     }
 }
 ```
+
+### 클리닉 스타일 조정
+1. 모바일에서 px-4, px-5 사이 값을 넣기 위해, 새롭게 `.px-4-5`로 정의한다.
+```css
+.px-4-5 {
+    padding-right: 2.25rem !important;
+    padding-left: 2.25rem !important;
+}
+```
+
+2. text는 좀더 진한 `.text-gold-dark`로 정의하고, underline도 gold쪽으로 정의한다
+   - font는 nanum체로 바꾼다.
