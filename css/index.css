@@ -1272,7 +1272,7 @@ a {
 /* 모바일) navbar 토글시 동적 height에 대한, scroll 설정 */
 @media screen and (max-width: 991px) {
     .header .header-middle .navbar .navbar-collapse {
-        overflow-y: auto!important;
+        overflow-y: auto !important;
     }
 }
 
@@ -1509,12 +1509,18 @@ a {
 }
 
 /* 모바일(sm)에서 너무 작아져서 새롭게 기준 잡기 */
-@media screen and (max-width: 575px){
+@media screen and (max-width: 575px) {
+    /* p태그 기본 mb(1rem)을 줄임*/
+    .section-title p,
+    .section2 .section2-top p {
+        margin-bottom: .5rem;
+    }
+
     /* 왼쪽 초록색 첫번째 */
     .section-title > div:nth-of-type(1) p:nth-of-type(1),
     .section2 .section2-top div:nth-of-type(1) p:nth-of-type(1) {
         font-size: 14px;
-        line-height: 25px;
+        line-height: 30px;
         letter-spacing: -.05rem;
     }
 
@@ -1527,6 +1533,7 @@ a {
         letter-spacing: -.05rem;
     }
 
+    /* 오른쪽 설명 글 */
     .section-title > div:nth-of-type(2),
     .section-subtitle > div:nth-of-type(2),
     .section2 .section2-top div:nth-of-type(2) {
@@ -1535,6 +1542,7 @@ a {
         /*letter-spacing: -.08rem;*/
     }
 }
+
 /* velocity를 위한 이전 위치 잡기 */
 .section-title > div:nth-of-type(1) {
     position: relative;
@@ -1849,7 +1857,7 @@ a {
 }
 
 /* 모바일(sm)에선 특정글자크기로 고정 */
-@media screen and (max-width: 575px){
+@media screen and (max-width: 575px) {
     /* 글자크기 고정 */
     .section7 .medicine-box .swiper-container .swiper-name,
     .section7 .medicine-box .swiper-container .swiper-number {
@@ -2507,7 +2515,7 @@ a {
 
 /* - 첫번째 글dd만 진하게 */
 .section2 .notice dl dd:nth-of-type(1) > * {
-    font-weight: bold!important;
+    font-weight: bold !important;
 }
 
 /* - 모바일에서 4번째 dd(글) 부터는 안보이게 */
@@ -2538,11 +2546,12 @@ a {
     /*.section5 > div,*/
     /*.section4 > div {*/
     .section > div:not(.medicine-box) {
-        width: 85%!important;
+        width: 85% !important;
     }
+
     /* 한약소개 배너공간만, 모바일에서 100% */
     .section > div.medicine-box {
-        width: 100%!important;
+        width: 100% !important;
     }
 }
 
@@ -2670,8 +2679,6 @@ a {
         margin-top: 60px;
     }
 }
-
-
 
 
 /* section3 건강채널 */
