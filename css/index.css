@@ -1250,6 +1250,7 @@ a {
 /*    left: 50%;*/
 /*    transform: translate(-50%, -50%);*/
 /*}*/
+
 /* header-bottom - 우측 버튼들 */
 /*.header .header-bottom ul li {*/
 .header .header-bottom > ul > li {
@@ -1266,6 +1267,25 @@ a {
 
 .header .header-bottom > ul > li a {
     font-size: var(--header-bottom-font-size)
+}
+
+/* - 모바일 전화 버튼 */
+.header .header-middle .header-bottom .mobile-call {
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+
+    background: url(../images/main_section/mobile-call.png) no-repeat 50% 50%;
+    background-size: 15px;
+    text-indent: -9999px;
+}
+
+.header .header-middle.on .header-bottom .mobile-call {
+    border: 1px solid #ddd;
+    border-radius: 100%;
+
+    background: url(../images/main_section/mobile-call-on.png) no-repeat 50% 50%;
+    background-size: 15px;
 }
 
 
@@ -1839,6 +1859,8 @@ a {
     color: #fff;
 
     z-index: 666;
+
+    text-shadow: .5px .5px 3px rgba(0, 0, 0, 0.3);
 }
 
 .section7 .medicine-box .swiper-container .swiper-number {
@@ -3337,7 +3359,7 @@ span.category.category-naver {
     width: 20px;
     height: 20px;
 
-    background: url("../images/clinic/arrow-down3.png") no-repeat 50% 50%;
+    background: url("arrow-down-gold.png") no-repeat 50% 50%;
     background-size: contain;
     transform: translate(-50%, 100%);
 

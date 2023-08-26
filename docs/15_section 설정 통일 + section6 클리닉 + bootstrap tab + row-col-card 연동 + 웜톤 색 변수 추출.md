@@ -582,32 +582,32 @@ controller.addScene(scene9);
 /* - 공통부모 중 젤 빠른 것에 .clinic-with-arrow를 삽입 */
 /* - 화살표를 받을 각 row들에 .clinic-arrow 삽입 */
 .clinic-arrow-parent div .clinic-arrow {
-    position: relative;
+   position: relative;
 }
 
 .clinic-arrow-parent div:not(:last-of-type) .clinic-arrow::after {
-    position: absolute;
-    content: '';
+   position: absolute;
+   content: '';
 
-    left: 50%;
-    bottom: 0;
-    width: 30px;
-    height: 20px;
+   left: 50%;
+   bottom: 0;
+   width: 30px;
+   height: 20px;
 
-    background: url("../images/clinic/arrow-down2.png") no-repeat 50% 50%;
-    background-size: contain;
-    transform: translate(-50%, 100%);
+   background: url("arrow-down-main.png") no-repeat 50% 50%;
+   background-size: contain;
+   transform: translate(-50%, 100%);
 
-    z-index: 2;
+   z-index: 2;
 }
 
 
 @media screen and (min-width: 992px) {
-    .clinic-arrow-parent div:not(:last-of-type) .clinic-arrow::after {
-        left: 38%; /* lg시 치료명의 중점과 일치하는 곳에 화살표 두기 */
-        bottom: 0;
-        transform: translate(-38%, 100%) scale(1.8);
-    }
+   .clinic-arrow-parent div:not(:last-of-type) .clinic-arrow::after {
+      left: 38%; /* lg시 치료명의 중점과 일치하는 곳에 화살표 두기 */
+      bottom: 0;
+      transform: translate(-38%, 100%) scale(1.8);
+   }
 }
 ```
 
