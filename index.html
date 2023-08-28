@@ -68,12 +68,13 @@
         /*height: 520px;*/
         border-radius: 12px 12px 0 0;
 
-        background: red;
+        /*background: red;*/
     }
 
     @media screen and (max-width: 991px) {
         .main-popup-content .popup-body {
-            width: 300px;
+            width: 88%;
+            max-width: 380px;
         }
     }
 
@@ -104,23 +105,23 @@
     </div>
 
     <!-- fixed 캐러셀 -->
-    <div class="main-popup-content">
-        <!-- 닫기 버튼 -->
-        <a class="popup-top-close-btn" href="#" onclick="hidePopup(); return false;">
-            <span class="blind">닫기</span>
-        </a>
+    <div class="main-popup-content w-100">
         <!-- 내용 -->
-        <div class="popup-body">
+        <div class="popup-body position-relative mx-auto">
+            <!-- 닫기 버튼 -->
+            <a class="popup-top-close-btn" href="#" onclick="hidePopup(); return false;">
+                <span class="blind">닫기</span>
+            </a>
             <!-- popup1 -->
             <a class="d-block w-100" href="#" target="_self">
-                <img class="img-fluid" src="images/popup/popup1.jpg" alt=""
+                <img class="img-fluid" src="images/popup/popup2.jpg" alt=""
                      style="border-radius: 12px 12px 0 0!important;"
                 >
             </a>
-        </div>
-        <!-- 하단 닫기 버튼 -->
-        <div class="popup-bottom">
-            오늘 하루 이창 띄우지 x
+            <!-- 하단 닫기 버튼 -->
+            <div class="popup-bottom">
+                오늘 하루 이창 띄우지 x
+            </div>
         </div>
     </div>
 </div>
