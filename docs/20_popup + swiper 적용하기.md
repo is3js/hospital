@@ -121,9 +121,13 @@ $(document).ready(function () {
 
 7. box만 닫던 것을, 전체 div인 `.main-popup`을 닫도록 변경한다.
 ```html
-<a class="d-inline-block w-100 h-100"
-   href="#" onclick="hidePopup(); return false;"
-></a>
+<div class="main-popup">
+   <!-- fixed 배경 -->
+   <div class="main-popup-box">
+      <a class="d-inline-block w-100 h-100"
+         href="#" onclick="hidePopup(); return false;"
+      ></a>
+   </div>
 ```
 ```js
 let mainPopup = $('.main-popup');
@@ -132,24 +136,108 @@ function hidePopup() {
     mainPopup.hide();
 }
 ```
+8. **content를 `.w-100`으로 만들어야, `화면의 90%`와 같이 그림을 배치할 수 있기 떄문에, width를 일정크기로 주지 않고, `w-100 공간을 만든다.`**
+```css
+ .main-popup-content {
+     z-index: 10001;
+     position: fixed;
 
+     left: 50%;
+     top: 50vh;
+     transform: translate(-50%, -35vh);
 
-8. 이제 content을 첫번째 내용으로 absolute로, top-17, right -17px로 내용물은 아직 안찼지만, 약간 우상단에서 17px내려온 닫기버튼을
-   - 35px로, background 이미지를 contain해서 만든다.
-   - a태그의 글자는 span.blind에 담아서 숨기고, 클릭시 hideBox()를 호출한다.
+     width: 100%;
+ }
+```
+9. 이렇게 되면, w-100 중에 팝업 그림이 90%로 들어가고 `남은 양쪽의 10%공간`이 클릭이 안되게 되므로, `jquery로 배경클릭시 hidePopup()`하는 주석을 다시 풀어주고 다시 걸어준다.
+- 그 전에 content의 cursor도 적용해준다.
+```css
+.main-popup-content {
+     /* ... */
+     width: 100%;
+     cursor: pointer;
+ }
+```
+```js
+ // 1. 배경 클릭시, box자체가 단순 닫힘.
+ let mainPopup = $('.main-popup');
+ // (1) hideBox
+ function hidePopup() {
+     mainPopup.hide();
+ }
+ /* 2. 배경 클릭시, 팝업 닫히도록 */
+ $('.main-popup-content').click(function(e){
+     e.preventDefault();
+     mainPopup.hide();
+ });
+```
+- 기존에 a태그에 직접 onclick으로 걸어줬던 것도 그냥 삭제해주고, jquery로 걸리게 한다.
 ```html
-<!-- fixed 캐러셀 -->
+<div class="main-popup">
+    <!-- fixed 배경 -->
+    <div class="main-popup-box">
+<!--           onclick="hidePopup(); return false;"-->
+        <a class="d-inline-block w-100 h-100" href="#"
+        ></a>
+    </div>
+```
+```js
+/* 2. 배경 클릭시, 팝업 닫히도록 */
+ $('.main-popup-box > a, .main-popup-content').click(function(e){
+     e.preventDefault();
+     mainPopup.hide();
+ });
+```
+
+10. w-100 내부에 `.popup-body`를 만들고, `lg에서는 480px 고정` + `lg이하에서는 88% + max-width: 380px`로 잡아준다.
+```html
+<!-- fixed 내용 -->
 <div class="main-popup-content">
-    <!-- 닫기 버튼 -->
-    <a class="popup-top-close-btn" href="#" onclick="hidePopup(); return false;">
-        <span class="blind">닫기</span>
-    </a>
-    <!-- 내용 -->
-    캐러셀
+   <!-- 내용 -->
+   <div class="popup-body">
+   </div>
 </div>
 ```
 ```css
-.main-popup-content .popup-top-close-btn {
+.main-popup-content .popup-body {
+    width: 480px;
+}
+
+@media screen and (max-width: 991px) {
+    .main-popup-content .popup-body {
+        width: 88%;
+        max-width: 380px;
+    }
+}
+```
+
+11. **닫기 버튼을 .popup-body 기준으로 만들기 위해 `relative` + 내용물(div)들을 가운데 놓기 위해 `margin: 0 auto;`로 만들어준다.**
+```css
+.main-popup-content .popup-body {
+    width: 480px;
+
+    position: relative;
+    margin: 0 auto;
+}
+```
+
+12. 이제 body의 맨 위, 첫번째 내용으로 absolute로, top-17, right -17px로 약간 우상단에서 17px내려온 닫기버튼을
+   - 35px로, background 이미지를 contain해서 만든다.
+   - a태그의 글자는 span.blind에 담아서 숨기고, `onclick=""`에 hidePopup() + return false;를 같이 호출한다.
+```html
+<!-- fixed 내용 -->
+<div class="main-popup-content">
+    <!-- 모바일 88% + lg 480px 내용 공간 -->
+    <div class="popup-body">
+        <!-- abs top 닫기 버튼 -->
+        <a class="popup-top-close-btn" href="#" onclick="hidePopup(); return false;">
+            <span class="blind">닫기</span>
+        </a>
+    </div>
+</div>
+```
+```css
+.main-popup-content .popup-body .popup-top-close-btn {
     z-index: 10001;
     position: absolute;
     right: -17px;
@@ -163,83 +251,45 @@ function hidePopup() {
 ```
 ![img.png](../ui/360.png)
 
-
-### popup-body / bottom 만들기
-1. `.popup-body`를 위족 닫기버튼아래에 만들고, `width`를 직접 지정, height는 auto로 채워지게 할 것이다.
-   - **lg 480, 이하 280px로 고정한다.**
-   - 또한, 위쪽만 radius를 준다.
+13. swiper가 돌아갈 `a.d-block.w-100 > img.img-fluid`를 만들고, css로 위쪽 radius를 긋고 **`overflow:hidden을 통해, radius안의 img가 못넘치게 한다.`**
+   - **이 때, bottom에는 양쪽으로 체크input + 닫기버튼을 만들기 위해 flex + between으로 설정해놓는다.**
 ```html
-    <!-- fixed 캐러셀 -->
-<div class="main-popup-content">
-    <!-- 닫기 버튼 -->
+<!-- 모바일 88% + lg 480px 내용 공간 -->
+<div class="popup-body">
+    <!-- abs top 닫기 버튼 -->
     <a class="popup-top-close-btn" href="#" onclick="hidePopup(); return false;">
         <span class="blind">닫기</span>
     </a>
-    <!-- 내용 -->
-    <div class="popup-body">
-
-        dd캐러셀
-
+    <!-- 이미지 a>img ( top border radius ) -->
+    <a class="d-block w-100" href="#" target="_self">
+        <img class="img-fluid" src="images/popup/popup1.jpg" alt="">
+    </a>
+    <!-- bottom 닫기 ( bottom border radius ) -->
+    <div class="popup-bottom">
+        오늘 하루 이창 띄우지 x
     </div>
 </div>
 ```
 ```css
-    .main-popup-content .popup-body {
-        width: 480px;
-        /*height: 520px;*/
-        border-radius: 12px 12px 0 0;
-
-        background: red;
-    }
-
-    @media screen and (max-width: 991px) {
-        .main-popup-content .popup-body {
-            width: 280px;
-        }
-    }
-```
-![img.png](../ui/361.png)
-
-2. `.popup-bottom`을 만들어, radius를 아래쪽만 주되, padding만 lg에서 좌우여백을 좀 더 준다.
-   - **flex - between으로 만들어서, 체크 <-> 닫기 버튼을 갈라줄 준비를 한다.**
-```html
- <!-- fixed 캐러셀 -->
-    <div class="main-popup-content">
-        <!-- 닫기 버튼 -->
-        <a class="popup-top-close-btn" href="#" onclick="hidePopup(); return false;">
-            <span class="blind">닫기</span>
-        </a>
-        <!-- 내용 -->
-        <div class="popup-body">
-            dd캐러셀
-        </div>
-        <!-- 하단 닫기 버튼 -->
-        <div class="popup-bottom">
-            오늘 하루 이창 띄우지 x
-        </div>
-    </div>
-```
-```css
-.main-popup-content .popup-bottom {
-  background: #fff;
-  border-radius: 0px 0px 12px 12px;
-  padding: 8px 12px;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    /* 팝업 a>img */
+.main-popup-content .popup-body a {
+   border-radius: 12px 12px 0 0;
+   overflow: hidden;
 }
 
-@media screen and (max-width: 991px) {
-  .main-popup-content .popup-bottom {
-      padding: 8px;
-  }
+/* 팝업 bottom */
+.main-popup-content .popup-body .popup-bottom {
+   border-radius: 0px 0px 12px 12px;
+   background: #fff;
+
+   padding: 8px 12px;
+
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
 }
 ```
-![img.png](../ui/362.png)
+- popup 이미지는 530x640기준으로 만들어준다.
+![img.png](../ui/363.png)
 
-
-### body에 a > img 입력 후 swiper로 감싸기
-1. width가 정해진 body에 a[target="_self"].w100 > img.img-fluid를 넣는다.
-
-2. 
+### bottom에 check + 닫기 만들기
