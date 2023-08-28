@@ -22,9 +22,110 @@
     <!-- magnific-popup css for 자가진단 결과-->
     <link rel="stylesheet" href="css/magnific-popup.css">
 
-
 </head>
 <body>
+<!-- popup -->
+<style>
+    .main-popup {
+    }
+
+    .main-popup-box {
+        position: fixed;
+        z-index: 10000;
+
+        width: 100%;
+        height: 100vh;
+
+        left: 0;
+        top: 0;
+        background: rgba(0, 0, 0, 0.77);
+        backdrop-filter: blur(1.5px);
+    }
+
+    .main-popup-content {
+        z-index: 10001;
+        position: fixed;
+
+        left: 50%;
+        top: 50vh;
+        transform: translate(-50%, -35vh);
+    }
+
+    .main-popup-content .popup-top-close-btn {
+        z-index: 10001;
+        position: absolute;
+        right: -17px;
+        top: -17px;
+
+        width: 35px;
+        height: 35px;
+        background: url(../images/main_section/main_popup_close.png) center no-repeat;
+        background-size: contain;
+    }
+
+    .main-popup-content .popup-body {
+        width: 480px;
+        /*height: 520px;*/
+        border-radius: 12px 12px 0 0;
+
+        background: red;
+    }
+
+    @media screen and (max-width: 991px) {
+        .main-popup-content .popup-body {
+            width: 300px;
+        }
+    }
+
+    .main-popup-content .popup-bottom {
+        background: #fff;
+        border-radius: 0px 0px 12px 12px;
+        padding: 8px 12px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    @media screen and (max-width: 991px) {
+        .main-popup-content .popup-bottom {
+            padding: 8px;
+        }
+    }
+
+</style>
+
+<div class="main-popup">
+    <!-- fixed 배경 -->
+    <div class="main-popup-box">
+        <a class="d-inline-block w-100 h-100"
+           href="#" onclick="hidePopup(); return false;"
+        ></a>
+    </div>
+
+    <!-- fixed 캐러셀 -->
+    <div class="main-popup-content">
+        <!-- 닫기 버튼 -->
+        <a class="popup-top-close-btn" href="#" onclick="hidePopup(); return false;">
+            <span class="blind">닫기</span>
+        </a>
+        <!-- 내용 -->
+        <div class="popup-body">
+            <!-- popup1 -->
+            <a class="d-block w-100" href="#" target="_self">
+                <img class="img-fluid" src="images/popup/popup1.jpg" alt=""
+                     style="border-radius: 12px 12px 0 0!important;"
+                >
+            </a>
+        </div>
+        <!-- 하단 닫기 버튼 -->
+        <div class="popup-bottom">
+            오늘 하루 이창 띄우지 x
+        </div>
+    </div>
+</div>
+
+
 <!-- 헤더 -->
 <div class="header container-fluid fixed-lg-top ">
     <!-- 특화질환 (모바일 사라짐) -->
@@ -4447,6 +4548,75 @@
 
 <script src="js/index.js"></script>
 
+<!-- main popup -->
+<script>
+    // 1. 배경 클릭시, box자체가 단순 닫힘.
+    let mainPopup = $('.main-popup');
+
+    // $(document).ready(function(){
+    //     mainPopupBox.click(function(e){
+    //         e.preventDefault();
+    //         mainPopupBox.hide();
+    //     });
+
+    // $('.notice_bottom > a, .notice_popup_bg, .close_btn_top, #Notice').click(function(e){
+    //     e.preventDefault();
+    //     $('.notice_popup_bg').hide();
+    // });
+
+    // });
+
+
+    // 2. 배경속 w100 h100 a태그 onclick
+    // (1) hideBox
+    function hidePopup() {
+        mainPopup.hide();
+    }
+
+    // (1) checkToCookie
+    function setCookie(name, value, expiredays) {
+        var todayDate = new Date();
+        todayDate.setDate(todayDate.getDate() + expiredays);
+        document.cookie = name + "=" + escape(value) + "; path=/; expires=" + todayDate.toGMTString() + ";"
+    }
+
+    function closeWithCookie() {
+        var chk = document.getElementById('mainPopupCheck');
+
+        // if (chk.checked) {
+        setCookie("main_popup", "done", 1); // 1일간 안보임
+        // }
+    }
+
+</script>
+<script>
+    // function closeWin() {
+    //     var chk = document.getElementById('Notice');
+    //
+    //     if (chk.checked) {
+    //         setCookie("daeat_pop", "done", 1); //1일간 안보임
+    //     }
+    // }
+    //
+    // $(document).ready(function(){
+    //     $('.notice_bottom > a, .notice_popup_bg, .close_btn_top, #Notice').click(function(e){
+    //         e.preventDefault();
+    //         $('.notice_popup_bg').hide();
+    //     });
+    // });
+</script>
+<script>
+    // var ns6=document.getElementsByClassName()
+    //
+    // function hidebox() {
+    //     crossobj = ns6 ? document.getElementById("draggable") : document.all.draggable
+    //     if (ie4 || ns6) {
+    //         crossobj.style.visibility = "hidden";
+    //     } else if (ns4) {
+    //         document.draggable.visibility = "hidden";
+    //     }
+    // }
+</script>
 </body>
 </html>
 

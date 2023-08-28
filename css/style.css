@@ -703,3 +703,16 @@ body {
     padding-right: 2.25rem !important;
     padding-left: 2.25rem !important;
 }
+
+
+/* blind */
+.blind {
+    visibility: hidden;
+    position: absolute;
+    left: -5000px;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    overflow: hidden;
+}
