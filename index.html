@@ -63,7 +63,7 @@
 
     @media screen and (max-width: 991px) {
         .main-popup-content .popup-body {
-            width: 88%;
+            width: 80%;
             max-width: 380px;
         }
     }
@@ -82,7 +82,7 @@
 
 
     /* 팝업 a>img */
-    .main-popup-content .popup-body a {
+    .main-popup-content .popup-body > a {
         border-radius: 12px 12px 0 0;
         overflow: hidden;
     }
@@ -100,17 +100,99 @@
     }
 
     @media screen and (max-width: 991px) {
-        .main-popup-content .popup-bottom {
+        .main-popup-content .popup-body .popup-bottom {
             padding: 8px;
         }
     }
+
+    /* 팝업 bottom checkbox + label */
+    .main-popup-content .popup-body .popup-bottom input[type="checkbox"] + label {
+        vertical-align: middle;
+        cursor: pointer;
+        white-space: nowrap;
+        position: relative;
+
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        border: 1px solid #CFCFCF;
+        border-radius: 4px;
+    }
+
+    @media screen and (max-width: 991px) {
+        .main-popup-content .popup-body .popup-bottom input[type="checkbox"] + label {
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    .main-popup-content .popup-body .popup-bottom input[type="checkbox"] + label:after {
+        position: absolute;
+        content: '';
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        width: 24px;
+        height: 24px;
+
+        background: url(images/popup/btn_gray_check.png) center no-repeat;
+        background-size: contain;
+    }
+
+    @media screen and (max-width: 991px) {
+        .main-popup-content .popup-body .popup-bottom input[type="checkbox"] + label:after {
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    .main-popup-content .popup-body .popup-bottom input[type="checkbox"]:checked + label:after {
+        background: url(images/popup/btn_main_check.png) center no-repeat;
+        background-size: contain;
+    }
+
+    /* input 체크시 label:after 배경이미지 변경 */
+
+
+    .main-popup-content .popup-body .popup-bottom input[type="checkbox"] + label span {
+        display:block;
+
+        padding-left: 28px; /* label:after의 공간이 24px */
+
+        line-height: 24px; /* label:after의 공간이 24px */
+        font-size: 16px;
+    }
+
+    @media screen and (max-width: 991px) {
+        .main-popup-content .popup-body .popup-bottom input[type="checkbox"] + label span {
+            padding-left: 24px; /* label:after의 공간이 20px */
+
+            line-height: 20px; /* label:after의 공간이 20px */
+            font-size: 13px;
+        }
+    }
+
+    /* 우측 닫기 버튼 */
+    .main-popup-content .popup-body .popup-bottom .popup-bottom-close-btn {
+        font-size: 16px;
+        margin-right: 8px;
+    }
+
+    @media screen and (max-width: 991px) {
+        .main-popup-content .popup-body .popup-bottom .popup-bottom-close-btn {
+            font-size: 13px;
+            margin-right: 4px;
+        }
+    }
+
 
 </style>
 
 <div class="main-popup">
     <!-- fixed 배경 -->
     <div class="main-popup-box">
-<!--           onclick="hidePopup(); return false;"-->
+        <!--           onclick="hidePopup(); return false;"-->
         <a class="d-inline-block w-100 h-100" href="#"
         ></a>
     </div>
@@ -129,13 +211,19 @@
             </a>
             <!-- bottom 닫기 ( bottom border radius ) -->
             <div class="popup-bottom">
+                <!-- 좌) 3일간 표시x -->
                 <div>
                     <input type="checkbox" name="mainPopupCheck" id="mainPopupCheck"
                            class="d-none"
                     >
-                    <label for="mainPopupCheck">3일간 띄우지 않음</label>
+                    <label for="mainPopupCheck">
+                        <span> 3일간 띄우지 않음 </span>
+                    </label>
                 </div>
-                오늘 하루 이창 띄우지 x
+                <!-- 우) -->
+                <a class="popup-bottom-close-btn" href="#" onclick="hidePopup(); return false;">
+                    [닫기]
+                </a>
             </div>
         </div>
     </div>
@@ -4568,12 +4656,15 @@
 <script>
     // 1. 배경 클릭시, box자체가 단순 닫힘.
     let mainPopup = $('.main-popup');
+
     // (1) 함수 for 닫기 버튼
     function hidePopup() {
         mainPopup.hide();
     }
+
     /* 2. 배경 클릭시, 팝업 닫히도록 */
-    $('.main-popup-box > a, .main-popup-content').click(function(e){
+    // $('.main-popup-box > a, .main-popup-content').click(function (e) {
+    $('.main-popup-box > a').click(function (e) {
         e.preventDefault();
         mainPopup.hide();
     });

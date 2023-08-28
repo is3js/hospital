@@ -189,7 +189,7 @@ function hidePopup() {
  });
 ```
 
-10. w-100 내부에 `.popup-body`를 만들고, `lg에서는 480px 고정` + `lg이하에서는 88% + max-width: 380px`로 잡아준다.
+10. w-100 내부에 `.popup-body`를 만들고, `lg에서는 480px 고정` + `lg이하에서는 80% + max-width: 380px`로 잡아준다.
 ```html
 <!-- fixed 내용 -->
 <div class="main-popup-content">
@@ -205,7 +205,7 @@ function hidePopup() {
 
 @media screen and (max-width: 991px) {
     .main-popup-content .popup-body {
-        width: 88%;
+        width: 80%;
         max-width: 380px;
     }
 }
@@ -292,4 +292,123 @@ function hidePopup() {
 - popup 이미지는 530x640기준으로 만들어준다.
 ![img.png](../ui/363.png)
 
-### bottom에 check + 닫기 만들기
+### bottom에 checkbox + 닫기 만들기
+1. div를 하나씌우고, input+label을 만든다. **이 때, input은 `d-none`을 클래스로 주고, name, id는 mainPopupCheck로 간다**
+   - 우측은 a태그로 만들며 onclick에 hidePopup(); return false;를 준다.
+```html
+<!-- bottom 닫기 ( bottom border radius ) -->
+<div class="popup-bottom">
+    <!-- 좌) 3일간 표시x -->
+    <div>
+        <input type="checkbox" name="mainPopupCheck" id="mainPopupCheck"
+               class="d-none"
+        >
+        <label for="mainPopupCheck">3일간 띄우지 않음</label>
+    </div>
+    <!-- 우) -->
+    <a href="#" onclick="hidePopup(); return false;">
+        [닫기]
+    </a>
+</div>
+```
+
+2. **label의 글자에 `::after로 체크그림을 채우기 위한 용도`로 만들기 위해**
+   1. label text를 span으로 씌우고
+   2. label 자체를 relative + 클릭용 cursor:pointer + vertical-align:middle + nowrap로 만든다.
+   3. label 자체를 inline block으로 만들고, span.text가 이어지게 한다.
+   4. label에 w/h를 24px <-> 20px(11px span글자 대비)로 만들고, 그 안에 check그림이 채워지기 전으로서, border만 만들어놓는다.
+```html
+<label for="mainPopupCheck">
+    <span> 3일간 띄우지 않음 </span>
+</label>
+```
+```css
+/* 팝업 bottom checkbox + label */
+.main-popup-content .popup-body .popup-bottom input[type="checkbox"] + label {
+    vertical-align: middle;
+    cursor: pointer;
+    white-space: nowrap;
+    position: relative;
+
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border: 1px solid #CFCFCF;
+    border-radius: 4px;
+}
+
+@media screen and (max-width: 991px) {
+   .main-popup-content .popup-body .popup-bottom input[type="checkbox"] + label {
+      width: 20px;
+      height: 20px;
+   }
+}
+```
+3. 이제 span태그에, label::after의 그림이 들어갈 자리`24px(lg) 16px(그이하)`에 4px씩 더 해서 padding-left를 준다.
+   - **이 때 , span태그를 block으로서, 앞에 붙을 abs label을 무시하고 1줄을 다 차지하게 한다.**
+   - **추가로, label의 공간 24, 20px을 lh로 잡아서 가운데 정렬되게 한다.**
+   - **span의 폰트는 24, 20px에 대해 16, 13px로 잡아준다.**
+```css
+.main-popup-content .popup-body .popup-bottom input[type="checkbox"] + label span {
+   display:block;
+
+   padding-left: 28px; /* label:after의 공간이 24px */
+
+   line-height: 24px; /* label:after의 공간이 24px */
+   font-size: 16px;
+}
+
+@media screen and (max-width: 991px) {
+   .main-popup-content .popup-body .popup-bottom input[type="checkbox"] + label span {
+      padding-left: 24px; /* label:after의 공간이 20px */
+
+      line-height: 20px; /* label:after의 공간이 20px */
+      font-size: 13px;
+   }
+}
+```
+
+4. 우측의 닫기버튼도 글자크기 16 -> 13px로 적용해준다.
+- `.popup-bottom-close-btn`의 클래스를 달아주고, 글자크기를 적용한다. margin-right도 8,4px을 적용해준다.
+```html
+
+<div class="popup-bottom">
+    <!-- 좌) 3일간 표시x -->
+    <div>
+        <input type="checkbox" name="mainPopupCheck" id="mainPopupCheck"
+               class="d-none"
+        >
+        <label for="mainPopupCheck">
+            <span> 3일간 띄우지 않음 </span>
+        </label>
+    </div>
+    <!-- 우) -->
+    <a class="popup-bottom-close-btn" href="#" onclick="hidePopup(); return false;">
+        [닫기]
+    </a>
+</div>
+```
+```css
+    /* 우측 닫기 버튼 */
+.main-popup-content .popup-body .popup-bottom .popup-bottom-close-btn {
+   font-size: 16px;
+   margin-right: 8px;
+}
+
+@media screen and (max-width: 991px) {
+   .main-popup-content .popup-body .popup-bottom .popup-bottom-close-btn {
+      font-size: 13px;
+      margin-right: 4px;
+   }
+}
+```
+![img.png](../ui/364.png)
+
+
+5. 이제 input이 :checked 상태일때(`input[type="checkbox"]:checked + label:after`)의 아이콘 배경그림을 변경해준다.
+```css
+.main-popup-content .popup-body .popup-bottom input[type="checkbox"]:checked + label:after {
+    background: url(images/popup/btn_main_check.png) center no-repeat;
+    background-size: contain;
+}
+```
