@@ -82,9 +82,14 @@
 
 
     /* 팝업 a>img */
-    .main-popup-content .popup-body > a {
+    /*.main-popup-content .popup-body > a {*/
+    .main-popup-content .popup-body .swiper-container {
         border-radius: 12px 12px 0 0;
         overflow: hidden;
+    }
+
+    .main-popup-content .popup-body .swiper-container .swiper-slide {
+        position: relative;
     }
 
     /* 팝업 bottom */
@@ -156,7 +161,7 @@
 
 
     .main-popup-content .popup-body .popup-bottom input[type="checkbox"] + label span {
-        display:block;
+        display: block;
 
         padding-left: 28px; /* label:after의 공간이 24px */
 
@@ -189,26 +194,55 @@
 
 </style>
 
-<div class="main-popup">
+<!-- 메인 팝업 -->
+<div class="main-popup" style="display: none;">
     <!-- fixed 배경 -->
     <div class="main-popup-box">
-        <!--           onclick="hidePopup(); return false;"-->
         <a class="d-inline-block w-100 h-100" href="#"
+           onclick="closePopup(3); return false;"
         ></a>
     </div>
 
     <!-- fixed 내용 -->
     <div class="main-popup-content">
-        <!-- 모바일 88% + lg 480px 내용 공간 -->
+        <!-- 양쪽에 남은 여백 10%에서 클릭되게 할 abs 배경 -->
+        <a class="position-absolute d-inline-block w-100 h-100"
+           onclick="closePopup(3); return false;"
+           href="#"></a>
+        <!-- 모바일 90% + lg 480px 내용 공간 -->
         <div class="popup-body">
             <!-- abs top 닫기 버튼 -->
             <a class="popup-top-close-btn" href="#" onclick="hidePopup(); return false;">
                 <span class="blind">닫기</span>
             </a>
-            <!-- 이미지 a>img ( top border radius ) -->
-            <a class="d-block w-100" href="#" target="_self">
-                <img class="img-fluid" src="images/popup/mainPopup_530x640.png" alt="">
-            </a>
+            <!-- swiper > a > img -->
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <!-- slide 1 -->
+                    <div class="swiper-slide">
+                        <!-- 이미지 a>img ( top border radius ) -->
+                        <a class="d-block w-100" href="#" target="_self">
+                            <img class="img-fluid" src="images/popup/mainPopup_530x640.png" alt="">
+                        </a>
+                    </div>
+                    <!-- slide 2 -->
+                    <div class="swiper-slide">
+                        <!-- 이미지 a>img ( top border radius ) -->
+                        <a class="d-block w-100" href="#" target="_self">
+                            <img class="img-fluid" src="images/popup/popup2.jpg" alt="">
+                        </a>
+                    </div>
+                    <!-- slide 3 -->
+                    <div class="swiper-slide">
+                        <!-- 이미지 a>img ( top border radius ) -->
+                        <a class="d-block w-100" href="#" target="_self">
+                            <img class="img-fluid" src="images/popup/mainPopup_530x640.png" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+
+            </div>
             <!-- bottom 닫기 ( bottom border radius ) -->
             <div class="popup-bottom">
                 <!-- 좌) 3일간 표시x -->
@@ -221,7 +255,7 @@
                     </label>
                 </div>
                 <!-- 우) -->
-                <a class="popup-bottom-close-btn" href="#" onclick="hidePopup(); return false;">
+                <a class="popup-bottom-close-btn" href="#" onclick="closePopup(3); return false;">
                     [닫기]
                 </a>
             </div>
@@ -4657,46 +4691,87 @@
     // 1. 배경 클릭시, box자체가 단순 닫힘.
     let mainPopup = $('.main-popup');
 
-    // (1) 함수 for 닫기 버튼
+    // (1) 숨기기
     function hidePopup() {
         mainPopup.hide();
     }
 
-    /* 2. 배경 클릭시, 팝업 닫히도록 */
-    // $('.main-popup-box > a, .main-popup-content').click(function (e) {
-    $('.main-popup-box > a').click(function (e) {
-        e.preventDefault();
-        mainPopup.hide();
-    });
-    // $(document).ready(function(){
-    //     mainPopup.click(function(e){
-    //         e.preventDefault();
-    //         mainPopup.hide();
-    //     });
-
-    // $('.main-popup, main-popup-content .notice_bottom > a, .notice_popup_bg, .close_btn_top, #Notice').click(function(e){
-
-
-    // });
-
-
-    // 2. 배경속 w100 h100 a태그 onclick
-
-
-    // (1) checkToCookie
+    /* (2) check 확인해서 cookie 심기 + (1) 숨기기 활용 */
     function setCookie(name, value, expiredays) {
         var todayDate = new Date();
         todayDate.setDate(todayDate.getDate() + expiredays);
         document.cookie = name + "=" + escape(value) + "; path=/; expires=" + todayDate.toGMTString() + ";"
     }
 
-    function closeWithCookie() {
-        var chk = document.getElementById('mainPopupCheck');
-
-        // if (chk.checked) {
-        setCookie("main_popup", "done", 1); // 1일간 안보임
-        // }
+    function closePopup(expiredays) {
+        // 체크 확인
+        var checkBox = document.getElementById('mainPopupCheck');
+        if (checkBox.checked) {
+            setCookie("main_popup", "done", expiredays); // 3일간 안보임
+        } else {
+            // 체크 안되어있다면, 1일간 보지 않기
+            setCookie("main_popup", "done", 1); // 1일간 안보임
+        }
+        // 팝업 닫기
+        hidePopup();
     }
+
+    // /* 2. 배경 클릭시, 팝업 닫히도록 */
+    // /* - 전체배경 + 그림부분(popup-body)의 양쪽 여백을 채울 배경 */
+    // $('.main-popup-box > a:nth-of-type(1), .main-popup-content > a:nth-of-type(1)').click(function (e) {
+    // // $('.main-popup-box > a').click(function (e) {
+    //     e.preventDefault();
+    //     mainPopup.hide();
+    // });
+
+    function getCookie2(name) {
+        var nameOfCookie = name + "=";
+        var x = 0;
+        while (x <= document.cookie.length) {
+            var y = (x + nameOfCookie.length);
+            if (document.cookie.substring(x, y) == nameOfCookie) {
+                if ((endOfCookie = document.cookie.indexOf(";", y)) == -1)
+                    endOfCookie = document.cookie.length;
+                return unescape(document.cookie.substring(y, endOfCookie));
+            }
+            x = document.cookie.indexOf(" ", x) + 1;
+            if (x == 0)
+                break;
+        }
+        return "";
+    }
+
+    function getCookie(name) {
+        var value = document.cookie.match("(^|;) ?" + name + "=([^;]*)(;|$)");
+        return value ? value[2] : null;
+    }
+
+    function loadPopup() {
+        // 쿠키가 남아있찌 않을 때만 show
+        if (getCookie('main_popup') != "done") {
+
+            // swiper
+            let popupSwiper = new Swiper(".popup-body .swiper-container", {
+                loop : true,
+                loopAdditionalSlides : 1, //
+                slidesPerView: 1,
+                spaceBetween: 2,
+                pagination: {
+                    el: ".popup-body .swiper-pagination",
+                    clickable: true
+                },
+                // autoplay: {
+                //     delay: 2500,
+                //     disableOnInteraction: false  // false-스와이프 후 자동 재생
+                // }
+            });
+
+            mainPopup.show();
+        }
+    }
+
+
+    loadPopup();
 
 </script>
 <script>

@@ -149,7 +149,7 @@ function hidePopup() {
      width: 100%;
  }
 ```
-9. 이렇게 되면, w-100 중에 팝업 그림이 90%로 들어가고 `남은 양쪽의 10%공간`이 클릭이 안되게 되므로, `jquery로 배경클릭시 hidePopup()`하는 주석을 다시 풀어주고 다시 걸어준다.
+9. 이렇게 되면, w-100 중에 팝업 그림이 90%로 들어가고 `남은 양쪽의 10%공간`이 클릭이 안되게 되므로, `a태그를 absolute + d-inline-block +  w-100 + h-100 차지하도록 만들어` `jquery로 배경클릭시 hidePopup()`하는 주석을 다시 풀어주고 다시 걸어준다.
 - 그 전에 content의 cursor도 적용해준다.
 ```css
 .main-popup-content {
@@ -173,20 +173,20 @@ function hidePopup() {
 ```
 - 기존에 a태그에 직접 onclick으로 걸어줬던 것도 그냥 삭제해주고, jquery로 걸리게 한다.
 ```html
-<div class="main-popup">
-    <!-- fixed 배경 -->
-    <div class="main-popup-box">
-<!--           onclick="hidePopup(); return false;"-->
-        <a class="d-inline-block w-100 h-100" href="#"
-        ></a>
-    </div>
+<!-- fixed 내용 -->
+<div class="main-popup-content">
+   <!-- 양쪽에 남은 여백 10%에서 클릭되게 할 abs 배경 -->
+   <a class="position-absolute d-inline-block w-100 h-100"
+      href="#"></a>
+   <!-- 모바일 90% + lg 480px 내용 공간 -->
+   <div class="popup-body">
 ```
 ```js
 /* 2. 배경 클릭시, 팝업 닫히도록 */
- $('.main-popup-box > a, .main-popup-content').click(function(e){
-     e.preventDefault();
-     mainPopup.hide();
- });
+$('.main-popup-box > a:nth-of-type(1), .main-popup-content > a:nth-of-type(1)').click(function (e) {
+   e.preventDefault();
+   mainPopup.hide();
+});
 ```
 
 10. w-100 내부에 `.popup-body`를 만들고, `lg에서는 480px 고정` + `lg이하에서는 80% + max-width: 380px`로 잡아준다.
@@ -412,3 +412,137 @@ function hidePopup() {
     background-size: contain;
 }
 ```
+
+
+6. 이제 닫기a태그에는 checkbox를 확인해서 쿠키를 설정하는 메서드 `closePopup()`을 만들고, 내부에서 `hidePopup();`를 활용하게 한다.
+```js
+/* (2) check 확인해서 cookie 심기 + (1) 숨기기 활용 */
+function setCookie(name, value, expiredays) {
+   var todayDate = new Date();
+   todayDate.setDate(todayDate.getDate() + expiredays);
+   document.cookie = name + "=" + escape(value) + "; path=/; expires=" + todayDate.toGMTString() + ";"
+}
+
+function closePopup(expiredays) {
+   // 체크 확인
+   var checkBox = document.getElementById('mainPopupCheck');
+   if (checkBox.checked) {
+      setCookie("main_popup", "done", expiredays); // 3일간 안보임
+   } else {
+      // 체크 안되어있다면, 1일간 보지 않기
+      setCookie("main_popup", "done", 1); // 1일간 안보임
+   }
+   // 팝업 닫기
+   hidePopup();
+}
+```
+```html
+ <!-- bottom 닫기 ( bottom border radius ) -->
+<div class="popup-bottom">
+    <!-- 좌) 3일간 표시x -->
+    <div>
+    </div>
+    <!-- 우) -->
+    <a class="popup-bottom-close-btn" href="#" onclick="closePopup(3); return false;">
+        [닫기]
+    </a>
+</div>
+```
+- **application > cookie 를 확인하면, expire day가 체크여부에 따라 다르게 입력된다.**
+
+
+7. 이제 getCookie를 정의해서, **expire만큼 남아있는 상태 == `"done"`을 value로 가지고 있지 않는 상태에서만 `.show();`하고, default로는 `display:none`이어야한다.**
+```js
+function getCookie(name) {
+    var value = document.cookie.match("(^|;) ?" + name + "=([^;]*)(;|$)");
+    return value ? value[2] : null;
+}
+```
+```html
+<!-- 메인 팝업 -->
+<div class="main-popup" style="display: none;">
+```
+```js
+// 쿠키가 남아있찌 않을 때만 show
+if (getCookie('main_popup') != "done") {
+    mainPopup.show();
+}
+```
+
+8. loadPopup의 메서드로 만들어서 호출해주자.
+```js
+function loadPopup() {
+    // 쿠키가 남아있찌 않을 때만 show
+    if (getCookie('main_popup') != "done") {
+        mainPopup.show();
+    }
+}
+
+loadPopup();
+```
+
+9. 기존 `배경클릭 a태그`시 hidePopup();했던 것들을 -> closePopup(3)으로 체크확인 + 쿠키설정하고 닫는 것으로 변경해준다.
+- 일단 jquery로 click리스너 만들었던 것들을 주석처리
+```js
+ /* 2. 배경 클릭시, 팝업 닫히도록 */
+ /* - 전체배경 + 그림부분(popup-body)의 양쪽 여백을 채울 배경 */
+ $('.main-popup-box > a:nth-of-type(1), .main-popup-content > a:nth-of-type(1)').click(function (e) {
+ // $('.main-popup-box > a').click(function (e) {
+     e.preventDefault();
+     mainPopup.hide();
+ });
+```
+- **배경a태그들의 onclick 메서드를 closePopup(3);으로 지정하여, 체크안되어있어도 1일은 안보이게 한다.**
+```html
+<!-- 메인 팝업 -->
+<div class="main-popup" style="display: none;">
+   <!-- fixed 배경 -->
+   <div class="main-popup-box">
+      <a class="d-inline-block w-100 h-100" href="#"
+         onclick="closePopup(3); return false;"
+      ></a>
+   </div>
+
+   <!-- fixed 내용 -->
+   <div class="main-popup-content">
+      <!-- 양쪽에 남은 여백 10%에서 클릭되게 할 abs 배경 -->
+      <a class="position-absolute d-inline-block w-100 h-100"
+         onclick="closePopup(3); return false;"
+         href="#"></a>
+```
+
+
+
+### swiper 적용
+1. a>img 태그의 부모로서 swiper-container/wrapper/slide를 씌워준다.
+```html
+<!-- swiper > a > img -->
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <!-- slide 1 -->
+        <div class="swiper-slide">
+            <!-- 이미지 a>img ( top border radius ) -->
+            <a class="d-block w-100" href="#" target="_self">
+                <img class="img-fluid" src="images/popup/mainPopup_530x640.png" alt="">
+            </a>
+        </div>
+    </div>
+</div>
+```
+
+2. a태그에 걸어줬던 `border-radius + overflow:hidden`을 swiper-container로 옮겨주고, + swiper-slide를 relative로 만든다.
+```css
+ /* 팝업 a>img */
+/*.main-popup-content .popup-body > a {*/
+.main-popup-content .popup-body .swiper-container {
+    border-radius: 12px 12px 0 0;
+    overflow: hidden;
+}
+
+.main-popup-content .popup-body .swiper-container .swiper-slide {
+    position: relative;
+}
+```
+
+
+3. swiper 초기화를 loadPopup();보다 위쪽에서 호출해주자.
