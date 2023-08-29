@@ -492,7 +492,7 @@ loadPopup();
      mainPopup.hide();
  });
 ```
-- **배경a태그들의 onclick 메서드를 closePopup(3);으로 지정하여, 체크안되어있어도 1일은 안보이게 한다.**
+- **배경a태그들 + 닫기버튼의 onclick 메서드를 closePopup(3);으로 지정하여, 체크안되어있어도 1일은 안보이게 한다.**
 ```html
 <!-- 메인 팝업 -->
 <div class="main-popup" style="display: none;">
@@ -509,6 +509,15 @@ loadPopup();
       <a class="position-absolute d-inline-block w-100 h-100"
          onclick="closePopup(3); return false;"
          href="#"></a>
+      <!-- 모바일 90% + lg 480px 내용 공간 -->
+      <div class="popup-body">
+         <!-- swiper pagination -->
+         <div class="swiper-pagination"></div>
+
+         <!-- abs top 닫기 버튼 -->
+         <a class="popup-top-close-btn" href="#" onclick="closePopup(3); return false;">
+            <span class="blind">닫기</span>
+         </a>
 ```
 
 
@@ -591,4 +600,33 @@ pagination: {
 
 2. absolute의 기준이 .popup-body이므로, top-34px + left:50%로 만들어서 위쪽 가운데로 보낸다.
    - **만약, 하나의 line으로 잡고싶다면 relative로 만들면되는데, 닫기버튼이 위쪽에 absolute로 위치하고 있어서, 서로 겹치게 abs로 만든다.**
-   - 
+```css
+ /* pagination */
+ .popup-body .swiper-pagination {
+     position: absolute;
+
+     top: -34px; /* 닫기버튼 -17px의 2배*/
+     bottom: auto;
+     left: 50%;
+     transform: translateX(-50%);
+ }
+```
+
+3. 이제 각 bullet들(`.swiper-pagination-bullet`)의 간격을 5px로 margin-right로 주고, 색은 bacground를 !important로 주면, active아닌 것은 opacity가 적용된다.
+```css
+    /* pagination */
+    .popup-body .swiper-pagination {
+        position: absolute;
+
+        top: -34px; /* 닫기버튼 -17px의 2배*/
+        bottom: auto;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .popup-body .swiper-pagination .swiper-pagination-bullet {
+        margin: 0 5px; /* 좌우 간격 */
+        background: #fff !important; /* 동그라미 삭제 */
+    }
+```
+![img.png](../ui/369.png)
