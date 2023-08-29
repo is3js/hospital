@@ -529,7 +529,6 @@ loadPopup();
     </div>
 </div>
 ```
-
 2. a태그에 걸어줬던 `border-radius + overflow:hidden`을 swiper-container로 옮겨주고, + swiper-slide를 relative로 만든다.
 ```css
  /* 팝업 a>img */
@@ -544,5 +543,52 @@ loadPopup();
 }
 ```
 
+3. swiper 초기화를 **`mainPopup.show();로 element가 나타난 이후 초기화`되어야만 하므로**, `loadPopup()` 내부에 조건만족시(쿠키없을 시) .show()이후에 초기화해줘야한다.
+```js
+function loadPopup() {
+     // 쿠키가 남아있찌 않을 때만 show
+     if (getCookie('main_popup') != "done") {
 
-3. swiper 초기화를 loadPopup();보다 위쪽에서 호출해주자.
+         mainPopup.show();
+
+         // swiper
+         new Swiper(".popup-body .swiper-container", {
+             loop : true,
+             loopAdditionalSlides : 1, //
+             slidesPerView: 1,
+             spaceBetween: 0,
+             autoplay: {
+                 delay: 2500,
+                 disableOnInteraction: false  // false-스와이프 후 자동 재생
+             }
+         });
+     }
+ }
+
+
+ loadPopup();
+```
+
+
+4. 이제 slide 갯수를 늘리고, 잘 돌아가는지 확인한다.
+
+#### pagination 밖으로 빼기
+1. `<div class="swiper-pagination"></div>`을 container 내부가 아닌, 형제로서 바깥으로 뺀다.
+```html
+<!-- swiper pagination -->
+<div class="swiper-pagination"></div>
+
+<!-- swiper > a > img -->
+<div class="swiper-container">
+```
+- swiper 초기화 코드에 입력해준다.
+```js
+pagination: {
+     el: ".popup-body .swiper-paginat``ion",
+     clickable: true
+ },
+```
+
+2. absolute의 기준이 .popup-body이므로, top-34px + left:50%로 만들어서 위쪽 가운데로 보낸다.
+   - **만약, 하나의 line으로 잡고싶다면 relative로 만들면되는데, 닫기버튼이 위쪽에 absolute로 위치하고 있어서, 서로 겹치게 abs로 만든다.**
+   - 

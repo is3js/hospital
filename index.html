@@ -191,6 +191,20 @@
         }
     }
 
+    /* pagination */
+    .popup-body .swiper-pagination {
+        position: absolute;
+
+        top: -34px; /* 닫기버튼 -17px의 2배*/
+        bottom: auto;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .popup-body .swiper-pagination .swiper-pagination-bullet {
+        margin: 0 5px; /* 좌우 간격 */
+        background: #fff !important; /* 동그라미 삭제 */
+    }
 
 </style>
 
@@ -211,10 +225,14 @@
            href="#"></a>
         <!-- 모바일 90% + lg 480px 내용 공간 -->
         <div class="popup-body">
+            <!-- swiper pagination -->
+            <div class="swiper-pagination"></div>
+
             <!-- abs top 닫기 버튼 -->
             <a class="popup-top-close-btn" href="#" onclick="hidePopup(); return false;">
                 <span class="blind">닫기</span>
             </a>
+
             <!-- swiper > a > img -->
             <div class="swiper-container">
                 <div class="swiper-wrapper">
@@ -240,7 +258,6 @@
                         </a>
                     </div>
                 </div>
-                <div class="swiper-pagination"></div>
 
             </div>
             <!-- bottom 닫기 ( bottom border radius ) -->
@@ -4750,23 +4767,23 @@
         // 쿠키가 남아있찌 않을 때만 show
         if (getCookie('main_popup') != "done") {
 
+            mainPopup.show();
+
             // swiper
-            let popupSwiper = new Swiper(".popup-body .swiper-container", {
+            new Swiper(".popup-body .swiper-container", {
                 loop : true,
                 loopAdditionalSlides : 1, //
                 slidesPerView: 1,
-                spaceBetween: 2,
+                spaceBetween: 0,
                 pagination: {
                     el: ".popup-body .swiper-pagination",
                     clickable: true
                 },
-                // autoplay: {
-                //     delay: 2500,
-                //     disableOnInteraction: false  // false-스와이프 후 자동 재생
-                // }
+                autoplay: {
+                    delay: 2500,
+                    disableOnInteraction: false  // false-스와이프 후 자동 재생
+                }
             });
-
-            mainPopup.show();
         }
     }
 
